@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.dinhson.quizsystem.main.java.dao.impl;
+package dao.impl;
 
 
-import com.dinhson.quizsystem.main.java.dao.IAccountDao;
-import com.dinhson.quizsystem.main.java.mapper.AccountMapper;
-import com.dinhson.quizsystem.main.java.model.Account;
+import dao.IAccountDao;
+import mapper.AccountMapper;
+import model.Account;
 import java.util.List;
 
 /**
