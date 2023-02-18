@@ -46,7 +46,4 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         String sql = "update Account set password = ? where gmail = ?";
         update(sql, pass, email);
     }
-
-    
-
 }
