@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.dinhson.quizsystem.main.java.dao.impl;
+package dao.impl;
 
-import com.dinhson.quizsystem.main.java.dao.GenericDao;
-import com.dinhson.quizsystem.main.java.mapper.RowMapper;
+import dao.GenericDao;
+import mapper.RowMapper;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

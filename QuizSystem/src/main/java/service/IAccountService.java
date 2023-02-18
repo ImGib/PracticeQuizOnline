@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.dinhson.quizsystem.main.java.service;
+package service;
 
-import com.dinhson.quizsystem.main.java.model.Account;
+import model.Account;
 
 
 /**
