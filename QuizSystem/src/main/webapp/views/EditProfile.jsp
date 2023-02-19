@@ -8,9 +8,6 @@
 
 <head>
     <meta charset="utf-8">
-
-
-
     <title>bs5 edit profile account details - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

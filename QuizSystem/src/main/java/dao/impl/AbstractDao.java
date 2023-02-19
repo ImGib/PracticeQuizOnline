@@ -23,9 +23,9 @@ public class AbstractDao<T> implements GenericDao<T> {
 
     private final String serverName = "localhost";
     private final String dbName = "Quiz System";
-    private final String portNumber = "1433";
+    private final String portNumber = "5102";
     private final String userID = "sa";
-    private final String password = "12012002";
+    private final String password = "giabao5102";
 
     public Connection getConnection() throws Exception {
         String url = "jdbc:sqlserver://" + serverName + ":" + portNumber
