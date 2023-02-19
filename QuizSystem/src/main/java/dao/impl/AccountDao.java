@@ -47,6 +47,12 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         update(sql, pass, email);
     }
     
+    @Override
+    public void editAccount(String userName, String firstName, String lastName, String gmail, String phone, String address, String img) {
+        String sql = "update Account set userName = ?,firstName = ?,lastName = ?,gmail = ?,phone = ?,address = ?,img = ? where gmail = ?";
+        update(sql, userName, firstName,lastName,gmail,phone,address,img,gmail);
+    }
+    
      @Override
     public List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt) {
         String sql = "select * from Account\n"
