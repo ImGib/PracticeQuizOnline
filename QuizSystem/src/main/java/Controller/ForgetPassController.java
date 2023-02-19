@@ -31,7 +31,7 @@ public class ForgetPassController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        String mess = new AccountService().forgetPass(email);
+        String mess = AccountService.getInstance().forgetPass(email);
         forgetPassDirect(mess, email, req, resp);
     }
 

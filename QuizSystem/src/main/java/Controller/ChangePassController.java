@@ -34,7 +34,7 @@ public class ChangePassController extends HttpServlet{
         String sessionCode = (String) session.getAttribute("forgetCode");
         int timeInput = (int) session.getAttribute("timeInput")+1;
         session.setAttribute("timeInput", timeInput);
-        String mess = new AccountService().changePassWord(email, pass, rePass, code, sessionCode, timeInput);
+        String mess = AccountService.getInstance().changePassWord(email, pass, rePass, code, sessionCode, timeInput);
         directController(mess,email, req, resp);
     }
     
