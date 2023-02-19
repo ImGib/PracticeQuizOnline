@@ -46,4 +46,30 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         String sql = "update Account set password = ? where gmail = ?";
         update(sql, pass, email);
     }
+    
+     @Override
+    public List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt) {
+        String sql = "select * from Account\n"
+                + "where userName LIKE ? or \n"
+                + "	firstName LIKE ? or\n"
+                + "	lastName LIKE ? or\n"
+                + "	gmail LIKE ? or\n"
+                + "	phone LIKE ? ;";
+        txt = "%" + txt + "%";
+        return query(sql, new AccountMapper(), txt, txt, txt, txt, txt);
+    }
+
+    @Override
+    public void ChangeRoleByUserName(String username,int id) {
+        String sql = "update Account\n"
+                + "set role =?\n"
+                + "where userName=?";
+        update(sql, id,username);
+    }
+
+    @Override
+    public List<Account> FilterRole(int role) {
+        String sql="select * from Account where role=?";
+        return query(sql, new AccountMapper(), role);
+    }
 }
