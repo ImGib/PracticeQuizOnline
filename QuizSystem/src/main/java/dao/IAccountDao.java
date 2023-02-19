@@ -4,6 +4,7 @@
  */
 package dao;
 
+import java.util.ArrayList;
 import model.Account;
 import java.util.List;
 
@@ -24,5 +25,9 @@ public interface IAccountDao extends GenericDao<Account>{
     
     List<Account> FilterRole(int role);
     
-     
+    void EditAccount(Account account);
+    
+    void DeleteAccount(String user);
+    
+    List<Account> LoadAccount_Pagination(String txt,int pageIndex, int nrpp);
 }

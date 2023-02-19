@@ -22,7 +22,7 @@ public class AccountService implements IAccountService {
     public AccountService() {
         accountDao = new AccountDao();
     }
-
+    
     @Override
     public Account findAccountByEmailAndPass(String userName, String pass) {
         List<Account> list = accountDao.findAccountByEmailAndPass(userName, pass);
@@ -103,5 +103,36 @@ public class AccountService implements IAccountService {
         }
         return a;
     }
+
+    @Override
+    public List<Account> findAccountByEmail(String email) {
+        return accountDao.findAccountByEmail(email);
+    }
+
+    @Override
+    public List<Account> findAccountByUserName(String userName) {
+        return accountDao.findAccountByUserName(userName);
+    }
+
+    @Override
+    public void addAccount(Account a) {
+        accountDao.addAccount(a);
+    }
+
+    @Override
+    public List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt) {
+        return accountDao.SearchAccountByUserName_Name_Gmail_Phone(txt);
+    }
+
+    @Override
+    public void DeleteAccount(String user) {
+        accountDao.DeleteAccount(user);
+    }
+
+    @Override
+    public List<Account> LoadAccount_Pagination(String txt,int pageIndex, int nrpp) {
+        return accountDao.LoadAccount_Pagination(txt, pageIndex, nrpp);
+    }
+    
 
 }

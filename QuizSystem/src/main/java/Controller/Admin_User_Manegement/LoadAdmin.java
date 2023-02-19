@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Account;
+import service.impl.AccountService;
 
 /**
  *
@@ -41,11 +42,33 @@ public class LoadAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            AccountDao ad = new AccountDao();
+            AccountService ad = new AccountService();
         String txt = "";
+        try {
+            txt=request.getParameter("txt");
+        } catch (Exception e) {
+        }
         List<Account> ListAccount = ad.SearchAccountByUserName_Name_Gmail_Phone("");
+ //------------------------Phan Trang----------------------------------------------
+        int size = ListAccount.size();
+        int nrpp = 2;
+        int totalPage = (size + nrpp - 1) / nrpp;
+        int pageIndex = 1;
+        try {
+            pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
+        } catch (Exception e) {
+        }
+        pageIndex = pageIndex > totalPage ? totalPage : pageIndex;
+        pageIndex = pageIndex < 1 ? 1 : pageIndex;
+        
+        ListAccount=ad.LoadAccount_Pagination(txt, pageIndex, nrpp);
+        
+        request.setAttribute("nrpp", nrpp);
+        request.setAttribute("size", size);
+        request.setAttribute("txt",txt );
+        request.setAttribute("pageIndex",pageIndex);
+        request.setAttribute("totalPage", totalPage);
         request.setAttribute("ListAccount", ListAccount);
-
         request.getRequestDispatcher("views/admin_user_management.jsp").forward(request, response);
         processRequest(request, response);
     }
@@ -53,13 +76,13 @@ public class LoadAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDao ad = new AccountDao();
-        String txt = "";
-        txt= request.getParameter("txt");
-        List<Account> ListAccount = ad.SearchAccountByUserName_Name_Gmail_Phone(txt);
-        request.setAttribute("ListAccount", ListAccount);
-
-        request.getRequestDispatcher("views/admin_user_management.jsp").forward(request, response);
+//        AccountService ad = new AccountService();
+//        String txt = "";
+//        txt= request.getParameter("txt");
+//        List<Account> ListAccount = ad.SearchAccountByUserName_Name_Gmail_Phone(txt);
+//        request.setAttribute("ListAccount", ListAccount);
+//
+//        request.getRequestDispatcher("views/admin_user_management.jsp").forward(request, response);
         processRequest(request, response);
     }
 

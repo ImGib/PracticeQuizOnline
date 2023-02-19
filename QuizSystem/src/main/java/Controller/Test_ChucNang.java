@@ -16,8 +16,8 @@ public class Test_ChucNang {
     public static void main(String[] args) {
         AccountDao ad=new AccountDao();
         List<Account> list= ad.SearchAccountByUserName_Name_Gmail_Phone("");
-        for (Account o : list) {
-            System.out.println(o.getRole() == 1);
+        for (Account a : ad.LoadAccount_Pagination("v",1, 2)) {
+            System.out.println(a);
         }
     }
 }

@@ -4,6 +4,7 @@
  */
 package service;
 
+import java.util.List;
 import model.Account;
 import model.UserGoogleDto;
 
@@ -25,4 +26,12 @@ public interface IAccountService {
     public String editProfile(String userName, String firstName, String lastName, String gmail, String phone, String address, String img);
     
     public Account loginWithEmail(UserGoogleDto user);
+    
+    List<Account> findAccountByEmail(String email);
+    List<Account> findAccountByUserName(String userName);
+    void addAccount(Account a);
+    List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt);
+    void DeleteAccount(String user);
+    List<Account> LoadAccount_Pagination(String txt,int pageIndex, int nrpp);
+    
 }

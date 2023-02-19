@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Account;
+import service.impl.AccountService;
 
 /**
  *
@@ -47,10 +48,37 @@ public class AddNewAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        AccountService ad=new AccountService();
         
-        AccountDao ad=new AccountDao();
-        request.getParameter("");
-
+        String user=request.getParameter("user");
+        String pass=request.getParameter("pass");
+//        String fname=request.getParameter("fname");
+//        String lname=request.getParameter("lname");
+        String email=request.getParameter("email");
+        String add=request.getParameter("add");
+        String phone=request.getParameter("phone");
+        String role=request.getParameter("role");
+        
+        request.setAttribute("user",user);
+        request.setAttribute("pass", pass);
+//        request.setAttribute("fname",fname );
+//        request.setAttribute("lname", lname);
+        request.setAttribute("email",email );
+        request.setAttribute("add",add );
+        request.setAttribute("phone",phone );
+        request.setAttribute("role",role );
+        
+        if(!ad.findAccountByUserName(user).isEmpty()){
+            request.setAttribute("wrongText", "This User already exist!!!");
+            request.getRequestDispatcher("views/AddNewAccount.jsp").forward(request, response);
+        }
+        if(!ad.findAccountByEmail(email).isEmpty()){
+            request.setAttribute("wrongText", "This Email already exist!!!");
+            request.getRequestDispatcher("views/AddNewAccount.jsp").forward(request, response);
+        }
+        ad.addAccount(new Account(user, pass, "", "", email, phone, Integer.parseInt(role), add, true, ""));
+        request.setAttribute("successText", "Add Successful!!!");
+        request.getRequestDispatcher("views/AddNewAccount.jsp").forward(request, response);
         processRequest(request, response);
     }
 

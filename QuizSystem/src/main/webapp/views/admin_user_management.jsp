@@ -296,8 +296,8 @@
                             <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                     class="mdi mdi-magnify"></i></span>
                         </div>
-                        <form action="LoadAdmin" method="post">
-                            <input name="txt" type="search" class="form-control" placeholder="Search Dashboard">
+                        <form action="LoadAdmin" method="get">
+                            <input name="txt" type="search" class="form-control" placeholder="Search Dashboard" value="${txt}">
 <!--                            <button>submit</button>-->
                         </form>
                             
@@ -384,14 +384,20 @@
                                     <a href="AddNewAccount" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
                                         <span>Add New User</span></a>
                                     <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
-                                        <span>Export to Excel</span></a>
+                                        <span><form action="LoadAdmin" method="post"><select>
+                                                <option><a><a href="" >All Role</a></option>
+                                            <option >Member</option>
+                                            <option>Expert</option>
+                                            <option>Market</option>
+                                            <option>Sale</option>
+                                        </select></form></span></a>
                                 </div>
                             </div>
                         </div>
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+<!--                                    <th>#</th>-->
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Role</th>
@@ -404,7 +410,7 @@
                                 <c:forEach items="${ListAccount}" var="o">
                                     
                                         <tr>
-                                            <td>1</td>
+<!--                                            <td>1</td>-->
                                             <td>${o.getUserName()}</td>
                                             <td>${o.getGmail()}</td>
                                             <c:if test="${o.getRole() == 0}"><td>Admin</td></c:if>
@@ -416,9 +422,9 @@
                                             <td><span class="status text-success">&bull;</span> Active</td>
                                             <c:if test="${!(o.getRole() == 0)}">
                                             <td>
-                                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
+                                                <a href="EditAccount?user=${o.getUserName()}" class="settings" title="Settings" data-toggle="tooltip"><i
                                                         class="material-icons">&#xE8B8;</i></a>
-                                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
+                                                <a href="DeleteAccount?user=${o.getUserName()}" class="delete" title="Delete" data-toggle="tooltip"><i
                                                         class="material-icons">&#xE5C9;</i></a>
                                             </td>
                                             </c:if>
@@ -429,15 +435,14 @@
                             </tbody>
                         </table>
                         <div class="clearfix">
-                            <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                            <div class="hint-text">Showing <b>${((nrpp>size?size:nrpp)+(pageIndex-1)*nrpp)<size?((nrpp>size?size:nrpp)+(pageIndex-1)*nrpp):size}</b> out of <b>${size}</b> entries</div>
                             <ul class="pagination">
-                                <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                                
+                                <li class="page-item disabled"><a href="LoadAdmin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                <c:forEach  begin="1" end="${totalPage}" var="i" >
+                                    <li class="page-item ${i==pageIndex?"active":""}"><a href="LoadAdmin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
+                                </c:forEach>
+                                <li class="page-item"><a href="LoadAdmin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
                             </ul>
                         </div>
                     </div>
