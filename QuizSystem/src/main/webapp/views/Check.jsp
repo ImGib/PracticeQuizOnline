@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Home
-    Created on : Feb 17, 2023, 8:43:52 PM
+    Document   : Check
+    Created on : Feb 19, 2023, 1:27:20 AM
     Author     : Lenovo
 --%>
 
@@ -13,6 +13,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-     
+        <h1>Hello ${requestScope.name}</h1>
     </body>
 </html>

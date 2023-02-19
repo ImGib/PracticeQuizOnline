@@ -7,8 +7,9 @@ package service.impl;
 import dao.impl.AccountDao;
 import model.Account;
 import service.IAccountService;
-import utils.Check;
+import utils.CheckUtil;
 import java.util.List;
+import model.UserGoogleDto;
 
 /**
  *
@@ -34,7 +35,7 @@ public class AccountService implements IAccountService {
 
     @Override
     public String addAccount(Account a, String rePass) {
-        Check check = new Check();
+        CheckUtil check = new CheckUtil();
         List<Account> list = accountDao.findAccountByEmail(a.getGmail());
         if (!list.isEmpty()) {
             return ("Account is already exist!");
@@ -43,7 +44,7 @@ public class AccountService implements IAccountService {
             return ("Wrong format of mail!");
         }
         list = accountDao.findAccountByUserName(a.getUserName());
-        if(!list.isEmpty()){
+        if (!list.isEmpty()) {
             return "User name is already exist!";
         }
         if (!a.getPassword().equals(rePass)) {
@@ -59,10 +60,36 @@ public class AccountService implements IAccountService {
     @Override
     public String forgetPass(String email) {
         List<Account> list = accountDao.findAccountByEmail(email);
-        if(list.isEmpty()){
+        if (list.isEmpty()) {
             return "Account is not exist!";
         }
         return null;
+    }
+
+    @Override
+    public String changePassWord(String email, String pass, String rePass, String code, String sessionCode, int timeInput) {
+        if (timeInput > 3) {
+            return "You have been wrong more 3 times. Please request forget password again!";
+        }
+        if (!pass.equals(rePass)) {
+            return "Password and Re-password must be the same!";
+        }
+        if (!code.equals(sessionCode)) {
+            return "Wrong verify code!";
+        }
+        accountDao.changePass(email, pass);
+        return null;
+    }
+
+    @Override
+    public Account loginWithEmail(UserGoogleDto user) {
+        Account a = new Account(user.getEmail(), user.getEmail(), user.getEmail(), 0, true);
+        if (accountDao.findAccountByEmail(user.getEmail()).isEmpty()) {
+            accountDao.addAccount(a);
+        } else {
+            System.out.println("kkkkk");
+        }
+        return a;
     }
 
 }

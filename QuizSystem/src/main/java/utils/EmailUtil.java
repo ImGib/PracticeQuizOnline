@@ -17,7 +17,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 
-public class Send {
+public class EmailUtil {
     public void sendMail(String toEmail, String subject, String body) 
             throws MessagingException, UnsupportedEncodingException {
 
@@ -56,7 +56,7 @@ public class Send {
 
         msg.setSubject(subject, "UTF-8");
 
-        msg.setText(body, "UTF-8");
+        msg.setContent(body, "text/html");
 
         msg.setSentDate(new Date());
 

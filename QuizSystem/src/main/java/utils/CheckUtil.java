@@ -17,7 +17,7 @@ import javax.xml.bind.DatatypeConverter;
  *
  * @author admin
  */
-public class Check {
+public class CheckUtil {
        
     public String getDateNow(){
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");

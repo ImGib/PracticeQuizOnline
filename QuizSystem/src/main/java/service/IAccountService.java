@@ -5,6 +5,7 @@
 package service;
 
 import model.Account;
+import model.UserGoogleDto;
 
 
 /**
@@ -19,5 +20,7 @@ public interface IAccountService {
     
     public String forgetPass(String email);
     
+    public String changePassWord(String email, String pass, String rePass, String code, String sessionCode, int timeInput);
     
+    public Account loginWithEmail(UserGoogleDto user);
 }
