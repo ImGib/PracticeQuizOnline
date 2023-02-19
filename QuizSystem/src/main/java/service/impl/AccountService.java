@@ -80,6 +80,18 @@ public class AccountService implements IAccountService {
         accountDao.changePass(email, pass);
         return null;
     }
+    @Override
+    public String editProfile(String userName, String firstName, String lastName, String gmail, String phone, String address, String img) {
+        CheckUtil check = new CheckUtil();
+        if (!check.checkEmail(gmail)) {
+            return ("Wrong format of mail!");
+        }
+        if (check.isContainSpace(userName)) {
+            return ("User name or password can not contain space!");
+        }
+        accountDao.editAccount(userName, firstName, lastName, gmail, phone, address, img);
+        return null;
+    }
 
     @Override
     public Account loginWithEmail(UserGoogleDto user) {
