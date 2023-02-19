@@ -17,5 +17,11 @@ public interface IAccountDao extends GenericDao<Account>{
     List<Account> findAccountByUserName(String userName);
     void addAccount(Account a);
     void changePass(String email, String pass);
+    List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt);
     
+    void ChangeRoleByUserName (String username, int id);
+    
+    List<Account> FilterRole(int role);
+    
+     
 }
