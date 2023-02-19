@@ -30,8 +30,7 @@ public class LoginController extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String pass = req.getParameter("pass");
-        AccountService accountService = new AccountService();
-        Account a = accountService.findAccountByEmailAndPass(email, pass);
+        Account a = AccountService.getInstance().findAccountByEmailAndPass(email, pass);
         directController(a, req, resp);
     }
 
@@ -39,7 +38,7 @@ public class LoginController extends HttpServlet{
         if (a != null) {
             HttpSession ses = req.getSession();
             ses.setAttribute("account", a);
-            req.getRequestDispatcher("views/Home.jsp").forward(req, resp);
+            req.getRequestDispatcher("views/Check.jsp").forward(req, resp);
         } else {
             req.setAttribute("mess", "Wrong email or password!");
             doGet(req, resp);
