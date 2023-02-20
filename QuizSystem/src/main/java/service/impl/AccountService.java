@@ -18,6 +18,15 @@ import model.UserGoogleDto;
 public class AccountService implements IAccountService {
 
     private AccountDao accountDao;
+    
+    private static AccountService instance = null;
+    
+    public static AccountService getInstance(){
+        if(instance == null){
+            instance = new AccountService();
+        }
+        return instance;
+    }
 
     public AccountService() {
         accountDao = new AccountDao();

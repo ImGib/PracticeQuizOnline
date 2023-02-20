@@ -29,8 +29,7 @@ public class LoginGoogleController extends HttpServlet{
         LoginGoogleUtil util = new LoginGoogleUtil();
         String accessToken = util.getToken(code);
         UserGoogleDto user = util.getUserInfo(accessToken);
-        AccountService accountService = new AccountService();
-        Account a = accountService.loginWithEmail(user);
+        Account a = AccountService.getInstance().loginWithEmail(user);
         HttpSession session = req.getSession();
         session.setAttribute("account", a);
         

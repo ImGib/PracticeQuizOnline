@@ -32,8 +32,7 @@ public class SignUpController extends HttpServlet{
         String pass = req.getParameter("pass");
         String repass = req.getParameter("repass");
         Account a = new Account(user, pass, email, 1, true);
-        AccountService accountService = new AccountService();
-        String mess = accountService.addAccount(a, repass);
+        String mess = AccountService.getInstance().addAccount(a, repass);
         signUpDiracter(mess, req, resp);
     }
     
