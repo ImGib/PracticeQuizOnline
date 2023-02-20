@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -22,7 +22,7 @@
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Add New Account</h1>
                 <p class="text-danger">${wrongText}</p>
                 <p class="text-success">${successText}</p>
-                <input name="user" type="text" class="form-control" placeholder="User name" required="" value="${user}">
+                <input name="user" type="text" class="form-control" placeholder="User name" required="" value="${user}" pattern="[a-zA-Z0-9_.]+">
                 <input name="pass" type="password" class="form-control" placeholder="Password" required="" value="${pass}">
 <!--                <input name="fname" type="text" class="form-control" placeholder="First name" required="" value="${fname}">
                 <input name="lname" type="text" class="form-control" placeholder="Last name" required="" value="${lname}">-->
@@ -35,7 +35,7 @@
                 <label >Market</label><input name="role" type="radio" value="3" ${role==3?"checked":""}>
                 <label >Sale</label><input name="role" type="radio" value="4" ${role==4?"checked":""}>
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Add</button>
-                <a href="LoadAdmin" ><i class="fas fa-angle-left"></i> Back</a>
+                <a href="LoadAdmin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
             </form>
             <br>
 

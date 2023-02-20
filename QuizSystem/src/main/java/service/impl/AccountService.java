@@ -28,7 +28,7 @@ public class AccountService implements IAccountService {
         return instance;
     }
 
-    public AccountService() {
+    private AccountService() {
         accountDao = new AccountDao();
     }
     
@@ -129,18 +129,50 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt) {
-        return accountDao.SearchAccountByUserName_Name_Gmail_Phone(txt);
+    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
+        return accountDao.searchAccountByUserName_Name_Gmail_Phone(txt);
     }
 
     @Override
-    public void DeleteAccount(String user) {
-        accountDao.DeleteAccount(user);
+    public void deleteAccount(String user) {
+        accountDao.deleteAccount(user);
     }
 
     @Override
-    public List<Account> LoadAccount_Pagination(String txt,int pageIndex, int nrpp) {
-        return accountDao.LoadAccount_Pagination(txt, pageIndex, nrpp);
+    public List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp) {
+        return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
+    }
+
+    @Override
+    public String checkValidateAddAccount(Account a) {
+        if(!findAccountByUserName(a.getUserName()).isEmpty()){
+            return "This User already exist!!!";
+            
+        }
+        if(!findAccountByEmail(a.getGmail()).isEmpty()){
+            return "This Email already exist!!!";
+            
+        }
+        return null;
+    }
+
+    @Override
+    public List<Account> loadAccount_PaginationByRole(int role,int pageIndex, int nrpp) {
+        if(role!=5){
+        return accountDao.loadAccount_PaginationByRole(role,pageIndex,nrpp);
+        }else{
+            return accountDao.searchAccountByUserName_Name_Gmail_Phone("");
+        }
+    }
+
+    @Override
+    public void changeRoleByUserName(String string, int i) {
+        accountDao.changeRoleByUserName(string, i);
+    }
+
+    @Override
+    public List<Account> findAccountByRole(int i) {
+        return accountDao.findAccountByRole(i);
     }
     
 

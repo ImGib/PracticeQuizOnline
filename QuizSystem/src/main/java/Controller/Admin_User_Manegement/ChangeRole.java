@@ -18,31 +18,31 @@ import service.impl.AccountService;
  *
  * @author asus
  */
-@WebServlet(name="Delete_Account", urlPatterns={"/DeleteAccount"})
-public class DeleteAccount extends HttpServlet {
+@WebServlet(name="ChangeRole", urlPatterns={"/ChangeRole"})
+public class ChangeRole extends HttpServlet {
    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
         String user=request.getParameter("user");
+        int role=AccountService.getInstance().findAccountByUserName(user).get(0).getRole();
+        request.setAttribute("role", role);
         request.setAttribute("user", user);
-        request.getRequestDispatcher("/views/admin/Admin_DeleteAccount_App.jsp").forward(request, response);
+        request.getRequestDispatcher("views/ChangeRole.jsp").forward(request, response);
+        
     } 
 
-  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String user="";
-        user=request.getParameter("user");
-        AccountService.getInstance().deleteAccount(user);
-        response.sendRedirect("/QuizSystem/LoadAdmin?txt=");
+        String user=request.getParameter("user");
+        int role=Integer.parseInt(request.getParameter("role"));
+        AccountService.getInstance().changeRoleByUserName(user, role);
+        
+        request.setAttribute("role", role);
+        request.setAttribute("successText", "Edit Successfull");
+        request.getRequestDispatcher("views/ChangeRole.jsp").forward(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    
 
 }

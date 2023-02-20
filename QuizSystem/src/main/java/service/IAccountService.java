@@ -30,8 +30,17 @@ public interface IAccountService {
     List<Account> findAccountByEmail(String email);
     List<Account> findAccountByUserName(String userName);
     void addAccount(Account a);
-    List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt);
-    void DeleteAccount(String user);
-    List<Account> LoadAccount_Pagination(String txt,int pageIndex, int nrpp);
     
+    
+    List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
+    void deleteAccount(String user);
+    List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp);
+    
+    String checkValidateAddAccount(Account a);
+    
+    List<Account> loadAccount_PaginationByRole(int role,int pageIndex, int nrpp);
+    
+    void changeRoleByUserName(String username, int id);
+    
+    List<Account> findAccountByRole(int role);
 }

@@ -19,15 +19,21 @@ public interface IAccountDao extends GenericDao<Account>{
     void addAccount(Account a);
     void changePass(String email, String pass);
     void editAccount(String userName, String firstName, String lastName, String gmail, String phone, String address, String img);
-    List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt);
     
-    void ChangeRoleByUserName (String username, int id);
     
-    List<Account> FilterRole(int role);
+    List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
     
-    void EditAccount(Account account);
+    void changeRoleByUserName (String username, int id);
     
-    void DeleteAccount(String user);
+    List<Account> filterRole(int role);
     
-    List<Account> LoadAccount_Pagination(String txt,int pageIndex, int nrpp);
+    void editAccount(Account account);
+    
+    void deleteAccount(String user);
+    
+    List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp);
+    
+    List<Account> loadAccount_PaginationByRole(int role,int pageIndex, int nrpp);
+    
+    List<Account> findAccountByRole(int role);
 }

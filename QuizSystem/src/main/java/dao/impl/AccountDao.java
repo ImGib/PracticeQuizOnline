@@ -54,19 +54,19 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt) {
+    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
         String sql = "select * from Account\n"
-                + "where userName LIKE ? or \n"
+                + "where (userName LIKE ? or \n"
                 + "	firstName LIKE ? or\n"
                 + "	lastName LIKE ? or\n"
                 + "	gmail LIKE ? or\n"
-                + "	phone LIKE ? ;";
+                + "	phone LIKE ?) and isActive=1  ";
         txt = "%" + txt + "%";
         return query(sql, new AccountMapper(), txt, txt, txt, txt, txt);
     }
 
     @Override
-    public void ChangeRoleByUserName(String username, int id) {
+    public void changeRoleByUserName(String username, int id) {
         String sql = "update Account\n"
                 + "set role =?\n"
                 + "where userName=?";
@@ -74,13 +74,13 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public List<Account> FilterRole(int role) {
+    public List<Account> filterRole(int role) {
         String sql = "select * from Account where role=?";
         return query(sql, new AccountMapper(), role);
     }
 
     @Override
-    public void EditAccount(Account a) {
+    public void editAccount(Account a) {
         String sql = "update Account\n"
                 + "set \n"
                 + "	password=?,\n"
@@ -99,23 +99,40 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public void DeleteAccount(String user) {
-        String sql = "delete from Account where userName=?";
+    public void deleteAccount(String user) {
+        String sql = "Update Account set isActive=0\n"
+                + "where userName=?";
         update(sql, user);
     }
 
     @Override
-    public List<Account> LoadAccount_Pagination(String txt,int pageIndex, int nrpp) {
+    public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp) {
         String sql = "select * from Account\n"
-                + "                where userName LIKE ? or \n"
+                + "                where (userName LIKE ? or \n"
                 + "                firstName LIKE ? or\n"
                 + "                + lastName LIKE ? or\n"
                 + "                +	gmail LIKE ? or\n"
-                + "                + 	phone LIKE ? \n"
+                + "                + 	phone LIKE ? )and isActive=1 \n"
                 + "order by userName\n"
                 + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
-            txt = "%" + txt + "%";
-        return query(sql, new AccountMapper(),txt, txt, txt, txt, txt, (pageIndex - 1) * nrpp, nrpp);
+        txt = "%" + txt + "%";
+        return query(sql, new AccountMapper(), txt, txt, txt, txt, txt, (pageIndex - 1) * nrpp, nrpp);
+    }
+
+    @Override
+    public List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp) {
+        String sql = "select * from Account\n"
+                + "where role=? and isActive=1\n"
+                + "order by userName\n"
+                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        return query(sql, new AccountMapper(), role, (pageIndex - 1) * nrpp, nrpp);
+    }
+
+    @Override
+    public List<Account> findAccountByRole(int role) {
+        String sql = "select * from Account\n"
+                + "where role=? and isActive=1";
+        return query(sql, new AccountMapper(), role);
     }
 
 }
