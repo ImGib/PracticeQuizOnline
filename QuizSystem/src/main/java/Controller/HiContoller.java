@@ -24,7 +24,9 @@ public class HiContoller extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("views/user/home.jsp").forward(req, resp);
+        String data[] = {"Viet Nam", "Viet Nam", "Viet Nam", "Viet Nam", "Viet Nam", "Viet Nam"};
+        req.setAttribute("list", data);
+        req.getRequestDispatcher("views/TestChart.jsp").forward(req, resp);
 
     }
 }
