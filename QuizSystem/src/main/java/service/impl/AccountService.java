@@ -140,6 +140,10 @@ public class AccountService implements IAccountService {
 
     @Override
     public List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp) {
+//        if(txt.contains("@#$")){
+//            txt=txt.replace("@#$", "");
+//            return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp);
+//        }
         return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
     }
 
@@ -153,6 +157,10 @@ public class AccountService implements IAccountService {
             return "This Email already exist!!!";
             
         }
+        if(!accountDao.findAccountByPhone(a.getPhone()).isEmpty()){
+            return "This Phone already exist!!!";
+        }
+        
         return null;
     }
 
@@ -173,6 +181,11 @@ public class AccountService implements IAccountService {
     @Override
     public List<Account> findAccountByRole(int i) {
         return accountDao.findAccountByRole(i);
+    }
+
+    @Override
+    public List<Account> findAllAccount() {
+        return accountDao.findAllAccount();
     }
     
 

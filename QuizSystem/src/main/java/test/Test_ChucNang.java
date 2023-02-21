@@ -16,10 +16,9 @@ import service.impl.AccountService;
 public class Test_ChucNang {
     public static void main(String[] args) {
         AccountDao ad=new AccountDao();
-//        for(Account a: ad.findAccountByRole(1)){
-//            System.out.println(a.getUserName());
-//        }
-        System.out.println(AccountService.getInstance().searchAccountByUserName_Name_Gmail_Phone("").size());
-        
+        for(Account a: ad.searchAccountByUserName_Name_Gmail_Phone("")){
+            System.out.println(a.getUserName());
+        }
+       
     }
 }

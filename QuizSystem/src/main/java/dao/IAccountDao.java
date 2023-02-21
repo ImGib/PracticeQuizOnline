@@ -36,4 +36,8 @@ public interface IAccountDao extends GenericDao<Account>{
     List<Account> loadAccount_PaginationByRole(int role,int pageIndex, int nrpp);
     
     List<Account> findAccountByRole(int role);
+    
+    List<Account> findAccountByPhone(String phone);
+    
+    List<Account> findAllAccount();
 }

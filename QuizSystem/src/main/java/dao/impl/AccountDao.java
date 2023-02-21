@@ -135,4 +135,17 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         return query(sql, new AccountMapper(), role);
     }
 
+    @Override
+    public List<Account> findAccountByPhone(String phone) {
+        String sql = "select * from Account\n"
+                + "where phone=?";
+        return query(sql, new AccountMapper(), phone);
+    }
+
+    @Override
+    public List<Account> findAllAccount() {
+        String sql = "select * from Account";
+        return query(sql, new AccountMapper());
+    }
+
 }

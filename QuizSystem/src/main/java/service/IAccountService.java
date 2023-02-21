@@ -31,7 +31,7 @@ public interface IAccountService {
     List<Account> findAccountByUserName(String userName);
     void addAccount(Account a);
     
-    
+    //Vinh-----------------------------------------------------------------------
     List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
     void deleteAccount(String user);
     List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp);
@@ -43,4 +43,7 @@ public interface IAccountService {
     void changeRoleByUserName(String username, int id);
     
     List<Account> findAccountByRole(int role);
-}
+    
+    List<Account> findAllAccount();
+    //---------------------------------------------------------------------------
+}   

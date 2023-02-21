@@ -11,7 +11,21 @@ package utils;
 public class PagginationUtil {
     private int nrpp=2;
     private int totalPage=0;
+    
+    public static PagginationUtil instance=null;
+    
+    public static PagginationUtil getInstance(){
+        if(instance == null){
+            instance = new PagginationUtil();
+        }
+        return instance;
+    }
 
+    private PagginationUtil() {
+        
+    }
+    
+    
     public int getTotalPage() {
         return totalPage;
     }
@@ -19,7 +33,7 @@ public class PagginationUtil {
     public int getNrpp() {
         return nrpp;
     }
-
+    
     
     
     public int pageIndex(int pageIndex,int size){

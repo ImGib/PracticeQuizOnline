@@ -31,24 +31,20 @@ public class LoadAdmin extends HttpServlet {
             throws ServletException, IOException {
             
         String txt = "";
-        try {
-            txt=request.getParameter("txt");
-        } catch (Exception e) {
-        }
+        txt=request.getParameter("txt");
+        if(txt==null)txt="";
         List<Account> ListAccount = AccountService.getInstance().searchAccountByUserName_Name_Gmail_Phone(txt);
-        
  //------------------------Phan Trang----------------------------------------------
-        int size = ListAccount.size();
+        int size = ListAccount.size(); 
         int pageIndex=1;
         try {
             pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
         } catch (NumberFormatException e) {
         }
-        PagginationUtil p= new PagginationUtil();
-        pageIndex= p.pageIndex(pageIndex, size);
-        ListAccount=AccountService.getInstance().loadAccount_Pagination(txt, pageIndex, p.getNrpp());
-        
-        request.setAttribute("totalPage", p.getTotalPage());
+        pageIndex= PagginationUtil.getInstance().pageIndex(pageIndex, size);
+        ListAccount=AccountService.getInstance().loadAccount_Pagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp());
+ //-----------------------------------------------------------------------------------       
+        request.setAttribute("totalPage", PagginationUtil.getInstance().getTotalPage());
         request.setAttribute("size", size);
         request.setAttribute("txt",txt );
         request.setAttribute("pageIndex",pageIndex);

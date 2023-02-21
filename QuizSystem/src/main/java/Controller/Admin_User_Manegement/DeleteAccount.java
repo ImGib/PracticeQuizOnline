@@ -24,7 +24,6 @@ public class DeleteAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
         String user=request.getParameter("user");
         request.setAttribute("user", user);
         request.getRequestDispatcher("/views/admin/Admin_DeleteAccount_App.jsp").forward(request, response);

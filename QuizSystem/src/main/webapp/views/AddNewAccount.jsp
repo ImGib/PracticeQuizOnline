@@ -11,8 +11,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <link href="css/login.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link href="asset/css/login.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="asset/css/bootstrap.min.css"/>
         <title>Add Account</title>
     </head>
     <body>
@@ -41,7 +41,7 @@
 
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="asset/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>
