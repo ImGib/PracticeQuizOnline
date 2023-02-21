@@ -125,7 +125,7 @@ public class AccountService implements IAccountService {
     public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
         if(txt.contains("Search_Role_")){
             txt=txt.replace("Search_Role_", "");
-            return accountDao.filterRole(Integer.parseInt(txt));
+            return accountDao.findAccountByRole(Integer.parseInt(txt));
         }
         return accountDao.searchAccountByUserName_Name_Gmail_Phone(txt);
     }
@@ -183,6 +183,11 @@ public class AccountService implements IAccountService {
     @Override
     public List<Account> findAllAccount() {
         return accountDao.findAllAccount();
+    }
+
+    @Override
+    public void addAccountByAdmin(Account a) {
+        accountDao.addAccountByAdmin(a);
     }
     
 

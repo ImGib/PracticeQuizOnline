@@ -24,13 +24,10 @@
                 <p class="text-success">${successText}</p>
                 <input name="user" type="text" class="form-control" placeholder="User name" required="" value="${user}" pattern="[a-zA-Z0-9_.]+">
                 <input name="pass" type="password" class="form-control" placeholder="Password" required="" value="${pass}">
-<!--                <input name="fname" type="text" class="form-control" placeholder="First name" required="" value="${fname}">
-                <input name="lname" type="text" class="form-control" placeholder="Last name" required="" value="${lname}">-->
-
-                <input name="email" type="email" class="form-control" placeholder="Gmail" value="${email}">
+                <input name="email" type="email" class="form-control" placeholder="Gmail" value="${email}" required="">
                 <input name="add" type="txt" class="form-control" placeholder="Address" required="" value="${add}">
-                <input name="phone" type="tel" class="form-control" placeholder="Phone Numbers (10 or 11 numbers)"pattern="[0-9]{10,11}" value="${phone}">
-                <label >Student</label><input name="role" type="radio" value="1" ${role==1?"checked":""}>
+                <input name="phone" type="tel" class="form-control" placeholder="Phone Numbers (10 or 11 numbers)"required="" pattern="[0-9]{10,11}" value="${phone}">
+                <label >Student</label><input name="role" type="radio" value="1" checked="" ${role==1?"checked":""}>
                 <label >Expert</label><input name="role" type="radio" value="2" ${role==2?"checked":""}>
                 <label >Market</label><input name="role" type="radio" value="3" ${role==3?"checked":""}>
                 <label >Sale</label><input name="role" type="radio" value="4" ${role==4?"checked":""}>

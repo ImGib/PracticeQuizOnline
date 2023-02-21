@@ -73,11 +73,6 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         update(sql, id, username);
     }
 
-    @Override
-    public List<Account> filterRole(int role) {
-        String sql = "select * from Account where role=?";
-        return query(sql, new AccountMapper(), role);
-    }
 
     @Override
     public void editAccount(Account a) {
@@ -146,6 +141,12 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     public List<Account> findAllAccount() {
         String sql = "select * from Account";
         return query(sql, new AccountMapper());
+    }
+
+    @Override
+    public void addAccountByAdmin(Account a) {
+        String sql = "insert into Account (userName, password, gmail, role, isActive, phone, address) values (?, ?, ?, ?, ?,?,?)";
+        insert(sql, a.getUserName(), a.getPassword(), a.getGmail(), a.getRole(), 1,a.getPhone(),a.getAddress());
     }
 
 }

@@ -45,5 +45,7 @@ public interface IAccountService {
     List<Account> findAccountByRole(int role);
     
     List<Account> findAllAccount();
+    
+    void addAccountByAdmin(Account a);
     //---------------------------------------------------------------------------
 }   

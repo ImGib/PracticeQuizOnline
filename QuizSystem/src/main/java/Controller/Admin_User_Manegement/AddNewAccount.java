@@ -33,8 +33,6 @@ public class AddNewAccount extends HttpServlet {
 
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
-//        String fname=request.getParameter("fname");
-//        String lname=request.getParameter("lname");
         String email = request.getParameter("email");
         String add = request.getParameter("add");
         String phone = request.getParameter("phone");
@@ -42,8 +40,6 @@ public class AddNewAccount extends HttpServlet {
 
         request.setAttribute("user", user);
         request.setAttribute("pass", pass);
-//        request.setAttribute("fname",fname );
-//        request.setAttribute("lname", lname);
         request.setAttribute("email", email);
         request.setAttribute("add", add);
         request.setAttribute("phone", phone);
@@ -52,19 +48,15 @@ public class AddNewAccount extends HttpServlet {
         Account a = new Account(user, pass, "", "", email, phone, Integer.parseInt(role), add, true, "");
         String mess = AccountService.getInstance().checkValidateAddAccount(a);
         if (mess == null) {
-            AccountService.getInstance().addAccount(a);
+            AccountService.getInstance().addAccountByAdmin(a);
             request.setAttribute("successText", "Add Successful!!!");
         } else {
-            request.setAttribute("WrongText", mess);
+            request.setAttribute("wrongText", mess);
         }
         request.getRequestDispatcher("views/AddNewAccount.jsp").forward(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";
