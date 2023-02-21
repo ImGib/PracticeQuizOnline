@@ -19,31 +19,31 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     @Override
     public List<Account> findAccountByEmailAndPass(String email, String pass) {
         String sql = "select * from Account \n"
-                + "where gmail = ? and [password] = ?";
+                + "where gmail = ? and [password] = ? and isActive = 1";
         return query(sql, new AccountMapper(), email, pass);
     }
 
     @Override
     public List<Account> findAccountByEmail(String email) {
-        String sql = "select * from Account where gmail = ?";
+        String sql = "select * from Account where gmail = ? and isActive = 1";
         return query(sql, new AccountMapper(), email);
     }
 
     @Override
     public void addAccount(Account a) {
-        String sql = "insert into Account (userName, password, gmail, role) values (?, ?, ?, ?)";
-        insert(sql, a.getUserName(), a.getPassword(), a.getGmail(), a.getRole());
+        String sql = "insert into Account (userName, password, gmail, role, isActive) values (?, ?, ?, ?, ?)";
+        insert(sql, a.getUserName(), a.getPassword(), a.getGmail(), a.getRole(), 1);
     }
 
     @Override
     public List<Account> findAccountByUserName(String userName) {
-        String sql = "select * from Account where userName = ?";
+        String sql = "select * from Account where userName = ? and isActive = 1";
         return query(sql, new AccountMapper(), userName);
     }
 
     @Override
     public void changePass(String email, String pass) {
-        String sql = "update Account set password = ? where gmail = ?";
+        String sql = "update Account set password = ? where gmail = ? and isActive = 1";
         update(sql, pass, email);
     }
     

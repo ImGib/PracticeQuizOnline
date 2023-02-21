@@ -28,7 +28,7 @@ public class AccountService implements IAccountService {
         return instance;
     }
 
-    public AccountService() {
+    private AccountService() {
         accountDao = new AccountDao();
     }
 
@@ -44,13 +44,9 @@ public class AccountService implements IAccountService {
 
     @Override
     public String addAccount(Account a, String rePass) {
-        CheckUtil check = new CheckUtil();
         List<Account> list = accountDao.findAccountByEmail(a.getGmail());
         if (!list.isEmpty()) {
             return ("Account is already exist!");
-        }
-        if (!check.checkEmail(a.getGmail())) {
-            return ("Wrong format of mail!");
         }
         list = accountDao.findAccountByUserName(a.getUserName());
         if (!list.isEmpty()) {
@@ -58,9 +54,6 @@ public class AccountService implements IAccountService {
         }
         if (!a.getPassword().equals(rePass)) {
             return ("Re-Password must be the same with password!");
-        }
-        if (check.isContainSpace(rePass) || check.isContainSpace(a.getUserName())) {
-            return ("User name or password can not contain space!");
         }
         accountDao.addAccount(a);
         return null;

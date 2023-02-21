@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import service.impl.AccountService;
+import utils.SessionUtil;
 
 /**
  *
@@ -30,10 +31,10 @@ public class ChangePassController extends HttpServlet{
         String pass = req.getParameter("pass");
         String rePass = req.getParameter("repass");
         String code = req.getParameter("code");
-        HttpSession session = req.getSession();
-        String sessionCode = (String) session.getAttribute("forgetCode");
-        int timeInput = (int) session.getAttribute("timeInput")+1;
-        session.setAttribute("timeInput", timeInput);
+        
+        String sessionCode = (String) SessionUtil.getInstance().getValue(req, "forgetCode");
+        int timeInput = (int) SessionUtil.getInstance().getValue(req, "timeInput" ) + 1;
+        SessionUtil.getInstance().putValue(req, "timeInput", timeInput);
         String mess = AccountService.getInstance().changePassWord(email, pass, rePass, code, sessionCode, timeInput);
         directController(mess,email, req, resp);
     }
