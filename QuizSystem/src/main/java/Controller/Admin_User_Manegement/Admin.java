@@ -21,8 +21,8 @@ import utils.PagginationUtil;
  *
  * @author asus
  */
-@WebServlet(name = "LoadAdmin", urlPatterns = {"/LoadAdmin"})
-public class LoadAdmin extends HttpServlet {
+@WebServlet(name = "Admin", urlPatterns = {"/Admin"})
+public class Admin extends HttpServlet {
 
    
     

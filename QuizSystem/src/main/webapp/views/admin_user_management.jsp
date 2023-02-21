@@ -296,7 +296,7 @@
                                 <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                         class="mdi mdi-magnify"></i></span>
                             </div>
-                            <form action="LoadAdmin" method="get">
+                            <form action="Admin" method="get">
                                 <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt}">
                                 <!--                            <button>submit</button>-->
                             </form>
@@ -437,11 +437,11 @@
                                 <div class="hint-text">Showing <b>${ListAccount.size()}</b> out of <b>${size}</b> entries</div>
                                 <ul class="pagination" id="pag">
 
-                                    <li class="page-item disabled"><a href="LoadAdmin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                    <li class="page-item disabled"><a href="Admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
-                                        <li class="page-item ${i==pageIndex?"active":""}"><a href="LoadAdmin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
+                                        <li class="page-item ${i==pageIndex?"active":""}"><a href="Admin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
-                                    <li class="page-item"><a href="LoadAdmin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                    <li class="page-item"><a href="Admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -32,13 +32,13 @@ public class Ajax_Paggination_Search extends HttpServlet {
         List<Account> list= AccountService.getInstance().searchAccountByUserName_Name_Gmail_Phone(txt);
         int totalPage=(list.size()+2-1)/2;
         
-        out.print("<li class=\"page-item disabled\"><a href=\"LoadAdmin?txt="+txt+"&pageIndex=0\">Previous</a></li>");
+        out.print("<li class=\"page-item disabled\"><a href=\"Admin?txt="+txt+"&pageIndex=0\">Previous</a></li>");
         for(int i=0;i<totalPage;i++){
             out.print("<li class=\"page-item");
             if(i==0)out.print("active");
-            out.print("\"><a href=\"LoadAdmin?txt="+txt+"&pageIndex="+(i+1)+"\" class=\"page-link\">"+(i+1)+"</a></li>");
+            out.print("\"><a href=\"Admin?txt="+txt+"&pageIndex="+(i+1)+"\" class=\"page-link\">"+(i+1)+"</a></li>");
         }
-        out.print("<li class=\"page-item\"><a href=\"LoadAdmin?txt="+txt+"&pageIndex=2\" class=\"page-link\">Next</a></li>");
+        out.print("<li class=\"page-item\"><a href=\"Admin?txt="+txt+"&pageIndex=2\" class=\"page-link\">Next</a></li>");
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

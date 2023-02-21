@@ -30,7 +30,7 @@
                 
                 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Edit</button>
-                <a href="LoadAdmin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
+                <a href="Admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
             </form>
             <br>
 
