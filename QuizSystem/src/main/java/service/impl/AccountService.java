@@ -133,10 +133,10 @@ public class AccountService implements IAccountService {
 
     @Override
     public List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp) {
-//        if(txt.contains("@#$")){
-//            txt=txt.replace("@#$", "");
-//            return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp);
-//        }
+        if(txt.contains("Search_Role_")){
+            txt=txt.replace("Search_Role_", "");
+            return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp);
+        }
         return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
     }
 
