@@ -14,24 +14,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     </head>
     <body>
-        <h1>Hello Worldderreg!</h1>
-        
-        
-        <input id="xValues" type="input" onload="loadData()" value="${requestScope.list}"></input>
+        <h1>Hello fuksdf!</h1>        
         <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
         <script>
-            
-            var xValues;
-            function loadData(){
-                xValues = document.getElementById("xValues").value;
-            }
             var yValues = [55, 49, 44, 24, 15, 150];
             var barColors = ["red", "green", "blue", "orange", "brown", "black"];
 
+            function passValue(){
+                return ${requestScope.values};
+            }
             new Chart("myChart", {
                 type: "bar",
                 data: {
-                    labels: xValues,
+                    labels: passValue(),
                     datasets: [{
                             backgroundColor: barColors,
                             data: yValues
@@ -45,6 +40,7 @@
                     }
                 }
             });
+            
         </script>
     </body>
 </html>
