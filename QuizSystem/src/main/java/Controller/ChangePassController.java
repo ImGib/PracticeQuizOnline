@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import service.impl.AccountService;
+import utils.CheckUtil;
 import utils.SessionUtil;
 
 /**
@@ -28,9 +29,9 @@ public class ChangePassController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        String pass = req.getParameter("pass");
-        String rePass = req.getParameter("repass");
-        String code = req.getParameter("code");
+        String pass = CheckUtil.MD5Encryption(req.getParameter("pass"));
+        String rePass = CheckUtil.MD5Encryption(req.getParameter("repass"));
+        String code = CheckUtil.MD5Encryption(req.getParameter("code"));
         
         String sessionCode = (String) SessionUtil.getInstance().getValue(req, "forgetCode");
         int timeInput = (int) SessionUtil.getInstance().getValue(req, "timeInput" ) + 1;

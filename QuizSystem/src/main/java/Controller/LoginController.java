@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import model.Account;
 import service.impl.AccountService;
+import utils.CheckUtil;
 import utils.SessionUtil;
 
 /**
@@ -30,7 +31,7 @@ public class LoginController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        String pass = req.getParameter("pass");
+        String pass = CheckUtil.MD5Encryption(req.getParameter("pass"));
         Account a = AccountService.getInstance().findAccountByEmailAndPass(email, pass);
         directController(a, req, resp);
     }
