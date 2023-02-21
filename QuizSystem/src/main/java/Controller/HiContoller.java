@@ -19,7 +19,7 @@ import service.impl.AccountService;
  *
  * @author Lenovo
  */
-@WebServlet(urlPatterns = {"/home", "/hello"})
+@WebServlet(urlPatterns = {"/hello"})
 public class HiContoller extends HttpServlet{
 
     @Override
