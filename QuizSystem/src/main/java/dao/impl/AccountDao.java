@@ -34,7 +34,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         String sql = "insert into Account (userName, password, gmail, role, isActive) values (?, ?, ?, ?, ?)";
         insert(sql, a.getUserName(), a.getPassword(), a.getGmail(), a.getRole(), 1);
     }
-
+//
     @Override
     public List<Account> findAccountByUserName(String userName) {
         String sql = "select * from Account where userName = ? and isActive = 1";
