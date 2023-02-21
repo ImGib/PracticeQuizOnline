@@ -30,7 +30,7 @@
                 <input name="email" type="email" class="form-control" placeholder="Gmail" value="${email}">
                 <input name="add" type="txt" class="form-control" placeholder="Address" required="" value="${add}">
                 <input name="phone" type="tel" class="form-control" placeholder="Phone Numbers (10 or 11 numbers)"pattern="[0-9]{10,11}" value="${phone}">
-                <label >Member</label><input name="role" type="radio" value="1" ${role==1?"checked":""}>
+                <label >Student</label><input name="role" type="radio" value="1" ${role==1?"checked":""}>
                 <label >Expert</label><input name="role" type="radio" value="2" ${role==2?"checked":""}>
                 <label >Market</label><input name="role" type="radio" value="3" ${role==3?"checked":""}>
                 <label >Sale</label><input name="role" type="radio" value="4" ${role==4?"checked":""}>

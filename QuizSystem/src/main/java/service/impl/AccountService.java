@@ -123,6 +123,10 @@ public class AccountService implements IAccountService {
 
     @Override
     public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
+        if(txt.contains("Search_Role_")){
+            txt=txt.replace("Search_Role_", "");
+            return accountDao.filterRole(Integer.parseInt(txt));
+        }
         return accountDao.searchAccountByUserName_Name_Gmail_Phone(txt);
     }
 
@@ -162,7 +166,7 @@ public class AccountService implements IAccountService {
         if(role!=5){
         return accountDao.loadAccount_PaginationByRole(role,pageIndex,nrpp);
         }else{
-            return accountDao.searchAccountByUserName_Name_Gmail_Phone("");
+            return accountDao.loadAccount_Pagination("", pageIndex, nrpp);
         }
     }
 

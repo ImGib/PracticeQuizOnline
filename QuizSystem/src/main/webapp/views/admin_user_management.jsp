@@ -297,7 +297,7 @@
                                         class="mdi mdi-magnify"></i></span>
                             </div>
                             <form action="Admin" method="get">
-                                <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt}">
+                                <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt.contains("Search_Role_")?"":txt}">
                                 <!--                            <button>submit</button>-->
                             </form>
 
