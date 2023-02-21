@@ -366,18 +366,16 @@
                                     <th>#</th>
                                     <th>Title</th>
                                     <th>Date Created</th>
-                                    <th>Role</th>
-                                    <th>Status</th>
+                                    <th>Author</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td><a href="#"> Michael Holz</a></td>
+                                    <td><a href="#"> Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz</a></td>
                                     <td>04/10/2013</td>
                                     <td>Admin</td>
-                                    <td><span class="status text-success">&bull;</span> Active</td>
                                     <td>
                                         <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE8B8;</i></a>
@@ -390,7 +388,6 @@
                                     <td><a href="#"> Paula Wilson</a></td>
                                     <td>05/08/2014</td>
                                     <td>Publisher</td>
-                                    <td><span class="status text-success">&bull;</span> Active</td>
                                     <td>
                                         <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE8B8;</i></a>
@@ -403,7 +400,6 @@
                                     <td><a href="#"> Antonio Moreno</a></td>
                                     <td>11/05/2015</td>
                                     <td>Publisher</td>
-                                    <td><span class="status text-success">&bull;</span> Active</td>
                                     <td>
                                         <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE8B8;</i></a>
@@ -416,7 +412,6 @@
                                     <td><a href="#"> Mary Saveley</a></td>
                                     <td>06/09/2016</td>
                                     <td>Reviewer</td>
-                                    <td><span class="status text-success">&bull;</span> Active</td>
                                     <td>
                                         <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE8B8;</i></a>
@@ -429,7 +424,6 @@
                                     <td><a href="#"> Martin Sommer</a></td>
                                     <td>12/08/2017</td>
                                     <td>Moderator</td>
-                                    <td><span class="status text-warning">&bull;</span> Inactive</td>
                                     <td>
                                         <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE8B8;</i></a>

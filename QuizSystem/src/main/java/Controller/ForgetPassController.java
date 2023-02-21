@@ -41,10 +41,10 @@ public class ForgetPassController extends HttpServlet{
             try {
                 int code = new CheckUtil().createCheckCode();
                 String ssCode = code + "";
-                SessionUtil.getInstance().putValue(req, "forgetCode", ssCode);
-                SessionUtil.getInstance().putValue(req, "timeInput", 0);
                 mess = "This is your verify code: " + code;
                 new EmailUtil().sendMail(email, "verify code", mess);
+                SessionUtil.getInstance().putValue(req, "forgetCode", CheckUtil.MD5Encryption(ssCode));
+                SessionUtil.getInstance().putValue(req, "timeInput", 0);
                 req.setAttribute("email", email);
                 req.getRequestDispatcher("views/ChangePass.jsp").forward(req, resp);
             } catch (UnsupportedEncodingException | MessagingException e) {
