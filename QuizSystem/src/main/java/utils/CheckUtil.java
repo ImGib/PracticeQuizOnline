@@ -19,6 +19,10 @@ import javax.xml.bind.DatatypeConverter;
  */
 public class CheckUtil {
        
+    public static void main(String[] args) {
+        System.out.println(MD5Encryption("123"));
+    }
+    
     public String getDateNow(){
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sf.format(Calendar.getInstance().getTime());
@@ -64,10 +68,6 @@ public class CheckUtil {
             return true;
         }
         return false;
-    }
-    
-    public static void main(String[] args) {
-        System.out.println(MD5Encryption("123123123"));
     }
 
     public boolean checkDate(String date) throws ParseException {

@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import model.Account;
 import service.impl.AccountService;
+import utils.SessionUtil;
 
 /**
  *
@@ -36,8 +37,7 @@ public class LoginController extends HttpServlet{
 
     private void directController(Account a, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (a != null) {
-            HttpSession ses = req.getSession();
-            ses.setAttribute("account", a);
+            SessionUtil.getInstance().putValue(req, "account", a);
             req.getRequestDispatcher("views/Check.jsp").forward(req, resp);
         } else {
             req.setAttribute("mess", "Wrong email or password!");
