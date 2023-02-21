@@ -15,6 +15,7 @@ import model.Account;
 import model.UserGoogleDto;
 import service.impl.AccountService;
 import utils.LoginGoogleUtil;
+import utils.SessionUtil;
 
 /**
  *
@@ -30,8 +31,7 @@ public class LoginGoogleController extends HttpServlet{
         String accessToken = util.getToken(code);
         UserGoogleDto user = util.getUserInfo(accessToken);
         Account a = AccountService.getInstance().loginWithEmail(user);
-        HttpSession session = req.getSession();
-        session.setAttribute("account", a);
+        SessionUtil.getInstance().putValue(req, "account", a);
         
         //chuyen huong trang home
         req.setAttribute("name", user.getEmail());

@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import dao.impl.AccountDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,6 +24,13 @@ public class HiContoller extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String email = "dinhson123@gmail.com";
+        String userName = "dinhson123";
+        String pass = "12334";
+        int role = 1;
+        Account b = new Account(userName, pass, email, role, true);
+        AccountDao accountDao = new AccountDao();
+        accountDao.addAccount(b);
         req.getRequestDispatcher("views/AdminHome.jsp").forward(req, resp);
     }
 }
