@@ -297,8 +297,7 @@
                                         class="mdi mdi-magnify"></i></span>
                             </div>
                             <form action="LoadAdmin" method="get">
-                                <input name="txt" oninput="
-                                       Account(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt}">
+                                <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt}">
                                 <!--                            <button>submit</button>-->
                             </form>
 
@@ -533,7 +532,7 @@
                             },
                             success: function (response) {
                                 var content = document.getElementById("content");
-                                content.innerHTML = response;
+                                content.innerHTML =response;
                             },
                             error: function (xhr) {
                                 //Do Something to handle error
