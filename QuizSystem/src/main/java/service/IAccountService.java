@@ -25,4 +25,6 @@ public interface IAccountService {
     public String editProfile(String userName, String firstName, String lastName, String gmail, String phone, String address, String img);
     
     public Account loginWithEmail(UserGoogleDto user);
+    
+    public String changePassWordUser(String email, String pass, String rePass);
 }

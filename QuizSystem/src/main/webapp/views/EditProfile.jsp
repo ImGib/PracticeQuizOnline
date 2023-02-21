@@ -1,8 +1,5 @@
-<%-- 
-    Document   : EditProfile
-    Created on : Feb 19, 2023, 5:15:02 PM
-    Author     : avici
---%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +43,7 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form>
+                        <form action="edit-profile" method="post" enctype="multipart/form-data">
 
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Username (how your name will appear to
@@ -74,8 +71,8 @@
 
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputOrgName">Img</label>
-                                    <input class="form-control" id="inputOrgName" type="text"
-                                        placeholder="Enter your link" value="Start Bootstrap">
+                                    <input class="form-control" id="img" type="file"
+                                        placeholder="Enter your link" name="img" value="Start Bootstrap">
                                 </div>
 
                                 <div class="col-md-6">

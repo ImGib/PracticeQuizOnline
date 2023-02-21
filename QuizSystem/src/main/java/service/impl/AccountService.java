@@ -89,6 +89,14 @@ public class AccountService implements IAccountService {
         accountDao.changePass(email, pass);
         return null;
     }
+     @Override
+    public String changePassWordUser(String email, String pass, String rePass) {
+        if (!pass.equals(rePass)) {
+            return "Password and Re-password must be the same!";
+        }
+        accountDao.changePass(email, pass);
+        return null;
+    }
     @Override
     public String editProfile(String userName, String firstName, String lastName, String gmail, String phone, String address, String img) {
         CheckUtil check = new CheckUtil();
