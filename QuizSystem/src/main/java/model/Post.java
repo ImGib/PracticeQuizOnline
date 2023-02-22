@@ -12,19 +12,29 @@ public class Post {
     private String img;
     private String details;
     private String idAuthor;
+    private int numberAccess;
 
-    public Post() {
-    }
-
-
-    public Post(int id, String tittle, String publicDate, String img, String details, String idAuthor) {
+    public Post(int id, String tittle, String publicDate, String img, String details, String idAuthor, int numberAccess) {
         this.id = id;
         this.tittle = tittle;
         this.publicDate = publicDate;
         this.img = img;
         this.details = details;
         this.idAuthor = idAuthor;
+        this.numberAccess = numberAccess;
     }
+
+    public Post() {
+    }
+
+    public int getNumberAccess() {
+        return numberAccess;
+    }
+
+    public void setNumberAccess(int numberAccess) {
+        this.numberAccess = numberAccess;
+    }
+
 
     public int getId() {
         return id;

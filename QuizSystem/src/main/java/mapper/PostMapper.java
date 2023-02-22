@@ -20,7 +20,8 @@ public class PostMapper implements RowMapper<Post>{
                     rs.getDate(3).toString(),
                     rs.getString(4),
                     rs.getString(5), 
-                    rs.getString(6)
+                    rs.getString(6),
+                    rs.getInt(7)
             );
             return p;
         } catch (Exception e) {
