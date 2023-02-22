@@ -33,7 +33,7 @@ public class AccountService implements IAccountService {
     private AccountService() {
         accountDao = new AccountDao();
     }
-
+    
     @Override
     public Account findAccountByEmailAndPass(String userName, String pass) {
         List<Account> list = accountDao.findAccountByEmailAndPass(userName, pass);
@@ -109,6 +109,89 @@ public class AccountService implements IAccountService {
     }
 
     @Override
+    public List<Account> findAccountByEmail(String email) {
+        return accountDao.findAccountByEmail(email);
+    }
+
+    @Override
+    public List<Account> findAccountByUserName(String userName) {
+        return accountDao.findAccountByUserName(userName);
+    }
+
+    @Override
+    public void addAccount(Account a) {
+        accountDao.addAccount(a);
+    }
+
+    @Override
+    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
+        if(txt.contains("Search_Role_")){
+            txt=txt.replace("Search_Role_", "");
+            return accountDao.findAccountByRole(Integer.parseInt(txt));
+        }
+        return accountDao.searchAccountByUserName_Name_Gmail_Phone(txt);
+    }
+
+    @Override
+    public void deleteAccount(String user) {
+        accountDao.deleteAccount(user);
+    }
+
+        @Override
+    public List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp) {
+        if(txt.contains("Search_Role_")){
+            txt=txt.replace("Search_Role_", "");
+            return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp);
+        }
+        return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
+    }
+
+    @Override
+    public String checkValidateAddAccount(Account a) {
+        if(!findAccountByUserName(a.getUserName()).isEmpty()){
+            return "This User already exist!!!";
+            
+        }
+        if(!findAccountByEmail(a.getGmail()).isEmpty()){
+            return "This Email already exist!!!";
+            
+        }
+        if(!accountDao.findAccountByPhone(a.getPhone()).isEmpty()){
+            return "This Phone already exist!!!";
+        }
+        
+        return null;
+    }
+
+    @Override
+    public List<Account> loadAccount_PaginationByRole(int role,int pageIndex, int nrpp) {
+        if(role!=5){
+        return accountDao.loadAccount_PaginationByRole(role,pageIndex,nrpp);
+        }else{
+            return accountDao.loadAccount_Pagination("", pageIndex, nrpp);
+        }
+    }
+
+    @Override
+    public void changeRoleByUserName(String string, int i) {
+        accountDao.changeRoleByUserName(string, i);
+    }
+
+    @Override
+    public List<Account> findAccountByRole(int i) {
+        return accountDao.findAccountByRole(i);
+    }
+
+    @Override
+    public List<Account> findAllAccount() {
+        return accountDao.findAllAccount();
+    }
+
+    @Override
+    public void addAccountByAdmin(Account a) {
+        accountDao.addAccountByAdmin(a);
+    }
+    
     public Account getAccountByID(String username) {
         List<Account> list = accountDao.findAccountByUserName(username);
         if(list == null || list.isEmpty()) {

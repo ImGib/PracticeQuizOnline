@@ -1,11 +1,10 @@
 <%-- 
-    Document   : home
-    Created on : Feb 21, 2023, 1:01:52 PM
-    Author     : Gib
+    Document   : Blog_Detail_App
+    Created on : Feb 20, 2023, 1:02:04 PM
+    Author     : asus
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,13 +12,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Blog List App - Bootdey.com</title>
+    <title>Blog Detail App - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Pignose Calender -->
     <link href="asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -210,6 +209,29 @@
         }
 
         .pagination li.active a,
+        .pagination li.active a.page-link {
+            background: #03A9F4;
+        }
+
+        .pagination li.active a:hover {
+            background: #0397d6;
+        }
+
+        .pagination li.disabled i {
+            color: #ccc;
+        }
+
+        .pagination li i {
+            font-size: 16px;
+            padding-top: 6px
+        }
+
+        .hint-text {
+            float: left;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
         .card {
             background: #fff;
             transition: .5s;
@@ -227,7 +249,7 @@
             font-weight: 400;
         }
 
-        .card .blog-header {
+        .card .blog-detail-header {
             color: #444;
             padding: 20px;
             position: relative;
@@ -471,48 +493,7 @@
             .blog-page .single_post .footer {
                 padding: 30px
             }
-        }
 
-        .pagination li.active a.page-link {
-            background: #03A9F4;
-        }
-
-        .pagination li.active a:hover {
-            background: #0397d6;
-        }
-
-        .pagination li.disabled i {
-            color: #ccc;
-        }
-
-        .pagination li i {
-            font-size: 16px;
-            padding-top: 6px
-        }
-
-        .hint-text {
-            float: left;
-            margin-top: 10px;
-            font-size: 13px;
-        }
-
-        .animate-fading {
-            width: 98%;
-            animation: fading 10s infinite
-        }
-
-        @keyframes fading {
-            0% {
-                opacity: 0
-            }
-
-            50% {
-                opacity: 1
-            }
-
-            100% {
-                opacity: 0
-            }
         }
     </style>
     <script>
@@ -550,11 +531,11 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="home">
-                    <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
+                <a href="index.html">
+                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
-                        <img src="asset/images/logo-text.png" alt="">
+                        <img src="images/logo-text.png" alt="">
                     </span>
                 </a>
             </div>
@@ -564,17 +545,67 @@
         ***********************************-->
 
         <!--**********************************
-            header start
+            Header start
         ***********************************-->
-        <%@include file="header-user.jsp" %>
+        <div class="header" style="margin-bottom: 10px;">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="images/user/1.png" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                                <span>Profile</span></a>
+                                        </li>
+
+                                        <hr class="my-2">
+
+                                        <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <!--**********************************
-            header end ti-comment-alt
+            Header end ti-comment-alt
         ***********************************-->
 
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <%@include file="user-sidebar.jsp" %>
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label">Blog Detail</li>
+                    <li>
+                        <a href="index.html" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">User
+                                Management</span></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -582,208 +613,116 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
-            <div id="main-content" class="blog-page">
+        <div id="main-content" class="blog-page">
+            <div class="container">
                 <div class="row clearfix">
-                    <div class="col-lg-12 col-md-12 left-box">
-                        <div class="card single_post mx-5" style="width: 95%;">
+                    <div class="col-lg-8 col-md-12 left-box">
+                        <div class="card single_post">
                             <div class="body">
-                                <div>
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-1.jpg?v=1651990539676">
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-9.jpg?v=1651990877449">
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-17.jpg?v=1651991039908">
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-3.jpg?v=1651990799496">
+                                <div class="img-post">
+                                    <img class="d-block img-fluid"
+                                        src="https://www.bootdey.com/image/800x280/87CEFA/000000" alt="First slide">
                                 </div>
+                                <h3><a href="blog-details.html">All photographs are accurate</a></h3>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
+                                    Ipsum.</p>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-lg-4 col-md-12 right-box">
+                        <div class="card">
+                            <div class="body search">
+                                <div class="input-group m-b-0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="card">
+                            <div class="blog-detail-header">
+                                <h2>Popular Posts</h2>
+                            </div>
+                            <div class="body widget popular-post">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="single_post">
+                                            <p class="m-b-0">Apple Introduces Search Ads Basic</p>
+                                            <span>jun 22, 2018</span>
+                                            <div class="img-post">
+                                                <img src="https://www.bootdey.com/image/280x280/87CEFA/000000"
+                                                    alt="Awesome Image">
+                                            </div>
+                                        </div>
+                                        <div class="single_post">
+                                            <p class="m-b-0">new rules, more cars, more races</p>
+                                            <span>jun 8, 2018</span>
+                                            <div class="img-post">
+                                                <img src="https://www.bootdey.com/image/280x280/87CEFA/000000"
+                                                    alt="Awesome Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="my-5" style="font-size: 30px; text-align: center;">95% học sinh sử dụng QuixLab cho biết họ
-                    đã cải thiện được điểm số</div>
-                <div class="container mt-5 mb-3">
-                    <div class="row">
-                        <c:forEach var="sub" items="${requestScope.sbjList}">
-                            <c:set var="author" value="${requestScope.accService.getAccountByID(sub.idAuthor)}"/>
-                            <div class="col-md-4">
-                                <div class="card p-3 mb-2">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex flex-row align-items-center">
-                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                            <div class="ms-2 c-details">
-                                                <h6 class="mb-0">${author.firstName} ${author.lastName}</h6> 
-                                                <span>${sub.diffirentDate()}</span>
-                                            </div>
-                                        </div>
-                                        <div class="badge"> <a href="#"><span>Enroll</span></a> </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <a class="course" href="#">
-                                            <h3 class="heading">${sub.name}</h3>
-                                        </a>
-                                        <div class="mt-5">
-                                            <div class="mt-3">
-                                                <span class="text1">32 Person <span class="text2">Erroll this Cousrse</span>\</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                        <!--See More Button-->
-                                <c:if test="${requestScope.sbjList.get(2) == sub}">
-                                    <div style="text-align: end; margin-bottom: 15px;">
-                                        <div class="actions">
-                                            <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">See More</a>
-                                        </div>
-                                    </div>
-                                </c:if>
-                            </div>
-                        </c:forEach>
-                    </div>
-                </div>
-                <div class="my-5" style="font-size: 30px; text-align: center;">Sẵn sàng cho ngày thi với Học và Kiểm tra</div>
-                <div class="container">
-                    <div class="row clearfix">
-                        <div class="col-lg-8 col-md-12 left-box">
-                            <c:forEach var="pst" items="${requestScope.pstList}">
-                                <div class="card single_post">
-                                    <div class="body">
-                                        <div class="img-post">
-                                            <img class="d-block img-fluid"
-                                                 src="${pst.img}" alt="First slide">
-                                            <!--https://www.bootdey.com/image/800x280/FFB6C1/000000-->
-                                        </div>
-                                        <h3><a href="Blog_Detail_App.html">${pst.title}</a></h3>
-                                        <p style="width: 670px; height: 78">${pst.details}</p>
-                                    </div>
-                                    <div class="footer">
-                                        <div class="actions">
-                                            <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue
-                                                Reading</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                            <c:if test="${requestScope.pstList.size() == 2}">
-                                <div style="text-align: end; margin-bottom: 15px;">
-                                <div class="actions">
-                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">See More</a>
-                                </div>
-                            </c:if>
-                            
-                        </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 right-box">
-                            <div class="card">
-                                <div class="blog-header">
-                                    <h2>List Categories</h2>
-                                </div>
-                                <div class="body widget">
-                                    <ul class="list-unstyled categories-clouds m-b-0">
-                                        <c:forEach var="cate" items="${cateList}">
-                                            <li><a href="javascript:void(0);">${cate.name}</a></li>
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="blog-header">
-                                    <h2>Popular Posts</h2>
-                                </div>
-                                <div class="body widget popular-post">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="single_post">
-                                                <p class="m-b-0">Apple Introduces Search Ads Basic</p>
-                                                <span>jun 22, 2018</span>
-                                                <div class="img-post">
-                                                    <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
-                                                        alt="Awesome Image">
-                                                </div>
-                                            </div>
-                                            <div class="single_post">
-                                                <p class="m-b-0">new rules, more cars, more races</p>
-                                                <span>jun 8, 2018</span>
-                                                <div class="img-post">
-                                                    <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
-                                                        alt="Awesome Image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
             </div>
-
-            <!--**********************************
+        </div>
+        <!--**********************************
             Content body end
         ***********************************-->
 
 
-            <!--**********************************
+        <!--**********************************
             Footer start
         ***********************************-->
-            <!--**********************************
+        <!--**********************************
             Footer end
         ***********************************-->
-        </div>
-        <!--**********************************
+    </div>
+    <!--**********************************
         Main wrapper end
     ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
         Scripts
     ***********************************-->
-        <script>
-            var myIndex = 0;
-            carousel2();
+    <script src="asset/plugins/common/common.min.js"></script>
+    <script src="asset/js/custom.min.js"></script>
+    <script src="asset/js/settings.js"></script>
+    <script src="asset/js/gleek.js"></script>
+    <script src="asset/js/styleSwitcher.js"></script>
 
-            function carousel2() {
-                var i;
-                var x = document.getElementsByClassName("mySlides2");
-                for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";
-                }
-                myIndex++;
-                if (myIndex > x.length) { myIndex = 1 }
-                x[myIndex - 1].style.display = "block";
-                setTimeout(carousel2, 7000);
-            }
-        </script>
-        <script src="asset/plugins/common/common.min.js"></script>
-        <script src="asset/js/custom.min.js"></script>
-        <script src="asset/js/settings.js"></script>
-        <script src="asset/js/gleek.js"></script>
-        <script src="asset/js/styleSwitcher.js"></script>
-
-        <!-- Chartjs -->
-        <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
-        <!-- Circle progress -->
-        <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
-        <!-- Datamap -->
-        <script src="asset/plugins/d3v3/index.js"></script>
-        <script src="asset/plugins/topojson/topojson.min.js"></script>
-        <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
-        <!-- Morrisjs -->
-        <script src="asset/plugins/raphael/raphael.min.js"></script>
-        <script src="asset/plugins/morris/morris.min.js"></script>
-        <!-- Pignose Calender -->
-        <script src="asset/plugins/moment/moment.min.js"></script>
-        <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-        <!-- ChartistJS -->
-        <script src="asset/plugins/chartist/js/chartist.min.js"></script>
-        <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-
-
-
-        <script src="asset/js/dashboard/dashboard-1.js"></script>
+    <!-- Chartjs -->
+    <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="asset/plugins/d3v3/index.js"></script>
+    <script src="asset/plugins/topojson/topojson.min.js"></script>
+    <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="asset/plugins/raphael/raphael.min.js"></script>
+    <script src="asset/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="asset/plugins/moment/moment.min.js"></script>
+    <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="asset/plugins/chartist/js/chartist.min.js"></script>
+    <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <script src="asset/js/dashboard/dashboard-1.js"></script>
 
 </body>
 

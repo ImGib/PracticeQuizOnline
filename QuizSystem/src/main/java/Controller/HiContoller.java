@@ -37,7 +37,7 @@ public class HiContoller extends HttpServlet{
 
         String json = new Gson().toJson(data);
         req.setAttribute("values", json);
-        req.getRequestDispatcher("views/TestChart.jsp").forward(req, resp);
+        req.getRequestDispatcher("views/student/home.jsp").forward(req, resp);
 
     }
 }

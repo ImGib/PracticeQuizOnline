@@ -23,7 +23,7 @@ public class CheckUtil {
         System.out.println(MD5Encryption("123"));
     }
     
-    public String getDateNow(){
+    public static String getDateNow(){
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sf.format(Calendar.getInstance().getTime());
         return date;

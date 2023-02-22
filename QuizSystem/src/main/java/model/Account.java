@@ -125,6 +125,11 @@ public class Account {
     public void setImg(String img) {
         this.img = img;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" + "userName=" + userName + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", gmail=" + gmail + ", phone=" + phone + ", role=" + role + ", address=" + address + ", isActive=" + isActive + ", img=" + img + '}';
+    }
     
     
     
