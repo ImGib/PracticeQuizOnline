@@ -16,7 +16,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Account;
+import model.Post;
 import service.impl.AccountService;
+import service.impl.PostService;
 
 /**
  *
@@ -35,7 +37,8 @@ public class HiContoller extends HttpServlet{
         data.add("Viet nam5");
         data.add("Viet nam6");
 
-        String json = new Gson().toJson(data);
+        String json = new Gson().toJson(data);       
+
         req.setAttribute("values", json);
         req.getRequestDispatcher("views/student/home.jsp").forward(req, resp);
 
