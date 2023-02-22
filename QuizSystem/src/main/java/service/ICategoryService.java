@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dao;
+package service;
 
 import java.util.List;
-import model.Subject;
+import model.Category;
 
-
-public interface ISubjectDAO extends GenericDao<Subject>{
-    List<Subject> getTopThree();
+public interface ICategoryService {
+    public List<Category> getAllCate();
 }

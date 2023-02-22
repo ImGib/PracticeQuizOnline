@@ -5,9 +5,8 @@
 package dao;
 
 import java.util.List;
-import model.Subject;
+import model.Post;
 
-
-public interface ISubjectDAO extends GenericDao<Subject>{
-    List<Subject> getTopThree();
+public interface IPostDao extends GenericDao<Post>{
+    List<Post> getTopTwo();
 }

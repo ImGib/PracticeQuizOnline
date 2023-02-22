@@ -12,16 +12,26 @@ public class Subject {
     private String img;
     private String description;
     private String publicdate;
+    private String idAuthor;
 
     public Subject() {
     }
 
-    public Subject(int id, String name, String img, String description, String publicdate) {
+    public Subject(int id, String name, String img, String description, String publicdate, String idAuthor) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.description = description;
         this.publicdate = publicdate;
+        this.idAuthor = idAuthor;
+    }
+
+    public String getIdAuthor() {
+        return idAuthor;
+    }
+
+    public void setIdAuthor(String idAuthor) {
+        this.idAuthor = idAuthor;
     }
 
     public int getId() {

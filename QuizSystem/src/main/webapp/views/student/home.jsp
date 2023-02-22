@@ -5,6 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar" %> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -549,7 +554,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="home">
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
@@ -606,137 +611,74 @@
                     đã cải thiện được điểm số</div>
                 <div class="container mt-5 mb-3">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="card p-3 mb-2">
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                        <div class="ms-2 c-details">
-                                            <h6 class="mb-0">Mailchimp</h6> <span>1 days ago</span>
+                        <c:forEach var="sub" items="${requestScope.sbjList}">
+                            <c:set var="author" value="${requestScope.accService.getAccountByID(sub.idAuthor)}"/>
+                            <div class="col-md-4">
+                                <div class="card p-3 mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
+                                            <div class="ms-2 c-details">
+                                                <h6 class="mb-0">${author.firstName} ${author.lastName}</h6> <span>
+                                                    <!--djtme tru date-->
+                                                </span>
+                                            </div>
                                         </div>
+                                        <div class="badge"> <a href="#"><span>Enroll</span></a> </div>
                                     </div>
-                                    <div class="badge"> <a href="#"><span>Update</span></a> </div>
-                                </div>
-                                <div class="mt-5">
-                                    <a class="course" href="#">
-                                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
-                                    </a>
                                     <div class="mt-5">
-                                        <div class="mt-3">
-                                            <span class="text1">32 Person <span class="text2">Erroll this
-                                                    Cousrse</span>\</span>
+                                        <a class="course" href="#">
+                                            <h3 class="heading">${sub.name}</h3>
+                                        </a>
+                                        <div class="mt-5">
+                                            <div class="mt-3">
+                                                <span class="text1">32 Person <span class="text2">Erroll this Cousrse</span>\</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                        <!--See More Button-->
+                                <c:if test="${requestScope.sbjList.get(2) == sub}">
+                                    <div style="text-align: end; margin-bottom: 15px;">
+                                        <div class="actions">
+                                            <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">See More</a>
+                                        </div>
+                                    </div>
+                                </c:if>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card p-3 mb-2">
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                        <div class="ms-2 c-details">
-                                            <h6 class="mb-0">Mailchimp</h6> <span>1 days ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="badge"> <a href="#"><span>Update</span></a> </div>
-                                </div>
-                                <div class="mt-5">
-                                    <a class="course" href="#">
-                                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
-                                    </a>
-                                    <div class="mt-5">
-                                        <div class="mt-3">
-                                            <span class="text1">32 Person <span class="text2">Erroll this
-                                                    Cousrse</span>\</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card p-3 mb-2">
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                        <div class="ms-2 c-details">
-                                            <h6 class="mb-0">Mailchimp</h6> <span>1 days ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="badge"> <a href="#"><span>Update</span></a> </div>
-                                </div>
-                                <div class="mt-5">
-                                    <a class="course" href="#">
-                                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
-                                    </a>
-                                    <div class="mt-5">
-                                        <div class="mt-3">
-                                            <span class="text1">32 Person <span class="text2">Erroll this
-                                                    Cousrse</span>\</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div style="text-align: end; margin-bottom: 15px;">
-                                    <div class="actions">
-                                        <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">See More</a>
-                                    </div>
-                            </div>
-                        </div>
-                        
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="my-5" style="font-size: 30px; text-align: center;">Sẵn sàng cho ngày thi với Học và Kiểm tra</div>
                 <div class="container">
                     <div class="row clearfix">
                         <div class="col-lg-8 col-md-12 left-box">
-                            <div class="card single_post">
-                                <div class="body">
-                                    <div class="img-post">
-                                        <img class="d-block img-fluid"
-                                            src="https://www.bootdey.com/image/800x280/FFB6C1/000000" alt="First slide">
+                            <c:forEach var="pst" items="${requestScope.pstList}">
+                                <div class="card single_post">
+                                    <div class="body">
+                                        <div class="img-post">
+                                            <img class="d-block img-fluid"
+                                                 src="${pst.img}" alt="First slide">
+                                            <!--https://www.bootdey.com/image/800x280/FFB6C1/000000-->
+                                        </div>
+                                        <h3><a href="Blog_Detail_App.html">${pst.title}</a></h3>
+                                        <p style="width: 670px; height: 78">${pst.details}</p>
                                     </div>
-                                    <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
-                                    <p>It is a long established fact that a reader will be distracted by the readable
-                                        content of
-                                        a page when looking at its layout. The point of using Lorem Ipsum is that it has
-                                        a
-                                        more-or-less normal</p>
-                                </div>
-                                <div class="footer">
-                                    <div class="actions">
-                                        <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue
-                                            Reading</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card single_post">
-                                <div class="body">
-                                    <div class="img-post">
-                                        <img class="d-block img-fluid"
-                                            src="https://www.bootdey.com/image/800x280/FFB6C1/000000" alt="">
-                                    </div>
-                                    <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
-                                    <p>It is a long established fact that a reader will be distracted by the readable
-                                        content of
-                                        a page when looking at its layout. The point of using Lorem Ipsum is that it has
-                                        a
-                                        more-or-less normal</p>
-                                </div>
-                                <div class="footer">
-                                    <div class="actions">
-                                        <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue
-                                            Reading</a>
+                                    <div class="footer">
+                                        <div class="actions">
+                                            <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue
+                                                Reading</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                           
-                            <div style="text-align: end; margin-bottom: 15px;">
+                            </c:forEach>
+                            <c:if test="${requestScope.pstList.size() == 2}">
+                                <div style="text-align: end; margin-bottom: 15px;">
                                 <div class="actions">
                                     <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">See More</a>
                                 </div>
+                            </c:if>
+                            
                         </div>
                         </div>
                         <div class="col-lg-4 col-md-12 right-box">
@@ -746,16 +688,9 @@
                                 </div>
                                 <div class="body widget">
                                     <ul class="list-unstyled categories-clouds m-b-0">
-                                        <li><a href="javascript:void(0);">eCommerce</a></li>
-                                        <li><a href="javascript:void(0);">Microsoft Technologies</a></li>
-                                        <li><a href="javascript:void(0);">Creative UX</a></li>
-                                        <li><a href="javascript:void(0);">Wordpress</a></li>
-                                        <li><a href="javascript:void(0);">Angular JS</a></li>
-                                        <li><a href="javascript:void(0);">Enterprise Mobility</a></li>
-                                        <li><a href="javascript:void(0);">Website Design</a></li>
-                                        <li><a href="javascript:void(0);">HTML5</a></li>
-                                        <li><a href="javascript:void(0);">Infographics</a></li>
-                                        <li><a href="javascript:void(0);">Wordpress Development</a></li>
+                                        <c:forEach var="cate" items="${cateList}">
+                                            <li><a href="javascript:void(0);">${cate.name}</a></li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
