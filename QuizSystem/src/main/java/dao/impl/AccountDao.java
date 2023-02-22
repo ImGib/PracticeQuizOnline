@@ -54,7 +54,6 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt) {
     public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
         String sql = "select * from Account\n"
                 + "where (userName LIKE ? or \n"
@@ -67,18 +66,11 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public void ChangeRoleByUserName(String username, int id) {
     public void changeRoleByUserName(String username, int id) {
         String sql = "update Account\n"
                 + "set role =?\n"
                 + "where userName=?";
         update(sql, id, username);
-    }
-
-    @Override
-    public List<Account> FilterRole(int role) {
-        String sql = "select * from Account where role=?";
-        return query(sql, AccountMapper.getInstance(), role);
     }
 
     @Override
@@ -135,7 +127,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "order by userName\n"
                 + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         txt = "%" + txt + "%";
-        return query(sql, new AccountMapper(), txt, txt, txt, txt, txt, (pageIndex - 1) * nrpp, nrpp);
+        return query(sql, AccountMapper.getInstance(), txt, txt, txt, txt, txt, (pageIndex - 1) * nrpp, nrpp);
     }
 
     @Override
@@ -144,27 +136,27 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "where role=? and isActive=1\n"
                 + "order by userName\n"
                 + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
-        return query(sql, new AccountMapper(), role, (pageIndex - 1) * nrpp, nrpp);
+        return query(sql, AccountMapper.getInstance(), role, (pageIndex - 1) * nrpp, nrpp);
     }
 
     @Override
     public List<Account> findAccountByRole(int role) {
         String sql = "select * from Account\n"
                 + "where role=? and isActive=1";
-        return query(sql, new AccountMapper(), role);
+        return query(sql, AccountMapper.getInstance(), role);
     }
 
     @Override
     public List<Account> findAccountByPhone(String phone) {
         String sql = "select * from Account\n"
                 + "where phone=?";
-        return query(sql, new AccountMapper(), phone);
+        return query(sql, AccountMapper.getInstance(), phone);
     }
 
     @Override
     public List<Account> findAllAccount() {
         String sql = "select * from Account";
-        return query(sql, new AccountMapper());
+        return query(sql, AccountMapper.getInstance());
     }
 
     @Override
