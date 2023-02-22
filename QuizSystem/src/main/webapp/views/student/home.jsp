@@ -654,9 +654,8 @@
                                         <div class="img-post">
                                             <img class="d-block img-fluid"
                                                  src="${pst.img}" alt="First slide">
-                                            <!--https://www.bootdey.com/image/800x280/FFB6C1/000000-->
                                         </div>
-                                        <h3><a href="Blog_Detail_App.html">${pst.title}</a></h3>
+                                        <h3><a href="Blog_Detail_App.html">${pst.tittle}</a></h3>
                                         <p style="width: 670px; height: 78">${pst.details}</p>
                                     </div>
                                     <div class="footer">

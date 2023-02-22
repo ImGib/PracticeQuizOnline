@@ -18,11 +18,12 @@ public class PostDao extends AbstractDao<Post> implements IPostDao{
         return query(sql, new PostMapper());
     }
     
-    public static void main(String[] args) {
-        PostDao pd = new PostDao();
-        List<Post> list = pd.getTopTwo();
-        for(Post p : list){
-            System.out.println(p.getPublicDate());
-        }
+
+    @Override
+    public int getNumberPost() {
+        String sql = "select count(id)\n"
+                + "from Post";
+        return count(sql);
     }
+
 }

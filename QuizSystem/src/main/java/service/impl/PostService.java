@@ -12,25 +12,27 @@ import service.IPostService;
 
 public class PostService implements IPostService{
 
-    private PostDao postDAO;
-    
-    public PostService(){
-        postDAO = new PostDao();
+
+    private PostDao postDao;
+
+    private PostService() {
+        postDao = new PostDao();
     }
-    
+
     private static PostService instance = null;
-    
-    public static PostService getInstance(){
-        if(instance == null){
+
+    public static PostService getInstance() {
+        if (instance == null) {
             instance = new PostService();
         }
         return instance;
     }
+
             
     
     @Override
     public List<Post> getTopTwo() {
-        List<Post> list = postDAO.getTopTwo();
+        List<Post> list = postDao.getTopTwo();
         if (list == null || list.isEmpty()) {
             return null;
         } else {
@@ -38,4 +40,9 @@ public class PostService implements IPostService{
         }
     }
     
+
+    @Override
+    public int getNumberPost() {
+        return postDao.getNumberPost();
+    }
 }

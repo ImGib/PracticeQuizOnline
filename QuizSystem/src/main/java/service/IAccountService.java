@@ -49,4 +49,8 @@ public interface IAccountService {
     void addAccountByAdmin(Account a);
    
     public Account getAccountByID(String username);
+    
+    public int getNumberStaff();
+    
+    public int getNumberStudent();
 }

@@ -201,8 +201,13 @@ public class AccountService implements IAccountService {
         }
     }
     
-     public static void main(String[] args) {
-         System.out.println(AccountService.getInstance().getAccountByID("linhchi").getFirstName());
+    public int getNumberStaff() {
+        return accountDao.getNumberStaff();
+    }
+
+    @Override
+    public int getNumberStudent() {
+        return accountDao.getNumberStudent();
     }
 
 }

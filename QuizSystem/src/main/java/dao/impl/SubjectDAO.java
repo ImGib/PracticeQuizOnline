@@ -19,14 +19,30 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO{
     public List<Subject> getTopThree() {
         String sql = "select top 3 * from Subject\n" +
                 "order by publicDate desc";
-        return query(sql, new SubjectMapper());
+        return query(sql, SubjectMapper.getInstance());
     }
-    
-    public static void main(String[] args) {
-        SubjectDAO sd = new SubjectDAO();
-        List<Subject> list = sd.getTopThree();
-        for(Subject s : list){
-            System.out.println(s.getId() + " " + s.getName() + " " + s.getPublicdate());
-        }
+
+    @Override
+    public int getNumberSubject() {
+        String sql = "select count(id)\n"
+                + "from Subject";
+        return count(sql);
     }
+
+    @Override
+    public List<Subject> getAllSubject() {
+        String sql = "select * from Subject";
+        return query(sql, SubjectMapper.getInstance());
+    }
+
+    @Override
+    public List<Subject> getAllSubjectAndNumberEnroll() {
+        String sql = "select  id, Subject.[name], count(id) as numberEnroll\n"
+                + "from Subject\n"
+                + "inner join Enroll\n"
+                + "on Subject.id = Enroll.idSub\n"
+                + "group by id, Subject.[name]";
+        return query(sql, SubjectMapper.getInstance());// chưa xong
+    }
+
 }

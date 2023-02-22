@@ -12,8 +12,21 @@ import java.sql.SQLException;
  *
  * @author Lenovo
  */
-public class AccountMapper implements RowMapper<Account>{
+public class AccountMapper implements RowMapper<Account> {
 
+    private static AccountMapper instance = null;
+
+    public static AccountMapper getInstance() {
+        if (instance == null) {
+            instance = new AccountMapper();
+        }
+        return instance;
+    }
+
+    private AccountMapper(){
+        
+    }
+    
     @Override
     public Account MapRow(ResultSet rs) {
         try {
@@ -32,5 +45,5 @@ public class AccountMapper implements RowMapper<Account>{
             return null;
         }
     }
-    
+
 }

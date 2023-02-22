@@ -23,7 +23,7 @@ public class Check extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        req.getRequestDispatcher("views/Check.jsp").forward(req, resp);
+        req.getRequestDispatcher("views/AdminHome.jsp").forward(req, resp);
     }
     
 }
