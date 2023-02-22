@@ -22,10 +22,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">Subject List</span></a>
+                        <a href="subject-list"><i class="icon-user"></i> <span class="nav-text">Subject List</span></a>
                     </li>
                     <li>
-                        <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">Blog</span></a>
+                        <a href="blog"><i class="icon-user"></i> <span class="nav-text">Blog</span></a>
                     </li><!-- comment -->
                     <li>
                         <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">Enroll List</span></a>

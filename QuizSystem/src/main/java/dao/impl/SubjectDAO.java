@@ -45,4 +45,10 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO{
         return query(sql, SubjectMapper.getInstance());// chưa xong
     }
 
+    @Override
+    public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp) {
+        String sql = "";
+        return query(sql, SubjectMapper.getInstance(), txt, pageIndex, nrpp);
+    }
+
 }

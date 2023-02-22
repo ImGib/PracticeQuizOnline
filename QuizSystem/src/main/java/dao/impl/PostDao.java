@@ -9,15 +9,14 @@ import java.util.List;
 import mapper.PostMapper;
 import model.Post;
 
-public class PostDao extends AbstractDao<Post> implements IPostDao{
+public class PostDao extends AbstractDao<Post> implements IPostDao {
 
     @Override
     public List<Post> getTopTwo() {
-        String sql = "select top 2 * from Post\n" +
-                    "order by publicDate desc";
+        String sql = "select top 2 * from Post\n"
+                + "order by publicDate desc";
         return query(sql, new PostMapper());
     }
-    
 
     @Override
     public int getNumberPost() {
@@ -26,4 +25,26 @@ public class PostDao extends AbstractDao<Post> implements IPostDao{
         return count(sql);
     }
 
+    @Override
+    public List<Post> getTopPopular() {
+        String sql = "select top 2 * from Post\n"
+                + "order by numberAccess DESC";
+        return query(sql, new PostMapper());
+    }
+
+    @Override
+    public List<Post> getPostPagination(int pageIndex, int nrpp) {
+        String sql = "select * from Post \n"
+                + "order by id\n"
+                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        return query(sql, new PostMapper(), pageIndex, nrpp);
+    }
+
+    @Override
+    public int countAllPost() {
+        String sql = "select COUNT(*) from Post";
+        return count(sql);
+    }
+
+    
 }

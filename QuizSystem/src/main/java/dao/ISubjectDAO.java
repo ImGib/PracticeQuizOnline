@@ -15,6 +15,8 @@ public interface ISubjectDAO extends GenericDao<Subject>{
     
     public List<Subject> getAllSubject();
     
+    public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp);
+    
     public List<Subject> getAllSubjectAndNumberEnroll();
     
 }

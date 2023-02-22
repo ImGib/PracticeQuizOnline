@@ -1,11 +1,11 @@
 <%-- 
-    Document   : home
-    Created on : Feb 21, 2023, 1:01:52 PM
+    Document   : blog
+    Created on : Feb 22, 2023, 9:52:04 PM
     Author     : Gib
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,13 +13,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>QuixLab</title>
+    <title>Blog List App - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Pignose Calender -->
     <link href="asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -209,8 +209,7 @@
             color: #666;
         }
 
-        .pagination li.active a,
-        .card {
+        .pagination li.active a, .card {
             background: #fff;
             transition: .5s;
             border: 0;
@@ -472,7 +471,6 @@
                 padding: 30px
             }
         }
-
         .pagination li.active a.page-link {
             background: #03A9F4;
         }
@@ -495,25 +493,7 @@
             margin-top: 10px;
             font-size: 13px;
         }
-
-        .animate-fading {
-            width: 98%;
-            animation: fading 10s infinite
-        }
-
-        @keyframes fading {
-            0% {
-                opacity: 0
-            }
-
-            50% {
-                opacity: 1
-            }
-
-            100% {
-                opacity: 0
-            }
-        }
+        
     </style>
     <script>
         $(document).ready(function () {
@@ -550,11 +530,11 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="home">
-                    <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
+                <a href="Home_App.html">
+                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
-                        <img src="asset/images/logo-text.png" alt="">
+                        <img src="images/logo-text.png" alt="">
                     </span>
                 </a>
             </div>
@@ -566,7 +546,41 @@
         <!--**********************************
             header start
         ***********************************-->
-        <%@include file="header-user.jsp" %>
+        <div class="header" style="margin-bottom: 10px;">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="images/user/1.png" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                                <span>Profile</span></a>
+                                        </li>
+
+                                        <hr class="my-2">
+
+                                        <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <!--**********************************
             header end ti-comment-alt
         ***********************************-->
@@ -583,200 +597,133 @@
             Content body start
         ***********************************-->
         <div class="content-body">
-            <div id="main-content" class="blog-page">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <div id="main-content" class="blog-page">
+            <div class="container">
                 <div class="row clearfix">
-                    <div class="col-lg-12 col-md-12 left-box">
-                        <div class="card single_post mx-5" style="width: 95%;">
+                    <div class="col-lg-8 col-md-12 left-box">
+                        <c:forEach var="post" items="${requestScope.postList}">
+                            <div class="card single_post">
                             <div class="body">
-                                <div>
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-1.jpg?v=1651990539676">
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-9.jpg?v=1651990877449">
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-17.jpg?v=1651991039908">
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-3.jpg?v=1651990799496">
+                                <div class="img-post">
+                                    <img class="d-block img-fluid" src="${post.img}"
+                                        alt="First slide">
                                 </div>
+                                <h3><a href="Blog_Detail_App.html">${post.tittle}</a></h3>
+                                <p style="width: 670px; height: 78">${post.details}</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="my-5" style="font-size: 30px; text-align: center;">95% học sinh sử dụng QuixLab cho biết họ
-                    đã cải thiện được điểm số</div>
-                <div class="container mt-5 mb-3">
-                    <div class="row">
-                        <c:forEach var="sub" items="${requestScope.sbjList}">
-                            <c:set var="author" value="${requestScope.accService.getAccountByID(sub.idAuthor)}"/>
-                            <div class="col-md-4">
-                                <div class="card p-3 mb-2">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex flex-row align-items-center">
-                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                            <div class="ms-2 c-details">
-                                                <h6 class="mb-0">${author.firstName} ${author.lastName}</h6> 
-                                                <span>${sub.diffirentDate()}</span>
-                                            </div>
-                                        </div>
-                                        <div class="badge"> <a href="#"><span>Enroll</span></a> </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <a class="course" href="#">
-                                            <h3 class="heading">${sub.name}</h3>
-                                        </a>
-                                        <div class="mt-5">
-                                            <div class="mt-3">
-                                                <span class="text1">${sub.getNumberEnroll()} Person <span class="text2">Erroll this Cousrse</span>\</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                        <!--See More Button-->
-                                <c:if test="${requestScope.sbjList.get(2) == sub}">
-                                    <div style="text-align: end; margin-bottom: 15px;">
-                                        <div class="actions">
-                                            <a href="subject-list" class="btn btn-outline-secondary">See More</a>
-                                        </div>
-                                    </div>
-                                </c:if>
-                            </div>
-                        </c:forEach>
-                    </div>
-                </div>
-                <div class="my-5" style="font-size: 30px; text-align: center;">Sẵn sàng cho ngày thi với Học và Kiểm tra</div>
-                <div class="container">
-                    <div class="row clearfix">
-                        <div class="col-lg-8 col-md-12 left-box">
-                            <c:forEach var="pst" items="${requestScope.pstList}">
-                                <div class="card single_post">
-                                    <div class="body">
-                                        <div class="img-post">
-                                            <img class="d-block img-fluid"
-                                                 src="${pst.img}" alt="First slide">
-                                        </div>
-                                        <h3><a href="Blog_Detail_App.html">${pst.tittle}</a></h3>
-                                        <p style="width: 670px; height: 78">${pst.details}</p>
-                                    </div>
-                                    <div class="footer">
-                                        <div class="actions">
-                                            <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue
-                                                Reading</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                            <c:if test="${requestScope.pstList.size() == 2}">
-                                <div style="text-align: end; margin-bottom: 15px;">
+                            <div class="footer">
                                 <div class="actions">
-                                    <a href="blog" class="btn btn-outline-secondary">See More</a>
-                                </div>
-                            </c:if>
-                            
-                        </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 right-box">
-                            <div class="card">
-                                <div class="blog-header">
-                                    <h2>List Categories</h2>
-                                </div>
-                                <div class="body widget">
-                                    <ul class="list-unstyled categories-clouds m-b-0">
-                                        <c:forEach var="cate" items="${cateList}">
-                                            <li><a href="javascript:void(0);">${cate.name}</a></li>
-                                        </c:forEach>
-                                    </ul>
+                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="blog-header">
-                                    <h2>Popular Posts</h2>
+                        </div>
+                        </c:forEach>
+                        
+                        <ul class="pagination pagination-primary">
+                            <li class="page-item"><a class="page-link" href="blog?pageIndex=${requestScope.pageIndex-1}">Previous</a></li>
+                            <c:forEach var="i" items="${requestScope.totalPage}" begin="${requestScope.begin}" end="${requestScope.end}" >
+                            <li class="page-item ${i==requestScope.pageIndex?"active":""}"><a class="page-link" href="blog?pageIndex=${i}">${i}</a></li>
+                            </c:forEach>
+                            <li class="page-item"><a class="page-link" href="blog?pageIndex=${requestScope.pageIndex+1}">Next</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-12 right-box">
+                        <div class="card">
+                            <div class="body search">
+                                <div class="input-group m-b-0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Search...">
                                 </div>
-                                <div class="body widget popular-post">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <c:forEach var="plpost" items="${requestScope.pplPost}">
-                                                <div class="single_post">
-                                                    <p class="m-b-0">${plpost.tittle}</p>
-                                                    <span>${plpost.publicDate}</span>
-                                                    <div class="img-post">
-                                                        <img src="${plpost.img}"
-                                                             alt="Awesome Image">
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="blog-header">
+                                <h2>Popular Posts</h2>
+                            </div>
+                            <div class="body widget popular-post">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="single_post">
+                                            <p class="m-b-0">Apple Introduces Search Ads Basic</p>
+                                            <span>jun 22, 2018</span>
+                                            <div class="img-post">
+                                                <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
+                                                    alt="Awesome Image">
+                                            </div>
+                                        </div>
+                                        <div class="single_post">
+                                            <p class="m-b-0">new rules, more cars, more races</p>
+                                            <span>jun 8, 2018</span>
+                                            <div class="img-post">
+                                                <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
+                                                    alt="Awesome Image">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
-            <!--**********************************
+        </div>
+        </div>
+        
+        <!--**********************************
             Content body end
         ***********************************-->
 
 
-            <!--**********************************
+        <!--**********************************
             Footer start
         ***********************************-->
-            <!--**********************************
-            Footer end
-        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
+                    2018</p>
+            </div>
         </div>
         <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
         Main wrapper end
     ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
         Scripts
     ***********************************-->
-        <script>
-            var myIndex = 0;
-            carousel2();
+    <script src="asset/plugins/common/common.min.js"></script>
+    <script src="asset/js/custom.min.js"></script>
+    <script src="asset/js/settings.js"></script>
+    <script src="asset/js/gleek.js"></script>
+    <script src="asset/js/styleSwitcher.js"></script>
 
-            function carousel2() {
-                var i;
-                var x = document.getElementsByClassName("mySlides2");
-                for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";
-                }
-                myIndex++;
-                if (myIndex > x.length) { myIndex = 1 }
-                x[myIndex - 1].style.display = "block";
-                setTimeout(carousel2, 7000);
-            }
-        </script>
-        <script src="asset/plugins/common/common.min.js"></script>
-        <script src="asset/js/custom.min.js"></script>
-        <script src="asset/js/settings.js"></script>
-        <script src="asset/js/gleek.js"></script>
-        <script src="asset/js/styleSwitcher.js"></script>
-
-        <!-- Chartjs -->
-        <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
-        <!-- Circle progress -->
-        <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
-        <!-- Datamap -->
-        <script src="asset/plugins/d3v3/index.js"></script>
-        <script src="asset/plugins/topojson/topojson.min.js"></script>
-        <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
-        <!-- Morrisjs -->
-        <script src="asset/plugins/raphael/raphael.min.js"></script>
-        <script src="asset/plugins/morris/morris.min.js"></script>
-        <!-- Pignose Calender -->
-        <script src="asset/plugins/moment/moment.min.js"></script>
-        <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-        <!-- ChartistJS -->
-        <script src="asset/plugins/chartist/js/chartist.min.js"></script>
-        <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <!-- Chartjs -->
+    <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="asset/plugins/d3v3/index.js"></script>
+    <script src="asset/plugins/topojson/topojson.min.js"></script>
+    <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="asset/plugins/raphael/raphael.min.js"></script>
+    <script src="asset/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="asset/plugins/moment/moment.min.js"></script>
+    <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="asset/plugins/chartist/js/chartist.min.js"></script>
+    <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
 
-
-        <script src="asset/js/dashboard/dashboard-1.js"></script>
+    <script src="asset/js/dashboard/dashboard-1.js"></script>
 
 </body>
 

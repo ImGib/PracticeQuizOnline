@@ -30,12 +30,13 @@ public class HomepageController extends HttpServlet {
         List<Subject> subjectList = SubjectService.getInstance().getTopThree();
         List<Post> postList = PostService.getInstance().getTopTwo();
         List<Category> cateList = CategoryService.getInstance().getAllCate();
-        
-//        request.setAttribute("crTime", getCurrentDate());
+        List<Post> pplPost = PostService.getInstance().getTopPopular();
+
         request.setAttribute("accService", AccountService.getInstance());
         request.setAttribute("sbjList", subjectList);
-        request.setAttribute("pstList", postList);        
+        request.setAttribute("pstList", postList);
         request.setAttribute("cateList", cateList);
+        request.setAttribute("pplPost", pplPost);
         request.getRequestDispatcher("views/student/home.jsp").forward(request, response);
 
     }
