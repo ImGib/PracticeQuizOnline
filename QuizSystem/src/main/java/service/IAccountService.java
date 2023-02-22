@@ -47,5 +47,6 @@ public interface IAccountService {
     List<Account> findAllAccount();
     
     void addAccountByAdmin(Account a);
-    //---------------------------------------------------------------------------
-}   
+   
+    public Account getAccountByID(String username);
+}

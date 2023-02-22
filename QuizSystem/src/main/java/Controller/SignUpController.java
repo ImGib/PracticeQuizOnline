@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import model.Account;
 import service.impl.AccountService;
+import utils.CheckUtil;
 
 /**
  *
@@ -29,8 +30,8 @@ public class SignUpController extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String user = req.getParameter("user");
-        String pass = req.getParameter("pass");
-        String repass = req.getParameter("repass");
+        String pass = CheckUtil.MD5Encryption(req.getParameter("pass"));
+        String repass = CheckUtil.MD5Encryption(req.getParameter("repass"));
         Account a = new Account(user, pass, email, 1, true);
         String mess = AccountService.getInstance().addAccount(a, repass);
         signUpDiracter(mess, req, resp);

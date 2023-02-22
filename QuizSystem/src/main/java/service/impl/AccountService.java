@@ -5,10 +5,12 @@
 package service.impl;
 
 import dao.impl.AccountDao;
+import dao.impl.SubjectDAO;
 import model.Account;
 import service.IAccountService;
 import utils.CheckUtil;
 import java.util.List;
+import model.Subject;
 import model.UserGoogleDto;
 
 /**
@@ -190,5 +192,17 @@ public class AccountService implements IAccountService {
         accountDao.addAccountByAdmin(a);
     }
     
+    public Account getAccountByID(String username) {
+        List<Account> list = accountDao.findAccountByUserName(username);
+        if(list == null || list.isEmpty()) {
+            return null;
+        } else {
+            return list.get(0);
+        }
+    }
+    
+     public static void main(String[] args) {
+         System.out.println(AccountService.getInstance().getAccountByID("linhchi").getFirstName());
+    }
 
 }
