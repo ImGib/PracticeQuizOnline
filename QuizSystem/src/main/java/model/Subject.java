@@ -85,7 +85,20 @@ public class Subject {
         
         long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
         long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-        return String.valueOf(diff);
+        String days = "";
+        if (diff < 30) days = String.valueOf(diff) + " days ago";
+        else if (diff < 365){
+            diff/=30;
+            if(diff == 1)
+                days = String.valueOf(diff) + " month ago";
+            else days = String.valueOf(diff) + " months ago";
+        } else {
+            diff/=365;
+            if(diff == 1)
+                days = String.valueOf(diff) + " year ago";
+            else days = String.valueOf(diff) + " years ago";
+        }
+        return days;
     }
     
 }

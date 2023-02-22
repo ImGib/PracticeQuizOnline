@@ -551,10 +551,10 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="home">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                    <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
+                        <img src="asset/images/logo-text.png" alt="">
                     </span>
                 </a>
             </div>
@@ -616,7 +616,7 @@
                                             <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
                                             <div class="ms-2 c-details">
                                                 <h6 class="mb-0">${author.firstName} ${author.lastName}</h6> 
-                                                <span>${sub.diffirentDate}</span>
+                                                <span>${sub.diffirentDate()}</span>
                                             </div>
                                         </div>
                                         <div class="badge"> <a href="#"><span>Enroll</span></a> </div>
