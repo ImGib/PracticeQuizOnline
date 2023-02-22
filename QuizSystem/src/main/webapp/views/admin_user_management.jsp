@@ -434,7 +434,7 @@
                                 </tbody>
                             </table>
                             <div class="clearfix">
-                                <div class="hint-text">Showing <b>${ListAccount.size()}</b> out of <b>${size}</b> entries</div>
+<!--                                <div class="hint-text">Showing <b>${ListAccount.size()}</b> out of <b>${size}</b> entries</div>-->
                                 <ul class="pagination" id="pag">
 
                                     <li class="page-item disabled"><a href="Admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
