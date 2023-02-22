@@ -5,9 +5,8 @@
 package dao;
 
 import java.util.List;
-import model.Subject;
+import model.Category;
 
-
-public interface ISubjectDAO extends GenericDao<Subject>{
-    List<Subject> getTopThree();
+public interface ICategoryDao extends GenericDao<Category>{
+    List<Category> getAllCate();
 }

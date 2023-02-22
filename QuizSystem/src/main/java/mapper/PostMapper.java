@@ -5,26 +5,24 @@
 package mapper;
 
 import java.sql.ResultSet;
-import java.text.DateFormat;
-import model.Subject;
-
+import model.Post;
 /**
  *
  * @author Gib
  */
-public class SubjectMapper implements RowMapper<Subject>{
+public class PostMapper implements RowMapper<Post>{
 
     @Override
-    public Subject MapRow(ResultSet rs) {
+    public Post MapRow(ResultSet rs) {
         try {
-            Subject s = new Subject(rs.getInt(1), 
+            Post p = new Post(rs.getInt(1), 
                     rs.getString(2), 
-                    rs.getString(3), 
+                    rs.getDate(3).toString(),
                     rs.getString(4),
-                    rs.getDate(5).toString(),
+                    rs.getString(5), 
                     rs.getString(6)
             );
-            return s;
+            return p;
         } catch (Exception e) {
             return null;
         }
