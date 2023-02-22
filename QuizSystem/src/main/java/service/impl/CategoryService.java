@@ -9,10 +9,7 @@ import java.util.List;
 import model.Category;
 import service.ICategoryService;
 
-/**
- *
- * @author Gib
- */
+
 public class CategoryService implements ICategoryService{
     
     private CategoryDao categoryDao;
