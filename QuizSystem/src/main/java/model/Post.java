@@ -4,13 +4,10 @@
  */
 package model;
 
-/**
- *
- * @author Gib
- */
+
 public class Post {
     private int id;
-    private String title;
+    private String tittle;
     private String publicDate;
     private String img;
     private String details;
@@ -19,9 +16,10 @@ public class Post {
     public Post() {
     }
 
-    public Post(int id, String title, String publicDate, String img, String details, String idAuthor) {
+
+    public Post(int id, String tittle, String publicDate, String img, String details, String idAuthor) {
         this.id = id;
-        this.title = title;
+        this.tittle = tittle;
         this.publicDate = publicDate;
         this.img = img;
         this.details = details;
@@ -36,12 +34,13 @@ public class Post {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+
+    public String getTittle() {
+        return tittle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTittle(String tittle) {
+        this.tittle = tittle;
     }
 
     public String getPublicDate() {
@@ -75,5 +74,5 @@ public class Post {
     public void setIdAuthor(String idAuthor) {
         this.idAuthor = idAuthor;
     }
-    
+
 }

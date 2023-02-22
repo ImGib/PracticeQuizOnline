@@ -18,7 +18,7 @@
     <body>
         <div id="logreg-forms">
 
-            <form action="AddNewAccount" method="post" class="">
+            <form action="AddNewAccount" method="post" style="margin: 30 300">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Add New Account</h1>
                 <p class="text-danger">${wrongText}</p>
                 <p class="text-success">${successText}</p>
@@ -37,7 +37,6 @@
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Add</button>
                 <a href="LoadAdmin" ><i class="fas fa-angle-left"></i> Back</a>
             </form>
-            <br>
 
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

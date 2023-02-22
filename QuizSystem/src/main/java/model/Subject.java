@@ -4,7 +4,6 @@
  */
 package model;
 
-import java.util.Date;
 
 public class Subject {
     private int id;

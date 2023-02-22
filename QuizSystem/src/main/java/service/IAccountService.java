@@ -27,4 +27,8 @@ public interface IAccountService {
     public Account loginWithEmail(UserGoogleDto user);
     
     public Account getAccountByID(String username);
+    
+    public int getNumberStaff();
+    
+    public int getNumberStudent();
 }

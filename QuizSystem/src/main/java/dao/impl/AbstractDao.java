@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,9 +25,9 @@ public class AbstractDao<T> implements GenericDao<T> {
 
     private final String serverName = "localhost";
     private final String dbName = "Quiz System";
-    private final String portNumber = "5102";
+    private final String portNumber = "1111";
     private final String userID = "sa";
-    private final String password = "giabao5102";
+    private final String password = "12345";
 
     public Connection getConnection() throws Exception {
         String url = "jdbc:sqlserver://" + serverName + ":" + portNumber
@@ -34,12 +36,14 @@ public class AbstractDao<T> implements GenericDao<T> {
         return DriverManager.getConnection(url, userID, password);
     }
 
+    private Connection conn = null;
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
+
     @Override
     public <T> List<T> query(String sql, RowMapper<T> rowMapper, Object... parameters) {
         List<T> list = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+
         try {
             conn = getConnection();
             ps = conn.prepareStatement(sql);
@@ -88,8 +92,6 @@ public class AbstractDao<T> implements GenericDao<T> {
 
     @Override
     public void update(String sql, Object... parameters) {
-        Connection conn = null;
-        PreparedStatement ps = null;
         try {
             conn = getConnection();
             conn.setAutoCommit(false);
@@ -122,9 +124,6 @@ public class AbstractDao<T> implements GenericDao<T> {
 
     @Override
     public int insert(String sql, Object... parameters) {
-        ResultSet rs = null;
-        Connection conn = null;
-        PreparedStatement ps = null;
         int id = 0;
         try {
             conn = getConnection();
@@ -162,6 +161,36 @@ public class AbstractDao<T> implements GenericDao<T> {
             }
         }
         return -1;
+    }
+
+    @Override
+    public int count(String sql, Object... parameters) {
+        int num = 0;
+        try {
+            conn = getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                num = rs.getInt(1);
+            }
+            conn.commit();
+        } catch (Exception ex) {
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException exx) {
+                System.out.println(exx.getMessage());
+            }
+        }
+        return num;
     }
 
 }

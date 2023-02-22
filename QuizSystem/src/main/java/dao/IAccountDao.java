@@ -24,5 +24,8 @@ public interface IAccountDao extends GenericDao<Account>{
     
     List<Account> FilterRole(int role);
     
+    int getNumberStaff();
+    
+    int getNumberStudent();
      
 }
