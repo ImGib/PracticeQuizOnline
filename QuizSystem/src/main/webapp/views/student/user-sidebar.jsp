@@ -15,17 +15,21 @@
         <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">Blog List</li>
+                    <li class="nav-label">QuizLab</li>
                     <li>
-                        <a href="index.html" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                        <a href="home" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">User
-                                Management</span></a>
+                        <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">Subject List</span></a>
                     </li>
-
+                    <li>
+                        <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">Blog</span></a>
+                    </li><!-- comment -->
+                    <li>
+                        <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">Enroll List</span></a>
+                    </li>
                 </ul>
             </div>
         </div>
