@@ -44,9 +44,4 @@ public class HomepageController extends HttpServlet {
         super.doPost(req, resp); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
-    protected String getCurrentDate() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDateTime now = LocalDateTime.now();
-        return now.format(dtf).toString();
-    }
 }

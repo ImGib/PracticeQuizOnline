@@ -4,7 +4,11 @@
  */
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import utils.CheckUtil;
 
 public class Subject {
     private int id;
@@ -74,5 +78,14 @@ public class Subject {
         this.publicdate = publicdate;
     }
     
+    public String diffirentDate() throws ParseException{
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        Date secondDate = sf.parse(CheckUtil.getDateNow());
+        Date firstDate = sf.parse(this.publicdate);
+        
+        long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        return String.valueOf(diff);
+    }
     
 }
