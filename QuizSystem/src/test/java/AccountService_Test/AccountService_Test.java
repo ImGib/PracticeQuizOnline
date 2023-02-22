@@ -10,52 +10,56 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import utils.RandomAccountUtil;
 import service.impl.AccountService;
+
 /**
  *
  * @author asus
  */
 public class AccountService_Test {
-    Account Account;
-    AccountDao accountDao;
+
+    Account account;
+    AccountDao accountDao = new AccountDao();
     AccountService accountService;
+
     @Test
-    public void test_checkValidateAddAccount_UserExist(){
-        Account=new RandomAccountUtil().getAccount();
-        accountDao.addAccount(Account);
-        String expected="This User already exist!!!";
-        String actual=accountService.checkValidateAddAccount(Account);
-        assertEquals(expected,actual);
+    public void test_checkValidateAddAccount_UserExist() {
+        account = RandomAccountUtil.getAccount();
+        accountDao.addAccount(account);
+        String expected = "This User already exist!!!";
+        String actual = accountService.checkValidateAddAccount(account);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void test_checkValidateAddAccount_EmailExist(){
-        Account=new RandomAccountUtil().getAccount();
-        accountDao.addAccount(Account);
-        Account.setUserName("test");
-        String expected="This Email already exist!!!";
-        String actual=accountService.checkValidateAddAccount(Account);
-        assertEquals(expected,actual);
+    public void test_checkValidateAddAccount_EmailExist() {
+        account = RandomAccountUtil.getAccount();
+        accountDao.addAccount(account);
+        account.setUserName("test");
+        String expected = "This Email already exist!!!";
+        String actual = accountService.checkValidateAddAccount(account);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void test_checkValidateAddAccount_PhoneExist(){
-        Account=new RandomAccountUtil().getAccount();
-        accountDao.addAccount(Account);
-        Account.setUserName("test");
-        Account.setGmail("test");
-        String expected="This Phone already exist!!!";
-        String actual=accountService.checkValidateAddAccount(Account);
-        assertEquals(expected,actual);
+    public void test_checkValidateAddAccount_PhoneExist() {
+        account = RandomAccountUtil.getAccount();
+        accountDao.addAccount(account);
+        account.setUserName("test");
+        account.setGmail("test");
+        String expected = "This Phone already exist!!!";
+        String actual = accountService.checkValidateAddAccount(account);
+        assertEquals(expected, actual);
     }
+
     @Test
-    public void test_checkValidateAddAccount_TrueCase(){
-        Account=new RandomAccountUtil().getAccount();
-        accountDao.addAccount(Account);
-        Account.setUserName("test");
-        Account.setGmail("test");
-        Account.setPhone("test");
-        
-        String actual=accountService.checkValidateAddAccount(Account);
-        assertTrue(actual==null);
+    public void test_checkValidateAddAccount_TrueCase() {
+        account = RandomAccountUtil.getAccount();
+        accountDao.addAccount(account);
+        account.setUserName("test");
+        account.setGmail("test");
+        account.setPhone("test");
+        String actual = accountService.checkValidateAddAccount(account);
+        assertTrue(actual == null);
     }
-    
-   
+
 }
