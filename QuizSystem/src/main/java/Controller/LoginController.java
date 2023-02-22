@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import model.Account;
 import service.impl.AccountService;
+import utils.CheckUtil;
+import utils.SessionUtil;
 
 /**
  *
@@ -29,16 +31,15 @@ public class LoginController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        String pass = req.getParameter("pass");
+        String pass = CheckUtil.MD5Encryption(req.getParameter("pass"));
         Account a = AccountService.getInstance().findAccountByEmailAndPass(email, pass);
         directController(a, req, resp);
     }
 
     private void directController(Account a, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (a != null) {
-            HttpSession ses = req.getSession();
-            ses.setAttribute("account", a);
-            req.getRequestDispatcher("views/Check.jsp").forward(req, resp);
+            SessionUtil.getInstance().putValue(req, "account", a);
+            req.getRequestDispatcher("views/student/home.jsp").forward(req, resp);
         } else {
             req.setAttribute("mess", "Wrong email or password!");
             doGet(req, resp);

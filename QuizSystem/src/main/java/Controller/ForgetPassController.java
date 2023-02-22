@@ -16,6 +16,7 @@ import javax.mail.MessagingException;
 import service.impl.AccountService;
 import utils.CheckUtil;
 import utils.EmailUtil;
+import utils.SessionUtil;
 
 /**
  *
@@ -39,12 +40,11 @@ public class ForgetPassController extends HttpServlet{
         if (mess == null) {
             try {
                 int code = new CheckUtil().createCheckCode();
-                HttpSession session = req.getSession();
                 String ssCode = code + "";
-                session.setAttribute("forgetCode", ssCode);
-                session.setAttribute("timeInput", 0);
                 mess = "This is your verify code: " + code;
                 new EmailUtil().sendMail(email, "verify code", mess);
+                SessionUtil.getInstance().putValue(req, "forgetCode", CheckUtil.MD5Encryption(ssCode));
+                SessionUtil.getInstance().putValue(req, "timeInput", 0);
                 req.setAttribute("email", email);
                 req.getRequestDispatcher("views/ChangePass.jsp").forward(req, resp);
             } catch (UnsupportedEncodingException | MessagingException e) {

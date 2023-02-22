@@ -22,14 +22,8 @@ public class EmailUtil {
             throws MessagingException, UnsupportedEncodingException {
 
         final String fromEmail = "sonndhe160021@fpt.edu.vn";
-        // Mat khai email cua ban
         final String password = "violet12345";
-        // dia chi email nguoi nhan
-        //final String toEmail = "dinhson1032001@gmail.com";
-
-        //final String subject = "Java Example Test";
-        //final String body = "Hello anh nguyen dinh son";
-
+        
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
         props.put("mail.smtp.port", "587"); //TLS Port

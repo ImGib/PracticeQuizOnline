@@ -4,6 +4,7 @@
  */
 package dao;
 
+import java.util.ArrayList;
 import model.Account;
 import java.util.List;
 
@@ -18,11 +19,30 @@ public interface IAccountDao extends GenericDao<Account>{
     void addAccount(Account a);
     void changePass(String email, String pass);
     void editAccount(String userName, String firstName, String lastName, String gmail, String phone, String address, String img);
-    List<Account> SearchAccountByUserName_Name_Gmail_Phone(String txt);
+    void editAccount(Account account);
     
-    void ChangeRoleByUserName (String username, int id);
+    //Vinh--------------------------------------------------------------------------------------
+    List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
     
-    List<Account> FilterRole(int role);
+    void changeRoleByUserName (String username, int id);
     
+    int getNumberStaff();
+    
+    int getNumberStudent();
      
+    void deleteAccount(String user);
+    
+    List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp);
+    
+    List<Account> loadAccount_PaginationByRole(int role,int pageIndex, int nrpp);
+    
+    List<Account> findAccountByRole(int role);
+    
+    List<Account> findAccountByPhone(String phone);
+    
+    List<Account> findAllAccount();
+    
+    void addAccountByAdmin(Account a);
+    //--------------------------------------------------------------------------------------
+
 }

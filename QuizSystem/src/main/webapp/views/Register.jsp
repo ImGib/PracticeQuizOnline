@@ -23,7 +23,7 @@
             <div class="container-login100">
                 <div class="wrap-login100">
                     <div class="login100-pic js-tilt" data-tilt>
-                        <img src="assets/images/img-01.png" alt="IMG">
+                        <img src="assets-login/images/img-01.png" alt="IMG">
                     </div>
 
                     <form class="login100-form validate-form" action="signup" method="post">
@@ -36,7 +36,7 @@
                         </span>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="email" placeholder="Email" required>
+                            <input class="input100" type="email" name="email" placeholder="Email" required>
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -44,7 +44,7 @@
                         </div>
                         
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="user" placeholder="User Name" required>
+                            <input class="input100" type="text" name="user" placeholder="User Name" required pattern="[0-9a-zA-Z_.]+">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>

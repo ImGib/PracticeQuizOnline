@@ -5,10 +5,12 @@
 package service.impl;
 
 import dao.impl.AccountDao;
+import dao.impl.SubjectDAO;
 import model.Account;
 import service.IAccountService;
 import utils.CheckUtil;
 import java.util.List;
+import model.Subject;
 import model.UserGoogleDto;
 
 /**
@@ -28,10 +30,10 @@ public class AccountService implements IAccountService {
         return instance;
     }
 
-    public AccountService() {
+    private AccountService() {
         accountDao = new AccountDao();
     }
-
+    
     @Override
     public Account findAccountByEmailAndPass(String userName, String pass) {
         List<Account> list = accountDao.findAccountByEmailAndPass(userName, pass);
@@ -44,13 +46,9 @@ public class AccountService implements IAccountService {
 
     @Override
     public String addAccount(Account a, String rePass) {
-        CheckUtil check = new CheckUtil();
         List<Account> list = accountDao.findAccountByEmail(a.getGmail());
         if (!list.isEmpty()) {
             return ("Account is already exist!");
-        }
-        if (!check.checkEmail(a.getGmail())) {
-            return ("Wrong format of mail!");
         }
         list = accountDao.findAccountByUserName(a.getUserName());
         if (!list.isEmpty()) {
@@ -58,9 +56,6 @@ public class AccountService implements IAccountService {
         }
         if (!a.getPassword().equals(rePass)) {
             return ("Re-Password must be the same with password!");
-        }
-        if (check.isContainSpace(rePass) || check.isContainSpace(a.getUserName())) {
-            return ("User name or password can not contain space!");
         }
         accountDao.addAccount(a);
         return null;
@@ -119,6 +114,108 @@ public class AccountService implements IAccountService {
             System.out.println("kkkkk");
         }
         return a;
+    }
+
+    @Override
+    public List<Account> findAccountByEmail(String email) {
+        return accountDao.findAccountByEmail(email);
+    }
+
+    @Override
+    public List<Account> findAccountByUserName(String userName) {
+        return accountDao.findAccountByUserName(userName);
+    }
+
+    @Override
+    public void addAccount(Account a) {
+        accountDao.addAccount(a);
+    }
+
+    @Override
+    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
+        if(txt.contains("Search_Role_")){
+            txt=txt.replace("Search_Role_", "");
+            return accountDao.findAccountByRole(Integer.parseInt(txt));
+        }
+        return accountDao.searchAccountByUserName_Name_Gmail_Phone(txt);
+    }
+
+    @Override
+    public void deleteAccount(String user) {
+        accountDao.deleteAccount(user);
+    }
+
+        @Override
+    public List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp) {
+        if(txt.contains("Search_Role_")){
+            txt=txt.replace("Search_Role_", "");
+            return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp);
+        }
+        return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
+    }
+
+    @Override
+    public String checkValidateAddAccount(Account a) {
+        if(!findAccountByUserName(a.getUserName()).isEmpty()){
+            return "This User already exist!!!";
+            
+        }
+        if(!findAccountByEmail(a.getGmail()).isEmpty()){
+            return "This Email already exist!!!";
+            
+        }
+        if(!accountDao.findAccountByPhone(a.getPhone()).isEmpty()){
+            return "This Phone already exist!!!";
+        }
+        
+        return null;
+    }
+
+    @Override
+    public List<Account> loadAccount_PaginationByRole(int role,int pageIndex, int nrpp) {
+        if(role!=5){
+        return accountDao.loadAccount_PaginationByRole(role,pageIndex,nrpp);
+        }else{
+            return accountDao.loadAccount_Pagination("", pageIndex, nrpp);
+        }
+    }
+
+    @Override
+    public void changeRoleByUserName(String string, int i) {
+        accountDao.changeRoleByUserName(string, i);
+    }
+
+    @Override
+    public List<Account> findAccountByRole(int i) {
+        return accountDao.findAccountByRole(i);
+    }
+
+    @Override
+    public List<Account> findAllAccount() {
+        return accountDao.findAllAccount();
+    }
+
+    @Override
+    public void addAccountByAdmin(Account a) {
+        accountDao.addAccountByAdmin(a);
+    }
+    
+    public Account getAccountByID(String username) {
+        List<Account> list = accountDao.findAccountByUserName(username);
+        if(list == null || list.isEmpty()) {
+            return null;
+        } else {
+            return list.get(0);
+        }
+    }
+    
+    public int getNumberStaff() {
+        return accountDao.getNumberStaff();
+    }
+
+    @Override
+    public int getNumberStudent() {
+        return accountDao.getNumberStudent();
     }
 
 }
