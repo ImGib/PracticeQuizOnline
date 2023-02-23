@@ -10,8 +10,7 @@ import model.Post;
 import service.IPostService;
 
 
-public class PostService implements IPostService{
-
+public class PostService implements IPostService {
 
     private PostDao postDao;
 
@@ -28,8 +27,6 @@ public class PostService implements IPostService{
         return instance;
     }
 
-            
-    
     @Override
     public List<Post> getTopTwo() {
         List<Post> list = postDao.getTopTwo();
@@ -39,10 +36,52 @@ public class PostService implements IPostService{
             return list;
         }
     }
-    
 
     @Override
     public int getNumberPost() {
         return postDao.getNumberPost();
+    }
+
+    @Override
+    public List<Post> findPostByTitleAndAuthor(String txt) {
+        return postDao.findPostByTitleAndAuthor(txt);
+    }
+
+    @Override
+    public void addNewPost(Post p) {
+        postDao.addNewPost(p);
+    }
+
+    @Override
+    public int getLastIdPost() {
+        return postDao.getLastIdPost();
+    }
+
+    @Override
+    public String checkValidPost(String title) {
+        if(postDao.findPostByTitle(title).size()!=0){
+            return "This Title already exist!!!";
+        }
+        return null;
+    }
+
+    @Override
+    public List<Post> findPostById(int id) {
+        return postDao.findPostById(id);
+    }
+
+    @Override
+    public List<Post> findPostByTextAndPagination(String txt, int pageIndex, int nrpp) {
+        return postDao.findPostByTextAndPagination(txt, pageIndex, nrpp);
+    }
+
+    @Override
+    public void editPost(int id, String img, String title, String detail) {
+        postDao.editPost(id, img, title, detail);
+    }
+
+    @Override
+    public void deletePost(int id) {
+        postDao.deletePost(id);
     }
 }

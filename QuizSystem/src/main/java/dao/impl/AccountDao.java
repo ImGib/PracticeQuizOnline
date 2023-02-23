@@ -62,7 +62,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "	gmail LIKE ? or\n"
                 + "	phone LIKE ?) and isActive=1  ";
         txt = "%" + txt + "%";
-        return query(sql, AccountMapper.getInstance(), txt, txt, txt, txt, txt);
+        return query(sql,AccountMapper.getInstance(), txt, txt, txt, txt, txt);
     }
 
     @Override

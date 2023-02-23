@@ -4,26 +4,35 @@
  */
 package test;
 
+import dao.impl.AbstractDao;
 import dao.impl.AccountDao;
-import java.util.List;
+import dao.impl.PostDao;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+
+import java.util.*;
 import model.Account;
+import model.Post;
 import org.bouncycastle.pqc.math.linearalgebra.RandUtils;
 import service.impl.AccountService;
+import service.impl.PostService;
+import utils.DateUtil;
 import utils.RandomAccountUtil;
 import utils.RandomUtil;
+import utils.SessionUtil;
 
 /**
  *
  * @author asus
  */
 public class Test_ChucNang {
+
     public static void main(String[] args) {
-        AccountDao ad=new AccountDao();
-//        for(Account a: ad.searchAccountByUserName_Name_Gmail_Phone("")){
-//            System.out.println(a.getUserName());
-//        }
-        RandomAccountUtil r=new RandomAccountUtil();
-        System.out.println(r.getAccount());
-       
+        Post p= PostService.getInstance().findPostById(2).get(0);
+        String img=p.getImg();
+        String title=p.getTittle();
+        String detail=p.getDetails();
+        System.out.println(detail);
     }
 }

@@ -11,6 +11,17 @@ import model.Post;
  * @author Gib
  */
 public class PostMapper implements RowMapper<Post>{
+    private static PostMapper instance = null;
+
+    public static PostMapper getInstance() {
+        if (instance == null) {
+            instance = new PostMapper();
+        }
+        return instance;
+    }
+
+    public PostMapper() {
+    }
 
     @Override
     public Post MapRow(ResultSet rs) {

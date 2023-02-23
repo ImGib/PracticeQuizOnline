@@ -4,8 +4,14 @@
  */
 package model;
 
+import jakarta.servlet.http.HttpServletRequest;
+import service.impl.PostService;
+import utils.DateUtil;
+import utils.SessionUtil;
+import model.Account;
 
 public class Post {
+   
     private int id;
     private String tittle;
     private String publicDate;
@@ -13,6 +19,16 @@ public class Post {
     private String details;
     private String idAuthor;
     private int numberAccess;
+
+    public Post(String tittle, String img, String details, String idAuthor) {
+        this.tittle = tittle;
+        this.img = img;
+        this.details = details;
+        this.idAuthor = idAuthor;
+        publicDate=DateUtil.getDate();
+        numberAccess=0;
+        id=PostService.getInstance().getLastIdPost()+1;
+    }
 
     public Post(int id, String tittle, String publicDate, String img, String details, String idAuthor, int numberAccess) {
         this.id = id;
@@ -23,6 +39,9 @@ public class Post {
         this.idAuthor = idAuthor;
         this.numberAccess = numberAccess;
     }
+    
+
+    
 
     public Post() {
     }

@@ -357,7 +357,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
+                            <a href="/QuizSystem/Admin"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
                         </li>
 
                     </ul>

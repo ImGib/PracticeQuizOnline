@@ -9,7 +9,7 @@ package utils;
  * @author asus
  */
 public class PagginationUtil {
-    private int nrpp=2;
+    public static int nrpp=5;
     private int totalPage=0;
     
     public static PagginationUtil instance=null;
@@ -39,8 +39,8 @@ public class PagginationUtil {
     public int pageIndex(int pageIndex,int size){
         
         
-        totalPage = (size + nrpp - 1) / nrpp;
-        
+//        totalPage = (size + nrpp - 1) / nrpp;
+        totalPage = size % nrpp > 0 ? size/nrpp+1 : size/nrpp;
         pageIndex = pageIndex > totalPage ? totalPage : pageIndex;
         pageIndex = pageIndex < 1 ? 1 : pageIndex;
         return pageIndex;

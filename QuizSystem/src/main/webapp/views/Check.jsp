@@ -13,6 +13,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello ${requestScope.name}</h1>
+        <form action="hello" method="get">
+            <textarea id="id" name="txt" >
+                
+            </textarea>
+            <button>save</button>
+        </form>
+        <div>${txt2}</div>
     </body>
 </html>

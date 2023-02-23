@@ -19,6 +19,7 @@ import model.Account;
 import model.Post;
 import service.impl.AccountService;
 import service.impl.PostService;
+import utils.SessionUtil;
 
 /**
  *
@@ -26,21 +27,22 @@ import service.impl.PostService;
  */
 @WebServlet(urlPatterns = {"/hello"})
 public class HiContoller extends HttpServlet{
-
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+           
+    } 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<String> data = new ArrayList<>();
-        data.add("Viet nam");        
-        data.add("Viet nam2");
-        data.add("Viet nam3");
-        data.add("Viet nam4");
-        data.add("Viet nam5");
-        data.add("Viet nam6");
-
-        String json = new Gson().toJson(data);       
-
-        req.setAttribute("values", json);
-        req.getRequestDispatcher("views/student/home.jsp").forward(req, resp);
-
+           String txt=req.getParameter("txt");
+           req.setAttribute("txt2", txt);
+           req.getRequestDispatcher("views/Check.jsp").forward(req, resp);
+            
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+    }
+    
 }
