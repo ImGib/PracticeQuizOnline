@@ -16,8 +16,13 @@ public interface IPostService {
 
     public int getNumberPost();
 
-    List<Post> getPostPagination(int pageIndex, int nrpp);
-    
-    int countPost();
+    List<Post> getPostPagination(String txt, int pageIndex, int nrpp);
 
+    int countPost();
+    
+    int countSearchPost(String txt);
+
+    Post getPostDetails(String id);
+    
+    public void upNumberAccess(int id);
 }

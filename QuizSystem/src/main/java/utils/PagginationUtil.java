@@ -11,7 +11,7 @@ package utils;
 public class PagginationUtil {
 
     private int nrpp = 2;
-    private int totalPage = 0;
+    private int totalPage = 2;
     private int size;
     private int begin;
     private int end;
@@ -61,16 +61,19 @@ public class PagginationUtil {
 
         pageIndex = pageIndex > totalPage ? totalPage : pageIndex;
         pageIndex = pageIndex < 1 ? 1 : pageIndex;
-        if (pageIndex == 1) {
+        return pageIndex;
+    }
+    
+    public void setPageBegin_Ending(int pageIndex, int plus){
+        if (pageIndex <= plus) {
             begin = 1; 
         } else {
-            begin = pageIndex - 1;
+            begin = pageIndex - plus;
         }
-        if (pageIndex == totalPage) {
+        if (pageIndex >= totalPage-plus) {
             end = totalPage ;
         } else {
-            end = pageIndex + 1;
+            end = pageIndex + plus;
         }
-        return pageIndex;
     }
 }

@@ -5,6 +5,8 @@
 package utils;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import java.util.Enumeration;
 
 /**
  *
@@ -31,5 +33,13 @@ public class SessionUtil {
     
     public void removeValue(HttpServletRequest request, String key){
         request.getSession().removeAttribute(key);
+    }
+    
+    public void removeAll(HttpServletRequest request){
+        HttpSession ses = request.getSession();
+        Enumeration<String> enu = ses.getAttributeNames();
+            while(enu.hasMoreElements()){
+                ses.removeAttribute(enu.nextElement());
+            }
     }
 }

@@ -52,12 +52,27 @@ public class PostService implements IPostService{
     }
 
     @Override
-    public List<Post> getPostPagination(int pageIndex, int nrpp) {
-        return postDao.getPostPagination(pageIndex, nrpp);
+    public List<Post> getPostPagination(String txt, int pageIndex, int nrpp) {
+        return postDao.getPostPagination(txt, pageIndex, nrpp);
     }
 
     @Override
     public int countPost() {
         return postDao.countAllPost();
+    }
+
+    @Override
+    public int countSearchPost(String txt) {
+        return postDao.countPaginationPost(txt);
+    }
+    
+    @Override
+    public Post getPostDetails(String i) {
+        return postDao.getPostDetails(i);
+    }
+
+    @Override
+    public void upNumberAccess(int id) {
+        postDao.upNumberAccess(id);
     }
 }

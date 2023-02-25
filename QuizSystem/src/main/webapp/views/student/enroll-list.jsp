@@ -361,7 +361,7 @@
                                                 <h6 class="mb-0">${author.firstName} ${author.lastName}</h6> <span>${sub.diffirentDate()}</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <a href="#"><span>Enroll</span></a> </div>
+                                        <div class="badge"><span>Enrolled</span></a> </div>
                                     </div>
                                     <div class="mt-5">
                                         <a class="course" href="#">

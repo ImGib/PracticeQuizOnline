@@ -21,29 +21,21 @@ import service.impl.AccountService;
 import service.impl.CategoryService;
 import service.impl.PostService;
 import service.impl.SubjectService;
+import utils.SessionUtil;
 
 @WebServlet(urlPatterns = {"/home"})
 public class HomepageController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Subject> subjectList = SubjectService.getInstance().getTopThree();
-        List<Post> postList = PostService.getInstance().getTopTwo();
-        List<Category> cateList = CategoryService.getInstance().getAllCate();
-        List<Post> pplPost = PostService.getInstance().getTopPopular();
+        SessionUtil.getInstance().putValue(request, "crPage", "QuixLab");
+        SessionUtil.getInstance().putValue(request, "pplPost", PostService.getInstance().getTopPopular());
 
         request.setAttribute("accService", AccountService.getInstance());
-        request.setAttribute("sbjList", subjectList);
-        request.setAttribute("pstList", postList);
-        request.setAttribute("cateList", cateList);
-        request.setAttribute("pplPost", pplPost);
+        request.setAttribute("sbjList", SubjectService.getInstance().getTopThree());
+        request.setAttribute("pstList", PostService.getInstance().getTopTwo());
+        request.setAttribute("cateList", CategoryService.getInstance().getAllCate());
         request.getRequestDispatcher("views/student/home.jsp").forward(request, response);
 
     }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
-
 }

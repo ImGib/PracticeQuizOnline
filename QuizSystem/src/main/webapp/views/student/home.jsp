@@ -613,7 +613,7 @@
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex flex-row align-items-center">
-                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
+<!--                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>-->
                                             <div class="ms-2 c-details">
                                                 <h6 class="mb-0">${author.firstName} ${author.lastName}</h6> 
                                                 <span>${sub.diffirentDate()}</span>
@@ -655,12 +655,12 @@
                                             <img class="d-block img-fluid"
                                                  src="${pst.img}" alt="First slide">
                                         </div>
-                                        <h3><a href="Blog_Detail_App.html">${pst.tittle}</a></h3>
+                                        <h3><a href="blog-details?postId=${pst.id}">${pst.tittle}</a></h3>
                                         <p style="width: 670px; height: 78">${pst.details}</p>
                                     </div>
                                     <div class="footer">
                                         <div class="actions">
-                                            <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue
+                                            <a href="blog-details?postId=${pst.id}" class="btn btn-outline-secondary">Continue
                                                 Reading</a>
                                         </div>
                                     </div>
@@ -672,7 +672,6 @@
                                     <a href="blog" class="btn btn-outline-secondary">See More</a>
                                 </div>
                             </c:if>
-                            
                         </div>
                         </div>
                         <div class="col-lg-4 col-md-12 right-box">
@@ -688,27 +687,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="blog-header">
-                                    <h2>Popular Posts</h2>
-                                </div>
-                                <div class="body widget popular-post">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <c:forEach var="plpost" items="${requestScope.pplPost}">
-                                                <div class="single_post">
-                                                    <p class="m-b-0">${plpost.tittle}</p>
-                                                    <span>${plpost.publicDate}</span>
-                                                    <div class="img-post">
-                                                        <img src="${plpost.img}"
-                                                             alt="Awesome Image">
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <%@include file="popular-post.jsp" %>
                         </div>
 
                     </div>

@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Blog List App - Bootdey.com</title>
+    <title>Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -530,11 +530,11 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="Home_App.html">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                <a href="home">
+                    <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
+                        <img src="asset/images/logo-text.png" alt="">
                     </span>
                 </a>
             </div>
@@ -559,20 +559,26 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="images/user/1.png" height="40" width="40" alt="">
+                                <img src="asset/images/user/1.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li>
-                                            <a href="Profile_Update_App.html"><i class="icon-user"></i>
-                                                <span>Profile</span></a>
-                                        </li>
+                                        <c:if test="${sessionScope.account != null}">
+                                            <li>
+                                                <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                                    <span>Profile</span></a>
+                                            </li>
 
-                                        <hr class="my-2">
+                                            <hr class="my-2">
 
-                                        <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
-                                        </li>
+                                            <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${sessionScope.account == null}">
+                                            <li><a href="login"><i class="icon-key"></i> <span>Login</span></a>
+                                            </li>
+                                        </c:if>
                                     </ul>
                                 </div>
                             </div>
@@ -609,23 +615,23 @@
                                     <img class="d-block img-fluid" src="${post.img}"
                                         alt="First slide">
                                 </div>
-                                <h3><a href="Blog_Detail_App.html">${post.tittle}</a></h3>
+                                <h3><a href="blog-details?postId=${post.id}">${post.tittle}</a></h3>
                                 <p style="width: 670px; height: 78">${post.details}</p>
                             </div>
                             <div class="footer">
                                 <div class="actions">
-                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
+                                    <a href="blog-details?postId=${post.id}" class="btn btn-outline-secondary">Continue Reading</a>
                                 </div>
                             </div>
                         </div>
                         </c:forEach>
                         
                         <ul class="pagination pagination-primary">
-                            <li class="page-item"><a class="page-link" href="blog?pageIndex=${requestScope.pageIndex-1}">Previous</a></li>
-                            <c:forEach var="i" items="${requestScope.totalPage}" begin="${requestScope.begin}" end="${requestScope.end}" >
-                            <li class="page-item ${i==requestScope.pageIndex?"active":""}"><a class="page-link" href="blog?pageIndex=${i}">${i}</a></li>
+                            <li class="page-item"><a class="page-link" href="blog?search=${requestScope.search}&pageIndex=${requestScope.begin < requestScope.pageIndex ? requestScope.pageIndex-1 : requestScope.begin}">Previous</a></li>
+                            <c:forEach var="i" begin="${requestScope.begin}" end="${requestScope.end}" >
+                            <li class="page-item ${i==requestScope.pageIndex?"active":""}"><a class="page-link" href="blog?search=${requestScope.search}&pageIndex=${i}">${i}</a></li>
                             </c:forEach>
-                            <li class="page-item"><a class="page-link" href="blog?pageIndex=${requestScope.pageIndex+1}">Next</a></li>
+                            <li class="page-item"><a class="page-link" href="blog?search=${requestScope.search}&pageIndex=${requestScope.end > requestScope.pageIndex ? requestScope.pageIndex+1 : requestScope.end}">Next</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-4 col-md-12 right-box">
@@ -635,38 +641,14 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-search"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <form action="blog" method="get">
+                                        <input name="search" type="text" class="form-control" placeholder="Search...">
+                                    </form>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="card">
-                            <div class="blog-header">
-                                <h2>Popular Posts</h2>
-                            </div>
-                            <div class="body widget popular-post">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="single_post">
-                                            <p class="m-b-0">Apple Introduces Search Ads Basic</p>
-                                            <span>jun 22, 2018</span>
-                                            <div class="img-post">
-                                                <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
-                                                    alt="Awesome Image">
-                                            </div>
-                                        </div>
-                                        <div class="single_post">
-                                            <p class="m-b-0">new rules, more cars, more races</p>
-                                            <span>jun 8, 2018</span>
-                                            <div class="img-post">
-                                                <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
-                                                    alt="Awesome Image">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <%@include file="popular-post.jsp" %>
                     </div>
                 </div>
             </div>
