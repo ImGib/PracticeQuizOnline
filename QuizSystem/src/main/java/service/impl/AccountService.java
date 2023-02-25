@@ -30,7 +30,7 @@ public class AccountService implements IAccountService {
         return instance;
     }
 
-    private AccountService() {
+    public AccountService() {
         accountDao = new AccountDao();
     }
     
@@ -60,6 +60,23 @@ public class AccountService implements IAccountService {
         accountDao.addAccount(a);
         return null;
     }
+    
+      @Override
+    public String deleteAccountUser(Account a,String gmail, String password){
+        List<Account> list = accountDao.findAccountByEmail(a.getGmail());
+         if (!a.getPassword().equals(password)) {
+            return ("Password or Gmail incorrect!");
+        }
+         if(!a.getGmail().equals(gmail)){
+             return ("Password or Gmail incorrect");
+         }
+        
+        accountDao.deleteAccountUser(gmail,password);
+        return null;
+    }
+
+   
+    
 
     @Override
     public String forgetPass(String email) {
@@ -90,6 +107,22 @@ public class AccountService implements IAccountService {
             return "Password and Re-password must be the same!";
         }
         accountDao.changePass(email, pass);
+        return null;
+    }
+    public static void main(String[] args) {
+        AccountService b = new AccountService();
+        System.out.println(b.changePassWordUser("anh2002@gmail.com", "12012002", "12012002"));
+    }
+     @Override
+    public String editProfile1( String firstName, String lastName, String gmail, String phone, String address, String img,String userName) {
+        CheckUtil check = new CheckUtil();
+        if (check.checkEmail(gmail) == false) {
+            return ("Wrong format of mail!");
+        }
+        if (check.checkPhone(phone) == false) {
+            return ("please enter format  number phone!");
+        }
+        accountDao.editAccount1(firstName, lastName, gmail, phone, address, img, userName);
         return null;
     }
     @Override
@@ -144,7 +177,8 @@ public class AccountService implements IAccountService {
     public void deleteAccount(String user) {
         accountDao.deleteAccount(user);
     }
-
+    
+  
         @Override
     public List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp) {
         if(txt.contains("Search_Role_")){

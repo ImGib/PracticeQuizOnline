@@ -21,7 +21,7 @@
                         <img src="assets-login/images/img-01.png" alt="IMG">
                     </div>
 
-                    <form class="login100-form validate-form" action="ChangePassUser" method="post">
+                    <form class="login100-form validate-form" action="change-pass" method="post">
                         <span class="login100-form-title">
                             Change Password
                         </span>

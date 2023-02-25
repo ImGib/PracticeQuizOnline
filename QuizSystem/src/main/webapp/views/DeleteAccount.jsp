@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,11 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>bs5 edit profile account details - Bootdey.com</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
     <!-- Pignose Calender -->
@@ -227,7 +220,6 @@
             margin-top: 10px;
             font-size: 13px;
         }
-
         .img-account-profile {
             height: 10rem;
         }
@@ -291,6 +283,12 @@
             margin-left: 1rem;
             margin-right: 1rem;
         }
+
+        .btn-danger-soft {
+            color: #000;
+            background-color: #f1e0e3;
+            border-color: #f1e0e3;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -320,22 +318,12 @@
     <!--**********************************
         Main wrapper start
     ***********************************-->
-    <div id="main-wrapper">
+    
 
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
-            <div class="brand-logo">
-                <a href="index.html">
-                    <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="asset/images/logo-text.png" alt="">
-                    </span>
-                </a>
-            </div>
-        </div>
+       
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -343,35 +331,7 @@
         <!--**********************************
             Header start
         ***********************************-->
-        <div class="header">
-            <div class="header-content clearfix">
-                <div class="header-right">
-                    <ul class="clearfix">
-                        <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                <span class="activity active"></span>
-                                <img src="asset/images/user/1.png" height="40" width="40" alt="">
-                            </div>
-                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="Profile_Update_App.html"><i class="icon-user"></i>
-                                                <span>Profile</span></a>
-                                        </li>
-
-                                        <hr class="my-2">
-
-                                        <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -379,31 +339,6 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="nk-sidebar">
-            <div class="nk-nav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li class="nav-label">Dashboard</li>
-                    <li>
-                        <a href="#" >
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Course_List_App.html"><i class="icon-user"></i> <span
-                                class="nav-text">Subjects</span></a>
-                    </li>
-                    <li>
-                        <a href="Blog_List_App.html"><i class="icon-user"></i> <span
-                                class="nav-text">Blog</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="icon-user"></i> <span
-                                class="nav-text">Erroll List</span></a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -411,91 +346,61 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="container-xl px-4 mt-4">
-            <nav class="nav nav-borders">
-                <a class="nav-link  ms-0 active" href="edit-profile"
-                    >Profile</a>
-                <a class="nav-link" href="ChangePassUser"
-                   >Security</a>
-            </nav>
-            <hr class="mt-0 mb-4">
-            <div class="row">
-                <div class="col-xl-4">
-
-                    <div class="card mb-4 mb-xl-0">
-                        <div class="card-header">Profile Picture</div>
-                        <div class="card-body text-center">
-
-                            <img class="img-account-profile rounded-circle mb-2"
-                                src="${sessionScope.account.img}" alt="">
-
-                           
+        
+           
+                <div class="row justify-content-center h-100">
+                    <div class="col-xl-6">
+                        <div class="form-input-content">
+                            <div class="card login-form mb-0">
+                                <div class="card-body pt-5">
+                                    <div class="container-xl px-4 mt-4">
+                                        <hr class="mt-0 mb-4">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                    <div class="card-header">ComFim Your Account</div>
+                                                    <div class="card-body">
+                                                        <form action="delete-user" method="post">
+                                <span class="login100-form-title" style="color: red">
+                            ${requestScope.mess}
+                        </span>
+                                                            <div class="mb-3">
+                                                                <label class="small mb-1" for="Email">Email</label>
+                                                                <input class="form-control" id="Email" name="gmail" value="" type="Email"
+                                                                    placeholder="Enter Your Email">
+                                                            </div>
+                                
+                                                            <div class="mb-3">
+                                                                <label class="small mb-1" for="Password">Password</label>
+                                                                <input class="form-control" id="Password" name="password" value="" type="password"
+                                                                    placeholder="Enter password">
+                                                            </div>
+                                                              <div style=" text-align: center;"><button class="btn btn-danger-soft text-danger" type="submit">I understand, delete my
+                                        account</button></div>
+                                                        </form>
+                                                    </div>
+                                                
+                                
+                                            </div>
+                                            <div class="col-lg-4">
+                                
+                                                
+                                                    <div class="card-header">Delete Account</div>
+                                                    <div class="card-body">
+                                                        <p style="color: rgb(204, 71, 71);">Deleting your account is a permanent action and cannot be undone. If you are sure you want to
+                                                            delete your account, select the button below.</p>
+                                                       
+                                                    </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-8">
-                    <!-- Account details card-->
-                    <div class="card mb-4">
-                        <div class="card-header">Account Details</div>
-                        <div class="card-body">
-                            <form action="edit-profile" method="post">
-                                <!-- Form Group (username)-->
-                                <div class="row gx-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputUsername">Username </label>
-                                        <input class="form-control" id="inputUsername" type="text"
-                                            placeholder="Enter your username"name="userName" value="${sessionScope.account.getUserName()}" readonly">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputPhone">Phone number</label>
-                                        <input class="form-control" id="inputPhone" type="tel"
-                                            placeholder="Enter your phone number" name="phone" value="${sessionScope.account.getPhone()}">
-                                    </div>
-                                </div>
-                                <!-- Form Row-->
-                                <div class="row gx-3 mb-3">
-                                    <!-- Form Group (first name)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputFirstName">First name</label>
-                                        <input class="form-control" id="inputFirstName" type="text"
-                                            placeholder="Enter your first name" name="firstName" value="${sessionScope.account.getFirstName()}">
-                                    </div>
-                                    <!-- Form Group (last name)-->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputLastName">Last name</label>
-                                        <input class="form-control" id="inputLastName" type="text"
-                                            placeholder="Enter your last name" name="lastName" value="${sessionScope.account.getLastName()}">
-                                    </div>
-                                </div>
-                                <!-- Form Row        -->
-
-                                <!-- Form Group (location)-->
-                                <div class="md-3">
-                                    <label class="small mb-1" for="inputLocation">Location</label>
-                                    <input class="form-control" id="inputLocation" type="text"
-                                        placeholder="Enter your location" name="address" value="${sessionScope.account.getAddress()}">
-                                </div>
-                                 <div class="md-3">
-                                    <label class="small mb-1" for="inputimg">Img</label>
-                                    <input class="form-control" id="inputLocation" type="text"
-                                        placeholder="Enter your location" name="img" value="${sessionScope.account.getImg()}">
-                                </div>
-                                <!-- Form Group (email address)-->
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                    <input class="form-control" id="inputEmailAddress" type="email"
-                                        placeholder="Enter your email address"name="gmail" value="${sessionScope.account.getGmail()}">
-                                </div>
-                                <!-- Form Row-->
-
-                                <!-- Save changes button-->
-                                <button class="btn btn-primary" type="submit">Save changes</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+         
+       
         <!--**********************************
             Content body end
         ***********************************-->
@@ -504,6 +409,7 @@
         <!--**********************************
             Footer start
         ***********************************-->
+        
         <!--**********************************
             Footer end
         ***********************************-->
@@ -568,7 +474,7 @@
 
 
 
-    <script src="asset/js/dashboard/dashboard-1.js"></script>
+    <script src="asset/dashboard/dashboard-1.js"></script>
 
 </body>
 

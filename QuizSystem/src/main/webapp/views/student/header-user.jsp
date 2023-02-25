@@ -46,7 +46,7 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                            <a href="edit-profile"><i class="icon-user"></i>
                                                 <span>Profile</span></a>
                                         </li>
 

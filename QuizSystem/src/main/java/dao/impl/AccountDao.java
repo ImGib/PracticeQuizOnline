@@ -52,6 +52,11 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         String sql = "update Account set userName = ?,firstName = ?,lastName = ?,gmail = ?,phone = ?,address = ?,img = ? where gmail = ?";
         update(sql, userName, firstName, lastName, gmail, phone, address, img, gmail);
     }
+    @Override
+    public void editAccount1( String firstName, String lastName, String gmail, String phone, String address, String img,String userName) {
+        String sql = "update Account set firstName = ?,lastName = ?,gmail = ?,phone = ?,address = ?,img = ? where userName = ?";
+        update(sql,firstName,lastName,gmail,phone,address,img,userName);
+    }
 
     @Override
     public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
@@ -115,6 +120,17 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "where userName=?";
         update(sql, user);
     }
+    
+    
+    @Override
+    public void deleteAccountUser(String gmail, String password) {
+        String sql = "Delete Account \n"
+                + "where gmail=? and password=?";
+        update(sql, gmail,password);
+    }
+    
+    
+    
 
     @Override
     public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp) {

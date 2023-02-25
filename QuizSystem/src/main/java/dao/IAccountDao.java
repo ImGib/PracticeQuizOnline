@@ -20,7 +20,7 @@ public interface IAccountDao extends GenericDao<Account>{
     void changePass(String email, String pass);
     void editAccount(String userName, String firstName, String lastName, String gmail, String phone, String address, String img);
     void editAccount(Account account);
-    
+    void editAccount1( String firstName, String lastName, String gmail, String phone, String address, String img,String userName);
     //Vinh--------------------------------------------------------------------------------------
     List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
     
@@ -31,6 +31,8 @@ public interface IAccountDao extends GenericDao<Account>{
     int getNumberStudent();
      
     void deleteAccount(String user);
+    
+    void deleteAccountUser(String gmail,String password);
     
     List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp);
     

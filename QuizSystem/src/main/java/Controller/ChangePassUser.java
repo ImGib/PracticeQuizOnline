@@ -13,7 +13,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Account;
 import service.impl.AccountService;
+import utils.CheckUtil;
 
 /**
  *
@@ -29,10 +31,11 @@ public class ChangePassUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        String pass = req.getParameter("pass");
-        String rePass = req.getParameter("repass");
-       
-        String mess = AccountService.getInstance().changePassWordUser(email, pass, rePass);
+        String pass = CheckUtil.MD5Encryption(req.getParameter("pass"));
+        String rePass = CheckUtil.MD5Encryption(req.getParameter("repass"));
+       HttpSession ses = req.getSession();
+        Account a = (Account) ses.getAttribute("account");
+        String mess = AccountService.getInstance().changePassWordUser(a.getGmail(), pass, rePass);
         directController(mess,email, req, resp);
     }
     
@@ -43,7 +46,7 @@ public class ChangePassUser extends HttpServlet {
         }
         else{
             req.setAttribute("email", email);
-            req.setAttribute("mess", mess);
+            req.setAttribute("mess", "Password and Re-password must be the same!");
             doGet(req, resp);
         }
     }

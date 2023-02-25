@@ -57,5 +57,7 @@ public interface IAccountService {
     public int getNumberStaff();
     
     public int getNumberStudent();
+    
+    public String  deleteAccountUser(Account a,String gmail,String password);
 
 }
