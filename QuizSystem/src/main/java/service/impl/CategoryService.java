@@ -28,12 +28,6 @@ public class CategoryService implements ICategoryService{
     }
     @Override
     public List<Category> getAllCate() {
-        List<Category> list = categoryDao.getAllCate();
-        if (list == null || list.isEmpty()) {
-            return null;
-        } else {
-            return list;
-        }
+        return categoryDao.getAllCate();
     }
-    
 }

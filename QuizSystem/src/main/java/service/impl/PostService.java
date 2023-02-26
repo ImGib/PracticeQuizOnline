@@ -45,4 +45,34 @@ public class PostService implements IPostService{
     public int getNumberPost() {
         return postDao.getNumberPost();
     }
+
+    @Override
+    public List<Post> getTopPopular() {
+        return postDao.getTopPopular();
+    }
+
+    @Override
+    public List<Post> getPostPagination(String txt, int pageIndex, int nrpp) {
+        return postDao.getPostPagination(txt, pageIndex, nrpp);
+    }
+
+    @Override
+    public int countPost() {
+        return postDao.countAllPost();
+    }
+
+    @Override
+    public int countSearchPost(String txt) {
+        return postDao.countPaginationPost(txt);
+    }
+    
+    @Override
+    public Post getPostDetails(String i) {
+        return postDao.getPostDetails(i);
+    }
+
+    @Override
+    public void upNumberAccess(int id) {
+        postDao.upNumberAccess(id);
+    }
 }

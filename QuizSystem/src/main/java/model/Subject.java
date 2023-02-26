@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import service.impl.EnrollService;
 import utils.CheckUtil;
 
 public class Subject {
@@ -99,6 +100,10 @@ public class Subject {
             else days = String.valueOf(diff) + " years ago";
         }
         return days;
+    }
+    
+    public int getNumberEnroll(){
+        return EnrollService.getInstance().getNumberEnrollByIdSub(id);
     }
     
 }
