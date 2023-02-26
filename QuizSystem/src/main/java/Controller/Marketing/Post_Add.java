@@ -18,7 +18,7 @@ import service.impl.PostService;
 import utils.SessionUtil;
 
 @WebServlet(name = "AddNewPost", urlPatterns = {"/marketing-addpost"})
-public class AddNewPost extends HttpServlet {
+public class Post_Add extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -49,7 +49,7 @@ public class AddNewPost extends HttpServlet {
         String idAuthor = a.getUserName();
         String txt = PostService.getInstance().checkValidPost(title);
         if (txt == null) {
-            PostService.getInstance().addNewPost(new Post(title, img, detail, "linhchi"));
+            PostService.getInstance().addNewPost(new Post(title, img, detail, idAuthor));
             request.setAttribute("successText", "Add Successfully!!!");
         } else {
             request.setAttribute("wrongText",txt);

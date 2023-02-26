@@ -621,13 +621,13 @@
                                     <div class="card login-form mb-0">
                                         <div class="card-body pt-5">
                                             <h2 class="text-danger">${wrongText}</h2>
-                                            <h2 class="text-success">${successText}</h2>
+                                                <h2 class="text-success">${successText}</h2>
                                             <a class="text-center" >
                                                 <h1>Edit Post</h1>
                                             </a>
-
-                                            <form class="mt-5 mb-5 login-input" action="marketing-addpost" method="post">
-
+                                            
+                                            <form class="mt-5 mb-5 login-input" action="marketing-editpost" method="post">
+                                               <input type="text" value="${id}" name="id" hidden="">
                                                 <div class="form-group">
                                                     <div class="row gx-3 mb-3">
                                                         <!-- Form Group (first name)-->
@@ -667,11 +667,8 @@
                                                             <span>Detail: </span>
                                                         </div>
                                                         <div class="col-md-8" style="border: #999898 solid 1px; padding: 0 0;">
-                                                            <textarea name="detail" class="form-control" style="height: 350px;" value="${detail}">
-                                                                
-                                                            </textarea>
-<!--                                                            <input name="detail" type="text" class="form-control" placeholder=""
-                                                                   style="height: 350px;" value="${detail}">-->
+                                                            <textarea name="detail" class="form-control" style="height: 350px;" value="">${detail}</textarea>
+<!--                                                           
                                                             
                                                         </div>
                                                         <!-- Form Group (last name)-->
@@ -679,8 +676,7 @@
                                                 </div>
 
                                                 <button class="btn submit w-100 "
-                                                        style="border: #242424 solid 1px; background-color: #3a7893; width: 00px;">Add
-                                                    New Post</button>
+                                                        style="border: #242424 solid 1px; background-color: #3a7893; width: 00px;">Edit Post</button>
                                             </form>
                                         </div>
                                     </div>

@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 import model.Post;
 import service.impl.PostService;
 
@@ -20,7 +21,7 @@ import service.impl.PostService;
  * @author asus
  */
 @WebServlet(name="ViewPost", urlPatterns={"/marketing-viewpost"})
-public class ViewPost extends HttpServlet {
+public class Post_View extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -32,8 +33,13 @@ public class ViewPost extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         int id=Integer.parseInt(request.getParameter("id"));
+        PostService.getInstance().upNumberAccess(id);
         Post p=PostService.getInstance().findPostById(id).get(0);
+        List<Post> list=PostService.getInstance().getTopTwo();
+        
         request.setAttribute("p", p);
+        request.setAttribute("p2", list.get(0));
+        request.setAttribute("p3", list.get(1));
         request.getRequestDispatcher("views/marketing/Marketing-Post-View.jsp").forward(request, response);
     } 
 

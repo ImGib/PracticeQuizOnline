@@ -649,19 +649,19 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="single_post">
-                                                <p class="m-b-0">Apple Introduces Search Ads Basic</p>
-                                                <span>jun 22, 2018</span>
+                                                <p class="m-b-0">${p2.getTittle()}</p>
+                                                <span>${p2.getPublicDate()}</span>
                                                 <div class="img-post">
-                                                    <img src="https://www.bootdey.com/image/280x280/87CEFA/000000"
-                                                        alt="Awesome Image">
+                                                    <a href="marketing-viewpost?id=${p2.getId()}"><img src="${p2.getImg()}"
+                                                                    alt="Awesome Image"></a>
                                                 </div>
                                             </div>
                                             <div class="single_post">
-                                                <p class="m-b-0">new rules, more cars, more races</p>
-                                                <span>jun 8, 2018</span>
+                                                <p class="m-b-0">${p3.getTittle()}</p>
+                                                <span>${p3.getPublicDate()}</span>
                                                 <div class="img-post">
-                                                    <img src="https://www.bootdey.com/image/280x280/87CEFA/000000"
-                                                        alt="Awesome Image">
+                                                   <a href="marketing-viewpost?id=${p3.getId()}"><img src="${p3.getImg()}"
+                                                                    alt="Awesome Image"></a>
                                                 </div>
                                             </div>
                                         </div>

@@ -39,8 +39,7 @@ public class PagginationUtil {
     public int pageIndex(int pageIndex,int size){
         
         
-//        totalPage = (size + nrpp - 1) / nrpp;
-        totalPage = size % nrpp > 0 ? size/nrpp+1 : size/nrpp;
+        totalPage = (size + nrpp - 1) / nrpp;
         pageIndex = pageIndex > totalPage ? totalPage : pageIndex;
         pageIndex = pageIndex < 1 ? 1 : pageIndex;
         return pageIndex;

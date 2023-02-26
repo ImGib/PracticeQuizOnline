@@ -5,8 +5,10 @@
 package service.impl;
 
 import dao.impl.PostDao;
+import dao.impl.SlideDao;
 import java.util.List;
 import model.Post;
+import model.Slide;
 import service.IPostService;
 
 
@@ -84,4 +86,20 @@ public class PostService implements IPostService {
     public void deletePost(int id) {
         postDao.deletePost(id);
     }
+
+    @Override
+    public String checkValidPostForEdit(int id,String title) {
+        Post p = postDao.findPostById(id).get(0);
+        if(p.getTittle()==title && postDao.findPostByTitle(title).size()!=0){
+            return "This Title already exist!!!";
+        }
+        return null;
+    }
+
+    @Override
+    public void upNumberAccess(int i) {
+        postDao.upNumberAccess(i);
+    }
+
+    
 }

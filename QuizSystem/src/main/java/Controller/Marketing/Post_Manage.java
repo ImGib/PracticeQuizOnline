@@ -23,7 +23,7 @@ import utils.PagginationUtil;
  * @author asus
  */
 @WebServlet(name="Maketing", urlPatterns={"/marketing-post"})
-public class ManagePost extends HttpServlet {
+public class Post_Manage extends HttpServlet {
    
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

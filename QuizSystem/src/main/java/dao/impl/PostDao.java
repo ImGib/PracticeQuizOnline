@@ -38,8 +38,8 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
     @Override
     public void addNewPost(Post p) {
         String sql = "insert into Post \n"
-                + "values(?,?,?,?,?,?,0)";
-        update(sql, p.getId(), p.getTittle(), p.getPublicDate(), p.getImg(), p.getDetails(), p.getIdAuthor());
+                + "values(?,?,?,?,?,0)";
+        update(sql, p.getTittle(), p.getPublicDate(), p.getImg(), p.getDetails(), p.getIdAuthor());
     }
 
     @Override
@@ -90,6 +90,15 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
         String sql = "delete from Post\n"
                 + "where id=?";
         update(sql, id);
+    }
+
+    @Override
+    public void upNumberAccess(int id) {
+        String sql = "update Post\n"
+                + "set numberAccess=(select numberAccess from Post\n"
+                + "where id=?)+1\n"
+                + "where id=?";
+        update(sql, id,id);
     }
 
 }

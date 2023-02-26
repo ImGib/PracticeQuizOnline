@@ -12,43 +12,30 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.impl.PostService;
+import service.impl.SlideService;
 
 /**
  *
  * @author asus
  */
-@WebServlet(name="DeletePost", urlPatterns={"/marketing-deletepost"})
-public class DeletePost extends HttpServlet {
-    protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
-    throws ServletException, IOException {
-        resp.setContentType("text/html;charset=UTF-8");
-        
-    } 
-
-    
+@WebServlet(name="Slide_Delete", urlPatterns={"/marketing-deleteslide"})
+public class Slide_Delete extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
-        int id=Integer.parseInt(req.getParameter("id"));
+        int id = Integer.parseInt(req.getParameter("id"));
         req.setAttribute("id", id);
-        req.getRequestDispatcher("views/marketing/Marketing-Post-Delete.jsp").forward(req, resp);
+        req.getRequestDispatcher("views/marketing/Marketing-Slide-Delete.jsp").forward(req, resp);
     } 
 
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
-        int id=Integer.parseInt(req.getParameter("id"));
-        PostService.getInstance().deletePost(id);
-        resp.sendRedirect("/QuizSystem/marketing-post");
+        int id = Integer.parseInt(req.getParameter("id"));
+        SlideService.getInstance().deleteSlide(id);
+        resp.sendRedirect("marketing-slide");
     }
-
-    
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

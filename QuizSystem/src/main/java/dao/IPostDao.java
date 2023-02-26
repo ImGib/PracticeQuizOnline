@@ -24,4 +24,6 @@ public interface IPostDao extends GenericDao<Post>{
     void editPost(int id,String img, String title,String detail);
     
     void deletePost(int id);
+    
+    void upNumberAccess(int id);
 }

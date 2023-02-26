@@ -17,8 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Account;
 import model.Post;
+import model.Slide;
 import service.impl.AccountService;
 import service.impl.PostService;
+import service.impl.SlideService;
 import utils.SessionUtil;
 
 /**
@@ -34,14 +36,24 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
     } 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-           String txt=req.getParameter("txt");
-           req.setAttribute("txt2", txt);
+        int id = Integer.parseInt(req.getParameter("id"));
+        Slide s = SlideService.getInstance().findSlideById(id).get(0);
+        String img = s.getImg();
+        String hlink = s.getHyperlink();
+
+        req.setAttribute("id", id);
+        req.setAttribute("img", img);
+        req.setAttribute("hlink", hlink);
            req.getRequestDispatcher("views/Check.jsp").forward(req, resp);
             
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String img = req.getParameter("img");
+        String hlink = req.getParameter("hlink");
+        SlideService.getInstance().editSlide(id, img, hlink);
         
     }
     

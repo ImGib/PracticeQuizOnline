@@ -27,7 +27,7 @@ public class Post {
         this.idAuthor = idAuthor;
         publicDate=DateUtil.getDate();
         numberAccess=0;
-        id=PostService.getInstance().getLastIdPost()+1;
+//        id=PostService.getInstance().getLastIdPost()+1;
     }
 
     public Post(int id, String tittle, String publicDate, String img, String details, String idAuthor, int numberAccess) {

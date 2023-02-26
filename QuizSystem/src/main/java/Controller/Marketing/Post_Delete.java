@@ -12,28 +12,37 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import service.impl.PostService;
 
 /**
  *
  * @author asus
  */
-@WebServlet(name="PostList", urlPatterns={"/postlist"})
-public class PostList extends HttpServlet {
-    
+@WebServlet(name="DeletePost", urlPatterns={"/marketing-deletepost"})
+public class Post_Delete extends HttpServlet {
+    protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
+    throws ServletException, IOException {
+        resp.setContentType("text/html;charset=UTF-8");
+        
+    } 
 
     
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
-        req.getRequestDispatcher("views/marketing/Marketing-Post-PostList.jsp").forward(req, resp);
-        
+        int id=Integer.parseInt(req.getParameter("id"));
+        req.setAttribute("id", id);
+        req.getRequestDispatcher("views/marketing/Marketing-Post-Delete.jsp").forward(req, resp);
     } 
 
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
+        int id=Integer.parseInt(req.getParameter("id"));
+        PostService.getInstance().deletePost(id);
+        resp.sendRedirect("/QuizSystem/marketing-post");
     }
 
     

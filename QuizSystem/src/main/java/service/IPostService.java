@@ -7,6 +7,7 @@ package service;
 
 import java.util.List;
 import model.Post;
+import model.Slide;
 
 
 
@@ -30,4 +31,10 @@ public interface IPostService {
    void editPost(int id,String img, String title,String detail);
     
     void deletePost(int id);
+    
+    String checkValidPostForEdit(int id,String title);
+    
+    void upNumberAccess(int id);
+    
+    
 }

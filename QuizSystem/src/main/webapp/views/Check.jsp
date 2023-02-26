@@ -13,12 +13,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="hello" method="get">
-            <textarea id="id" name="txt" >
-                
-            </textarea>
-            <button>save</button>
+        <form action="hello" method="post">
+            <input type="txt" name="img" value="${img}">
+            <input type="txt" name="hlink" value="${hlink}">
+            <input type="txt" name="id" value="${id}" hidden="">
+            <button>Save</button>
         </form>
-        <div>${txt2}</div>
+        <div>${txt}</div>
+        <div>${txt3}</div>
+        
     </body>
 </html>

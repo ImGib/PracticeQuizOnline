@@ -627,7 +627,7 @@
                                             </a>
 
                                             <form class="mt-5 mb-5 login-input" action="marketing-addpost" method="post">
-
+                                                <input type="text" value="${id}" name="id" hidden="">
                                                 <div class="form-group">
                                                     <div class="row gx-3 mb-3">
                                                         <!-- Form Group (first name)-->
@@ -667,9 +667,7 @@
                                                             <span>Detail: </span>
                                                         </div>
                                                         <div class="col-md-8" style="border: #999898 solid 1px; padding: 0 0;">
-                                                            <textarea name="detail" class="form-control" style="height: 350px;" value="${detail}">
-                                                                
-                                                            </textarea>
+                                                            <textarea name="detail" class="form-control" style="height: 350px;" value="">${detail}</textarea>
 <!--                                                            <input name="detail" type="text" class="form-control" placeholder=""
                                                                    style="height: 350px;" value="${detail}">-->
                                                             
