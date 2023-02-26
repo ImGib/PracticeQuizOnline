@@ -43,6 +43,9 @@ public interface IAccountDao extends GenericDao<Account>{
     List<Account> findAllAccount();
     
     void addAccountByAdmin(Account a);
+    
+    void updateProfile(Account a);
+    
     //--------------------------------------------------------------------------------------
 
 }

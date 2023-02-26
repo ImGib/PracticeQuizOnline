@@ -211,4 +211,33 @@ public class AccountService implements IAccountService {
         return accountDao.getNumberStudent();
     }
 
+    @Override
+    public void updateProfile(Account a) {
+        accountDao.updateProfile(a);
+    }
+
+    @Override
+    public String userChangePassword(Account acc, String currentPassword, String newPassword, String confirmPassword) {
+        if(acc.getPassword().compareTo(currentPassword) == 0){
+            if(newPassword.compareTo(confirmPassword) == 0){
+                accountDao.changePass(acc.getGmail(), newPassword);
+                return null;
+            } else {
+                return "Wrong confirm password";
+            }
+        } else {
+            return "Wrong current Password";
+        }
+    }
+
+    @Override
+    public String removeAccount(Account acc, String gmail, String password) {
+        if(acc.getGmail().compareTo(gmail) == 0 && acc.getPassword().compareTo(password) == 0)
+        {
+            accountDao.deleteAccount(acc.getUserName());
+            return null;
+        }
+        return "wrong";
+    }
+
 }

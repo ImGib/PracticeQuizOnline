@@ -27,7 +27,7 @@ public class HiContoller extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        req.getRequestDispatcher("views/student/blog.jsp").forward(req, resp);
+        req.getRequestDispatcher("views/DeleteAccountBySelf.jsp").forward(req, resp);
 
     }
 }

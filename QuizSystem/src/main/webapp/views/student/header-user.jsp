@@ -39,14 +39,14 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="asset/images/user/1.png" height="40" width="40" alt="">
+                                <img src="asset/images/avatar/${sessionScope.account.img == null ? "default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <c:if test="${sessionScope.account != null}">
                                             <li>
-                                                <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                                <a href="profile"><i class="icon-user"></i>
                                                     <span>Profile</span></a>
                                             </li>
 

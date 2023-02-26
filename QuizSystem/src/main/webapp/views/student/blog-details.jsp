@@ -558,30 +558,36 @@
                         </div>
                     </div>
                     <div class="header-right">
-                        <ul class="clearfix">
-                            <li class="icons dropdown">
-                                <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                    <span class="activity active"></span>
-                                    <img src="asset/images/user/1.png" height="40" width="40" alt="">
-                                </div>
-                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                    <div class="dropdown-content-body">
-                                        <ul>
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="${sessionScope.account.img == null ? "asset/images/user/1.png" :  sessionScope.account.img}" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <c:if test="${sessionScope.account != null}">
                                             <li>
-                                                <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                                <a href="profile"><i class="icon-user"></i>
                                                     <span>Profile</span></a>
                                             </li>
 
                                             <hr class="my-2">
 
-                                            <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                            <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
                                             </li>
-                                        </ul>
-                                    </div>
+                                        </c:if>
+                                        <c:if test="${sessionScope.account == null}">
+                                            <li><a href="login"><i class="icon-key"></i> <span>Login</span></a>
+                                            </li>
+                                        </c:if>
+                                    </ul>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
                 </div>
             </div>
             <!--**********************************
