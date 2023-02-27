@@ -26,6 +26,10 @@ public interface IAccountDao extends GenericDao<Account>{
     
     void changeRoleByUserName (String username, int id);
     
+    int getNumberStaff();
+    
+    int getNumberStudent();
+     
     void deleteAccount(String user);
     
     List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp);
@@ -39,6 +43,9 @@ public interface IAccountDao extends GenericDao<Account>{
     List<Account> findAllAccount();
     
     void addAccountByAdmin(Account a);
+    
+    void updateProfile(Account a);
+    
     //--------------------------------------------------------------------------------------
 
 }

@@ -1,10 +1,11 @@
 <%-- 
-    Document   : home
-    Created on : Feb 21, 2023, 1:01:52 PM
-    Author     : Gib
+    Document   : Marketing-Post-PostList
+    Created on : Feb 23, 2023, 10:14:26 PM
+    Author     : asus
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -208,8 +209,7 @@
             color: #666;
         }
 
-        .pagination li.active a,
-        .card {
+        .pagination li.active a, .card {
             background: #fff;
             transition: .5s;
             border: 0;
@@ -471,7 +471,6 @@
                 padding: 30px
             }
         }
-
         .pagination li.active a.page-link {
             background: #03A9F4;
         }
@@ -494,25 +493,7 @@
             margin-top: 10px;
             font-size: 13px;
         }
-
-        .animate-fading {
-            width: 98%;
-            animation: fading 10s infinite
-        }
-
-        @keyframes fading {
-            0% {
-                opacity: 0
-            }
-
-            50% {
-                opacity: 1
-            }
-
-            100% {
-                opacity: 0
-            }
-        }
+        
     </style>
     <script>
         $(document).ready(function () {
@@ -549,9 +530,9 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="Home_App.html">
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
                         <img src="images/logo-text.png" alt="">
                     </span>
@@ -565,7 +546,41 @@
         <!--**********************************
             header start
         ***********************************-->
-        <%@include file="header-user.jsp" %>
+        <div class="header" style="margin-bottom: 10px;">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="images/user/1.png" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                                <span>Profile</span></a>
+                                        </li>
+
+                                        <hr class="my-2">
+
+                                        <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <!--**********************************
             header end ti-comment-alt
         ***********************************-->
@@ -573,7 +588,22 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <%@include file="user-sidebar.jsp" %>
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label">Blog List</li>
+                    <li>
+                        <a href="Admin_Dashboard.html" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Admin_User_Management.html"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -582,278 +612,202 @@
             Content body start
         ***********************************-->
         <div class="content-body">
-            <div id="main-content" class="blog-page">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <div id="main-content" class="blog-page">
+            <div class="container">
                 <div class="row clearfix">
-                    <div class="col-lg-12 col-md-12 left-box">
-                        <div class="card single_post mx-5" style="width: 95%;">
+                    <div class="col-lg-8 col-md-12 left-box">
+                        <div class="card single_post">
                             <div class="body">
-                                <div>
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-1.jpg?v=1651990539676">
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-9.jpg?v=1651990877449">
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-17.jpg?v=1651991039908">
-                                    <img class="mySlides2 animate-fading"
-                                        src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-3.jpg?v=1651990799496">
+                                <div class="img-post">
+                                    <img class="d-block img-fluid" src="https://www.bootdey.com/image/800x280/FFB6C1/000000"
+                                        alt="First slide">
                                 </div>
+                                <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of
+                                    a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                    more-or-less normal</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="my-5" style="font-size: 30px; text-align: center;">95% học sinh sử dụng QuixLab cho biết họ
-                    đã cải thiện được điểm số</div>
-                <div class="container mt-5 mb-3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card p-3 mb-2">
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                        <div class="ms-2 c-details">
-                                            <h6 class="mb-0">Mailchimp</h6> <span>1 days ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="badge"> <a href="#"><span>Update</span></a> </div>
-                                </div>
-                                <div class="mt-5">
-                                    <a class="course" href="#">
-                                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
-                                    </a>
-                                    <div class="mt-5">
-                                        <div class="mt-3">
-                                            <span class="text1">32 Person <span class="text2">Erroll this
-                                                    Cousrse</span>\</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card p-3 mb-2">
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                        <div class="ms-2 c-details">
-                                            <h6 class="mb-0">Mailchimp</h6> <span>1 days ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="badge"> <a href="#"><span>Update</span></a> </div>
-                                </div>
-                                <div class="mt-5">
-                                    <a class="course" href="#">
-                                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
-                                    </a>
-                                    <div class="mt-5">
-                                        <div class="mt-3">
-                                            <span class="text1">32 Person <span class="text2">Erroll this
-                                                    Cousrse</span>\</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card p-3 mb-2">
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                        <div class="ms-2 c-details">
-                                            <h6 class="mb-0">Mailchimp</h6> <span>1 days ago</span>
-                                        </div>
-                                    </div>
-                                    <div class="badge"> <a href="#"><span>Update</span></a> </div>
-                                </div>
-                                <div class="mt-5">
-                                    <a class="course" href="#">
-                                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
-                                    </a>
-                                    <div class="mt-5">
-                                        <div class="mt-3">
-                                            <span class="text1">32 Person <span class="text2">Erroll this
-                                                    Cousrse</span>\</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div style="text-align: end; margin-bottom: 15px;">
-                                    <div class="actions">
-                                        <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">See More</a>
-                                    </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="my-5" style="font-size: 30px; text-align: center;">Sẵn sàng cho ngày thi với Học và Kiểm tra</div>
-                <div class="container">
-                    <div class="row clearfix">
-                        <div class="col-lg-8 col-md-12 left-box">
-                            <div class="card single_post">
-                                <div class="body">
-                                    <div class="img-post">
-                                        <img class="d-block img-fluid"
-                                            src="https://www.bootdey.com/image/800x280/FFB6C1/000000" alt="First slide">
-                                    </div>
-                                    <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
-                                    <p>It is a long established fact that a reader will be distracted by the readable
-                                        content of
-                                        a page when looking at its layout. The point of using Lorem Ipsum is that it has
-                                        a
-                                        more-or-less normal</p>
-                                </div>
-                                <div class="footer">
-                                    <div class="actions">
-                                        <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue
-                                            Reading</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card single_post">
-                                <div class="body">
-                                    <div class="img-post">
-                                        <img class="d-block img-fluid"
-                                            src="https://www.bootdey.com/image/800x280/FFB6C1/000000" alt="">
-                                    </div>
-                                    <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
-                                    <p>It is a long established fact that a reader will be distracted by the readable
-                                        content of
-                                        a page when looking at its layout. The point of using Lorem Ipsum is that it has
-                                        a
-                                        more-or-less normal</p>
-                                </div>
-                                <div class="footer">
-                                    <div class="actions">
-                                        <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue
-                                            Reading</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                           
-                            <div style="text-align: end; margin-bottom: 15px;">
+                            <div class="footer">
                                 <div class="actions">
-                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">See More</a>
-                                </div>
-                        </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 right-box">
-                            <div class="card">
-                                <div class="blog-header">
-                                    <h2>List Categories</h2>
-                                </div>
-                                <div class="body widget">
-                                    <ul class="list-unstyled categories-clouds m-b-0">
-                                        <li><a href="javascript:void(0);">eCommerce</a></li>
-                                        <li><a href="javascript:void(0);">Microsoft Technologies</a></li>
-                                        <li><a href="javascript:void(0);">Creative UX</a></li>
-                                        <li><a href="javascript:void(0);">Wordpress</a></li>
-                                        <li><a href="javascript:void(0);">Angular JS</a></li>
-                                        <li><a href="javascript:void(0);">Enterprise Mobility</a></li>
-                                        <li><a href="javascript:void(0);">Website Design</a></li>
-                                        <li><a href="javascript:void(0);">HTML5</a></li>
-                                        <li><a href="javascript:void(0);">Infographics</a></li>
-                                        <li><a href="javascript:void(0);">Wordpress Development</a></li>
-                                    </ul>
+                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="blog-header">
-                                    <h2>Popular Posts</h2>
+                        </div>
+                        <div class="card single_post">
+                            <div class="body">
+                                <div class="img-post">
+                                    <img class="d-block img-fluid" src="https://www.bootdey.com/image/800x280/FFB6C1/000000"
+                                        alt="">
                                 </div>
-                                <div class="body widget popular-post">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="single_post">
-                                                <p class="m-b-0">Apple Introduces Search Ads Basic</p>
-                                                <span>jun 22, 2018</span>
-                                                <div class="img-post">
-                                                    <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
-                                                        alt="Awesome Image">
-                                                </div>
+                                <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of
+                                    a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                    more-or-less normal</p>
+                            </div>
+                            <div class="footer">
+                                <div class="actions">
+                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card single_post">
+                            <div class="body">
+                                <div class="img-post">
+                                    <img class="d-block img-fluid" src="https://www.bootdey.com/image/800x280/FFB6C1/000000"
+                                        alt="">
+                                </div>
+                                <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of
+                                    a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                    more-or-less normal</p>
+                            </div>
+                            <div class="footer">
+                                <div class="actions">
+                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card single_post">
+                            <div class="body">
+                                <div class="img-post">
+                                    <img class="d-block img-fluid" src="https://www.bootdey.com/image/800x280/FFB6C1/000000"
+                                        alt="">
+                                </div>
+                                <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of
+                                    a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                    more-or-less normal</p>
+                            </div>
+                            <div class="footer">
+                                <div class="actions">
+                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="pagination pagination-primary">
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-12 right-box">
+                        <div class="card">
+                            <div class="body search">
+                                <div class="input-group m-b-0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="blog-header">
+                                <h2>List Categories</h2>
+                            </div>
+                            <div class="body widget">
+                                <ul class="list-unstyled categories-clouds m-b-0">
+                                    <li><a href="javascript:void(0);">eCommerce</a></li>
+                                    <li><a href="javascript:void(0);">Microsoft Technologies</a></li>
+                                    <li><a href="javascript:void(0);">Creative UX</a></li>
+                                    <li><a href="javascript:void(0);">Wordpress</a></li>
+                                    <li><a href="javascript:void(0);">Angular JS</a></li>
+                                    <li><a href="javascript:void(0);">Enterprise Mobility</a></li>
+                                    <li><a href="javascript:void(0);">Website Design</a></li>
+                                    <li><a href="javascript:void(0);">HTML5</a></li>
+                                    <li><a href="javascript:void(0);">Infographics</a></li>
+                                    <li><a href="javascript:void(0);">Wordpress Development</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="blog-header">
+                                <h2>Popular Posts</h2>
+                            </div>
+                            <div class="body widget popular-post">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="single_post">
+                                            <p class="m-b-0">Apple Introduces Search Ads Basic</p>
+                                            <span>jun 22, 2018</span>
+                                            <div class="img-post">
+                                                <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
+                                                    alt="Awesome Image">
                                             </div>
-                                            <div class="single_post">
-                                                <p class="m-b-0">new rules, more cars, more races</p>
-                                                <span>jun 8, 2018</span>
-                                                <div class="img-post">
-                                                    <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
-                                                        alt="Awesome Image">
-                                                </div>
+                                        </div>
+                                        <div class="single_post">
+                                            <p class="m-b-0">new rules, more cars, more races</p>
+                                            <span>jun 8, 2018</span>
+                                            <div class="img-post">
+                                                <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
+                                                    alt="Awesome Image">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
-            <!--**********************************
+        </div>
+        </div>
+        
+        <!--**********************************
             Content body end
         ***********************************-->
 
 
-            <!--**********************************
+        <!--**********************************
             Footer start
         ***********************************-->
-            <!--**********************************
-            Footer end
-        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
+                    2018</p>
+            </div>
         </div>
         <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
         Main wrapper end
     ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
         Scripts
     ***********************************-->
-        <script>
-            var myIndex = 0;
-            carousel2();
+    <script src="asset/plugins/common/common.min.js"></script>
+    <script src="asset/js/custom.min.js"></script>
+    <script src="asset/js/settings.js"></script>
+    <script src="asset/js/gleek.js"></script>
+    <script src="asset/js/styleSwitcher.js"></script>
 
-            function carousel2() {
-                var i;
-                var x = document.getElementsByClassName("mySlides2");
-                for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";
-                }
-                myIndex++;
-                if (myIndex > x.length) { myIndex = 1 }
-                x[myIndex - 1].style.display = "block";
-                setTimeout(carousel2, 7000);
-            }
-        </script>
-        <script src="asset/plugins/common/common.min.js"></script>
-        <script src="asset/js/custom.min.js"></script>
-        <script src="asset/js/settings.js"></script>
-        <script src="asset/js/gleek.js"></script>
-        <script src="asset/js/styleSwitcher.js"></script>
-
-        <!-- Chartjs -->
-        <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
-        <!-- Circle progress -->
-        <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
-        <!-- Datamap -->
-        <script src="asset/plugins/d3v3/index.js"></script>
-        <script src="asset/plugins/topojson/topojson.min.js"></script>
-        <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
-        <!-- Morrisjs -->
-        <script src="asset/plugins/raphael/raphael.min.js"></script>
-        <script src="asset/plugins/morris/morris.min.js"></script>
-        <!-- Pignose Calender -->
-        <script src="asset/plugins/moment/moment.min.js"></script>
-        <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-        <!-- ChartistJS -->
-        <script src="asset/plugins/chartist/js/chartist.min.js"></script>
-        <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <!-- Chartjs -->
+    <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="asset/plugins/d3v3/index.js"></script>
+    <script src="asset/plugins/topojson/topojson.min.js"></script>
+    <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="asset/plugins/raphael/raphael.min.js"></script>
+    <script src="asset/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="asset/plugins/moment/moment.min.js"></script>
+    <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="asset/plugins/chartist/js/chartist.min.js"></script>
+    <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
 
 
-        <script src="asset/js/dashboard/dashboard-1.js"></script>
+    <script src="asset/js/dashboard/dashboard-1.js"></script>
 
 </body>
 

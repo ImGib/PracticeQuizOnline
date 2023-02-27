@@ -17,10 +17,7 @@ import service.impl.AccountService;
 import utils.LoginGoogleUtil;
 import utils.SessionUtil;
 
-/**
- *
- * @author Lenovo
- */
+
 @WebServlet(urlPatterns = {"/login-google"})
 public class LoginGoogleController extends HttpServlet{
 
@@ -34,8 +31,7 @@ public class LoginGoogleController extends HttpServlet{
         SessionUtil.getInstance().putValue(req, "account", a);
         
         //chuyen huong trang home
-        req.setAttribute("name", user.getEmail());
-        req.getRequestDispatcher("views/Check.jsp").forward(req, resp);
+        resp.sendRedirect("home");
     }
     
     

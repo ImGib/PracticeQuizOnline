@@ -20,13 +20,13 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     public List<Account> findAccountByEmailAndPass(String email, String pass) {
         String sql = "select * from Account \n"
                 + "where gmail = ? and [password] = ? and isActive = 1";
-        return query(sql, new AccountMapper(), email, pass);
+        return query(sql, AccountMapper.getInstance(), email, pass);
     }
 
     @Override
     public List<Account> findAccountByEmail(String email) {
         String sql = "select * from Account where gmail = ? and isActive = 1";
-        return query(sql, new AccountMapper(), email);
+        return query(sql, AccountMapper.getInstance(), email);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     @Override
     public List<Account> findAccountByUserName(String userName) {
         String sql = "select * from Account where userName = ? and isActive = 1";
-        return query(sql, new AccountMapper(), userName);
+        return query(sql, AccountMapper.getInstance(), userName);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "	gmail LIKE ? or\n"
                 + "	phone LIKE ?) and isActive=1  ";
         txt = "%" + txt + "%";
-        return query(sql, new AccountMapper(), txt, txt, txt, txt, txt);
+        return query(sql,AccountMapper.getInstance(), txt, txt, txt, txt, txt);
     }
 
     @Override
@@ -71,6 +71,22 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "set role =?\n"
                 + "where userName=?";
         update(sql, id, username);
+    }
+
+    @Override
+    public int getNumberStaff() {
+        String sql = "select count(userName)\n"
+                + "from Account\n"
+                + "where role <> 1";
+        return count(sql);
+    }
+
+    @Override
+    public int getNumberStudent() {
+        String sql = "select count(userName)\n"
+                + "from Account\n"
+                + "where role = 1";
+        return count(sql);
     }
 
 
@@ -111,7 +127,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "order by userName\n"
                 + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         txt = "%" + txt + "%";
-        return query(sql, new AccountMapper(), txt, txt, txt, txt, txt, (pageIndex - 1) * nrpp, nrpp);
+        return query(sql, AccountMapper.getInstance(), txt, txt, txt, txt, txt, (pageIndex - 1) * nrpp, nrpp);
     }
 
     @Override
@@ -120,33 +136,39 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "where role=? and isActive=1\n"
                 + "order by userName\n"
                 + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
-        return query(sql, new AccountMapper(), role, (pageIndex - 1) * nrpp, nrpp);
+        return query(sql, AccountMapper.getInstance(), role, (pageIndex - 1) * nrpp, nrpp);
     }
 
     @Override
     public List<Account> findAccountByRole(int role) {
         String sql = "select * from Account\n"
                 + "where role=? and isActive=1";
-        return query(sql, new AccountMapper(), role);
+        return query(sql, AccountMapper.getInstance(), role);
     }
 
     @Override
     public List<Account> findAccountByPhone(String phone) {
         String sql = "select * from Account\n"
                 + "where phone=?";
-        return query(sql, new AccountMapper(), phone);
+        return query(sql, AccountMapper.getInstance(), phone);
     }
 
     @Override
     public List<Account> findAllAccount() {
         String sql = "select * from Account";
-        return query(sql, new AccountMapper());
+        return query(sql, AccountMapper.getInstance());
     }
 
     @Override
     public void addAccountByAdmin(Account a) {
         String sql = "insert into Account (userName, password, gmail, role, isActive, phone, address) values (?, ?, ?, ?, ?,?,?)";
         insert(sql, a.getUserName(), a.getPassword(), a.getGmail(), a.getRole(), 1,a.getPhone(),a.getAddress());
+    }
+
+    @Override
+    public void updateProfile(Account a) {
+        String sql = "update Account set firstName = ?, lastName = ?, gmail = ?, phone = ?, [address] = ?, img = ? where userName = ?";
+        update(sql, a.getFirstName(), a.getLastName(), a.getGmail(), a.getPhone(), a.getAddress(), a.getImg(), a.getUserName());
     }
 
 }

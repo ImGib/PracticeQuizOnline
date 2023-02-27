@@ -13,6 +13,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello ${requestScope.name}</h1>
+        <form action="hello" method="post">
+            <input type="txt" name="img" value="${img}">
+            <input type="txt" name="hlink" value="${hlink}">
+            <input type="txt" name="id" value="${id}" hidden="">
+            <button>Save</button>
+        </form>
+        <div>${txt}</div>
+        <div>${txt3}</div>
+        
     </body>
 </html>

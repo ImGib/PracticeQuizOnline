@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Account;
 import service.impl.AccountService;
+import utils.PagginationUtil;
 
 /**
  *
@@ -30,7 +31,8 @@ public class Ajax_Paggination_Role extends HttpServlet {
         String txt=request.getParameter("txt");
         int role=Integer.parseInt(txt);
         List<Account> list= AccountService.getInstance().findAccountByRole(role);
-        int totalPage=(list.size()+2-1)/2;
+//        int nrpp=PagginationUtil.getInstance().getNrpp();
+        int totalPage=(list.size()+5-1)/5;
         
         out.print("<li class=\"page-item disabled\"><a href=\"Admin?txt=Search_Role_"+txt+"&pageIndex=0\">Previous</a></li>");
         for(int i=0;i<totalPage;i++){

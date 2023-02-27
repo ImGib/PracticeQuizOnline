@@ -1,4 +1,4 @@
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,7 +18,7 @@
     <body>
         <div id="logreg-forms">
 
-            <form action="AddNewAccount" method="post" class="">
+            <form action="AddNewAccount" method="post" style="margin: 30 300">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Add New Account</h1>
                 <p class="text-danger">${wrongText}</p>
                 <p class="text-success">${successText}</p>
@@ -34,7 +34,6 @@
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Add</button>
                 <a href="Admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
             </form>
-            <br>
 
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
