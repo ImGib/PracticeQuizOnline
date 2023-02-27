@@ -23,10 +23,7 @@ import service.impl.PostService;
 import service.impl.SlideService;
 import utils.SessionUtil;
 
-/**
- *
- * @author Lenovo
- */
+
 @WebServlet(urlPatterns = {"/hello"})
 public class HiContoller extends HttpServlet{
 protected void processRequest(HttpServletRequest request, HttpServletResponse response)

@@ -9,10 +9,10 @@ import java.util.List;
 import model.Post;
 import model.Slide;
 
-
-
 public interface IPostService {
+
     List<Post> getTopTwo();
+
     
     public int getNumberPost();
     
@@ -37,4 +37,20 @@ public interface IPostService {
     void upNumberAccess(int id);
     
     
+
+
+    List<Post> getTopPopular();
+
+    
+
+    List<Post> getPostPagination(String txt, int pageIndex, int nrpp);
+
+    int countPost();
+    
+    int countSearchPost(String txt);
+
+    Post getPostDetails(String id);
+    
+    
+
 }

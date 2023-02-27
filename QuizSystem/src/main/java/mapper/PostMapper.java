@@ -6,10 +6,7 @@ package mapper;
 
 import java.sql.ResultSet;
 import model.Post;
-/**
- *
- * @author Gib
- */
+
 public class PostMapper implements RowMapper<Post>{
     private static PostMapper instance = null;
 

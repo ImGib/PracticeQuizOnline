@@ -168,7 +168,8 @@ public class AbstractDao<T> implements GenericDao<T> {
         int num = 0;
         try {
             conn = getConnection();
-            ps = conn.prepareStatement(sql);
+            ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            setParameter(ps, parameters);
             rs = ps.executeQuery();
             while (rs.next()) {
                 num = rs.getInt(1);
