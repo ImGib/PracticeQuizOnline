@@ -36,11 +36,13 @@ public class SubjectListController extends HttpServlet {
     }
 
     void paginationPost(HttpServletRequest req) {
-        search = (String) SessionUtil.getInstance().getValue(req, "search");
+        search = req.getParameter("search");
+
         if (search == null) {
             search = "";
         }
         size = SubjectService.getInstance().countAllSubjectPagination(search);
+        System.out.println(size);
         PagginationUtil.getInstance().setNrpp(9);
         try {
             pageIndex = Integer.parseInt(req.getParameter("pageIndex"));
@@ -50,7 +52,6 @@ public class SubjectListController extends HttpServlet {
         pageIndex = PagginationUtil.getInstance().pageIndex(pageIndex, size);
         PagginationUtil.getInstance().setPageBegin_Ending(pageIndex, 2);
         subList = SubjectService.getInstance().getSubjectPagination(search, pageIndex, PagginationUtil.getInstance().getNrpp());
-
         req.setAttribute("search", search);
         req.setAttribute("pageIndex", pageIndex);
         req.setAttribute("begin", PagginationUtil.getInstance().getBegin());

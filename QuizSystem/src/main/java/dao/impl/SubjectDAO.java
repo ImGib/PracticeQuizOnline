@@ -13,8 +13,11 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
 
     @Override
     public List<Subject> getTopThree() {
-        String sql = "select top 3 * from Subject\n"
-                + "order by publicDate desc";
+        String sql = "select top 3 Subject.* from\n"
+                + "	Subject,\n"
+                + "	Account\n"
+                + "where Subject.idAuthor = Account.userName and isActive='True' and Subject.isPublic = 'True'\n"
+                + "order by publicDate DESC";
         return query(sql, SubjectMapper.getInstance());
     }
 
@@ -43,18 +46,26 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
 
     @Override
     public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp) {
-        String sql = "select * from Subject\n"
-                + "where Subject.name like ?\n"
-                + "order by publicDate DESC\n"
-                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        String sql = "select Subject.* from Subject,\n" +
+"                Account\n" +
+"                where Subject.idAuthor = Account.userName\n" +
+"                		and isActive='True'\n" +
+"                		and Subject.isPublic = 'True'\n" +
+"                        and Subject.name like ?\n" +
+"                order by publicDate DESC\n" +
+"                OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         txt = "%" + txt + "%";
         return query(sql, SubjectMapper.getInstance(), txt, (pageIndex - 1) * nrpp, nrpp);
     }
 
     @Override
     public int countAllFoundSubject(String txt) {
-        String sql = "select count(*) from Subject\n"
-                + "where Subject.name like txt";
+        String sql = "select count(*) from Subject,\n"
+                + "Account\n"
+                + "where Subject.idAuthor = Account.userName \n"
+                + "		and isActive = 'True' \n"
+                + "		and Subject.isPublic = 'True'\n"
+                + "        and Subject.name like ?";
         txt = "%" + txt + "%";
         return count(sql, txt);
     }
