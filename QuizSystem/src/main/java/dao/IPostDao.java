@@ -13,7 +13,7 @@ public interface IPostDao extends GenericDao<Post>{
     
     void addNewPost(Post p);
     
-    int getLastIdPost();
+    
     
     List<Post> findPostByTitle(String txt);
     
@@ -26,9 +26,8 @@ public interface IPostDao extends GenericDao<Post>{
     void deletePost(int id);
     
     void upNumberAccess(int id);
-    List<Post> getPostPagination(String txt, int pageIndex, int nrpp);
+    
     int countAllPost();
     int countPaginationPost(String txt);
     Post getPostDetails(String id);
-    public void upNumberAccess(int id);
 }

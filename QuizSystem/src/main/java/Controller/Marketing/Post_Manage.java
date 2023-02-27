@@ -48,7 +48,7 @@ public class Post_Manage extends HttpServlet {
         } catch (NumberFormatException e) {
         }
         pageIndex= PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        listP=PostService.getInstance().findPostByTextAndPagination(txt, pageIndex, PagginationUtil.nrpp);
+        listP=PostService.getInstance().findPostByTextAndPagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp());
  //-----------------------------------------------------------------------------------       
         request.setAttribute("totalPage", PagginationUtil.getInstance().getTotalPage());
         request.setAttribute("size", size);

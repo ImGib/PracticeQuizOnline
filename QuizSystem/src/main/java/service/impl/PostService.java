@@ -54,10 +54,7 @@ public class PostService implements IPostService {
         postDao.addNewPost(p);
     }
 
-    @Override
-    public int getLastIdPost() {
-        return postDao.getLastIdPost();
-    }
+    
 
     @Override
     public String checkValidPost(String title) {
@@ -108,7 +105,7 @@ public class PostService implements IPostService {
 
     @Override
     public List<Post> getPostPagination(String txt, int pageIndex, int nrpp) {
-        return postDao.getPostPagination(txt, pageIndex, nrpp);
+        return postDao.findPostByTextAndPagination(txt, pageIndex, nrpp);
     }
 
     @Override
@@ -126,8 +123,5 @@ public class PostService implements IPostService {
         return postDao.getPostDetails(i);
     }
 
-    @Override
-    public void upNumberAccess(int id) {
-        postDao.upNumberAccess(id);
-    }
+    
 }

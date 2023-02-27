@@ -43,8 +43,7 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
     }
 
     @Override
-    public int getLastIdPost() {
-        String sql = "select max(id) from Post";
+    
     public List<Post> getTopPopular() {
         String sql = "select top 2 * from Post\n"
                 + "order by numberAccess DESC";
@@ -99,15 +98,7 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
         String sql = "delete from Post\n"
                 + "where id=?";
         update(sql, id);
-    public List<Post> getPostPagination(String txt, int pageIndex, int nrpp) {
-        String sql = "select * from Post \n"
-                + "where title like ?\n"
-                + "or idAuthor like ?\n"
-                + "order by id\n"
-                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
-        txt = "%" + txt + "%";
-        return query(sql, new PostMapper(), txt, txt, (pageIndex - 1) * nrpp, nrpp);
-
+    
     }
 
     @Override

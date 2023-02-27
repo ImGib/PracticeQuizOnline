@@ -20,7 +20,7 @@ public interface IPostService {
     
     void addNewPost(Post p);
     
-    int getLastIdPost();
+    
     
     String checkValidPost(String title);
     

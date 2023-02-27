@@ -50,7 +50,7 @@ public class Slide_Manage extends HttpServlet {
         } catch (NumberFormatException e) {
         }
         pageIndex= PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        list=SlideService.getInstance().loadSlidePagination(pageIndex, PagginationUtil.nrpp);
+        list=SlideService.getInstance().loadSlidePagination(pageIndex, PagginationUtil.getInstance().getNrpp());
  //-----------------------------------------------------------------------------------       
         req.setAttribute("totalPage", PagginationUtil.getInstance().getTotalPage());
         req.setAttribute("size", size);
