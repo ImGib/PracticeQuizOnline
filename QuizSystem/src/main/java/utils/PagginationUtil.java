@@ -10,7 +10,7 @@ package utils;
  */
 public class PagginationUtil {
 
-    private int nrpp = 2;
+    private int nrpp = 5;
     private int totalPage = 2;
     private int size;
     private int begin;

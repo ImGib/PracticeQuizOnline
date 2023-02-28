@@ -38,7 +38,7 @@ public class Post_Manage extends HttpServlet {
         String txt = "";
         txt=request.getParameter("txt");
         if(txt==null)txt="";
-        List<Post> listP= PostService.getInstance().findPostByTitleAndAuthor("");
+        List<Post> listP= PostService.getInstance().findPostByTitleAndAuthor(txt);
         
         //------------------------Phan Trang----------------------------------------------
         int size = listP.size(); 
@@ -49,8 +49,9 @@ public class Post_Manage extends HttpServlet {
         }
         pageIndex= PagginationUtil.getInstance().pageIndex(pageIndex, size);
         listP=PostService.getInstance().findPostByTextAndPagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp());
+        int totalPage = PagginationUtil.getInstance().getTotalPage();
  //-----------------------------------------------------------------------------------       
-        request.setAttribute("totalPage", PagginationUtil.getInstance().getTotalPage());
+        request.setAttribute("totalPage",totalPage );
         request.setAttribute("size", size);
         request.setAttribute("txt",txt );
         request.setAttribute("pageIndex",pageIndex);
@@ -64,9 +65,5 @@ public class Post_Manage extends HttpServlet {
     throws ServletException, IOException {
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    
 }
