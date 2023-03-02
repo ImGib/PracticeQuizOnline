@@ -15,6 +15,7 @@ import model.Subject;
 import org.bouncycastle.pqc.math.linearalgebra.RandUtils;
 import service.impl.AccountService;
 import service.impl.CategoryService;
+import service.impl.EnrollService;
 import service.impl.QuestionService;
 import service.impl.SubjectService;
 import sun.security.provider.CtrDrbg;
@@ -27,9 +28,6 @@ import utils.RandomUtil;
  */
 public class Test_ChucNang {
     public static void main(String[] args) {
-        List<Category> cateList= CategoryService.getInstance().getCateBySubId(4);
-        for(Category ct : cateList){
-            System.out.println(ct.getName());
-        }
+    System.out.println(EnrollService.getInstance().checkEnroll("dinson", 1));
     }
 }

@@ -4,6 +4,8 @@
  */
 package model;
 
+import service.impl.EnrollService;
+
 /**
  *
  * @author Lenovo
@@ -131,6 +133,8 @@ public class Account {
         return "Account{" + "userName=" + userName + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", gmail=" + gmail + ", phone=" + phone + ", role=" + role + ", address=" + address + ", isActive=" + isActive + ", img=" + img + '}';
     }
     
-    
+    public int checkEnroll(int idSub){
+        return EnrollService.getInstance().checkEnroll(userName, idSub);
+    }
     
 }

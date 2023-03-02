@@ -6,6 +6,8 @@ package service.impl;
 
 import service.IEnrollService;
 import dao.impl.EnrollDao;
+import java.util.List;
+import model.Enroll;
 
 public class EnrollService implements IEnrollService{
 
@@ -27,6 +29,21 @@ public class EnrollService implements IEnrollService{
     @Override
     public int getNumberEnrollByIdSub(int idSub) {
         return enrollDao.getNumberEnrollByIdSub(idSub);
+    }
+
+    @Override
+    public int checkEnroll(String username, int idSub) {
+        List<Enroll> list = enrollDao.checkEnroll(username, idSub);
+        
+        if(list.isEmpty())
+            return -1;
+        
+        return list.get(0).getIdSub();
+    }
+
+    @Override
+    public void enroll(String string, int i) {
+        enrollDao.insertEnroll(string, i);
     }
     
 }

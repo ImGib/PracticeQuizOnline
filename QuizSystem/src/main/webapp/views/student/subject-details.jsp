@@ -625,34 +625,38 @@
                                                         <!-- Form Group (last name)-->
                                                     </div>
                                                 </div>
-                                                <div style="margin-top: 50px; text-align: center;">
-                                                    <button class="btn submit" style="background-color: #05988a; text-align: center;width: 170px; font-weight: 700; color: white;border-radius: 20px;">Enroll</button>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-4 pt-1 mt-4" style="font-size: 20px;padding-left: 0px">
-                                                        <span>The List Questions: </span>
+                                                <c:if test="${sessionScope.account.checkEnroll(requestScope.sub.id) != requestScope.sub.id}">
+                                                    <div style="margin-top: 50px; text-align: center;">
+                                                        <a class="btn submit" href="enroll?idSub=${requestScope.sub.id}" style="background-color: #05988a; text-align: center;width: 170px; font-weight: 700; color: white;border-radius: 20px;">
+                                                            Enroll</a>
                                                     </div>
-                                                    <c:forEach var="ques" items="${requestScope.questions}">
-                                                        <div class="row mx-5 my-4">
-                                                            <div class="col-md-7 mr-3"
-                                                                 style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
-                                                                <div class="mx-3 my-3">
-                                                                    ${ques.getQuestion()}<br>
-                                                                    <c:forEach var="ans" items="${ques.allAnswer()}">
-                                                                        ${ans.getAnswer()}<br>
-                                                                    </c:forEach>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4"
-                                                                 style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
-                                                                <div class="mx-3 my-3">
-                                                                    ${ques.rightAnswer() == null ? "" : ques.rightAnswer().getAnswer()}
-                                                                </div>
-                                                            </div>
+                                                </c:if>
+                                                <c:if test="${sessionScope.account.checkEnroll(requestScope.sub.id) == requestScope.sub.id}">
+                                                    <div class="form-group">
+                                                        <div class="col-md-4 pt-1 mt-4" style="font-size: 20px;padding-left: 0px">
+                                                            <span>The List Questions: </span>
                                                         </div>
-                                                    </c:forEach>
-                                                </div>
-
+                                                        <c:forEach var="ques" items="${requestScope.questions}">
+                                                            <div class="row mx-5 my-4">
+                                                                <div class="col-md-7 mr-3"
+                                                                     style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
+                                                                    <div class="mx-3 my-3">
+                                                                        ${ques.getQuestion()}<br>
+                                                                        <c:forEach var="ans" items="${ques.allAnswer()}">
+                                                                            ${ans.getAnswer()}<br>
+                                                                        </c:forEach>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4"
+                                                                     style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
+                                                                    <div class="mx-3 my-3">
+                                                                        ${ques.rightAnswer() == null ? "" : ques.rightAnswer().getAnswer()}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </c:forEach>
+                                                    </div>
+                                                </c:if>
                                         </div>
                                     </div>
                                     </form>

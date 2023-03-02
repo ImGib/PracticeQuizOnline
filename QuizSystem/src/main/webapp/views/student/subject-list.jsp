@@ -361,7 +361,29 @@
                                                 <h6 class="mb-0">${author.firstName} ${author.lastName}</h6> <span>${sub.diffirentDate()}</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <a href="#"><span>Enroll</span></a> </div>
+                                    <div class="badge"> 
+                                                <c:choose>
+                                                    <c:when test="${sessionScope.account.checkEnroll(sub.id) == sub.id}">
+                                                        <a><span style="background-color: #fffbec;
+                                                                          width: 60px;
+                                                                          height: 25px;
+                                                                          padding-bottom: 3px;
+                                                                          border-radius: 5px;
+                                                                          display: flex;
+                                                                          color: #fed85d;
+                                                                          justify-content: center;
+                                                                          align-items: center;">Enrolled</span></a>
+                                                        </c:when>
+                                                        <c:when test="${sessionScope.account.checkEnroll(sub.id) != sub.id}">
+                                                            <c:if test="${sessionScope.account == null}">
+                                                                <a href="login" ><span style="color: #007bff; background-color: white">Enroll</span></a> 
+                                                            </c:if>
+                                                            <c:if test="${sessionScope.account != null}">
+                                                                <a href="enroll?idSub=${sub.id}" ><span style="color: #007bff; background-color: white">Enroll</span></a> 
+                                                            </c:if>
+                                                    </c:when>
+                                                </c:choose>
+                                            </div>
                                     </div>
                                     <div class="mt-5">
                                         <a class="course" href="subject-details?id=${sub.id}">

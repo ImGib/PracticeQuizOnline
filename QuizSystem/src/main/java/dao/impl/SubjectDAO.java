@@ -46,26 +46,30 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
 
     @Override
     public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp) {
-        String sql = "select Subject.* from Subject,\n" +
-"                Account\n" +
-"                where Subject.idAuthor = Account.userName\n" +
-"                		and isActive='True'\n" +
-"                		and Subject.isPublic = 'True'\n" +
-"                        and Subject.name like ?\n" +
-"                order by publicDate DESC\n" +
-"                OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        String sql = "select Subject.* from Subject,\n"
+                + "Account,\n"
+                + "(select SubType.idSub from Category, SubType\n"
+                + "where Category.id = SubType.idCate and Category.name like ?) as t1\n"
+                + "where Subject.idAuthor = Account.userName\n"
+                + "    and isActive='True'\n"
+                + "    and Subject.isPublic = 'True'\n"
+                + "    and (Subject.name like ? or t1.idSub = Subject.id)\n"
+                + "order by publicDate DESC\n"
+                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         txt = "%" + txt + "%";
-        return query(sql, SubjectMapper.getInstance(), txt, (pageIndex - 1) * nrpp, nrpp);
+        return query(sql, SubjectMapper.getInstance(), txt, txt, (pageIndex - 1) * nrpp, nrpp);
     }
 
     @Override
     public int countAllFoundSubject(String txt) {
-        String sql = "select count(*) from Subject,\n"
-                + "Account\n"
-                + "where Subject.idAuthor = Account.userName \n"
-                + "		and isActive = 'True' \n"
-                + "		and Subject.isPublic = 'True'\n"
-                + "        and Subject.name like ?";
+        String sql = "select Subject.* from Subject,\n"
+                + "Account,\n"
+                + "(select SubType.idSub from Category, SubType\n"
+                + "where Category.id = SubType.idCate and Category.name like ?) as t1\n"
+                + "where Subject.idAuthor = Account.userName\n"
+                + "    and isActive='True'\n"
+                + "    and Subject.isPublic = 'True'\n"
+                + "    and (Subject.name like ? or t1.idSub = Subject.id)";
         txt = "%" + txt + "%";
         return count(sql, txt);
     }
