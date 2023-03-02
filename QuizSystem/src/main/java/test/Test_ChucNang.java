@@ -10,6 +10,7 @@ import model.Account;
 import model.Answer;
 import model.Category;
 import model.Question;
+import model.Slider;
 import model.SubType;
 import model.Subject;
 import org.bouncycastle.pqc.math.linearalgebra.RandUtils;
@@ -17,6 +18,7 @@ import service.impl.AccountService;
 import service.impl.CategoryService;
 import service.impl.EnrollService;
 import service.impl.QuestionService;
+import service.impl.SliderService;
 import service.impl.SubjectService;
 import sun.security.provider.CtrDrbg;
 import utils.RandomAccountUtil;
@@ -28,6 +30,9 @@ import utils.RandomUtil;
  */
 public class Test_ChucNang {
     public static void main(String[] args) {
-    System.out.println(EnrollService.getInstance().checkEnroll("dinson", 1));
+    List<Slider> list = SliderService.getIntance().getAll();
+    for(Slider s : list){
+        System.out.println(s.getImg());
+    }
     }
 }

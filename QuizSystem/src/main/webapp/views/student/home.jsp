@@ -589,14 +589,11 @@
                             <div class="card single_post mx-5" style="width: 95%;">
                                 <div class="body">
                                     <div>
-                                        <img class="mySlides2 animate-fading"
-                                             src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-1.jpg?v=1651990539676">
-                                        <img class="mySlides2 animate-fading"
-                                             src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-9.jpg?v=1651990877449">
-                                        <img class="mySlides2 animate-fading"
-                                             src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-17.jpg?v=1651991039908">
-                                        <img class="mySlides2 animate-fading"
-                                             src="https://bizweb.dktcdn.net/100/330/208/files/mau-slide-powerpoint-lich-su-3.jpg?v=1651990799496">
+                                        <c:forEach var="sl" items="${requestScope.sliders}">
+                                            <img class="mySlides2 animate-fading"
+                                             src="${sl.img}">
+                                        </c:forEach>
+                                        
                                     </div>
                                 </div>
                             </div>
