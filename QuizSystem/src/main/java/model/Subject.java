@@ -105,5 +105,12 @@ public class Subject {
     public int getNumberEnroll(){
         return EnrollService.getInstance().getNumberEnrollByIdSub(id);
     }
+
+    @Override
+    public String toString() {
+        return "name: "+ name + "\ndescription: " + description + "\nidAuthor: " + idAuthor;
+    }
+    
+    
     
 }

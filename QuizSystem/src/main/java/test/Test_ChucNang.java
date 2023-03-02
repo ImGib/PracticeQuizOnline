@@ -7,8 +7,17 @@ package test;
 import dao.impl.AccountDao;
 import java.util.List;
 import model.Account;
+import model.Answer;
+import model.Category;
+import model.Question;
+import model.SubType;
+import model.Subject;
 import org.bouncycastle.pqc.math.linearalgebra.RandUtils;
 import service.impl.AccountService;
+import service.impl.CategoryService;
+import service.impl.QuestionService;
+import service.impl.SubjectService;
+import sun.security.provider.CtrDrbg;
 import utils.RandomAccountUtil;
 import utils.RandomUtil;
 
@@ -18,12 +27,9 @@ import utils.RandomUtil;
  */
 public class Test_ChucNang {
     public static void main(String[] args) {
-        AccountDao ad=new AccountDao();
-//        for(Account a: ad.searchAccountByUserName_Name_Gmail_Phone("")){
-//            System.out.println(a.getUserName());
-//        }
-        RandomAccountUtil r=new RandomAccountUtil();
-        System.out.println(r.getAccount());
-       
+        List<Category> cateList= CategoryService.getInstance().getCateBySubId(4);
+        for(Category ct : cateList){
+            System.out.println(ct.getName());
+        }
     }
 }

@@ -58,4 +58,9 @@ public class SubjectService implements ISubjectService {
     public int countEnrollByUsername(String username) {
         return subjectDao.countEnrollByUsername(username);
     }
+
+    @Override
+    public Subject getSubjectById(int id) {
+        return subjectDao.getSubjectById(id);
+    }
 }

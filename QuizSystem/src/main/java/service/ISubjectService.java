@@ -18,4 +18,6 @@ public interface ISubjectService {
     List<Subject> getEnrollByUsername(String username, int pageIndex, int nrpp);
 
     int countEnrollByUsername(String username);
+    
+    Subject getSubjectById(int id);
 }

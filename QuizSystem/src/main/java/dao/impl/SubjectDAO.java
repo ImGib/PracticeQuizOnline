@@ -90,4 +90,10 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
         return count(sql, username);
     }
 
+    @Override
+    public Subject getSubjectById(int id) {
+        String sql = "select * from Subject where id = ?";
+        return query(sql, SubjectMapper.getInstance(), id).get(0);
+    }
+
 }

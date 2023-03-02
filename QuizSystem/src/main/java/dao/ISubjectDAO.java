@@ -24,4 +24,6 @@ public interface ISubjectDAO extends GenericDao<Subject>{
     List<Subject> getEnrollByUsernamePagination(String username, int pageIndex, int nrpp);
     
     int countEnrollByUsername(String username);
+    
+    Subject getSubjectById(int id);
 }
