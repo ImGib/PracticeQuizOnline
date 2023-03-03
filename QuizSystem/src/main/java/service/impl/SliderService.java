@@ -18,6 +18,7 @@ public class SliderService implements ISliderService{
     private SliderDao sliderDao;
 
     public SliderService() {
+        sliderDao = new SliderDao();
     }
     private static SliderService instance = null;
     public static SliderService getIntance(){
@@ -27,11 +28,8 @@ public class SliderService implements ISliderService{
         return instance;
     }
     @Override
-    public List<Slider> getAll() {
-        List<Slider> list = sliderDao.getAll();
-        if(list.isEmpty())return null;
-        return list;
-//        return sliderDao.getAll();
+    public List<Slider> getAll() {       
+        return sliderDao.getAll();
     }
     
 }

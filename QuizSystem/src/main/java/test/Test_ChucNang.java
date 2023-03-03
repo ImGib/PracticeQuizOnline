@@ -5,6 +5,7 @@
 package test;
 
 import dao.impl.AccountDao;
+import dao.impl.SliderDao;
 import java.util.List;
 import model.Account;
 import model.Answer;
@@ -30,9 +31,9 @@ import utils.RandomUtil;
  */
 public class Test_ChucNang {
     public static void main(String[] args) {
-    List<Slider> list = SliderService.getIntance().getAll();
-    for(Slider s : list){
-        System.out.println(s.getImg());
-    }
+//        System.out.println(SliderService.getIntance().getAll());
+        for (Slider sl : SliderService.getIntance().getAll()){
+            System.out.println(sl.getImg());
+        }
     }
 }

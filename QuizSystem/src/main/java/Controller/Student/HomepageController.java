@@ -29,6 +29,7 @@ public class HomepageController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         SessionUtil.getInstance().putValue(request, "crPage", "QuixLab");
         SessionUtil.getInstance().putValue(request, "pplPost", PostService.getInstance().getTopPopular());
 

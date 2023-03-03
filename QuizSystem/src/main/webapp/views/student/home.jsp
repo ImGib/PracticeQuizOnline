@@ -593,7 +593,6 @@
                                             <img class="mySlides2 animate-fading"
                                              src="${sl.img}">
                                         </c:forEach>
-                                        
                                     </div>
                                 </div>
                             </div>
