@@ -31,19 +31,25 @@ public class SubjectListController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         SessionUtil.getInstance().putValue(req, "crPage", "Subject List");
-        paginationPost(req);
+        paginationSubject(req);
         req.setAttribute("accService", AccountService.getInstance());
         req.getRequestDispatcher("views/student/subject-list.jsp").forward(req, resp);
     }
 
-    void paginationPost(HttpServletRequest req) {
+    void paginationSubject(HttpServletRequest req) {
+        String type = req.getParameter("type");
         search = req.getParameter("search");
 
         if (search == null) {
             search = "";
         }
-        size = SubjectService.getInstance().countAllSubjectPagination(search);
-        System.out.println(size);
+        System.out.println(search);
+        if (type != null) {
+            size = SubjectService.getInstance().count_Cate(search);
+        } else {
+            size = SubjectService.getInstance().count_subName(search);
+        }
+
         PagginationUtil.getInstance().setNrpp(9);
         try {
             pageIndex = Integer.parseInt(req.getParameter("pageIndex"));
@@ -51,12 +57,16 @@ public class SubjectListController extends HttpServlet {
         }
 
         pageIndex = PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        PagginationUtil.getInstance().setPageBegin_Ending(pageIndex, 2);
-        subList = SubjectService.getInstance().getSubjectPagination(search, pageIndex, PagginationUtil.getInstance().getNrpp());
+
+        if (type != null) {
+            subList = SubjectService.getInstance().getSubject_Cate(search, pageIndex, PagginationUtil.getInstance().getNrpp());
+        } else {
+            subList = SubjectService.getInstance().getSubject_subName(search, pageIndex, PagginationUtil.getInstance().getNrpp());
+        }
+        
         req.setAttribute("search", search);
         req.setAttribute("pageIndex", pageIndex);
-        req.setAttribute("begin", PagginationUtil.getInstance().getBegin());
-        req.setAttribute("end", PagginationUtil.getInstance().getEnd());
+        req.setAttribute("totalPagination", PagginationUtil.getInstance().getTotalPage());
         req.setAttribute("subList", subList);
     }
 }

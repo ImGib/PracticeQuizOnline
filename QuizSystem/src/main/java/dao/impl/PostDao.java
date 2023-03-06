@@ -51,7 +51,7 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
                 + "on title like ? or idAuthor like ?\n"
                 + "where idAuthor = userName and isActive = 'True'\n"
                 + "order by id\n"
-                + "OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY";
+                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         txt = "%" + txt + "%";
         return query(sql, new PostMapper(), txt, txt, (pageIndex - 1) * nrpp, nrpp);
 

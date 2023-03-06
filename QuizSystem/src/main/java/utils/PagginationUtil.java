@@ -13,9 +13,6 @@ public class PagginationUtil {
     private int nrpp = 2;
     private int totalPage = 2;
     private int size;
-    private int begin;
-    private int end;
-
     public static PagginationUtil instance = null;
 
     public static PagginationUtil getInstance() {
@@ -48,32 +45,12 @@ public class PagginationUtil {
         this.size = size;
     }
 
-    public int getBegin() {
-        return begin;
-    }
-    public int getEnd() {
-        return end;
-    }
-
     public int pageIndex(int pageIndex, int size) {
 
-        totalPage = (size + nrpp - 1) / nrpp;
+        this.totalPage = (size + nrpp - 1) / nrpp;
 
         pageIndex = pageIndex > totalPage ? totalPage : pageIndex;
         pageIndex = pageIndex < 1 ? 1 : pageIndex;
         return pageIndex;
-    }
-    
-    public void setPageBegin_Ending(int pageIndex, int plus){
-        if (pageIndex <= plus) {
-            begin = 1; 
-        } else {
-            begin = pageIndex - plus;
-        }
-        if (pageIndex >= totalPage-plus) {
-            end = totalPage ;
-        } else {
-            end = pageIndex + plus;
-        }
     }
 }

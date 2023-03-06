@@ -380,15 +380,15 @@
                     <div class="clearfix">
                         <!--<div class="hint-text">Showing <b>9</b> out of <b>25</b> entries</div>-->
                         <ul class="pagination">
-                            <c:if test="${requestScope.subList.size() != 0 }">
-                                <li class="page-item"><a href="subject-list?search=${sessionScope.search}&pageIndex=${requestScope.begin < requestScope.pageIndex ? requestScope.pageIndex-1 : requestScope.begin}" class="page-link">Previous</a></li>
-                                </c:if>
-                                <c:forEach var="i" begin="${requestScope.begin}" end="${requestScope.end}">
-                                <li class="page-item ${i==requestScope.pageIndex?"active":""}"><a class="page-link" href="subject-list?search=${sessionScope.search}&pageIndex=${i}">${i}</a></li>
-                                </c:forEach>
-                                <c:if test="${requestScope.subList.size() != 0 }">
-                                <li class="page-item"><a href="subject-list?search=${sessionScope.search}&pageIndex=${requestScope.end > requestScope.pageIndex ? requestScope.pageIndex+1 : requestScope.end}" class="page-link">Next</a></li>
-                                </c:if>
+                            <c:if test="${requestScope.totalPagination > 1}">
+                                <li class="page-item"><a href="subject-list?search=${requestScope.search}&pageIndex=1" class="page-link">First</a></li>
+                                <c:forEach var="i" begin="1" end="${requestScope.totalPagination}">
+                                        <c:if test="${i >= requestScope.pageIndex-2 && i <= equestScope.pageIndex+2}">
+                                        <li class="page-item ${i==requestScope.pageIndex?"active":""}"><a class="page-link" href="subject-list?search=${requestScope.search}&pageIndex=${i}">${i}</a></li>
+                                        </c:if>
+                                    </c:forEach>
+                                <li class="page-item"><a href="subject-list?search=${requestScope.search}&pageIndex=${requestScope.totalPagination}" class="page-link">Last</a></li>
+                            </c:if>
                         </ul>
                     </div>
                     <!--**********************************

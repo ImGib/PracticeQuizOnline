@@ -40,13 +40,13 @@ public class SubjectService implements ISubjectService {
     }
 
     @Override
-    public List<Subject> getSubjectPagination(String search, int pageIndex, int nrpp) {
-        return subjectDao.subjectPagintion(search, pageIndex, nrpp);
+    public List<Subject> getSubject_subName(String search, int pageIndex, int nrpp) {
+        return subjectDao.subjectPagintion_subName(search, pageIndex, nrpp);
     }
 
     @Override
-    public int countAllSubjectPagination(String string) {
-        return subjectDao.countAllFoundSubject(string);
+    public int count_subName(String string) {
+        return subjectDao.count_subName(string);
     }
 
     @Override
@@ -62,5 +62,15 @@ public class SubjectService implements ISubjectService {
     @Override
     public Subject getSubjectById(int id) {
         return subjectDao.getSubjectById(id);
+    }
+
+    @Override
+    public List<Subject> getSubject_Cate(String search, int pageIndex, int nrpp) {
+        return subjectDao.subjectPagination_Cate(search, pageIndex, nrpp);
+    }
+
+    @Override
+    public int count_Cate(String search) {
+        return subjectDao.count_Cate(search);
     }
 }

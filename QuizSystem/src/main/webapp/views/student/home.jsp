@@ -591,7 +591,7 @@
                                     <div>
                                         <c:forEach var="sl" items="${requestScope.sliders}">
                                             <img class="mySlides2 animate-fading"
-                                             src="${sl.img}">
+                                                 src="${sl.img}">
                                         </c:forEach>
                                     </div>
                                 </div>
@@ -619,22 +619,22 @@
                                                 <c:choose>
                                                     <c:when test="${sessionScope.account.checkEnroll(sub.id) == sub.id}">
                                                         <a><span style="background-color: #fffbec;
-                                                                          width: 60px;
-                                                                          height: 25px;
-                                                                          padding-bottom: 3px;
-                                                                          border-radius: 5px;
-                                                                          display: flex;
-                                                                          color: #fed85d;
-                                                                          justify-content: center;
-                                                                          align-items: center;">Enrolled</span></a>
+                                                                 width: 60px;
+                                                                 height: 25px;
+                                                                 padding-bottom: 3px;
+                                                                 border-radius: 5px;
+                                                                 display: flex;
+                                                                 color: #fed85d;
+                                                                 justify-content: center;
+                                                                 align-items: center;">Enrolled</span></a>
                                                         </c:when>
                                                         <c:when test="${sessionScope.account.checkEnroll(sub.id) != sub.id}">
                                                             <c:if test="${sessionScope.account == null}">
-                                                                <a href="login"><span>Enroll</span></a> 
-                                                            </c:if>
-                                                            <c:if test="${sessionScope.account != null}">
-                                                                <a href="enroll?idSub=${sub.id}"><span>Enroll</span></a> 
-                                                            </c:if>
+                                                            <a href="login"><span>Enroll</span></a> 
+                                                        </c:if>
+                                                        <c:if test="${sessionScope.account != null}">
+                                                            <a href="enroll?idSub=${sub.id}"><span>Enroll</span></a> 
+                                                        </c:if>
                                                     </c:when>
                                                 </c:choose>
                                             </div>
@@ -700,7 +700,7 @@
                                     <div class="body widget">
                                         <ul class="list-unstyled categories-clouds m-b-0">
                                             <c:forEach var="cate" items="${cateList}">
-                                                <li><a href="subject-list?search=${cate.name}">${cate.name}</a></li>
+                                                <li><a href="subject-list?search=${cate.id}&type=cate">${cate.name}</a></li>
                                                 </c:forEach>
                                         </ul>
                                     </div>
