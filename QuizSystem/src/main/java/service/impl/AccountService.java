@@ -10,7 +10,6 @@ import model.Account;
 import service.IAccountService;
 import utils.CheckUtil;
 import java.util.List;
-import model.Subject;
 import model.UserGoogleDto;
 
 /**
@@ -99,7 +98,7 @@ public class AccountService implements IAccountService {
 
     @Override
     public Account loginWithEmail(UserGoogleDto user) {
-        Account a = new Account(user.getEmail(), user.getEmail(), user.getEmail(), 0, true);
+        Account a = new Account(user.getEmail(), CheckUtil.MD5Encryption("123"), user.getEmail(), 0, true);
         if (accountDao.findAccountByEmail(user.getEmail()).isEmpty()) {
             accountDao.addAccount(a);
         } else {
@@ -192,6 +191,7 @@ public class AccountService implements IAccountService {
         accountDao.addAccountByAdmin(a);
     }
     
+    @Override
     public Account getAccountByID(String username) {
         List<Account> list = accountDao.findAccountByUserName(username);
         if(list == null || list.isEmpty()) {
@@ -201,6 +201,7 @@ public class AccountService implements IAccountService {
         }
     }
     
+    @Override
     public int getNumberStaff() {
         return accountDao.getNumberStaff();
     }

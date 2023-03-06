@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Expert-Subject-Management
-    Created on : Feb 20, 2023, 2:15:34 PM
-    Author     : Gib
+    Document   : Expert_Question_Management
+    Created on : Feb 23, 2023, 8:15:03 AM
+    Author     : Lenovo
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
         <!-- Favicon icon -->
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
         <!-- Pignose Calender -->
         <link href="asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
         <!-- Chartist -->
@@ -23,7 +23,6 @@
         <link rel="stylesheet" href="asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
         <!-- Custom Stylesheet -->
         <link href="asset/css/style.css" rel="stylesheet">
-
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -228,62 +227,6 @@
                 margin-top: 10px;
                 font-size: 13px;
             }
-
-            .card {
-                border: none;
-                border-radius: 10px;
-            }
-
-            .c-details span {
-                font-weight: 300;
-                font-size: 13px
-            }
-
-            .icon {
-                width: 50px;
-                height: 50px;
-                background-color: #eee;
-                border-radius: 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 39px
-            }
-
-            .badge span {
-                background-color: #fffbec;
-                width: 60px;
-                height: 25px;
-                padding-bottom: 3px;
-                border-radius: 5px;
-                display: flex;
-                color: #fed85d;
-                justify-content: center;
-                align-items: center
-            }
-
-            .progress {
-                height: 10px;
-                border-radius: 10px
-            }
-
-            .progress div {
-                background-color: red
-            }
-
-            .text1 {
-                font-size: 14px;
-                font-weight: 600
-            }
-
-            .text2 {
-                color: #a5aec0
-            }
-
-            .course {
-                text-decoration: none;
-                color: #000;
-            }
         </style>
         <script>
             $(document).ready(function () {
@@ -324,7 +267,7 @@
                 ***********************************-->
 
                 <!--**********************************
-                    Header start
+                    header start
                 ***********************************-->
                 <div class="header">
                     <div class="header-content clearfix">
@@ -340,114 +283,135 @@
                                     <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                             class="mdi mdi-magnify"></i></span>
                                 </div>
-                                <form action="expert-subject-management" method="get">
+                                <form action="expert-question-management" method="get">
                                     <input type="txt" hidden value="1" name="index">
                                     <input type="txt" class="form-control" placeholder="Search Dashboard"
                                            aria-label="Search Dashboard" name="search" value="${requestScope.searchName}">
-                                    <button type="submit" hidden></button>
-                                </form>
-                                <div class="drop-down animated flipInX d-md-none">
+                                <button type="submit" hidden></button>
+                            </form>
+                            <div class="drop-down animated flipInX d-md-none">
 
-                                </div>
                             </div>
-                        </div>
-                        <div class="header-right">
-                            <ul class="clearfix">
-                                <li class="icons dropdown">
-                                    <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                        <span class="activity active"></span>
-                                        <img src="images/user/1.png" height="40" width="40" alt="">
-                                    </div>
-                                    <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                        <div class="dropdown-content-body">
-                                            <ul>
-                                                <li>
-                                                    <a href="Profile_Update_App.html"><i class="icon-user"></i>
-                                                        <span>Profile</span></a>
-                                                </li>
-
-                                                <hr class="my-2">
-
-                                                <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
-                </div>
-                <!--**********************************
-                    Header end ti-comment-alt
-                ***********************************-->
+                    <div class="header-right">
+                        <ul class="clearfix">
+                            <li class="icons dropdown">
+                                <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                    <span class="activity active"></span>
+                                    <img src="images/user/1.png" height="40" width="40" alt="">
+                                </div>
+                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                                    <span>Profile</span></a>
+                                            </li>
 
-                <!--**********************************
-                    Sidebar start
-                ***********************************-->
+                                            <hr class="my-2">
 
-            <jsp:include page="Expert_Menu.jsp"></jsp:include>
-                <!--**********************************
-                        Sidebar end
-                    ***********************************-->
-
-                <!--**********************************
-                        Content body start
-                    ***********************************-->
-                <div class="content-body">
-                    <div class="container mt-5 mb-3">
-                        <div style="text-align: end; margin-bottom: 15px;">
-                            <div>
-                                <a href="expert-add-new-subject" class="btn btn-secondary"><i class="material-icons"
-                                                                                              style="margin-bottom: -20px;">&#xE147;</i>
-                                    Add new Subject</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                        <c:forEach items="${requestScope.list}" var="l">
-                            <div class="col-md-4">
-                                <div class="card p-3 mb-2">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex flex-row align-items-center">
-                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                                            <div class="ms-2 c-details">
-                                                <h6 class="mb-0" style="margin-left: 10px">${l.idAuthor}</h6> <span style="margin-left: 10px">${l.diffirentDate()}</span>
-                                            </div>
-                                        </div>
-                                        <div class="badge"> <a href="exper-public-subject?id=${l.id}&&isPublic=${l.isPublic}"><span>${l.isPublic ? "UnPublic":"Public"}</span></a> </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <a class="course" href="expert-edit-subject?id=${l.id}">
-                                            <div class="heading">${l.name}</div>
-                                        </a>
-                                        <div class="mt-5">
-                                            <div class="mt-3">
-                                                <span class="text1">${l.numberEnroll} Person <span class="text2">Erroll this
-                                                        Cousrse</span>\</span>
-                                            </div>
-                                        </div>
+                                            <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                            </div>
-                        </c:forEach>
-                    </div>
-                    <c:set var="search" value="${requestScope.searchName}"></c:set>
-                    <div class="clearfix">
-                        <ul class="pagination">
-                            <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-subject-management?index=${index-1}&&search=${search}">Previous</a></li>
-                                <c:forEach begin="1" end="${totalPage}" var="i">
-                                <li class="page-item ${index == i ? "active":""}"><a href="expert-subject-management?index=${i}&&search=${search}" class="page-link">${i}</a></li>
-                                
-                                </c:forEach>
-                                <li class="page-item" ${index == totalPage ? "hidden":""}><a href="expert-subject-management?index=${index+1}&&search=${search}" class="page-link">Next</a></li>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <!--**********************************
+                header end ti-comment-alt
+            ***********************************-->
 
+            <!--**********************************
+                Sidebar start
+            ***********************************-->
+            <jsp:include page="Expert_Menu.jsp"></jsp:include>
+                <!--**********************************
+                    Sidebar end
+                ***********************************-->
 
+                <!--**********************************
+                    Content body start
+                ***********************************-->
+                <div class="content-body">
 
+                    <div class="container-xl">
+                        <div class="table-responsive">
+                            <div class="table-wrapper">
+                                <div class="table-title">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <h2>Questions <b>Management</b></h2>
+                                        </div>
+                                        <div class="col-sm-7">
 
+                                            <a href="expert-add-new-question" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
+                                                <span>Add New Question</span></a>
+                                            <div class="btn btn-secondary"style="display: flex;">
+                                                <div class="mr-2"><i class="fa fa-filter"></i>Filter by subject</div>
+                                                <div>
+                                                    <form action="expert-question-management" method="get" id="subForm">
+                                                        <input hidden value="1" name="index">
+                                                        <input hidden value="${requestScope.searchName}" name="search">
+                                                        <select name="idSub" style="width:80px; font-size: 15px" onchange="searchBySub()">
+                                                            <option value="0">Empty</option>
+                                                        <c:forEach items="${requestScope.listS}" var="s">
+                                                            <option value="${s.id}" ${requestScope.idSub == s.id ? "selected":""}>${s.name}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Question</th>
+                                        <th>Subject</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:set var="stt" value="0"></c:set>
+                                    <c:forEach items="${requestScope.listQ}" var="q">
+                                        <tr>
+                                            <c:set var="stt" value="${stt + 1}"></c:set>
+                                            <td>${stt}</td>
+                                            <td style="max-width:250px"><span style="max-width:250px; line-height: 1.8">${q.question}</span></td>
+                                            <td>${q.subject}</td>
+                                            <td><span class="status text-success">&bull;</span> Public</td>
+                                            <td>
+                                                <a href="expert-edit-question?id=${q.id}" class="settings" title="Update" data-toggle="tooltip"><i
+                                                        class="material-icons">&#xE8B8;</i></a>
+                                                <a href="expert-delete-question?id=${q.id}" class="delete" title="Delete" data-toggle="tooltip"><i
+                                                        class="material-icons">&#xE5C9;</i></a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                            <div class="clearfix">
+                                <ul class="pagination">
+                                    <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-question-management?index=${index-1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}">Previous</a></li>
+                                        <c:forEach begin="1" end="${totalPage}" var="i">
+                                        <li class="page-item ${index == i ? "active":""}"><a href="expert-question-management?index=${i}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">${i}</a></li>
+                                        </c:forEach>
+                                    <li class="page-item" ${index == totalPage ? "hidden":""}><a href="expert-question-management?index=${index+1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- #/ container -->
+            </div>
             <!--**********************************
                 Content body end
             ***********************************-->
@@ -468,33 +432,7 @@
         <!--**********************************
             Scripts
         ***********************************-->
-        <script src="plugins/common/common.min.js"></script>
-        <script src="js/custom.min.js"></script>
-        <script src="js/settings.js"></script>
-        <script src="js/gleek.js"></script>
-        <script src="js/styleSwitcher.js"></script>
 
-        <!-- Chartjs -->
-        <script src="./plugins/chart.js/Chart.bundle.min.js"></script>
-        <!-- Circle progress -->
-        <script src="./plugins/circle-progress/circle-progress.min.js"></script>
-        <!-- Datamap -->
-        <script src="./plugins/d3v3/index.js"></script>
-        <script src="./plugins/topojson/topojson.min.js"></script>
-        <script src="./plugins/datamaps/datamaps.world.min.js"></script>
-        <!-- Morrisjs -->
-        <script src="./plugins/raphael/raphael.min.js"></script>
-        <script src="./plugins/morris/morris.min.js"></script>
-        <!-- Pignose Calender -->
-        <script src="./plugins/moment/moment.min.js"></script>
-        <script src="./plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-        <!-- ChartistJS -->
-        <script src="./plugins/chartist/js/chartist.min.js"></script>
-        <script src="./plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-
-
-
-        <script src="asset/js/dashboard/dashboard-1.js"></script>
         <script src="asset/plugins/common/common.min.js"></script>
         <script src="asset/js/custom.min.js"></script>
         <script src="asset/js/settings.js"></script>
@@ -522,6 +460,14 @@
 
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
+
+        <script src="asset/js/dashboard/dashboard-1.js"></script>
+        
+        <script>
+            function searchBySub(){
+                document.getElementById("subForm").submit();
+            }
+        </script>
 
     </body>
 

@@ -6,6 +6,7 @@ package dao;
 
 import java.util.List;
 import model.Subject;
+import utils.PageUtil;
 
 
 public interface ISubjectDAO extends GenericDao<Subject>{
@@ -17,4 +18,23 @@ public interface ISubjectDAO extends GenericDao<Subject>{
     
     public List<Subject> getAllSubjectAndNumberEnroll();
     
+    public int addNewSubject(Subject subject);
+    
+    public List<Subject> getSubjectById(String id);
+    
+    public void editSubject(Subject s);
+    
+    public void editPublic(String isPulic, String id);
+    
+    public int getNumberSubjectByUserName(String userName);
+    
+    public List<Subject> getListSubjectAndNumberQuestionByUserName(String userName);
+    
+    public int getNumberStudentByIdAuthor(String userName);
+    
+    public List<Subject> getAllSubjectAndNumberEnrollBySearchAndUserName(PageUtil p);
+    
+    public int getNumberSubjectBySearchAndUserName(PageUtil p);
+    
+    public List<Subject> findSubjectByName(String name);
 }

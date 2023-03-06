@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AdminHome.jsp
-    Created on : Feb 16, 2023, 11:18:21 PM
+    Document   : Expert_Statistic
+    Created on : Feb 23, 2023, 8:15:17 AM
     Author     : Lenovo
 --%>
 
@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
         <!-- Favicon icon -->
-        <link rel="icon" type="admin/image/png" sizes="16x16" href="asset/images/favicon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
         <!-- Pignose Calender -->
         <link href="asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
         <!-- Chartist -->
@@ -23,7 +23,217 @@
         <!-- Custom Stylesheet -->
         <link href="asset/css/style.css" rel="stylesheet">
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <style>
+            body {
+                color: #566787;
+                background: #f5f5f5;
+                font-family: 'Varela Round', sans-serif;
+                font-size: 13px;
+            }
+
+            .table-responsive {
+                margin: 30px 0;
+            }
+
+            .table-wrapper {
+                min-width: 1000px;
+                background: #fff;
+                padding: 20px 25px;
+                border-radius: 3px;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            }
+
+            .table-title {
+                padding-bottom: 15px;
+                background: #299be4;
+                color: #fff;
+                padding: 16px 30px;
+                margin: -20px -25px 10px;
+                border-radius: 3px 3px 0 0;
+            }
+
+            .table-title h2 {
+                margin: 5px 0 0;
+                font-size: 24px;
+            }
+
+            .table-title .btn {
+                color: #566787;
+                float: right;
+                font-size: 13px;
+                background: #fff;
+                border: none;
+                min-width: 50px;
+                border-radius: 2px;
+                border: none;
+                outline: none !important;
+                margin-left: 10px;
+            }
+
+            .table-title .btn:hover,
+            .table-title .btn:focus {
+                color: #566787;
+                background: #f2f2f2;
+            }
+
+            .table-title .btn i {
+                float: left;
+                font-size: 21px;
+                margin-right: 5px;
+            }
+
+            .table-title .btn span {
+                float: left;
+                margin-top: 2px;
+            }
+
+            table.table tr th,
+            table.table tr td {
+                border-color: #e9e9e9;
+                padding: 12px 15px;
+                vertical-align: middle;
+            }
+
+            table.table tr th:first-child {
+                width: 60px;
+            }
+
+            table.table tr th:last-child {
+                width: 100px;
+            }
+
+            table.table-striped tbody tr:nth-of-type(odd) {
+                background-color: #fcfcfc;
+            }
+
+            table.table-striped.table-hover tbody tr:hover {
+                background: #f5f5f5;
+            }
+
+            table.table th i {
+                font-size: 13px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            table.table td:last-child i {
+                opacity: 0.9;
+                font-size: 22px;
+                margin: 0 5px;
+            }
+
+            table.table td a {
+                font-weight: bold;
+                color: #566787;
+                display: inline-block;
+                text-decoration: none;
+            }
+
+            table.table td a:hover {
+                color: #2196F3;
+            }
+
+            table.table td a.settings {
+                color: #2196F3;
+            }
+
+            table.table td a.delete {
+                color: #F44336;
+            }
+
+            table.table td i {
+                font-size: 19px;
+            }
+
+            table.table .avatar {
+                border-radius: 50%;
+                vertical-align: middle;
+                margin-right: 10px;
+            }
+
+            .status {
+                font-size: 30px;
+                margin: 2px 2px 0 0;
+                display: inline-block;
+                vertical-align: middle;
+                line-height: 10px;
+            }
+
+            .text-success {
+                color: #10c469;
+            }
+
+            .text-info {
+                color: #62c9e8;
+            }
+
+            .text-warning {
+                color: #FFC107;
+            }
+
+            .text-danger {
+                color: #ff5b5b;
+            }
+
+            .pagination {
+                float: right;
+                margin: 0 0 5px;
+            }
+
+            .pagination li a {
+                border: none;
+                font-size: 13px;
+                min-width: 30px;
+                min-height: 30px;
+                color: #999;
+                margin: 0 2px;
+                line-height: 30px;
+                border-radius: 2px !important;
+                text-align: center;
+                padding: 0 6px;
+            }
+
+            .pagination li a:hover {
+                color: #666;
+            }
+
+            .pagination li.active a,
+            .pagination li.active a.page-link {
+                background: #03A9F4;
+            }
+
+            .pagination li.active a:hover {
+                background: #0397d6;
+            }
+
+            .pagination li.disabled i {
+                color: #ccc;
+            }
+
+            .pagination li i {
+                font-size: 16px;
+                padding-top: 6px
+            }
+
+            .hint-text {
+                float: left;
+                margin-top: 10px;
+                font-size: 13px;
+            }
+        </style>
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
 
     </head>
 
@@ -52,17 +262,7 @@
             <!--**********************************
                 Nav header start
             ***********************************-->
-            <div class="nav-header">
-                <div class="brand-logo">
-                    <a href="index.html">
-                        <b class="logo-abbr"><img src="../asset/images/logo.png" alt=""> </b>
-                        <span class="logo-compact"><img src="../asset/images/logo-compact.png" alt=""></span>
-                        <span class="brand-title">
-                            <img src="images/logo-text.png" alt="">
-                        </span>
-                    </a>
-                </div>
-            </div>
+            <jsp:include page="Expert_Nav.jsp"></jsp:include>
             <!--**********************************
                 Nav header end
             ***********************************-->
@@ -70,56 +270,7 @@
             <!--**********************************
                 Header start
             ***********************************-->
-            <div class="header">    
-                <div class="header-content clearfix">
-
-                    <div class="nav-control">
-                        <div class="hamburger">
-                            <span class="toggle-icon"><i class="icon-menu"></i></span>
-                        </div>
-                    </div>
-                    <div class="header-left">
-                        <div class="input-group icons">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                            </div>
-                            <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                            <div class="drop-down animated flipInX d-md-none">
-                                <form action="#">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header-right">
-                        <ul class="clearfix">
-                            <li class="icons dropdown"><a href="https://www.facebook.com/">
-                                    <i class="mdi mdi-email-outline"></i>
-                                    <span class="badge badge-pill gradient-1">3</span>
-                                </a>
-                            </li>
-                            <li class="icons dropdown">
-                                <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
-                                    <span class="activity active"></span>
-                                    <img src="images/user/1.png" height="40" width="40" alt="">
-                                </div>
-                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                    <div class="dropdown-content-body">
-                                        <ul>
-                                            <li>
-                                                <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                            </li>
-
-
-                                            <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="Expert_Header.jsp"></jsp:include>
             <!--**********************************
                 Header end ti-comment-alt
             ***********************************-->
@@ -127,24 +278,7 @@
             <!--**********************************
                 Sidebar start
             ***********************************-->
-            <div class="nk-sidebar">           
-                <div class="nk-nav-scroll">
-                    <ul class="metismenu" id="menu">
-                        <li class="nav-label">Dashboard</li>
-                        <li>
-                            <a href="index.html">
-                                <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="admin_user_management.html">
-                                <i class="icon-user"></i> <span class="nav-text">User Management</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
+            <jsp:include page="Expert_Menu.jsp"></jsp:include>
             <!--**********************************
                 Sidebar end
             ***********************************-->
@@ -156,55 +290,44 @@
 
                 <div class="container-fluid mt-3">
                     <div class="row">
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-4 col-sm-6">
                             <div class="card gradient-1">
                                 <div class="card-body">
-                                    <h3 class="card-title text-white">Number Subjects</h3>
+                                    <h3 class="card-title text-white">Number Subject</h3>
                                     <div class="d-inline-block">
                                         <h2 class="text-white">${requestScope.numberSubject}</h2>
-                                        <p class="text-white mb-0">Jan - March 2019</p>
+                                        <p class="text-white mb-0"></p>
                                     </div>
                                     <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-4 col-sm-6">
                             <div class="card gradient-2">
                                 <div class="card-body">
-                                    <h3 class="card-title text-white">Number Staff</h3>
+                                    <h3 class="card-title text-white">Number Question</h3>
                                     <div class="d-inline-block">
-                                        <h2 class="text-white">${requestScope.numberStaff}</h2>
-                                        <p class="text-white mb-0">Jan - March 2019</p>
+                                        <h2 class="text-white">${requestScope.numberQuestion}</h2>
+                                        <p class="text-white mb-0"></p>
                                     </div>
                                     <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-4 col-sm-6">
                             <div class="card gradient-3">
                                 <div class="card-body">
-                                    <h3 class="card-title text-white">Number Student</h3>
+                                    <h3 class="card-title text-white">Number Customers</h3>
                                     <div class="d-inline-block">
                                         <h2 class="text-white">${requestScope.numberStudent}</h2>
-                                        <p class="text-white mb-0">Jan - March 2019</p>
+                                        <p class="text-white mb-0"></p>
                                     </div>
                                     <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card gradient-4">
-                                <div class="card-body">
-                                    <h3 class="card-title text-white">Number Post</h3>
-                                    <div class="d-inline-block">
-                                        <h2 class="text-white">${requestScope.numberPost}</h2>
-                                        <p class="text-white mb-0">Jan - March 2019</p>
-                                    </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+
                     <div class="container-fluid mt-3">
                         <canvas id="myChart" style="width:100%;max-width:1000px; align-items: center" ></canvas>
                     </div>
@@ -248,7 +371,8 @@
             ***********************************-->
             <div class="footer">
                 <div class="copyright">
-                    <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+                    <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
+                        2018</p>
                 </div>
             </div>
             <!--**********************************
@@ -262,14 +386,18 @@
         <!--**********************************
             Scripts
         ***********************************-->
+
+
+
+        <script src="asset/js/dashboard/dashboard-1.js"></script>
         <script src="asset/plugins/common/common.min.js"></script>
         <script src="asset/js/custom.min.js"></script>
         <script src="asset/js/settings.js"></script>
         <script src="asset/js/gleek.js"></script>
-        <script src="asset/js/styleSwitcher.js"></script>
+        <script src="js/styleSwitcher.js"></script>
 
         <!-- Chartjs -->
-        <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
+        <script src="asset//plugins/chart.js/Chart.bundle.min.js"></script>
         <!-- Circle progress -->
         <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
         <!-- Datamap -->

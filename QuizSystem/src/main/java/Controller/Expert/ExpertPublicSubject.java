@@ -10,19 +10,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import service.impl.SubjectService;
 
-@WebServlet(urlPatterns = {"/expert-subject-management"})
-public class ManageSubjectController extends HttpServlet{
+/**
+ *
+ * @author Lenovo
+ */
+@WebServlet(urlPatterns = {"/exper-public-subject"})
+public class ExpertPublicSubject extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        String id = req.getParameter("id");
+        boolean isPublic = Boolean.parseBoolean(req.getParameter("isPublic"));
+        SubjectService.getInstance().changePublic(isPublic, id);
+        resp.sendRedirect("expert-subject-management");
     }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
+    
     
     
 }

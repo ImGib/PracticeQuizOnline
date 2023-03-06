@@ -12,21 +12,21 @@ import model.Subject;
  *
  * @author Gib
  */
-public class SubjectMapper implements RowMapper<Subject>{
-
-
+public class SubjectMapper implements RowMapper<Subject> {
+    
     private static SubjectMapper instance = null;
-
+    
     public static SubjectMapper getInstance() {
         if (instance == null) {
             instance = new SubjectMapper();
         }
         return instance;
     }
-
-    private SubjectMapper(){
+    
+    private SubjectMapper() {
         
     }
+    
     @Override
     public Subject MapRow(ResultSet rs) {
         try {
@@ -35,8 +35,13 @@ public class SubjectMapper implements RowMapper<Subject>{
                     rs.getString(2),
                     rs.getString(3),
                     rs.getString(4),
-                    rs.getString(5), 
-            rs.getString(6));
+                    rs.getString(5),
+                    rs.getString(6));
+            s.setIsPublic(rs.getBoolean(7));
+            try {
+                s.setNumberEnroll(rs.getInt(8));
+            } catch (SQLException e) {
+            }
             return s;
         } catch (SQLException e) {
             return null;
