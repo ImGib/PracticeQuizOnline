@@ -123,4 +123,5 @@ public class SubjectService implements ISubjectService {
     public int countEnrollByUsername(String username) {
         return subjectDao.countEnrollByUsername(username);
     }
+
 }

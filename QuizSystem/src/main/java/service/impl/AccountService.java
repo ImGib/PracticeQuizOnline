@@ -100,11 +100,13 @@ public class AccountService implements IAccountService {
     @Override
     public Account loginWithEmail(UserGoogleDto user) {
         String[] u = user.getEmail().split("@");
-        Account a = new Account(u[0], CheckUtil.MD5Encryption("123"), user.getEmail(), 0, true);
-        if (accountDao.findAccountByEmail(user.getEmail()).isEmpty()) {
+        Account a;   
+        List<Account> ls = accountDao.findAccountByEmail(user.getEmail());
+        if (ls.isEmpty()) {
+            a = new Account(u[0], CheckUtil.MD5Encryption("123"), user.getEmail(), 0, true);
             accountDao.addAccount(a);
         } else {
-            System.out.println("kkkkk");
+            a = ls.get(0);
         }
         return a;
     }

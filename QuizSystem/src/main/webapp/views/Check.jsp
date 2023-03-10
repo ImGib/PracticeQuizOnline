@@ -13,13 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>correct : ${requestScope.cr}</h1>
-        <c:forEach items="${requestScope.id}" var="i">
-            <h1>id: ${i} + ${i.isEmpty()}</h1>
-        </c:forEach>
-            
-        <c:forEach items="${requestScope.answer}" var="a">
-            <h1>answer: ${a} + ${a.isEmpty()}</h1>
-        </c:forEach>    
+        <h1>correct : ${requestScope.userName}</h1>
+          
     </body>
 </html>

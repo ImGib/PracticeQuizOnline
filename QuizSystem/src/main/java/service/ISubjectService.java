@@ -37,8 +37,6 @@ public interface ISubjectService {
 
     public int countAllSubjectPagination(String search);
 
-    public List<Subject> getAllSubject();
-
     List<Subject> getEnrollByUsername(String username, int pageIndex, int nrpp);
 
     int countEnrollByUsername(String username);

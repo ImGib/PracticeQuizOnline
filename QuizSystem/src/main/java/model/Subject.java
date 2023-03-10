@@ -151,8 +151,5 @@ public class Subject {
         return days;
     }
     
-    public int getNumberEnroll(){
-        return EnrollService.getInstance().getNumberEnrollByIdSub(id);
-    }
     
 }

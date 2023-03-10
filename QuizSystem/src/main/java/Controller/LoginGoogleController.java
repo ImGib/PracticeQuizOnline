@@ -29,7 +29,6 @@ public class LoginGoogleController extends HttpServlet{
         UserGoogleDto user = util.getUserInfo(accessToken);
         Account a = AccountService.getInstance().loginWithEmail(user);
         SessionUtil.getInstance().putValue(req, "account", a);
-        
         //chuyen huong trang home
         resp.sendRedirect("home");
     }
