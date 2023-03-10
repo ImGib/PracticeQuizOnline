@@ -18,10 +18,38 @@ public class Subject {
     private String description;
     private String publicdate;
     private String idAuthor;
+    private boolean isPublic;
+    private int numberEnroll;
+    private int numberQuestion;
 
     public Subject() {
     }
 
+    public Subject(int id, String name, int numberErrol) {
+        this.id = id;
+        this.name = name;
+        this.numberEnroll = numberErrol;
+    }
+
+    public Subject(int id, String name, String img, String description, String publicdate, String idAuthor, int numberErrol) {
+        this.id = id;
+        this.name = name;
+        this.img = img;
+        this.description = description;
+        this.publicdate = publicdate;
+        this.idAuthor = idAuthor;
+        this.numberEnroll = numberErrol;
+    }
+
+    public int getNumberQuestion() {
+        return numberQuestion;
+    }
+
+    public void setNumberQuestion(int numberQuestion) {
+        this.numberQuestion = numberQuestion;
+    }
+    
+    
     public Subject(int id, String name, String img, String description, String publicdate, String idAuthor) {
         this.id = id;
         this.name = name;
@@ -30,6 +58,16 @@ public class Subject {
         this.publicdate = publicdate;
         this.idAuthor = idAuthor;
     }
+
+    public boolean isIsPublic() {
+        return isPublic;
+    }
+
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+    
+    
 
     public String getIdAuthor() {
         return idAuthor;
@@ -78,6 +116,17 @@ public class Subject {
     public void setPublicdate(String publicdate) {
         this.publicdate = publicdate;
     }
+
+    public int getNumberEnroll() {
+        return EnrollService.getInstance().getNumberEnrollByIdSub(id);
+    }
+
+    public void setNumberEnroll(int numberEnroll) {
+        this.numberEnroll = numberEnroll;
+    }
+
+    
+    
     
     public String diffirentDate() throws ParseException{
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
@@ -102,9 +151,6 @@ public class Subject {
         return days;
     }
     
-    public int getNumberEnroll(){
-        return EnrollService.getInstance().getNumberEnrollByIdSub(id);
-    }
 
     @Override
     public String toString() {

@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.List;
+
 public class Category {
     private int id;
     private String name;
@@ -30,6 +32,15 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public boolean isCheckEd(List<SubType> list){
+        for (SubType subType : list) {
+            if(subType.getIdCate() == id){
+                return true;
+            }
+        }
+        return false;
     }
     
     

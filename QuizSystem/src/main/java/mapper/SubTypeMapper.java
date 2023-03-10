@@ -6,23 +6,19 @@ package mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Answer;
+import model.SubType;
 
 /**
  *
  * @author Lenovo
  */
-public class AnswerMapper implements RowMapper<Answer>{
+public class SubTypeMapper implements RowMapper<SubType>{
 
     @Override
-    public Answer MapRow(ResultSet rs) {
+    public SubType MapRow(ResultSet rs) {
         try {
-            Answer a = new Answer();
-            a.setIdAns(rs.getInt(1));
-            a.setIdQues(rs.getInt(2));
-            a.setIsCorrect(rs.getBoolean(3));
-            a.setAnswer(rs.getString(4));
-            return a;
+            SubType subType = new SubType(rs.getInt(1), rs.getInt(2));
+            return subType;
         } catch (SQLException e) {
             return null;
         }

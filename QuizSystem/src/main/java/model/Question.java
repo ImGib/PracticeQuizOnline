@@ -9,25 +9,25 @@ import service.impl.AnswerService;
 
 /**
  *
- * @author Gib
+ * @author Lenovo
  */
 public class Question {
-
     private int id;
-    private int idSub;
+    private int inSub;
     private String question;
-    private boolean isPublic;
+    private String subject;
 
     public Question() {
     }
 
-    public Question(int id, int idSub, String question, boolean isPublic) {
-        this.id = id;
-        this.idSub = idSub;
-        this.question = question;
-        this.isPublic = isPublic;
+    public String getSubject() {
+        return subject;
     }
 
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+    
     public int getId() {
         return id;
     }
@@ -36,12 +36,12 @@ public class Question {
         this.id = id;
     }
 
-    public int getIdSub() {
-        return idSub;
+    public int getInSub() {
+        return inSub;
     }
 
-    public void setIdSub(int idSub) {
-        this.idSub = idSub;
+    public void setInSub(int inSub) {
+        this.inSub = inSub;
     }
 
     public String getQuestion() {
@@ -51,15 +51,7 @@ public class Question {
     public void setQuestion(String question) {
         this.question = question;
     }
-
-    public boolean isIsPublic() {
-        return isPublic;
-    }
-
-    public void setIsPublic(boolean isPublic) {
-        this.isPublic = isPublic;
-    }
-
+    
     public List<Answer> allAnswer() {
         List<Answer> answers = AnswerService.getInstance().getAnswerByIdQues(this.id);
         return answers;
@@ -70,10 +62,6 @@ public class Question {
         return ans;
     }
 
-    @Override
-    public String toString() {
-        return "Question{" + "id=" + id + ", idSub=" + idSub + ", question=" + question + ", isPublic=" + isPublic + '}';
-    }
 
     public boolean checkAnswer(List<String> answered) {
         System.out.println("checkanswer");
@@ -88,5 +76,6 @@ public class Question {
         return false;
 
     }
-
+    
+    
 }

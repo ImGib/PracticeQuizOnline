@@ -14,7 +14,7 @@ public class CategoryService implements ICategoryService{
     
     private CategoryDao categoryDao;
     
-    public CategoryService(){
+    private CategoryService(){
         categoryDao = new CategoryDao();
     }
     

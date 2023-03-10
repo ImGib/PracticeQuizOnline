@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package service;
 
@@ -9,9 +9,12 @@ import model.Answer;
 
 /**
  *
- * @author Gib
+ * @author Lenovo
  */
-public interface IAnswerService{
+public interface IAnswerService {
+    public void createNewAnswerForAQuess(int idQ, List<String> answer, String[] c);
+    public List<Answer> getAnswerByIdQues(String id);
+    public String checkAndUpdateAnswer(String idQ, String[] correctA, List<String> answer, List<String> idA);
     List<Answer> getAnswerByIdQues(int idQues);
     Answer getRightAns(int idQues);
 }

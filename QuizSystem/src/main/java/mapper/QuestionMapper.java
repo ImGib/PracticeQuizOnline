@@ -5,26 +5,31 @@
 package mapper;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import model.Question;
 
 /**
  *
- * @author Gib
+ * @author Lenovo
  */
-public class QuestionMapper implements RowMapper<Question>{
+public class QuestionMapper implements RowMapper<Question> {
 
     @Override
     public Question MapRow(ResultSet rs) {
         try {
-            Question q = new Question(rs.getInt(1),
-                    rs.getInt(2),
-                    rs.getString(3),
-                    rs.getBoolean(4)
-            );
+            Question q = new Question();
+            q.setId(rs.getInt(1));
+            q.setInSub(rs.getInt(2));
+            q.setQuestion(rs.getString(3));
+            try {
+                q.setSubject(rs.getString(4));
+            } catch (SQLException e) {
+                q.setSubject("");
+            }
             return q;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             return null;
         }
     }
-    
+
 }

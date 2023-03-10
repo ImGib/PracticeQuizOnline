@@ -4,7 +4,6 @@
  */
 package Controller;
 
-import static com.sun.tools.doclint.Entity.part;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;

@@ -37,8 +37,9 @@ import utils.RandomUtil;
 public class Test_ChucNang {
 
     public static void main(String[] args) {
-        for (Question q : QuestionService.getInstance().getRandomQuestion(5, 1)){
+        for (Question q : QuestionService.getInstance().getAllQuestionBySubId(1)){
             System.out.println(q.getQuestion());
+            System.out.println(q.allAnswer());  
         }
     }
 }
