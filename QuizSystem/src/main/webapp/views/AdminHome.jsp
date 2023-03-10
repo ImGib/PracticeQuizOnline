@@ -209,11 +209,11 @@
                         <canvas id="myChart" style="width:100%;max-width:1000px; align-items: center" ></canvas>
                     </div>
                     <script>
-                        var yValues = [55, 49, 44, 24, 15, 150];
-                        var barColors = ["red", "green", "blue", "orange", "brown", "black"];
+                        var yValues = ${requestScope.yValue};
+                        var barColors = ["red", "green", "blue", "orange", "brown", "black", "pink" , "grey"];
 
                         function passValue() {
-                            return ${requestScope.values};
+                            return ${requestScope.xValue};
                         }
                         new Chart("myChart", {
                             type: "bar",
@@ -235,7 +235,7 @@
 
                     </script>
 
-                </div>>
+                </div>
                 <!-- #/ container -->
             </div>
             <!--**********************************

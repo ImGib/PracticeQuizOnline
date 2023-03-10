@@ -5,13 +5,16 @@
 package Controller;
 
 import dao.impl.AccountDao;
+import dao.impl.QuestionDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import model.Account;
+import utils.PageUtil;
 
 /**
  *
@@ -22,8 +25,10 @@ public class Check extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("txt3", "txt3");
-        req.getRequestDispatcher("hello").forward(req, resp);
+        
+        int a = new QuestionDao().getNumberQuestionBySearchAndUserName(new PageUtil());
+        req.setAttribute("name", a);
+        req.getRequestDispatcher("views/Check.jsp").forward(req, resp);
     }
     
 }

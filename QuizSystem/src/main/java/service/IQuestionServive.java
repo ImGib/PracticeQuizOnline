@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller.Expert;
+package service;
+
+import java.util.List;
+import model.Question;
 
 /**
  *
  * @author Gib
  */
-public class ManageQuestionController {
-    
+public interface IQuestionServive {
+    List<Question> getAllQuestionBySubId(int subId);
+    List<Question> getRandomQuestion(int n, int idSub);
 }

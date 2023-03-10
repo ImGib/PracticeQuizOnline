@@ -9,4 +9,5 @@ import model.Category;
 
 public interface ICategoryService {
     public List<Category> getAllCate();
+    public List<Category> getCateBySubId(int id);
 }

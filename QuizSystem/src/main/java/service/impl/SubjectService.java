@@ -6,8 +6,10 @@ package service.impl;
 
 import dao.impl.SubjectDAO;
 import java.util.List;
+import model.Account;
 import model.Subject;
 import service.ISubjectService;
+import utils.PageUtil;
 
 public class SubjectService implements ISubjectService {
     
@@ -17,7 +19,7 @@ public class SubjectService implements ISubjectService {
         subjectDao = new SubjectDAO();
     }
     
-    public static SubjectService instance = null;
+    private static SubjectService instance = null;
     
     public static SubjectService getInstance(){
         if(instance == null){
@@ -30,23 +32,86 @@ public class SubjectService implements ISubjectService {
     public List<Subject> getTopThree() {
         return subjectDao.getTopThree();
     }
+    
+    @Override
     public int getNumberSubject() {
         return subjectDao.getNumberSubject();
     }
 
     @Override
-    public List<Subject> getAllSubject() {
-        return subjectDao.getAllSubject();
+    public List<Subject> getAllSubjectByAccount(Account a) {
+        return subjectDao.getAllSubjectByAccount(a);
+    }
+    
+    @Override
+    public List<Subject> getAllSubjectAndNumberEnoll() {
+       return subjectDao.getAllSubjectAndNumberEnroll();
+    }
+
+    private List<Subject> findSubjectByName(String name){
+        return subjectDao.findSubjectByName(name);
+    }
+    
+    @Override
+    public int createNewSubject(Subject s) {
+        if(!findSubjectByName(s.getName()).isEmpty()){
+            return -1;
+        }
+        return subjectDao.addNewSubject(s);
     }
 
     @Override
-    public List<Subject> getSubjectPagination(String search, int pageIndex, int nrpp) {
-        return subjectDao.subjectPagintion(search, pageIndex, nrpp);
+    public Subject getSubjectById(String id) {
+        List<Subject> list = subjectDao.getSubjectById(id);
+        return list.isEmpty() ? null : list.get(0);
     }
 
     @Override
-    public int countAllSubjectPagination(String string) {
-        return subjectDao.countAllFoundSubject(string);
+    public void editSubject(Subject sbjct) {
+        subjectDao.editSubject(sbjct);
+    }
+
+    @Override
+    public void changePublic(boolean isPublic, String id) {
+        subjectDao.editPublic(isPublic ? "0" : "1", id);
+    }
+
+    @Override
+    public int getNumberSubjectByUserName(String userName) {
+        return subjectDao.getNumberSubjectByUserName(userName);
+    }
+
+    @Override
+    public List<Subject> getListSubjectAndNumberQuestionByUserName(String userName) {
+        return subjectDao.getListSubjectAndNumberQuestionByUserName(userName);
+    }
+
+    @Override
+    public int getNumberStudentByIdAuthor(String userName) {
+        return subjectDao.getNumberStudentByIdAuthor(userName);
+    }
+
+    @Override
+    public List<Subject> getAllSubjectAndNumberEnrollBySearchAndUserName(PageUtil p) {
+        return subjectDao.getAllSubjectAndNumberEnrollBySearchAndUserName(p);
+    }
+
+    @Override
+    public int getNumberSubjectBySearchAndUserName(PageUtil p) {
+        return subjectDao.getNumberSubjectBySearchAndUserName(p);
+    }
+   
+    
+    
+
+    @Override
+    public List<Subject> getSubject_subName(String search, int pageIndex, int nrpp) {
+        return subjectDao.subjectPagintion_subName(search, pageIndex, nrpp);
+    }
+
+    @Override
+    public int count_subName(String string) {
+        return subjectDao.count_subName(string);
     }
 
     @Override
@@ -57,5 +122,25 @@ public class SubjectService implements ISubjectService {
     @Override
     public int countEnrollByUsername(String username) {
         return subjectDao.countEnrollByUsername(username);
+    }
+
+    @Override
+    public Subject getSubjectById(int id) {
+        return subjectDao.getSubjectById(id);
+    }
+
+    @Override
+    public List<Subject> getSubject_Cate(String search, int pageIndex, int nrpp) {
+        return subjectDao.subjectPagination_Cate(search, pageIndex, nrpp);
+    }
+
+    @Override
+    public int count_Cate(String search) {
+        return subjectDao.count_Cate(search);
+    }
+
+    @Override
+    public List<Subject> getAllSubject() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

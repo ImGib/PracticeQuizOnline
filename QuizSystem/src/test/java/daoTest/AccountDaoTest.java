@@ -8,6 +8,7 @@
 //import model.Account;
 //import org.junit.Test;
 //import static org.junit.Assert.*;
+//import utils.CheckUtil;
 //
 ///**
 // *
@@ -18,33 +19,33 @@
 //    public AccountDaoTest() {
 //    }
 //
-//    private AccountDao accountDao = new AccountDao();
+//    private final AccountDao accountDao = new AccountDao();
 //    
 //    @Test
 //    public void testFindAccountByEmailAndPassWithTrueDataReturnWell(){
-//        String expected = "hiii";
-//        String actual = accountDao.findAccountByEmailAndPass("dinhson1001@gmail.com", "hello").get(0).getUserName();
+//        boolean expected = false;
+//        boolean actual = accountDao.findAccountByEmailAndPass("dinhson1032001@gmail.com", CheckUtil.MD5Encryption("123")).isEmpty();
 //        assertEquals(expected, actual);
 //    }
 //    
 //    @Test
 //    public void testFindAccountByEmailAndPassWithWrongEmailReturnFalse(){
 //        boolean expected = true;
-//        boolean actual = accountDao.findAccountByEmailAndPass("dinhson01@gmail.com", "hello").isEmpty();
+//        boolean actual = accountDao.findAccountByEmailAndPass("ddinhson1032001@gmail.com", CheckUtil.MD5Encryption("123")).isEmpty();
 //        assertEquals(expected, actual);
 //    }
 //    
 //    @Test
 //    public void testFindAccountByEmailAndPassWithWrongPassReturnFalse(){
 //        boolean expected = true;
-//        boolean actual = accountDao.findAccountByEmailAndPass("dinhson1001@gmail.com", "heldfdflo").isEmpty();
+//        boolean actual = accountDao.findAccountByEmailAndPass("dinhson1032001@gmail.com", "12345").isEmpty();
 //        assertEquals(expected, actual);
 //    }
 //    
 //    @Test
 //    public void testFindAccountByEmailWithTrueData(){
-//        String expected = "dinhson1001@gmail.com";
-//        String actual = accountDao.findAccountByEmail("dinhson1001@gmail.com").get(0).getGmail();
+//        String expected = "dinhson1032001@gmail.com";
+//        String actual = accountDao.findAccountByEmail("dinhson1032001@gmail.com").get(0).getGmail();
 //        assertEquals(expected, actual);
 //    }
 //    
@@ -55,11 +56,11 @@
 //        assertEquals(expected, actual);
 //    }
 //    
-//    @Test
+//    //@Test
 //    public void testAddAccountWithTrueData(){
 //        String email = "dinhson123@gmail.com";
 //        String userName = "dinhson133323";
-//        String pass = "1234567";
+//        String pass = "123";
 //        int role = 1;
 //        accountDao.addAccount(new Account(userName, pass, email, role, true));
 //        Account a = accountDao.findAccountByEmail(email).get(0);
@@ -73,8 +74,8 @@
 //    @Test
 //    public void testAddAccountWithUserNameExist(){
 //        String email = "dinhson123dfdf@gmail.com";
-//        String userName = "dinhson133323";
-//        String pass = "12334";
+//        String userName = "dinson";
+//        String pass = "123";
 //        int role = 1;
 //        accountDao.addAccount(new Account(userName, pass, email, role, true));
 //        boolean expected = true;
@@ -86,7 +87,7 @@
 //    @Test
 //    public void testFindAccountByUserNameWithUserNameExist(){
 //        boolean expected = false;
-//        boolean actual = accountDao.findAccountByUserName("dinhson123").isEmpty();
+//        boolean actual = accountDao.findAccountByUserName("dinson").isEmpty();
 //        assertEquals(expected, actual);
 //    }
 //    
@@ -97,7 +98,7 @@
 //        assertNotEquals(expected, actual);
 //    }
 //    
-//    @Test
+//    //@Test
 //    public void testChangePassReturnWell(){
 //        String newPass = "1234567";
 //        String email = "dinhson123@gmail.com";

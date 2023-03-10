@@ -4,17 +4,16 @@
  */
 package test;
 import dao.impl.AbstractDao;
+import dao.impl.QuestionDao;
+import java.util.List;
+import model.Question;
+import utils.PageUtil;
 /**
  *
  * @author Gib
  */
 public class Test {
     public static void main(String[] args) {
-        AbstractDao dao = new AbstractDao();
-        try {
-            dao.getConnection();
-        } catch (Exception e) {
-            System.out.println("error");
-        }
+        
     }
 }

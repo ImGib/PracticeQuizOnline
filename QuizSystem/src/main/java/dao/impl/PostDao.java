@@ -14,7 +14,10 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
 
     @Override
     public List<Post> getTopTwo() {
-        String sql = "select top 2 * from Post\n"
+        String sql = "select top 2 Post.* from\n"
+                + "	Post left join Account\n"
+                + "on idAuthor = userName\n"
+                + "where isActive = 'True'\n"
                 + "order by publicDate desc";
         return query(sql, new PostMapper());
     }
@@ -45,7 +48,10 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
     @Override
     
     public List<Post> getTopPopular() {
-        String sql = "select top 2 * from Post\n"
+        String sql = "select top 2 Post.* from\n"
+                + "	Post left join Account\n"
+                + "on idAuthor = userName\n"
+                + "where isActive = 'True'\n"
                 + "order by numberAccess DESC";
         return query(sql, new PostMapper());
     }
@@ -82,6 +88,17 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
         txt = "%" + txt + "%";
         return query(sql, PostMapper.getInstance(), txt, txt, (pageIndex - 1) * nrpp, nrpp);
     }
+    @Override
+    public List<Post> getPostPagination(String txt, int pageIndex, int nrpp) {
+        String sql = "select Post.* from \n"
+                + "Post left join Account\n"
+                + "on title like ? or idAuthor like ?\n"
+                + "where idAuthor = userName and isActive = 'True'\n"
+                + "order by id\n"
+                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        txt = "%" + txt + "%";
+        return query(sql, PostMapper.getInstance(), txt, txt, (pageIndex - 1) * nrpp, nrpp);
+    }
 
     @Override
     public void editPost(int id, String img, String title, String detail) {
@@ -103,9 +120,10 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
 
     @Override
     public int countPaginationPost(String txt) {
-        String sql = "select COUNT(*) from Post\n"
-                + "where title like ?\n"
-                + "or idAuthor like ?";
+        String sql = "select Count(*) from \n"
+                + "Post left join Account\n"
+                + "on title like ? or idAuthor like ?\n"
+                + "where idAuthor = userName and isActive = 'True'";
         txt = "%" + txt + "%";
         return count(sql, txt, txt);
     }

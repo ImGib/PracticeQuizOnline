@@ -9,4 +9,5 @@ import model.Category;
 
 public interface ICategoryDao extends GenericDao<Category>{
     List<Category> getAllCate();
+    List<Category> getCateBySubID(int id);
 }

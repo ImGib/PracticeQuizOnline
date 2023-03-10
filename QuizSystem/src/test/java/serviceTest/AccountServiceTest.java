@@ -5,10 +5,10 @@
 //package serviceTest;
 //
 //import model.Account;
-//import org.junit.After;
 //import org.junit.Test;
 //import static org.junit.Assert.*;
 //import service.impl.AccountService;
+//import utils.CheckUtil;
 //
 ///**
 // *
@@ -21,26 +21,26 @@
 //    
 //    @Test
 //    public void testFindAccountByEmailAndPassWithTrueData(){
-//        String expected = "hiii";
-//        String actual = AccountService.getInstance().findAccountByEmailAndPass("dinhson1001@gmail.com", "hello").getUserName();
+//        String expected = "dinson";
+//        String actual = AccountService.getInstance().findAccountByEmailAndPass("dinhson1032001@gmail.com", CheckUtil.MD5Encryption("123")).getUserName();
 //        assertEquals(expected, actual);
 //    }
 //    
 //    @Test
 //    public void testFindAccountByEmailAndPassWithWrongEmailReturnFalse(){
 //        Account expected = null;
-//        Account actual = AccountService.getInstance().findAccountByEmailAndPass("dinhson01@gmail.com", "hello");
+//        Account actual = AccountService.getInstance().findAccountByEmailAndPass("dinhson01@gmail.com", CheckUtil.MD5Encryption("123"));
 //        assertEquals(expected, actual);
 //    }
 //    
 //    @Test
 //    public void testFindAccountByEmailAndPassWithWrongPassReturnFalse(){
 //        Account expected = null;
-//        Account actual = AccountService.getInstance().findAccountByEmailAndPass("dinhson1001@gmail.com", "heldfdflo");
+//        Account actual = AccountService.getInstance().findAccountByEmailAndPass("dinhson1032001@gmail.com", "heldfdflo");
 //        assertEquals(expected, actual);
 //    }
 //    
-//    @Test
+//    //@Test
 //    public void testAddAccountWithTrueData(){
 //        Account a = new Account("dinhssonnguyen", "123", "dinhson111@gmail.com", 1, true);
 //        String expected = null;
@@ -48,14 +48,10 @@
 //        assertEquals(expected, actual);
 //    }
 //    
-//    @After
-//    public void delete(){
-//         
-//    }
 //    
 //    @Test
 //    public void testAddAccountWithUserNameExist(){
-//        Account a = new Account("dinhssonnguyen", "123", "dinhsondssđ111@gmail.com", 1, true);
+//        Account a = new Account("dinson", "123", "dinhsondssđ111@gmail.com", 1, true);
 //        String expected = "User name is already exist!";
 //        String actual= AccountService.getInstance().addAccount(a, "123");
 //        assertEquals(expected, actual);
@@ -63,7 +59,7 @@
 //    
 //    @Test
 //    public void testAddAccountWithGmailExist(){
-//        Account a = new Account("dinhssonnguydsden", "123", "dinhson111@gmail.com", 1, true);
+//        Account a = new Account("dinhssonnguydsden", "123", "dinhson1032001@gmail.com", 1, true);
 //        String expected = "Account is already exist!";
 //        String actual= AccountService.getInstance().addAccount(a, "123");
 //        assertEquals(expected, actual);
@@ -72,7 +68,7 @@
 //    @Test
 //    public void testForgetPassWithTrueData(){
 //        String expected = null;
-//        String actual = AccountService.getInstance().forgetPass("dinhson111@gmail.com");
+//        String actual = AccountService.getInstance().forgetPass("dinhson1032001@gmail.com");
 //        assertEquals(expected, actual);
 //    }
 //    
@@ -83,7 +79,7 @@
 //        assertNotEquals(expected, actual);
 //    }
 //    
-//    @Test
+//    //@Test
 //    public void testChangePassWithTrueData(){
 //        String expected = null;
 //        String actual = AccountService.getInstance().changePassWord("dinhson123@gmail.com",
@@ -94,7 +90,7 @@
 //    @Test
 //    public void testChangePassWithWrongCode(){
 //        String expected = "Wrong verify code!";
-//        String actual = AccountService.getInstance().changePassWord("dinhson123@gmail.com",
+//        String actual = AccountService.getInstance().changePassWord("dinhson1032001@gmail.com",
 //                "123", "123", "1233", "123", 0);
 //        assertEquals(expected, actual);
 //    }
@@ -102,7 +98,7 @@
 //    @Test
 //    public void testChangePassWithWrongPass(){
 //        String expected = "Password and Re-password must be the same!";
-//        String actual = AccountService.getInstance().changePassWord("dinhson123@gmail.com",
+//        String actual = AccountService.getInstance().changePassWord("dinhson1032001@gmail.com",
 //                "123111", "123", "123", "123", 0);
 //        assertEquals(expected, actual);
 //    }
@@ -110,7 +106,7 @@
 //    @Test
 //    public void testChangePassWithTimeInputMoreThanThree(){
 //        String expected = "You have been wrong more 3 times. Please request forget password again!";
-//        String actual = AccountService.getInstance().changePassWord("dinhson123@gmail.com",
+//        String actual = AccountService.getInstance().changePassWord("dinhson1032001@gmail.com",
 //                "123", "123", "123", "123", 4);
 //        assertEquals(expected, actual);
 //    }

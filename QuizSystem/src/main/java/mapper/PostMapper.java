@@ -36,5 +36,4 @@ public class PostMapper implements RowMapper<Post>{
             return null;
         }
     }
-    
 }
