@@ -172,10 +172,9 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
         String sql = "select COUNT(*) from \n"
                 + "	Subject right join\n"
                 + "    (Select idSub from Enroll\n"
-                + "	where Enroll.userName = 'dinson' ) as t1\n"
+                + "	where Enroll.userName = ? ) as t1\n"
                 + "on Subject.id = t1.idSub\n"
                 + "	and Subject.isPublic = 1";
-        username = "%" + username + "%";
         return count(sql, username);
     }
 

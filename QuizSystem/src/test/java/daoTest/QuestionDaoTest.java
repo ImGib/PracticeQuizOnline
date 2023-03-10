@@ -1,10 +1,12 @@
-///*
-// * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-// * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
-// */
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
+ */
 //package daoTest;
 //
 //import dao.impl.QuestionDao;
+//import java.util.List;
+//import model.Question;
 //import org.junit.Test;
 //import static org.junit.Assert.*;
 //import utils.PageUtil;
@@ -14,14 +16,14 @@
 // * @author Lenovo
 // */
 //public class QuestionDaoTest {
-//    
+//
 //    public QuestionDaoTest() {
 //    }
-//    
-//    
+////    
+//
 //    private QuestionDao q = new QuestionDao();
 //    private PageUtil p = new PageUtil(1, 6, 12, "hello", "dinson", 1);
-//    
+
 //    //@Test(expected = Exception.class)
 //    public void testGetAllQuestionByUserNameWithNull(){
 //        PageUtil pg = null;
@@ -297,5 +299,18 @@
 //        q.updateQuestion(id, question);
 //        String actual = q.getQuestionById(id).get(0).getQuestion();
 //        assertEquals(question, actual);
+//    }
+//    @Test
+//    public void testGetAllQuestionBySubIdWithExistQuestion() {
+//        boolean expected = false;
+//        boolean actual = q.getAllQuestionBySubId(1).isEmpty();
+//        assertEquals(expected, actual);
+//    }
+//
+//    @Test
+//    public void testGetAllQuestionBySubIdWithNonExistQuestion() {
+//        boolean expected = true;
+//        boolean actual = q.getAllQuestionBySubId(12).isEmpty();
+//        assertEquals(expected, actual);
 //    }
 //}
