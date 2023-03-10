@@ -32,8 +32,9 @@ public class QuestionService implements IQuestionService {
     }
     
     private boolean checkDuplicateAnswer(List<String> a){
-        int count = 0;
+        int count;
         for (String s : a) {
+            count = 0;
             for (String string : a) {
                 if(s.equalsIgnoreCase(string) && !s.isEmpty()){
                     count++;

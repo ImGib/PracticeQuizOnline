@@ -20,7 +20,7 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
     public List<Question> getAllQuestionByUserName(PageUtil p) {
         String sql = "select q.id, q.idSub, q.question, s.name\n"
                 + "from Question q join Subject s\n"
-                + "on q.idSub = s.id where idAuthor = ? and q.isActive = 1\n"
+                + "on q.idSub = s.id where idAuthor = ? and q.isPublic = 1\n"
                 + "order by q.id asc\n"
                 + "offset ? rows fetch next ? rows only";
         return query(sql, new QuestionMapper(), p.getUserName(), p.getOffSet(), p.getNrpp());
@@ -28,14 +28,14 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
 
     @Override
     public int addNewQuestion(int idS, String question) {
-        String sql = "insert into Question (idSub, question) values (?, ?) ";
-        return insert(sql, idS, question);
+        String sql = "insert into Question (idSub, question, isPublic) values (?, ?, ?) ";
+        return insert(sql, idS, question, 1);
 
     }
 
     @Override
     public List<Question> getQuestionById(String id) {
-        String sql = "select * from Question where id = ? and isActive = 1";
+        String sql = "select * from Question where id = ? and isPublic = 1";
         return query(sql, new QuestionMapper(), id);
     }
 
@@ -44,7 +44,7 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
         String sql = "select COUNT(q.id)\n"
                 + "from Question q right join (select * \n"
                 + "from Subject where idAuthor = ?) as a\n"
-                + "on q.idSub = a.id where q.isActive = 1";
+                + "on q.idSub = a.id where q.isPublic = 1";
         return count(sql, userName);
     }
 
@@ -54,7 +54,7 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
                 + "from Question q join (select * \n"
                 + "from Subject where idAuthor = ?) as a\n"
                 + "on q.idSub = a.id\n"
-                + "where q.question like ? and q.isActive = 1\n"
+                + "where q.question like ? and q.isPublic = 1\n"
                 + "order by q.id asc\n"
                 + "offset ? rows fetch next ? rows only";
         return query(sql, new QuestionMapper(), p.getUserName(),"%"+ p.getSearch() +"%", p.getOffSet(), p.getNrpp());
@@ -67,7 +67,7 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
                 + "from Question q join (select * \n"
                 + "from Subject where idAuthor = ?) as a\n"
                 + "on q.idSub = a.id\n"
-                + "where q.question like ? and q.isActive = 1";
+                + "where q.question like ? and q.isPublic = 1";
         return count(sql, p.getUserName(),"%"+ p.getSearch()+"%");
     }
 
@@ -77,7 +77,7 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
                 + "from Question q join (select * \n"
                 + "from Subject where idAuthor = ?) as a\n"
                 + "on q.idSub = a.id\n"
-                + "where q.idSub = ? and q.question like ? and q.isActive = 1\n"
+                + "where q.idSub = ? and q.question like ? and q.isPublic = 1\n"
                 + "order by q.id asc\n"
                 + "offset ? rows fetch next ? rows only";
         return query(sql, new QuestionMapper(), p.getUserName(), p.getIdSub(),"%"+ p.getSearch() + "%", p.getOffSet(), p.getNrpp());
@@ -89,7 +89,7 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
                 + "from Question q join (select * \n"
                 + "from Subject where idAuthor = ?) as a\n"
                 + "on q.idSub = a.id\n"
-                + "where q.idSub = ? and q.question like ? and q.isActive = 1";
+                + "where q.idSub = ? and q.question like ? and q.isPublic = 1";
         return count(sql, p.getUserName(), p.getIdSub(),"%"+ p.getSearch() +"%");
     }
 
@@ -99,7 +99,7 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
                 + "from Question q join (select * \n"
                 + "from Subject where idAuthor = ?) as a\n"
                 + "on q.idSub = a.id\n"
-                + "where q.idSub = ? and q.isActive = 1";
+                + "where q.idSub = ? and q.isPublic = 1";
         return count(sql, p.getUserName(), p.getIdSub());
     }
 
@@ -109,7 +109,7 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
                 + "from Question q join (select * \n"
                 + "from Subject where idAuthor = ?) as a\n"
                 + "on q.idSub = a.id\n"
-                + "where q.idSub = ? and q.isActive = 1\n"
+                + "where q.idSub = ? and q.isPublic = 1\n"
                 + "order by q.id asc\n"
                 + "offset ? rows fetch next ? rows only";
         return query(sql, new QuestionMapper(),p.getUserName() , p.getIdSub(), p.getOffSet(), p.getNrpp());
@@ -117,7 +117,7 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
 
     @Override
     public void deleteQuestion(String id) {
-        String sql = "update Question set isActive = 0 where id = ?";
+        String sql = "update Question set isPublic = 0 where id = ?";
         update(sql, id);
     }
 
