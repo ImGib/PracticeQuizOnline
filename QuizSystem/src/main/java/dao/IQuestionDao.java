@@ -36,4 +36,7 @@ public interface IQuestionDao extends GenericDao<Question>{
     public void deleteQuestion(String id);
     
     public void updateQuestion(String id, String q);
+    
+    List<Question> getAllQuestionBySubId(int idSub);
+    List<Question> getRandomQuestion(int n, int idSub);
 }

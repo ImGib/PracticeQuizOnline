@@ -20,7 +20,7 @@ import utils.PagginationUtil;
 import utils.SessionUtil;
 
 @WebServlet(urlPatterns = {"/enroll-list"})
-public class EnrollListControllers extends HttpServlet{
+public class EnrollListControllers extends HttpServlet {
 
     private int pageIndex = 1;
     private int size = 0;
@@ -36,7 +36,7 @@ public class EnrollListControllers extends HttpServlet{
     }
 
     void paginationPost(HttpServletRequest req) {
-        Account acc =(Account) SessionUtil.getInstance().getValue(req, "account");
+        Account acc = (Account) SessionUtil.getInstance().getValue(req, "account");
         size = SubjectService.getInstance().countEnrollByUsername(acc.getUserName());
         PagginationUtil.getInstance().setNrpp(9);
         try {
@@ -45,12 +45,12 @@ public class EnrollListControllers extends HttpServlet{
         }
 
         pageIndex = PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        PagginationUtil.getInstance().setPageBegin_Ending(pageIndex, 2);
+        System.out.println( PagginationUtil.getInstance().getTotalPage());
         subList = SubjectService.getInstance().getEnrollByUsername(acc.getUserName(), pageIndex, PagginationUtil.getInstance().getNrpp());
 
         req.setAttribute("pageIndex", pageIndex);
-        req.setAttribute("begin", PagginationUtil.getInstance().getBegin());
-        req.setAttribute("end", PagginationUtil.getInstance().getEnd());
         req.setAttribute("subList", subList);
+        req.setAttribute("totalPagination", PagginationUtil.getInstance().getTotalPage());
+
     }
 }

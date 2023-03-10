@@ -10,4 +10,6 @@ package service;
  */
 public interface IEnrollService {
     int getNumberEnrollByIdSub(int idSub);
+    int checkEnroll(String username, int idSub);
+    void enroll(String username, int idSub);
 }

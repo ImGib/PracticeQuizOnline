@@ -4,33 +4,43 @@
  */
 package model;
 
+import java.util.List;
+
 /**
  *
- * @author Lenovo
+ * @author Gib
  */
 public class Answer {
-    private int id;
-    private int idQuestion;
+
+    private int idAns;
+    private int idQues;
     private boolean isCorrect;
     private String answer;
 
     public Answer() {
     }
 
-    public int getId() {
-        return id;
+    public Answer(int idAns, int idQues, boolean isCorrect, String answer) {
+        this.idAns = idAns;
+        this.idQues = idQues;
+        this.isCorrect = isCorrect;
+        this.answer = answer;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getIdAns() {
+        return idAns;
     }
 
-    public int getIdQuestion() {
-        return idQuestion;
+    public void setIdAns(int idAns) {
+        this.idAns = idAns;
     }
 
-    public void setIdQuestion(int idQuestion) {
-        this.idQuestion = idQuestion;
+    public int getIdQues() {
+        return idQues;
+    }
+
+    public void setIdQues(int idQues) {
+        this.idQues = idQues;
     }
 
     public boolean isIsCorrect() {
@@ -48,6 +58,13 @@ public class Answer {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
-    
-    
+
+    public boolean isChecked(List<String> answered) {
+        for(String a : answered)
+            if(a.equals(String.valueOf(this.getIdAns())))
+                return true;
+        return false;
+        
+    }
+
 }

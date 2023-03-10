@@ -5,9 +5,12 @@
 package dao;
 
 import java.util.List;
-import model.Category;
+import model.Slider;
 
-public interface ICategoryDao extends GenericDao<Category>{
-    List<Category> getAllCate();
-    List<Category> getCateBySubID(int id);
+/**
+ *
+ * @author Gib
+ */
+public interface ISliderDao extends GenericDao<Slider>{
+    List<Slider> getAll();
 }

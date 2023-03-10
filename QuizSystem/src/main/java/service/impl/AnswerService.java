@@ -5,6 +5,7 @@
 package service.impl;
 
 import dao.impl.AnswerDao;
+import dao.impl.SubjectDAO;
 import java.util.List;
 import model.Answer;
 import service.IAnswerService;
@@ -115,4 +116,17 @@ public class AnswerService implements IAnswerService {
         return null;
     }
 
+    
+    @Override
+    public List<Answer> getAnswerByIdQues(int idQues) {
+        return answerDao.getAnswerByIdQues(idQues);
+    }
+
+    @Override
+    public Answer getRightAns(int i) {
+        List<Answer> ansList= answerDao.getAnswerByIdQues(i);
+        if(ansList == null || ansList.isEmpty()) return null;
+        return ansList.get(0);
+    }
+    
 }

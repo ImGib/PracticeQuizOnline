@@ -60,5 +60,4 @@ public class UserProfileController extends HttpServlet {
         SessionUtil.getInstance().putValue(req, "account", acc);
         doGet(req, resp);
     }
-
 }

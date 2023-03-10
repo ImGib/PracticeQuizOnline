@@ -24,6 +24,13 @@ public class AnswerDao extends AbstractDao<Answer> implements IAnswerDao{
     @Override
     public List<Answer> getAnswerByIdQues(String id) {
         String sql = "select * from Answer where idQues = ?";
+    }
+
+    @Override
+    public List<Answer> getAnswerByIdQues(int id) {
+        String sql = "select Answer.* from Answer\n"
+                + "where idQues = ?\n"
+                + "	and answer != N''";
         return query(sql, new AnswerMapper(), id);
     }
 
@@ -45,4 +52,10 @@ public class AnswerDao extends AbstractDao<Answer> implements IAnswerDao{
         return query(sql, new AnswerMapper(), idAns);
     }
     
+    public List<Answer> getTrueAnswer(int i) {
+        String sql = "select Answer.* from Answer\n"
+                + "where idQues = ? and isCorrect = 1";
+        return query(sql, new AnswerMapper(), i);
+    }
+
 }

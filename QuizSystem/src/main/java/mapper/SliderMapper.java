@@ -5,24 +5,26 @@
 package mapper;
 
 import java.sql.ResultSet;
-import model.Post;
+import model.Slider;
 
-public class PostMapper implements RowMapper<Post>{
+/**
+ *
+ * @author Gib
+ */
+public class SliderMapper implements RowMapper<Slider>{
 
     @Override
-    public Post MapRow(ResultSet rs) {
+    public Slider MapRow(ResultSet rs) {
         try {
-            Post p = new Post(rs.getInt(1), 
+            Slider s = new Slider(rs.getInt(1),
                     rs.getString(2), 
-                    rs.getDate(3).toString(),
-                    rs.getString(4),
-                    rs.getString(5), 
-                    rs.getString(6),
-                    rs.getInt(7)
+                    rs.getString(3), 
+                    rs.getString(4)
             );
-            return p;
+            return s;
         } catch (Exception e) {
             return null;
         }
     }
+    
 }

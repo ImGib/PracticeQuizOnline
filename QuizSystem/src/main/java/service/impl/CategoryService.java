@@ -30,4 +30,9 @@ public class CategoryService implements ICategoryService{
     public List<Category> getAllCate() {
         return categoryDao.getAllCate();
     }
+
+    @Override
+    public List<Category> getCateBySubId(int id) {
+        return categoryDao.getCateBySubID(id);
+    }
 }

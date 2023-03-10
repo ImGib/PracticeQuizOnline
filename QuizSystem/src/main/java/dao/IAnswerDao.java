@@ -21,4 +21,7 @@ public interface IAnswerDao extends GenericDao<Answer>{
     public void deleteAnswer(String id);
     
     public void updateAnswer(String id, String answer, boolean isCorrect);
+    
+    List<Answer> getAnswerByIdQues(int id);
+    List<Answer> getTrueAnswer(int idQues);
 }

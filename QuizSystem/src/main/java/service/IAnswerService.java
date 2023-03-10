@@ -15,4 +15,6 @@ public interface IAnswerService {
     public void createNewAnswerForAQuess(int idQ, List<String> answer, String[] c);
     public List<Answer> getAnswerByIdQues(String id);
     public String checkAndUpdateAnswer(String idQ, String[] correctA, List<String> answer, List<String> idA);
+    List<Answer> getAnswerByIdQues(int idQues);
+    Answer getRightAns(int idQues);
 }
