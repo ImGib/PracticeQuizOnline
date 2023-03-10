@@ -30,12 +30,7 @@ public class SubjectService implements ISubjectService {
 
     @Override
     public List<Subject> getTopThree() {
-        List<Subject> list = subjectDao.getTopThree();
-        if (list == null || list.isEmpty()) {
-            return null;
-        } else {
-            return list;
-        }
+        return subjectDao.getTopThree();
     }
     
     @Override
@@ -108,4 +103,24 @@ public class SubjectService implements ISubjectService {
    
     
     
+
+    @Override
+    public List<Subject> getSubjectPagination(String search, int pageIndex, int nrpp) {
+        return subjectDao.subjectPagintion(search, pageIndex, nrpp);
+    }
+
+    @Override
+    public int countAllSubjectPagination(String string) {
+        return subjectDao.countAllFoundSubject(string);
+    }
+
+    @Override
+    public List<Subject> getEnrollByUsername(String username, int pageIndex, int nrpp) {
+        return subjectDao.getEnrollByUsernamePagination(username, pageIndex, nrpp);
+    }
+
+    @Override
+    public int countEnrollByUsername(String username) {
+        return subjectDao.countEnrollByUsername(username);
+    }
 }

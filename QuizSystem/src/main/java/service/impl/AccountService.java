@@ -19,11 +19,11 @@ import model.UserGoogleDto;
 public class AccountService implements IAccountService {
 
     private AccountDao accountDao;
-    
+
     private static AccountService instance = null;
-    
-    public static AccountService getInstance(){
-        if(instance == null){
+
+    public static AccountService getInstance() {
+        if (instance == null) {
             instance = new AccountService();
         }
         return instance;
@@ -32,7 +32,7 @@ public class AccountService implements IAccountService {
     private AccountService() {
         accountDao = new AccountDao();
     }
-    
+
     @Override
     public Account findAccountByEmailAndPass(String userName, String pass) {
         List<Account> list = accountDao.findAccountByEmailAndPass(userName, pass);
@@ -83,6 +83,7 @@ public class AccountService implements IAccountService {
         accountDao.changePass(email, pass);
         return null;
     }
+
     @Override
     public String editProfile(String userName, String firstName, String lastName, String gmail, String phone, String address, String img) {
         CheckUtil check = new CheckUtil();
@@ -125,8 +126,8 @@ public class AccountService implements IAccountService {
 
     @Override
     public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
-        if(txt.contains("Search_Role_")){
-            txt=txt.replace("Search_Role_", "");
+        if (txt.contains("Search_Role_")) {
+            txt = txt.replace("Search_Role_", "");
             return accountDao.findAccountByRole(Integer.parseInt(txt));
         }
         return accountDao.searchAccountByUserName_Name_Gmail_Phone(txt);
@@ -137,10 +138,10 @@ public class AccountService implements IAccountService {
         accountDao.deleteAccount(user);
     }
 
-        @Override
-    public List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp) {
-        if(txt.contains("Search_Role_")){
-            txt=txt.replace("Search_Role_", "");
+    @Override
+    public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp) {
+        if (txt.contains("Search_Role_")) {
+            txt = txt.replace("Search_Role_", "");
             return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp);
         }
         return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
@@ -148,26 +149,26 @@ public class AccountService implements IAccountService {
 
     @Override
     public String checkValidateAddAccount(Account a) {
-        if(!findAccountByUserName(a.getUserName()).isEmpty()){
+        if (!findAccountByUserName(a.getUserName()).isEmpty()) {
             return "This User already exist!!!";
-            
+
         }
-        if(!findAccountByEmail(a.getGmail()).isEmpty()){
+        if (!findAccountByEmail(a.getGmail()).isEmpty()) {
             return "This Email already exist!!!";
-            
+
         }
-        if(!accountDao.findAccountByPhone(a.getPhone()).isEmpty()){
+        if (!accountDao.findAccountByPhone(a.getPhone()).isEmpty()) {
             return "This Phone already exist!!!";
         }
-        
+
         return null;
     }
 
     @Override
-    public List<Account> loadAccount_PaginationByRole(int role,int pageIndex, int nrpp) {
-        if(role!=5){
-        return accountDao.loadAccount_PaginationByRole(role,pageIndex,nrpp);
-        }else{
+    public List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp) {
+        if (role != 5) {
+            return accountDao.loadAccount_PaginationByRole(role, pageIndex, nrpp);
+        } else {
             return accountDao.loadAccount_Pagination("", pageIndex, nrpp);
         }
     }
@@ -193,9 +194,10 @@ public class AccountService implements IAccountService {
     }
     
     @Override
+
     public Account getAccountByID(String username) {
         List<Account> list = accountDao.findAccountByUserName(username);
-        if(list == null || list.isEmpty()) {
+        if (list == null || list.isEmpty()) {
             return null;
         } else {
             return list.get(0);
@@ -203,6 +205,7 @@ public class AccountService implements IAccountService {
     }
     
     @Override
+
     public int getNumberStaff() {
         return accountDao.getNumberStaff();
     }
@@ -210,6 +213,35 @@ public class AccountService implements IAccountService {
     @Override
     public int getNumberStudent() {
         return accountDao.getNumberStudent();
+    }
+
+    @Override
+    public void updateProfile(Account a) {
+        accountDao.updateProfile(a);
+    }
+
+    @Override
+    public String userChangePassword(Account acc, String currentPassword, String newPassword, String confirmPassword) {
+        if(acc.getPassword().compareTo(currentPassword) == 0){
+            if(newPassword.compareTo(confirmPassword) == 0){
+                accountDao.changePass(acc.getGmail(), newPassword);
+                return null;
+            } else {
+                return "Wrong confirm password";
+            }
+        } else {
+            return "Wrong current Password";
+        }
+    }
+
+    @Override
+    public String removeAccount(Account acc, String gmail, String password) {
+        if(acc.getGmail().compareTo(gmail) == 0 && acc.getPassword().compareTo(password) == 0)
+        {
+            accountDao.deleteAccount(acc.getUserName());
+            return null;
+        }
+        return "wrong";
     }
 
 }

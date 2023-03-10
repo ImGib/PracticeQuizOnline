@@ -9,42 +9,30 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import model.Account;
 import service.impl.AccountService;
 import utils.CheckUtil;
 import utils.SessionUtil;
 
-/**
- *
- * @author Lenovo
- */
-@WebServlet(urlPatterns = {"/login"})
-public class LoginController extends HttpServlet{
+@WebServlet(urlPatterns = {"/user-delete-account"})
+public class RemoveAccountController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("views/Login.jsp").forward(req, resp);
+        req.getRequestDispatcher("views/RemoveAccount.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
-        String pass = CheckUtil.MD5Encryption(req.getParameter("pass"));
-        Account a = AccountService.getInstance().findAccountByEmailAndPass(email, pass);
-        directController(a, req, resp);
-    }
-
-    private void directController(Account a, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (a != null) {
-            SessionUtil.getInstance().putValue(req, "account", a);
-            resp.sendRedirect("home");
-//            req.getRequestDispatcher("views/student/home.jsp").forward(req, resp);
+        Account acc = (Account) SessionUtil.getInstance().getValue(req, "account");
+        String gmail = req.getParameter("email");
+        String password = CheckUtil.MD5Encryption(req.getParameter("password"));
+        if (AccountService.getInstance().removeAccount(acc, gmail, password) == null) {
+            resp.sendRedirect("logout");
         } else {
-            req.setAttribute("mess", "Wrong email or password!");
+            req.setAttribute("removeMess", "Wrong email or password");
             doGet(req, resp);
         }
     }
-    
 }
