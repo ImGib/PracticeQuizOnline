@@ -39,11 +39,7 @@ import utils.SessionUtil;
 public class Test_ChucNang {
 
     public static void main(String[] args) {
-        PostDao postDao=new PostDao();
-//        Post p=new Post(999, "title", "2023-01-01", "", "", "linhchi", 1);
         
-        Post p = postDao.findPostById(5).get(0);
-        System.out.println(p.getTittle());
-        
+        System.out.println(SubjectService.getInstance().countEnrollByUsername("trangiabao5102@gmail.com"));
     }
 }

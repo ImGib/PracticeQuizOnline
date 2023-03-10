@@ -72,8 +72,8 @@ public class Slide_Manage extends HttpServlet {
     
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int flag=1;
-        SessionUtil.getInstance().putValue(req, "account", AccountService.getInstance()
-                .findAccountByRole(3).get(0));
+//        SessionUtil.getInstance().putValue(req, "account", AccountService.getInstance()
+//                .findAccountByRole(1).get(0));
         Account a = (Account) SessionUtil.getInstance().getValue(req, "account");
         String img=req.getParameter("img");
         String hlink=req.getParameter("hlink");

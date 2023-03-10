@@ -387,11 +387,11 @@
                                             <span>  <form action="Admin" method="get" id="form">
                                                     <select id="" name="txt" onchange="nextWeb(this)">
                                                         <option value="">All Role</option>
-                                                        <option value="Search_Role_0">Admin</option>
-                                                            <option value="Search_Role_1">Student</option>
-                                                            <option value="Search_Role_2">Expert</option>
-                                                            <option value="Search_Role_3">Market</option>
-                                                            <option value="Search_Role_4">Sale</option>
+                                                        <option value="Search_Role_0" ${txt.equals("Search_Role_0")?"checked":""}>Admin</option>
+                                                        <option value="Search_Role_1" ${txt.equals("Search_Role_1")?"checked":""}>Student</option>
+                                                        <option value="Search_Role_2" ${txt.equals("Search_Role_2")?"checked":""}>Expert</option>
+                                                        <option value="Search_Role_3" ${txt.equals("Search_Role_3")?"checked":""}>Market</option>
+                                                        <option value="Search_Role_4" ${txt.equals("Search_Role_4")?"checked":""}>Sale</option>
                                                     </select></form>
                                             </span></a>
                                     </div>
@@ -400,7 +400,7 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                       
+
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
@@ -409,7 +409,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="content">
-                               
+
                                     <c:forEach items="${ListAccount}" var="o">
                                         <tr>
                                             <td>${o.getUserName()}</td>
@@ -437,13 +437,13 @@
 <!--                                <div class="hint-text">Showing <b>${ListAccount.size()}</b> out of <b>${size}</b> entries</div>-->
                                 <ul class="pagination" id="pag">
                                     <c:if test="${pageIndex!=1}">
-                                    <li class="page-item disabled"><a href="Admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
-                                    </c:if>
+                                        <li class="page-item disabled"><a href="Admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                        </c:if>
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
                                         <li class="page-item ${i==pageIndex?"active":""}"><a href="Admin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
                                         <c:if test="${pageIndex!=totalPage}">
-                                    <li class="page-item"><a href="Admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                        <li class="page-item"><a href="Admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
                                         </c:if>
                                 </ul>
                             </div>
@@ -543,8 +543,8 @@
 //                        });
 //                    }
 //            ;
-            
-            
+
+
 //                    function Paggination_Search(input) {
 //                        var txt = input.value;
 //                        $.ajax({
@@ -581,12 +581,12 @@
 //                        });
 //                    }
 //            ;
-            function nextWeb(input){
-                
-            document.getElementById("form").submit();
-                
-            }
-         
+                                                        function nextWeb(input) {
+
+                                                            document.getElementById("form").submit();
+
+                                                        }
+
         </script>
     </body>
 

@@ -35,8 +35,8 @@ public class Post_Add extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        SessionUtil.getInstance().putValue(request, "account", AccountService.getInstance()
-                .findAccountByRole(1).get(0));
+//        SessionUtil.getInstance().putValue(request, "account", AccountService.getInstance()
+//                .findAccountByRole(1).get(0));
         Account a = (Account) SessionUtil.getInstance().getValue(request, "account");
         String img = request.getParameter("img");
         String title = request.getParameter("title");
