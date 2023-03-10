@@ -5,28 +5,15 @@
 package service.impl;
 
 import dao.impl.QuestionDao;
-import java.util.List;
-import model.Question;
-import service.IQuestionService;
-import utils.PageUtil;
-
-/**
- *
- * @author Lenovo
- */
-public class QuestionService implements IQuestionService {
-import dao.impl.SubjectDAO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import model.Question;
-import service.IQuestionServive;
+import service.IQuestionService;
+import utils.PageUtil;
 
-/**
- *
- * @author Gib
- */
-public class QuestionService implements IQuestionServive {
+
+public class QuestionService implements IQuestionService {
 
     private QuestionDao questionDao;
 

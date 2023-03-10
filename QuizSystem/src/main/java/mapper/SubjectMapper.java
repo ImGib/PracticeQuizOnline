@@ -13,33 +13,43 @@ import model.Subject;
  * @author Gib
  */
 public class SubjectMapper implements RowMapper<Subject> {
-    
+
     private static SubjectMapper instance = null;
-    
+
     public static SubjectMapper getInstance() {
         if (instance == null) {
             instance = new SubjectMapper();
         }
         return instance;
     }
-    
+
     private SubjectMapper() {
-        
+
     }
-    
+
     @Override
     public Subject MapRow(ResultSet rs) {
         try {
-            
+
             Subject s = new Subject(rs.getInt(1),
                     rs.getString(2),
                     rs.getString(3),
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6));
-            s.setIsPublic(rs.getBoolean(7));
+            try {
+                s.setIsPublic(rs.getBoolean(7));
+            } catch (SQLException ex) {
+
+            }
+
             try {
                 s.setNumberEnroll(rs.getInt(8));
+            } catch (SQLException e) {
+            }
+            
+            try {
+                s.setNumberQuestion(rs.getInt(9));
             } catch (SQLException e) {
             }
             return s;
@@ -47,5 +57,5 @@ public class SubjectMapper implements RowMapper<Subject> {
             return null;
         }
     }
-    
+
 }

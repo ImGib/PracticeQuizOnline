@@ -127,11 +127,8 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
         String sql = "Select * from Subject where name = ?";
         return query(sql, SubjectMapper.getInstance(), name);
     }
-    public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp) {
-        String sql = "select * from Subject\n"
-                + "where Subject.name like ?\n"
-                + "order by publicDate DESC\n"
-                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+    
+    @Override
     public List<Subject> subjectPagintion_subName(String txt, int pageIndex, int nrpp) {
         String sql = "select Subject.* from Subject,\n"
                 + "                Account\n"
@@ -218,6 +215,22 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
                 + "	and Account.userName = Subject.idAuthor\n"
                 + "    and Account.isActive = 1";
         return count(sql, txt);
+    }
+
+//    @Override
+//    public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+//    @Override
+//    public int countAllFoundSubject(String txt) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+    @Override
+    public List<Subject> getAllSubject() {
+        String sql = "select * from Subject";
+        return query(sql, SubjectMapper.getInstance());
     }
 
 }

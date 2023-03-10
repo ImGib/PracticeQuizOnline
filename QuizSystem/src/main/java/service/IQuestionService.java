@@ -20,4 +20,6 @@ public interface IQuestionService {
     public int getNumberQuestionByAll(PageUtil p);
     public void deleteQuestion(String id);
     public void updateQuestion(String idQ, String q);
+    public List<Question> getAllQuestionBySubId(int subId);
+    public List<Question> getRandomQuestion(int n, int idSub);
 }

@@ -32,7 +32,6 @@ public interface ISubjectService {
     public List<Subject> getAllSubjectAndNumberEnrollBySearchAndUserName(PageUtil p);
     
     public int getNumberSubjectBySearchAndUserName(PageUtil p) ;
-    int getNumberSubject();
 
     List<Subject> getSubject_subName(String search, int pageIndex, int nrpp);
 

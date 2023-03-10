@@ -24,6 +24,7 @@ public class AnswerDao extends AbstractDao<Answer> implements IAnswerDao{
     @Override
     public List<Answer> getAnswerByIdQues(String id) {
         String sql = "select * from Answer where idQues = ?";
+        return query(sql, new AnswerMapper(), id);
     }
 
     @Override

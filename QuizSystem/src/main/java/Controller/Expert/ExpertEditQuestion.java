@@ -37,28 +37,28 @@ public class ExpertEditQuestion extends HttpServlet{
         List<Answer> listA = AnswerService.getInstance().getAnswerByIdQues(id);
         try {
             req.setAttribute("answer1", listA.get(0).getAnswer());
-            req.setAttribute("id1", listA.get(0).getId());
+            req.setAttribute("id1", listA.get(0).getIdAns());
             req.setAttribute("check1", listA.get(0).isIsCorrect()?"checked":"");
         } catch (Exception e) {
             req.setAttribute("answer1", "");
         }
         try {
             req.setAttribute("answer2", listA.get(1).getAnswer());
-            req.setAttribute("id2", listA.get(1).getId());
+            req.setAttribute("id2", listA.get(1).getIdAns());
             req.setAttribute("check2", listA.get(1).isIsCorrect()?"checked":"");
         } catch (Exception e) {
             req.setAttribute("answer2", "");
         }
         try {
             req.setAttribute("answer3", listA.get(2).getAnswer());
-            req.setAttribute("id3", listA.get(2).getId());
+            req.setAttribute("id3", listA.get(2).getIdAns());
             req.setAttribute("check3", listA.get(2).isIsCorrect()?"checked":"");
         } catch (Exception e) {
             req.setAttribute("answer3", "");
         }
         try {
             req.setAttribute("answer4", listA.get(3).getAnswer());
-            req.setAttribute("id4", listA.get(3).getId());
+            req.setAttribute("id4", listA.get(3).getIdAns());
             req.setAttribute("check4", listA.get(3).isIsCorrect()?"checked":"");
         } catch (Exception e) {
             req.setAttribute("answer4", "");

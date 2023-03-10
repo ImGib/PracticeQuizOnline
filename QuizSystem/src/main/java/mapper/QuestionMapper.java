@@ -12,20 +12,24 @@ import model.Question;
  *
  * @author Lenovo
  */
-public class QuestionMapper implements RowMapper<Question>{
+public class QuestionMapper implements RowMapper<Question> {
 
     @Override
     public Question MapRow(ResultSet rs) {
         try {
-            Question  q = new Question();
+            Question q = new Question();
             q.setId(rs.getInt(1));
             q.setInSub(rs.getInt(2));
             q.setQuestion(rs.getString(3));
-            q.setSubject(rs.getString(4));
+            try {
+                q.setSubject(rs.getString(4));
+            } catch (SQLException e) {
+                q.setSubject("");
+            }
             return q;
         } catch (SQLException e) {
             return null;
         }
     }
-    
+
 }

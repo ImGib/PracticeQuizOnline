@@ -138,4 +138,9 @@ public class SubjectService implements ISubjectService {
     public int count_Cate(String search) {
         return subjectDao.count_Cate(search);
     }
+
+    @Override
+    public List<Subject> getAllSubject() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

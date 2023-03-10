@@ -575,7 +575,7 @@
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <input class="form-control" id="inputSubjectName" type="text"
-                                                                       value="${requestScope.subject.name}" name="subName" required pattern="[0-9a-zA-Z]+">
+                                                                       value="${requestScope.subject.name}" name="subName">
                                                         </div>
                                                         <!-- Form Group (last name)-->
                                                     </div>

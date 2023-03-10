@@ -18,8 +18,8 @@ public class AnswerMapper implements RowMapper<Answer>{
     public Answer MapRow(ResultSet rs) {
         try {
             Answer a = new Answer();
-            a.setId(rs.getInt(1));
-            a.setIdQuestion(rs.getInt(2));
+            a.setIdAns(rs.getInt(1));
+            a.setIdQues(rs.getInt(2));
             a.setIsCorrect(rs.getBoolean(3));
             a.setAnswer(rs.getString(4));
             return a;

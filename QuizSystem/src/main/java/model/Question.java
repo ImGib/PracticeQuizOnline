@@ -4,6 +4,9 @@
  */
 package model;
 
+import java.util.List;
+import service.impl.AnswerService;
+
 /**
  *
  * @author Lenovo
@@ -47,6 +50,31 @@ public class Question {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+    
+    public List<Answer> allAnswer() {
+        List<Answer> answers = AnswerService.getInstance().getAnswerByIdQues(this.id);
+        return answers;
+    }
+
+    public Answer rightAnswer() {
+        Answer ans = AnswerService.getInstance().getRightAns(this.id);
+        return ans;
+    }
+
+
+    public boolean checkAnswer(List<String> answered) {
+        System.out.println("checkanswer");
+        for (String a : answered) {
+            System.out.println(a + " ---- " + String.valueOf(rightAnswer().getIdAns()));
+            
+            if (a.equalsIgnoreCase(String.valueOf(rightAnswer().getIdAns()))) {
+                return true;
+            }
+        }
+
+        return false;
+
     }
     
     

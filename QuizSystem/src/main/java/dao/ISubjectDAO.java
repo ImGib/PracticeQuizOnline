@@ -17,7 +17,7 @@ public interface ISubjectDAO extends GenericDao<Subject> {
     
     public List<Subject> getAllSubjectByAccount(Account a);
     
-    public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp);
+    //public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp);
     
     public List<Subject> getAllSubjectAndNumberEnroll();
     
@@ -40,7 +40,8 @@ public interface ISubjectDAO extends GenericDao<Subject> {
     public int getNumberSubjectBySearchAndUserName(PageUtil p);
     
     public List<Subject> findSubjectByName(String name);
-    public int countAllFoundSubject(String txt);
+    
+    //public int countAllFoundSubject(String txt);
     
 
     public List<Subject> getAllSubject();
@@ -53,7 +54,6 @@ public interface ISubjectDAO extends GenericDao<Subject> {
 
     public int count_Cate(String txt);
 
-    public List<Subject> getAllSubjectAndNumberEnroll();
 
     List<Subject> getEnrollByUsernamePagination(String username, int pageIndex, int nrpp);
 

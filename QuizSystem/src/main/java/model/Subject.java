@@ -118,7 +118,7 @@ public class Subject {
     }
 
     public int getNumberEnroll() {
-        return numberEnroll;
+        return EnrollService.getInstance().getNumberEnrollByIdSub(id);
     }
 
     public void setNumberEnroll(int numberEnroll) {
@@ -151,9 +151,6 @@ public class Subject {
         return days;
     }
     
-    public int getNumberEnroll(){
-        return EnrollService.getInstance().getNumberEnrollByIdSub(id);
-    }
 
     @Override
     public String toString() {

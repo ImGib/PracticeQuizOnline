@@ -36,7 +36,7 @@ public class ExpertAddNewQuestionController extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+        req.setCharacterEncoding("UTF-8");
         int idSub = Integer.parseInt(req.getParameter("subject"));
         String question = req.getParameter("question");
         List<String> answer = new ArrayList<>();
