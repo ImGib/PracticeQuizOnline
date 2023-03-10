@@ -346,6 +346,7 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
+        
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -379,6 +380,7 @@
                                                     <form action="marketing-deletepost" method="post">
                                                         <div style=" text-align: center;"><button class="btn btn-danger-soft text-danger" type="submit" name="id" value="${id}">I understand, delete post</button></div>
                                                         </form>
+                                                        <a href="marketing-post"><button class="btn btn-success-soft text-success">Back</button></a>
                                 </div>
                             </div>
                         </div>

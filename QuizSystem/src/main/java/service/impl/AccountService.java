@@ -240,4 +240,9 @@ public class AccountService implements IAccountService {
         return "wrong";
     }
 
+    @Override
+    public void deleteAccountForever(String userName) {
+        accountDao.deleteAccount(userName);
+    }
+
 }

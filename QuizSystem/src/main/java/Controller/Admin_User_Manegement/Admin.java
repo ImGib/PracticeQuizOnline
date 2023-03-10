@@ -50,7 +50,6 @@ public class Admin extends HttpServlet {
         request.setAttribute("pageIndex",pageIndex);
         request.setAttribute("ListAccount", ListAccount);
         request.getRequestDispatcher("views/admin_user_management.jsp").forward(request, response);
-        
     }
 
     @Override

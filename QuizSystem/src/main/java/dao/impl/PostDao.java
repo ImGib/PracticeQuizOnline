@@ -126,4 +126,10 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
         update(sql, id,id);
     }
 
+    @Override
+    public int getLastIdPost() {
+        String sql="select MAX(id) from Post";
+        return count(sql);
+    }
+
 }

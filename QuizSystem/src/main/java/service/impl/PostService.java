@@ -11,7 +11,6 @@ import model.Post;
 import model.Slide;
 import service.IPostService;
 
-
 public class PostService implements IPostService {
 
     private PostDao postDao;
@@ -54,11 +53,9 @@ public class PostService implements IPostService {
         postDao.addNewPost(p);
     }
 
-    
-
     @Override
     public String checkValidPost(String title) {
-        if(postDao.findPostByTitle(title).size()!=0){
+        if (postDao.findPostByTitle(title).size() != 0) {
             return "This Title already exist!!!";
         }
         return null;
@@ -85,12 +82,19 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public String checkValidPostForEdit(int id,String title) {
+    public String checkValidPostForEdit(int id, String title) {
         Post p = postDao.findPostById(id).get(0);
-        if(p.getTittle()==title && postDao.findPostByTitle(title).size()!=0){
-            return "This Title already exist!!!";
+        if (p.getTittle().equals(title)) {
+            return null;
+        } else {
+            if (postDao.findPostByTitle(title).size() != 0) {
+                return "This Title already exist!!!";
+            }
+            else{
+                return null;
+            }
+
         }
-        return null;
     }
 
     @Override
@@ -98,7 +102,6 @@ public class PostService implements IPostService {
         postDao.upNumberAccess(i);
     }
 
-    
     public List<Post> getTopPopular() {
         return postDao.getTopPopular();
     }
@@ -117,11 +120,15 @@ public class PostService implements IPostService {
     public int countSearchPost(String txt) {
         return postDao.countPaginationPost(txt);
     }
-    
+
     @Override
     public Post getPostDetails(String i) {
         return postDao.getPostDetails(i);
     }
 
-    
+    @Override
+    public int getLastIdPost() {
+        return postDao.getLastIdPost();
+    }
+
 }

@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import model.Account;
 import model.Post;
+import model.Slide;
 import org.bouncycastle.pqc.math.linearalgebra.RandUtils;
 import service.impl.AccountService;
 import service.impl.PostService;
@@ -29,6 +30,11 @@ import utils.SessionUtil;
 public class Test_ChucNang {
 
     public static void main(String[] args) {
-       SlideService.getInstance().editSlide(1, "test1234", "test1234");
+        PostDao postDao=new PostDao();
+//        Post p=new Post(999, "title", "2023-01-01", "", "", "linhchi", 1);
+        
+        Post p = postDao.findPostById(5).get(0);
+        System.out.println(p.getTittle());
+        
     }
 }

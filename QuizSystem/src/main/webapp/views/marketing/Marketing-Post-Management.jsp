@@ -393,12 +393,16 @@
                         </table>
                         <div class="clearfix">
                             <ul class="pagination" id="pag">
-
+                                <c:if test="${pageIndex!=1}">
                                     <li class="page-item disabled"><a href="marketing-post?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                </c:if>
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
                                         <li class="page-item ${i==pageIndex?"active":""}"><a href="marketing-post?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
+                                        <c:if test="${pageIndex!=totalPage}">
+                                        
                                     <li class="page-item"><a href="marketing-post?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                        </c:if>
                                 </ul>
                     </div>
                 </div>

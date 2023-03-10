@@ -384,15 +384,15 @@
                                         <a href="AddNewAccount" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
                                             <span>Add New User</span></a>
                                         <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
-                                            <span>
-                                                    <select id="choseRole">
-                                                            <option value="5">All Role</option>
-                                                            <option value="0">Admin</option>
-                                                            <option value="1">Student</option>
-                                                            <option value="2">Expert</option>
-                                                            <option value="3">Market</option>
-                                                            <option value="4">Sale</option>
-                                                    </select>
+                                            <span>  <form action="Admin" method="get" id="form">
+                                                    <select id="" name="txt" onchange="nextWeb(this)">
+                                                        <option value="">All Role</option>
+                                                        <option value="Search_Role_0">Admin</option>
+                                                            <option value="Search_Role_1">Student</option>
+                                                            <option value="Search_Role_2">Expert</option>
+                                                            <option value="Search_Role_3">Market</option>
+                                                            <option value="Search_Role_4">Sale</option>
+                                                    </select></form>
                                             </span></a>
                                     </div>
                                 </div>
@@ -436,12 +436,15 @@
                             <div class="clearfix">
 <!--                                <div class="hint-text">Showing <b>${ListAccount.size()}</b> out of <b>${size}</b> entries</div>-->
                                 <ul class="pagination" id="pag">
-
+                                    <c:if test="${pageIndex!=1}">
                                     <li class="page-item disabled"><a href="Admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                    </c:if>
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
                                         <li class="page-item ${i==pageIndex?"active":""}"><a href="Admin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
+                                        <c:if test="${pageIndex!=totalPage}">
                                     <li class="page-item"><a href="Admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                        </c:if>
                                 </ul>
                             </div>
                         </div>
@@ -501,83 +504,89 @@
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
         <script>
-            function SearchAccount(input) {
-                var txt = input.value;
-                Paggination_Search(input);
-                $.ajax({
-                    url: "/QuizSystem/Ajax_Search",
-
-                    data: {
-                        txt: txt
-                    },
-                    success: function (response) {
-                        var content = document.getElementById("content");
-                        content.innerHTML = response;
-                    },
-                    error: function (xhr) {
-                        //Do Something to handle error
-                    }
-                });
+//            function SearchAccount(input) {
+//                var txt = input.value;
+//                Paggination_Search(input);
+//                $.ajax({
+//                    url: "/QuizSystem/Ajax_Search",
+//
+//                    data: {
+//                        txt: txt
+//                    },
+//                    success: function (response) {
+//                        var content = document.getElementById("content");
+//                        content.innerHTML = response;
+//                    },
+//                    error: function (xhr) {
+//                        //Do Something to handle error
+//                    }
+//                });
+//            }
+//            var inputElement = document.getElementById("choseRole");
+//            inputElement.onchange =
+//                    function ChoseRole(input) {
+//                        var txt = input.target.value;
+//                        Paggination_Role(input);
+//                        $.ajax({
+//                            url: "/QuizSystem/Ajax_FilterRole",
+//
+//                            data: {
+//                                txt: txt
+//                            },
+//                            success: function (response) {
+//                                var content = document.getElementById("content");
+//                                content.innerHTML =response;
+//                            },
+//                            error: function (xhr) {
+//                                //Do Something to handle error
+//                            }
+//                        });
+//                    }
+//            ;
+            
+            
+//                    function Paggination_Search(input) {
+//                        var txt = input.value;
+//                        $.ajax({
+//                            url: "/QuizSystem/Ajax_Paggination_Search",
+//
+//                            data: {
+//                                txt: txt
+//                            },
+//                            success: function (response) {
+//                                var content = document.getElementById("pag");
+//                                content.innerHTML = response;
+//                            },
+//                            error: function (xhr) {
+//                                //Do Something to handle error
+//                            }
+//                        });
+//                    }
+//            ;
+//            function Paggination_Role(input) {
+//                        var txt = input.target.value;
+//                        $.ajax({
+//                            url: "/QuizSystem/Ajax_Paggination_Role",
+//
+//                            data: {
+//                                txt: txt
+//                            },
+//                            success: function (response) {
+//                                var content = document.getElementById("pag");
+//                                content.innerHTML = response;
+//                            },
+//                            error: function (xhr) {
+//                                //Do Something to handle error
+//                            }
+//                        });
+//                    }
+//            ;
+            function nextWeb(input){
+                
+            document.getElementById("form").submit();
+                
             }
-            var inputElement = document.getElementById("choseRole");
-            inputElement.onchange =
-                    function ChoseRole(input) {
-                        var txt = input.target.value;
-                        Paggination_Role(input);
-                        $.ajax({
-                            url: "/QuizSystem/Ajax_FilterRole",
-
-                            data: {
-                                txt: txt
-                            },
-                            success: function (response) {
-                                var content = document.getElementById("content");
-                                content.innerHTML =response;
-                            },
-                            error: function (xhr) {
-                                //Do Something to handle error
-                            }
-                        });
-                    }
-            ;
-            
-            
-                    function Paggination_Search(input) {
-                        var txt = input.value;
-                        $.ajax({
-                            url: "/QuizSystem/Ajax_Paggination_Search",
-
-                            data: {
-                                txt: txt
-                            },
-                            success: function (response) {
-                                var content = document.getElementById("pag");
-                                content.innerHTML = response;
-                            },
-                            error: function (xhr) {
-                                //Do Something to handle error
-                            }
-                        });
-                    }
-            ;
-            function Paggination_Role(input) {
-                        var txt = input.target.value;
-                        $.ajax({
-                            url: "/QuizSystem/Ajax_Paggination_Role",
-
-                            data: {
-                                txt: txt
-                            },
-                            success: function (response) {
-                                var content = document.getElementById("pag");
-                                content.innerHTML = response;
-                            },
-                            error: function (xhr) {
-                                //Do Something to handle error
-                            }
-                        });
-                    }
-            ;
+         
         </script>
     </body>
 

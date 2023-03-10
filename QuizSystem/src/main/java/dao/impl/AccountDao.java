@@ -35,6 +35,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         insert(sql, a.getUserName(), a.getPassword(), a.getGmail(), a.getRole(), 1);
     }
 //
+
     @Override
     public List<Account> findAccountByUserName(String userName) {
         String sql = "select * from Account where userName = ? and isActive = 1";
@@ -62,7 +63,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "	gmail LIKE ? or\n"
                 + "	phone LIKE ?) and isActive=1  ";
         txt = "%" + txt + "%";
-        return query(sql,AccountMapper.getInstance(), txt, txt, txt, txt, txt);
+        return query(sql, AccountMapper.getInstance(), txt, txt, txt, txt, txt);
     }
 
     @Override
@@ -88,7 +89,6 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "where role = 1";
         return count(sql);
     }
-
 
     @Override
     public void editAccount(Account a) {
@@ -162,13 +162,20 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     @Override
     public void addAccountByAdmin(Account a) {
         String sql = "insert into Account (userName, password, gmail, role, isActive, phone, address) values (?, ?, ?, ?, ?,?,?)";
-        insert(sql, a.getUserName(), a.getPassword(), a.getGmail(), a.getRole(), 1,a.getPhone(),a.getAddress());
+        insert(sql, a.getUserName(), a.getPassword(), a.getGmail(), a.getRole(), 1, a.getPhone(), a.getAddress());
     }
 
     @Override
     public void updateProfile(Account a) {
         String sql = "update Account set firstName = ?, lastName = ?, gmail = ?, phone = ?, [address] = ?, img = ? where userName = ?";
         update(sql, a.getFirstName(), a.getLastName(), a.getGmail(), a.getPhone(), a.getAddress(), a.getImg(), a.getUserName());
+    }
+
+    @Override
+    public void deleteAccountForever(String userName) {
+        String sql = "delete from Account\n"
+                + "where userName=?";
+        update(sql, userName);
     }
 
 }

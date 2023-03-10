@@ -29,7 +29,7 @@ public class Post_Edit extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
+//        req.setCharacterEncoding("UTF-8");
         int id=Integer.parseInt(req.getParameter("id"));
         Post p= PostService.getInstance().findPostById(id).get(0);
         String img=p.getImg();

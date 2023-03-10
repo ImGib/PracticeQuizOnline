@@ -268,17 +268,7 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
-            <div class="brand-logo">
-                <a href="Home_App.html">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
-                    </span>
-                </a>
-            </div>
-        </div>
+        <%@include file="MarketingSideBar.jsp" %>
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -376,12 +366,15 @@
             </c:forEach>
             <div class="clearfix">
                             <ul class="pagination" id="pag">
-
+                                <c:if test="${pageIndex!=1}">
                                     <li class="page-item disabled"><a href="marketing-slide?pageIndex=${pageIndex-1}">Previous</a></li>
+                                </c:if>
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
                                         <li class="page-item ${i==pageIndex?"active":""}"><a href="marketing-slide?pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
+                                        <c:if test="${pageIndex!=totalPage}">
                                     <li class="page-item"><a href="marketing-slide?pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                        </c:if>
                                 </ul>
                         </div>
         </div>

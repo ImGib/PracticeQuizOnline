@@ -29,7 +29,6 @@ public class ChangeRole extends HttpServlet {
         request.setAttribute("role", role);
         request.setAttribute("user", user);
         request.getRequestDispatcher("views/ChangeRole.jsp").forward(request, response);
-        
     } 
 
     @Override

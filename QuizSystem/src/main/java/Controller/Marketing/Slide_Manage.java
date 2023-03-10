@@ -67,8 +67,6 @@ public class Slide_Manage extends HttpServlet {
             add(req, resp);
         }
         String id=req.getParameter("id");
-        
-        
         add(req, resp);
     }
     

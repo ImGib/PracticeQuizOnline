@@ -30,4 +30,5 @@ public interface IPostDao extends GenericDao<Post>{
     int countAllPost();
     int countPaginationPost(String txt);
     Post getPostDetails(String id);
+    int getLastIdPost();
 }

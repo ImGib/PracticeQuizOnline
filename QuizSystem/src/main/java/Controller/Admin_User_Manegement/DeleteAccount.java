@@ -36,7 +36,8 @@ public class DeleteAccount extends HttpServlet {
         String user="";
         user=request.getParameter("user");
         AccountService.getInstance().deleteAccount(user);
-        response.sendRedirect("/QuizSystem/Admin?txt=");
+        response.sendRedirect("/QuizSystem/Admin");
+        
     }
 
     @Override

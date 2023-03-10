@@ -379,6 +379,7 @@
                                                     <form action="marketing-deleteslide" method="post">
                                                         <div style=" text-align: center;"><button class="btn btn-danger-soft text-danger" type="submit" name="id" value="${id}">I understand, delete slide</button></div>
                                                         </form>
+                                                        <a href="marketing-slide"><button class="btn btn-success-soft text-success">Back</button></a>
                                 </div>
                             </div>
                         </div>

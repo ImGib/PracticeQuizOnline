@@ -61,5 +61,5 @@ public class SlideDao extends AbstractDao<Slide> implements ISlideDao {
                 + "where id=?";
         update(sql, img,hlink,id);
     }
-
+   
 }

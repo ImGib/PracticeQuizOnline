@@ -51,6 +51,8 @@ public interface IPostService {
 
     Post getPostDetails(String id);
     
+    int getLastIdPost();
+    
     
 
 }

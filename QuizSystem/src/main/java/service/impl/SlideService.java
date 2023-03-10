@@ -59,6 +59,11 @@ public class SlideService implements ISlideService {
         return slideDao.findAllSlide();
     }
 
+    @Override
+    public int lastIndex() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
    
 
 }

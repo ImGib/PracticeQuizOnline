@@ -588,23 +588,7 @@
             <!--**********************************
                 Sidebar start
             ***********************************-->
-            <div class="nk-sidebar">
-                <div class="nk-nav-scroll">
-                    <ul class="metismenu" id="menu">
-                        <li class="nav-label">Blog Detail</li>
-                        <li>
-                            <a href="index.html" aria-expanded="false">
-                                <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="marketing-post"><i class="icon-user"></i> <span class="nav-text">Post
-                                    Management</span></a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
+            <%@include file="MarketingSideBar.jsp" %>
             <!--**********************************
                 Sidebar end
             ***********************************-->
