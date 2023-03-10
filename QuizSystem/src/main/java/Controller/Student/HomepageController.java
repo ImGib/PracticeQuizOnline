@@ -39,5 +39,6 @@ public class HomepageController extends HttpServlet {
         request.setAttribute("pstList", PostService.getInstance().getTopTwo());
         request.setAttribute("cateList", CategoryService.getInstance().getAllCate());
         request.getRequestDispatcher("views/student/home.jsp").forward(request, response);
+        //update
     }
 }
