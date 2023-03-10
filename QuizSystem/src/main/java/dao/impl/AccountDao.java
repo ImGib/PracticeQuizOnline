@@ -170,5 +170,4 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         String sql = "update Account set firstName = ?, lastName = ?, gmail = ?, phone = ?, [address] = ?, img = ? where userName = ?";
         update(sql, a.getFirstName(), a.getLastName(), a.getGmail(), a.getPhone(), a.getAddress(), a.getImg(), a.getUserName());
     }
-
 }

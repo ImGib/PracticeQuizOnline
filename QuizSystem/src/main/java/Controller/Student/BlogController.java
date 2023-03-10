@@ -26,9 +26,9 @@ public class BlogController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         SessionUtil.getInstance().putValue(req, "crPage", "Blog");
 
-        req.setCharacterEncoding("UTF-8");
         paginationPost(req);
 
         req.setAttribute("postList", pstList);
@@ -49,12 +49,12 @@ public class BlogController extends HttpServlet {
         }
 
         pageIndex = PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        PagginationUtil.getInstance().setPageBegin_Ending(pageIndex, 1);
+
         pstList = PostService.getInstance().getPostPagination(search, pageIndex, PagginationUtil.getInstance().getNrpp());
 
         req.setAttribute("search", search);
         req.setAttribute("pageIndex", pageIndex);
-        req.setAttribute("begin", PagginationUtil.getInstance().getBegin());
-        req.setAttribute("end", PagginationUtil.getInstance().getEnd());
+        req.setAttribute("totalPagination", PagginationUtil.getInstance().getTotalPage());
+
     }
 }

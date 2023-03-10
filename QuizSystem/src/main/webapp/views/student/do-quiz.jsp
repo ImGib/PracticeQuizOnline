@@ -1,11 +1,10 @@
 <%-- 
-    Document   : home
-    Created on : Feb 21, 2023, 1:01:52 PM
+    Document   : do-quiz
+    Created on : Mar 7, 2023, 8:27:57 PM
     Author     : Gib
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,13 +12,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>QuixLab</title>
+        <title>Do Quiz</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Favicon icon -->
-        <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
         <!-- Pignose Calender -->
         <link href="asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
         <!-- Chartist -->
@@ -210,6 +209,29 @@
             }
 
             .pagination li.active a,
+            .pagination li.active a.page-link {
+                background: #03A9F4;
+            }
+
+            .pagination li.active a:hover {
+                background: #0397d6;
+            }
+
+            .pagination li.disabled i {
+                color: #ccc;
+            }
+
+            .pagination li i {
+                font-size: 16px;
+                padding-top: 6px
+            }
+
+            .hint-text {
+                float: left;
+                margin-top: 10px;
+                font-size: 13px;
+            }
+
             .card {
                 background: #fff;
                 transition: .5s;
@@ -227,7 +249,7 @@
                 font-weight: 400;
             }
 
-            .card .blog-header {
+            .card .blog-detail-header {
                 color: #444;
                 padding: 20px;
                 position: relative;
@@ -471,48 +493,7 @@
                 .blog-page .single_post .footer {
                     padding: 30px
                 }
-            }
 
-            .pagination li.active a.page-link {
-                background: #03A9F4;
-            }
-
-            .pagination li.active a:hover {
-                background: #0397d6;
-            }
-
-            .pagination li.disabled i {
-                color: #ccc;
-            }
-
-            .pagination li i {
-                font-size: 16px;
-                padding-top: 6px
-            }
-
-            .hint-text {
-                float: left;
-                margin-top: 10px;
-                font-size: 13px;
-            }
-
-            .animate-fading {
-                width: 98%;
-                animation: fading 10s infinite
-            }
-
-            @keyframes fading {
-                0% {
-                    opacity: 0
-                }
-
-                50% {
-                    opacity: 1
-                }
-
-                100% {
-                    opacity: 0
-                }
             }
         </style>
         <script>
@@ -564,11 +545,11 @@
             ***********************************-->
 
             <!--**********************************
-                header start
+                Header start
             ***********************************-->
             <%@include file="header-user.jsp" %>
             <!--**********************************
-                header end ti-comment-alt
+                Header end ti-comment-alt
             ***********************************-->
 
             <!--**********************************
@@ -582,200 +563,107 @@
             <!--**********************************
                 Content body start
             ***********************************-->
-            <div class="content-body">
-                <div id="main-content" class="blog-page">
-                    <div class="row clearfix">
-                        <div class="col-lg-12 col-md-12 left-box">
-                            <div class="card single_post mx-5" style="width: 95%;">
-                                <div class="body">
-                                    <div>
-                                        <c:forEach var="sl" items="${requestScope.sliders}">
-                                            <img class="mySlides2 animate-fading"
-                                                 src="${sl.img}">
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="content-body mt-4">
+                <div class="login-form-bg h-100">
+                    <div class="container h-100">
+                        <div class="row justify-content-center h-100">
+                            <div class="col-xl-9">
+                                <div class="form-input-content">
+                                    <div class="card login-form mb-0">
+                                        <div class="card-body pt-5">
+                                            <span class="text-center" href="">
+                                                <h1>Test</h1>
+                                            </span>
 
-                    <div class="my-5" style="font-size: 30px; text-align: center;">95% học sinh sử dụng QuixLab cho biết họ
-                        đã cải thiện được điểm số</div>
-                    <div class="container mt-5 mb-3">
-                        <div class="row">
-                            <c:forEach var="sub" items="${requestScope.sbjList}">
-                                <c:set var="author" value="${requestScope.accService.getAccountByID(sub.idAuthor)}"/>
-                                <div class="col-md-4">
-                                    <div class="card p-3 mb-2">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="d-flex flex-row align-items-center">
-                                                <!--                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>-->
-                                                <div class="ms-2 c-details">
-                                                    <h6 class="mb-0">${author.firstName} ${author.lastName}</h6> 
-                                                    <span>${sub.diffirentDate()}</span>
-                                                </div>
-                                            </div>
-                                            <div class="badge"> 
-                                                <c:choose>
-                                                    <c:when test="${sessionScope.account.checkEnroll(sub.id) == sub.id}">
-                                                        <a><span style="background-color: #fffbec;
-                                                                 width: 60px;
-                                                                 height: 25px;
-                                                                 padding-bottom: 3px;
-                                                                 border-radius: 5px;
-                                                                 display: flex;
-                                                                 color: #fed85d;
-                                                                 justify-content: center;
-                                                                 align-items: center;">Enrolled</span></a>
-                                                        </c:when>
-                                                        <c:when test="${sessionScope.account.checkEnroll(sub.id) != sub.id}">
-                                                            <c:if test="${sessionScope.account == null}">
-                                                            <a href="login"><span>Enroll</span></a> 
-                                                        </c:if>
-                                                        <c:if test="${sessionScope.account != null}">
-                                                            <a href="enroll?idSub=${sub.id}"><span>Enroll</span></a> 
-                                                        </c:if>
-                                                    </c:when>
-                                                </c:choose>
-                                            </div>
-                                        </div>
-                                        <div class="mt-5">
-                                            <a class="course" href="subject-details?id=${sub.id}">
-                                                <h3 class="heading">${sub.name}</h3>
-                                            </a>
-                                            <div class="mt-5">
-                                                <div class="mt-3">
-                                                    <span class="text1">${sub.getNumberEnroll()} Person <span class="text2">Erroll this Cousrse</span>\</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--See More Button-->
-                                    <c:if test="${requestScope.sbjList.get(2) == sub}">
-                                        <div style="text-align: end; margin-bottom: 15px;">
-                                            <div class="actions">
-                                                <a href="subject-list" class="btn btn-outline-secondary">See More</a>
-                                            </div>
-                                        </div>
-                                    </c:if>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </div>
-                    <div class="my-5" style="font-size: 30px; text-align: center;">Sẵn sàng cho ngày thi với Học và Kiểm tra</div>
-                    <div class="container">
-                        <div class="row clearfix">
-                            <div class="col-lg-8 col-md-12 left-box">
-                                <c:forEach var="pst" items="${requestScope.pstList}">
-                                    <div class="card single_post">
-                                        <div class="body">
-                                            <div class="img-post">
-                                                <img class="d-block img-fluid"
-                                                     src="${pst.img}" alt="First slide">
-                                            </div>
-                                            <h3><a href="blog-details?postId=${pst.id}">${pst.tittle}</a></h3>
-                                            <p style="width: 670px; height: 78">${pst.details}</p>
-                                        </div>
-                                        <div class="footer">
-                                            <div class="actions">
-                                                <a href="blog-details?postId=${pst.id}" class="btn btn-outline-secondary">Continue
-                                                    Reading</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </c:forEach>
-                                <c:if test="${requestScope.pstList.size() == 2}">
-                                    <div style="text-align: end; margin-bottom: 15px;">
-                                        <div class="actions">
-                                            <a href="blog" class="btn btn-outline-secondary">See More</a>
-                                        </div>
-                                    </c:if>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 right-box">
-                                <div class="card">
-                                    <div class="blog-header">
-                                        <h2>List Categories</h2>
-                                    </div>
-                                    <div class="body widget">
-                                        <ul class="list-unstyled categories-clouds m-b-0">
-                                            <c:forEach var="cate" items="${cateList}">
-                                                <li><a href="subject-list?search=${cate.id}&type=cate">${cate.name}</a></li>
-                                                </c:forEach>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <%@include file="popular-post.jsp" %>
-                            </div>
+                                            <!-- form -->
 
+                                            <form class="mt-5 mb-5"  action="do-quiz" method="post">
+                                                <div class=" row form-group " style="display: flex;">
+                                                    <c:forEach var="ques" items="${requestScope.list}">
+                                                        <div class="form-group">
+                                                            <div class="row gx-2 mb-3" style="justify-content: center;">
+                                                                <!-- Form Group (first name)-->
+                                                                <div class="col-md-9 test" 
+                                                                     style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
+                                                                    <div class="mx-3 my-3">
+                                                                        ${ques.question}
+                                                                    </div>
+                                                                    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                                                                        <c:forEach var="ans" items="${ques.allAnswer()}">
+                                                                            
+                                                                            <div class="col-md-5 mx-2 my-1" id="a${ques.id}b${ans.idAns}"
+                                                                                 style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
+                                                                                <div class="mx-3 my-3">
+                                                                                    ${ans.answer}
+                                                                                    <input type="radio" name="answ${ques.id}" value="${ans.idAns}">
+                                                                                </div>
+                                                                            </div>
+                                                                        </c:forEach>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Form Group (last name)-->
+                                                            </div>
+                                                        </div>
+                                                    </c:forEach>
+                                                    
+                                                    <input class="btn" type="submit"style="border: #242424 solid 1px; background-color: #ffc107; width: 300px;" value="Finish HIM">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!--**********************************
+            <!--**********************************
                 Content body end
             ***********************************-->
 
 
-                <!--**********************************
+            <!--**********************************
                 Footer start
             ***********************************-->
-                <!--**********************************
+            <!--**********************************
                 Footer end
             ***********************************-->
-            </div>
-            <!--**********************************
+        </div>
+        <!--**********************************
             Main wrapper end
         ***********************************-->
 
-            <!--**********************************
+        <!--**********************************
             Scripts
         ***********************************-->
-            <script>
-                var myIndex = 0;
-                carousel2();
+        <script src="asset/plugins/common/common.min.js"></script>
+        <script src="asset/js/custom.min.js"></script>
+        <script src="asset/js/settings.js"></script>
+        <script src="asset/js/gleek.js"></script>
+        <script src="asset/js/styleSwitcher.js"></script>
 
-                function carousel2() {
-                    var i;
-                    var x = document.getElementsByClassName("mySlides2");
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = "none";
-                    }
-                    myIndex++;
-                    if (myIndex > x.length) {
-                        myIndex = 1
-                    }
-                    x[myIndex - 1].style.display = "block";
-                    setTimeout(carousel2, 7000);
-                }
-            </script>
-            <script src="asset/plugins/common/common.min.js"></script>
-            <script src="asset/js/custom.min.js"></script>
-            <script src="asset/js/settings.js"></script>
-            <script src="asset/js/gleek.js"></script>
-            <script src="asset/js/styleSwitcher.js"></script>
-
-            <!-- Chartjs -->
-            <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
-            <!-- Circle progress -->
-            <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
-            <!-- Datamap -->
-            <script src="asset/plugins/d3v3/index.js"></script>
-            <script src="asset/plugins/topojson/topojson.min.js"></script>
-            <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
-            <!-- Morrisjs -->
-            <script src="asset/plugins/raphael/raphael.min.js"></script>
-            <script src="asset/plugins/morris/morris.min.js"></script>
-            <!-- Pignose Calender -->
-            <script src="asset/plugins/moment/moment.min.js"></script>
-            <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-            <!-- ChartistJS -->
-            <script src="asset/plugins/chartist/js/chartist.min.js"></script>
-            <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+        <!-- Chartjs -->
+        <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
+        <!-- Circle progress -->
+        <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
+        <!-- Datamap -->
+        <script src="asset/plugins/d3v3/index.js"></script>
+        <script src="asset/plugins/topojson/topojson.min.js"></script>
+        <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
+        <!-- Morrisjs -->
+        <script src="asset/plugins/raphael/raphael.min.js"></script>
+        <script src="asset/plugins/morris/morris.min.js"></script>
+        <!-- Pignose Calender -->
+        <script src="asset/plugins/moment/moment.min.js"></script>
+        <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+        <!-- ChartistJS -->
+        <script src="asset/plugins/chartist/js/chartist.min.js"></script>
+        <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
 
 
-            <script src="asset/js/dashboard/dashboard-1.js"></script>
+        <script src="asset/js/dashboard/dashboard-1.js"></script>
 
     </body>
 

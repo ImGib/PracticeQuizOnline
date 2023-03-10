@@ -5,17 +5,22 @@ import model.Subject;
 
 public interface ISubjectService {
 
-    public List<Subject> getTopThree();
+    List<Subject> getTopThree();
 
-    public int getNumberSubject();
+    int getNumberSubject();
 
-    public List<Subject> getSubjectPagination(String search, int pageIndex, int nrpp);
+    List<Subject> getSubject_subName(String search, int pageIndex, int nrpp);
 
-    public int countAllSubjectPagination(String search);
+    int count_subName(String search);
 
-    public List<Subject> getAllSubject();
+    List<Subject> getAllSubject();
 
     List<Subject> getEnrollByUsername(String username, int pageIndex, int nrpp);
 
     int countEnrollByUsername(String username);
+
+    Subject getSubjectById(int id);
+
+    List<Subject> getSubject_Cate(String search, int pageIndex, int nrpp);
+    int count_Cate(String search);
 }

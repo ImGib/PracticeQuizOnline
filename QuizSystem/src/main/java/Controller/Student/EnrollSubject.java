@@ -10,19 +10,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import model.Account;
+import service.impl.EnrollService;
 import utils.SessionUtil;
 
-@WebServlet(urlPatterns = {"/search-subject"})
-public class SearchSubject extends HttpServlet{
+@WebServlet(urlPatterns = {"/enroll"})
+public class EnrollSubject extends HttpServlet{
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String search = req.getParameter("search");
-        if (search == null) {
-            search = "";
-        }
-        SessionUtil.getInstance().putValue(req, "search", search);
-        resp.sendRedirect("subject-list");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("idSub"));
+        EnrollService.getInstance().enroll(((Account)SessionUtil.getInstance().getValue(req, "account")).getUserName(), id);
+        resp.sendRedirect("subject-details?id=" + id);
     }
     
 }

@@ -5,9 +5,13 @@
 package dao;
 
 import java.util.List;
-import model.Category;
+import model.Answer;
 
-public interface ICategoryDao extends GenericDao<Category>{
-    List<Category> getAllCate();
-    List<Category> getCateBySubID(int id);
+/**
+ *
+ * @author Gib
+ */
+public interface IAnswerDao extends GenericDao<Answer>{
+    List<Answer> getAnswerByIdQues(int id);
+    List<Answer> getTrueAnswer(int idQues);
 }
