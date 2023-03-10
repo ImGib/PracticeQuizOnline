@@ -8,6 +8,7 @@ import dao.ISubjectDAO;
 import java.util.List;
 import model.Subject;
 import mapper.SubjectMapper;
+import model.Account;
 import utils.PageUtil;
 
 /**
@@ -31,9 +32,9 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
     }
 
     @Override
-    public List<Subject> getAllSubject() {
-        String sql = "select * from Subject";
-        return query(sql, SubjectMapper.getInstance());
+    public List<Subject> getAllSubjectByAccount(Account a) {
+        String sql = "select * from Subject where idAuthor = ?";
+        return query(sql, SubjectMapper.getInstance(), a.getUserName());
     }
 
     @Override

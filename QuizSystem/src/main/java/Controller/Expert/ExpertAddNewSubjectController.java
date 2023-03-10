@@ -51,7 +51,7 @@ public class ExpertAddNewSubjectController extends HttpServlet {
             doGet(req, resp);
         } else {
             SubjectTypeService.getInstance().createNewSubType(cateIds, idS);
-            resp.sendRedirect("expert-subject-management");
+            resp.sendRedirect("expert-subject-management?index=1&&search=");
         }
     }
 

@@ -6,6 +6,7 @@ package service.impl;
 
 import dao.impl.SubjectDAO;
 import java.util.List;
+import model.Account;
 import model.Subject;
 import service.ISubjectService;
 import utils.PageUtil;
@@ -43,8 +44,8 @@ public class SubjectService implements ISubjectService {
     }
 
     @Override
-    public List<Subject> getAllSubject() {
-        return subjectDao.getAllSubject();
+    public List<Subject> getAllSubjectByAccount(Account a) {
+        return subjectDao.getAllSubjectByAccount(a);
     }
     
     @Override

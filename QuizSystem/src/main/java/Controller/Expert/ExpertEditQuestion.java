@@ -12,12 +12,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import model.Account;
 import model.Answer;
 import model.Question;
 import model.Subject;
 import service.impl.AnswerService;
 import service.impl.QuestionService;
 import service.impl.SubjectService;
+import utils.SessionUtil;
 
 /**
  *
@@ -28,9 +30,10 @@ public class ExpertEditQuestion extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Account a = (Account) SessionUtil.getInstance().getValue(req, "account");
         String id = req.getParameter("id");
         Question q = QuestionService.getInstance().getQuestionById(id);
-        List<Subject> listS = SubjectService.getInstance().getAllSubject();
+        List<Subject> listS = SubjectService.getInstance().getAllSubjectByAccount(a);
         List<Answer> listA = AnswerService.getInstance().getAnswerByIdQues(id);
         try {
             req.setAttribute("answer1", listA.get(0).getAnswer());

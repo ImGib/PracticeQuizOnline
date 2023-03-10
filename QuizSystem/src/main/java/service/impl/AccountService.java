@@ -98,7 +98,8 @@ public class AccountService implements IAccountService {
 
     @Override
     public Account loginWithEmail(UserGoogleDto user) {
-        Account a = new Account(user.getEmail(), CheckUtil.MD5Encryption("123"), user.getEmail(), 0, true);
+        String[] u = user.getEmail().split("@");
+        Account a = new Account(u[0], CheckUtil.MD5Encryption("123"), user.getEmail(), 0, true);
         if (accountDao.findAccountByEmail(user.getEmail()).isEmpty()) {
             accountDao.addAccount(a);
         } else {

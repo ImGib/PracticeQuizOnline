@@ -52,7 +52,7 @@ public class ExpertEditSubject extends HttpServlet{
         s.setName(name);
         SubjectService.getInstance().editSubject(s);
         SubjectTypeService.getInstance().editSubType(id, cateIds);
-        resp.sendRedirect("expert-subject-management");
+        resp.sendRedirect("expert-subject-management?index=1&&search=");
     }
     
     

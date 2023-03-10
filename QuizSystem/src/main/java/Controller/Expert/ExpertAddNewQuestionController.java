@@ -12,10 +12,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import model.Account;
 import model.Subject;
 import service.impl.AnswerService;
 import service.impl.QuestionService;
 import service.impl.SubjectService;
+import utils.SessionUtil;
 
 /**
  *
@@ -26,7 +28,8 @@ public class ExpertAddNewQuestionController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Subject> listS = SubjectService.getInstance().getAllSubject();
+        Account a = (Account) SessionUtil.getInstance().getValue(req, "account");
+        List<Subject> listS = SubjectService.getInstance().getAllSubjectByAccount(a);
         req.setAttribute("listS", listS);
         req.getRequestDispatcher("views/expert/Expert_AddNewQuestion.jsp").forward(req, resp);
     }

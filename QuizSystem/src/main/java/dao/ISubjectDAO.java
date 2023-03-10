@@ -5,6 +5,7 @@
 package dao;
 
 import java.util.List;
+import model.Account;
 import model.Subject;
 import utils.PageUtil;
 
@@ -14,7 +15,7 @@ public interface ISubjectDAO extends GenericDao<Subject>{
     
     public int getNumberSubject();
     
-    public List<Subject> getAllSubject();
+    public List<Subject> getAllSubjectByAccount(Account a);
     
     public List<Subject> getAllSubjectAndNumberEnroll();
     
