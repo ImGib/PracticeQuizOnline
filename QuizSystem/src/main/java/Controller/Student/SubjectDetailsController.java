@@ -4,6 +4,7 @@
  */
 package Controller.Student;
 
+import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import model.Category;
+import model.Question;
 import model.Subject;
 import service.impl.CategoryService;
 import service.impl.QuestionService;
@@ -26,7 +28,9 @@ public class SubjectDetailsController extends HttpServlet{
         Subject sub = SubjectService.getInstance().getSubjectById(id);
         List<Category> cateList= CategoryService.getInstance().getCateBySubId(id);
         
-        req.setAttribute("questions", QuestionService.getInstance().getAllQuestionBySubId(id));
+        List<Question> queslist = QuestionService.getInstance().getAllQuestionBySubId(id);
+        req.setAttribute("questions", queslist);
+//        req.setAttribute("maximum", Gson.parse());
         req.setAttribute("sub", sub);
         req.setAttribute("cateList", cateList);
         req.getRequestDispatcher("views/student/subject-details.jsp").forward(req, resp);

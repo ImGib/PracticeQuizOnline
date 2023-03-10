@@ -364,7 +364,7 @@
                                         <div class="badge"><span>Enrolled</span></a> </div>
                                     </div>
                                     <div class="mt-5">
-                                        <a class="course" href="#">
+                                        <a class="course" href="subject-details?id=${sub.id}">
                                             <h3 class="heading">${sub.name}</h3>
                                         </a>
                                         <div class="mt-5">

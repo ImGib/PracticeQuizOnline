@@ -4,11 +4,14 @@
  */
 package model;
 
+import java.util.List;
+
 /**
  *
  * @author Gib
  */
 public class Answer {
+
     private int idAns;
     private int idQues;
     private boolean isCorrect;
@@ -55,6 +58,13 @@ public class Answer {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
-    
-    
+
+    public boolean isChecked(List<String> answered) {
+        for(String a : answered)
+            if(a.equals(String.valueOf(this.getIdAns())))
+                return true;
+        return false;
+        
+    }
+
 }

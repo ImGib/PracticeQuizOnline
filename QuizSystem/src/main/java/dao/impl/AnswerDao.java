@@ -18,7 +18,8 @@ public class AnswerDao extends AbstractDao<Answer> implements IAnswerDao {
     @Override
     public List<Answer> getAnswerByIdQues(int id) {
         String sql = "select Answer.* from Answer\n"
-                + "where idQues = ?";
+                + "where idQues = ?\n"
+                + "	and answer != N''";
         return query(sql, new AnswerMapper(), id);
     }
 

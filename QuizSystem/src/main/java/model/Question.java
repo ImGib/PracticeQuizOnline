@@ -12,6 +12,7 @@ import service.impl.AnswerService;
  * @author Gib
  */
 public class Question {
+
     private int id;
     private int idSub;
     private String question;
@@ -58,13 +59,13 @@ public class Question {
     public void setIsPublic(boolean isPublic) {
         this.isPublic = isPublic;
     }
-    
-    public List<Answer> allAnswer(){
+
+    public List<Answer> allAnswer() {
         List<Answer> answers = AnswerService.getInstance().getAnswerByIdQues(this.id);
         return answers;
     }
-    
-    public Answer rightAnswer(){
+
+    public Answer rightAnswer() {
         Answer ans = AnswerService.getInstance().getRightAns(this.id);
         return ans;
     }
@@ -73,6 +74,19 @@ public class Question {
     public String toString() {
         return "Question{" + "id=" + id + ", idSub=" + idSub + ", question=" + question + ", isPublic=" + isPublic + '}';
     }
-    
-    
+
+    public boolean checkAnswer(List<String> answered) {
+        System.out.println("checkanswer");
+        for (String a : answered) {
+            System.out.println(a + " ---- " + String.valueOf(rightAnswer().getIdAns()));
+            
+            if (a.equalsIgnoreCase(String.valueOf(rightAnswer().getIdAns()))) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
 }

@@ -13,4 +13,5 @@ import model.Question;
  */
 public interface IQuestionDao extends GenericDao<Question>{
     List<Question> getAllQuestionBySubId(int idSub);
+    List<Question> getRandomQuestion(int n, int idSub);
 }

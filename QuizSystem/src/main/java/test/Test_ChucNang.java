@@ -6,7 +6,9 @@ package test;
 
 import dao.impl.AccountDao;
 import dao.impl.SliderDao;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import model.Account;
 import model.Answer;
 import model.Category;
@@ -35,12 +37,8 @@ import utils.RandomUtil;
 public class Test_ChucNang {
 
     public static void main(String[] args) {
-        System.out.println(PostService.getInstance().countSearchPost(""));
-        int size = PostService.getInstance().countSearchPost("");
-        PagginationUtil.getInstance().setNrpp(4);
-        System.out.println(PagginationUtil.getInstance().pageIndex(1, size));
-        System.out.println(PagginationUtil.getInstance().getTotalPage());
-        List<Post> list = PostService.getInstance().getPostPagination("", 1, PagginationUtil.getInstance().getNrpp());
-        System.out.println(list.size());
+        for (Question q : QuestionService.getInstance().getRandomQuestion(5, 1)){
+            System.out.println(q.getQuestion());
+        }
     }
 }

@@ -13,4 +13,5 @@ import model.Question;
  */
 public interface IQuestionServive {
     List<Question> getAllQuestionBySubId(int subId);
+    List<Question> getRandomQuestion(int n, int idSub);
 }
