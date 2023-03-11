@@ -35,6 +35,7 @@ public class Post_Manage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String txt = "";
         txt=request.getParameter("txt");
         if(txt==null)txt="";
