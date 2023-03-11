@@ -18,7 +18,7 @@
     <body>
         <div id="logreg-forms">
 
-            <form action="AddNewAccount" method="post" style="margin: 30 auto">
+            <form action="admin-accaccount" method="post" style="margin: 30 auto">
                 <h1 class="h3 mb-5 mt-3 font-weight-normal" style="text-align: center">Add New Account</h1>
                 <p class="text-danger">${wrongText}</p>
                 <p class="text-success">${successText}</p>
@@ -35,7 +35,7 @@
                 </div>
 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Add</button>
-                <a href="Admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
+                <a href="admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
             </form>
 
         </div>

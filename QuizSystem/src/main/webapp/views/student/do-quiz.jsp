@@ -591,11 +591,11 @@
                                                                     <div style="display: flex; flex-wrap: wrap; justify-content: center;">
                                                                         <c:forEach var="ans" items="${ques.allAnswer()}">
                                                                             
-                                                                            <div class="col-md-5 mx-2 my-1" id="a${ques.id}b${ans.idAns}"
+                                                                            <div class="col-md-5 mx-2 my-1" id="a${ques.id}b${ans.idAns}" onclick="chose(${idAns})"
                                                                                  style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
                                                                                 <div class="mx-3 my-3">
                                                                                     ${ans.answer}
-                                                                                    <input type="radio" name="answ${ques.id}" value="${ans.idAns}">
+                                                                                    <input type="radio" name="answ${ques.id}" value="${ans.idAns}" id="${idAns}">
                                                                                 </div>
                                                                             </div>
                                                                         </c:forEach>
@@ -618,25 +618,9 @@
                 </div>
             </div>
 
-            <!--**********************************
-                Content body end
-            ***********************************-->
-
-
-            <!--**********************************
-                Footer start
-            ***********************************-->
-            <!--**********************************
-                Footer end
-            ***********************************-->
+         
         </div>
-        <!--**********************************
-            Main wrapper end
-        ***********************************-->
-
-        <!--**********************************
-            Scripts
-        ***********************************-->
+     
         <script src="asset/plugins/common/common.min.js"></script>
         <script src="asset/js/custom.min.js"></script>
         <script src="asset/js/settings.js"></script>
@@ -664,7 +648,11 @@
 
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
-
+        <script>
+            function chose(var input){
+                
+            }
+        </script>
     </body>
 
 </html>

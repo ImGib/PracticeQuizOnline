@@ -376,7 +376,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <form action="DeleteAccount" method="post">
+                            <form action="admin-deleteaccount" method="post">
                                 <div class="row" style="justify-content: center">
                                     <div class="col-md-1" style=" text-align: center;margin-right: 10px"><button class="btn btn-danger-soft text-danger" type="submit" name="user" value="${user}">Cancel</button></div>
                                     <div class="col-md-5" style=" text-align: center;"><button class="btn btn-danger-soft text-danger" type="submit" name="user" value="${user}">I understand, delete User

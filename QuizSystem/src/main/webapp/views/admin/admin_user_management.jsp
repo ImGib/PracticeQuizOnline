@@ -15,7 +15,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+        <title>Quixlab - Bootstrap admin Dashboard Template by Themefisher.com</title>
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
         <!-- Pignose Calender -->
@@ -296,7 +296,7 @@
                                 <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                         class="mdi mdi-magnify"></i></span>
                             </div>
-                            <form action="Admin" method="get">
+                            <form action="admin" method="get">
                                 <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt.contains("Search_Role_")?"":txt}">
                                 <!--                            <button>submit</button>-->
                             </form>
@@ -357,7 +357,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/QuizSystem/Admin"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
+                            <a href="/QuizSystem/admin"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
                         </li>
 
                     </ul>
@@ -381,17 +381,17 @@
                                         <h2>User <b>Management</b></h2>
                                     </div>
                                     <div class="col-sm-7">
-                                        <a href="AddNewAccount" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
+                                        <a href="admin-addaccount" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
                                             <span>Add New User</span></a>
                                         <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
-                                            <span>  <form action="Admin" method="get" id="form">
+                                            <span>  <form action="admin" method="get" id="form">
                                                     <select id="" name="txt" onchange="nextWeb(this)">
-                                                        <option value="">All Role</option>
-                                                        <option value="Search_Role_0" ${txt.equals("Search_Role_0")?"checked":""}>Admin</option>
-                                                        <option value="Search_Role_1" ${txt.equals("Search_Role_1")?"checked":""}>Student</option>
-                                                        <option value="Search_Role_2" ${txt.equals("Search_Role_2")?"checked":""}>Expert</option>
-                                                        <option value="Search_Role_3" ${txt.equals("Search_Role_3")?"checked":""}>Market</option>
-                                                        <option value="Search_Role_4" ${txt.equals("Search_Role_4")?"checked":""}>Sale</option>
+                                                        <option value="" >All Role</option>
+                                                        <option value="Search_Role_0" ${txt.equals("Search_Role_0")?"selected":""}>Admin</option>
+                                                        <option value="Search_Role_1" ${txt.equals("Search_Role_1")?"selected":""}>Student</option>
+                                                        <option value="Search_Role_2" ${txt.equals("Search_Role_2")?"selected":""}>Expert</option>
+                                                        <option value="Search_Role_3" ${txt.equals("Search_Role_3")?"selected":""}>Market</option>
+                                                        <option value="Search_Role_4" ${txt.equals("Search_Role_4")?"selected":""}>Sale</option>
                                                     </select></form>
                                             </span></a>
                                     </div>
@@ -423,9 +423,9 @@
                                                 <td><span class="status text-success">&bull;</span> Active</td>
                                             <c:if test="${!(o.getRole() == 0)}">
                                                 <td>
-                                                    <a href="ChangeRole?user=${o.getUserName()}" class="settings" title="Edit" data-toggle="tooltip"><i
+                                                    <a href="admin-changerole?user=${o.getUserName()}" class="settings" title="Edit" data-toggle="tooltip"><i
                                                             class="material-icons">&#xE8B8;</i></a>
-                                                    <a href="DeleteAccount?user=${o.getUserName()}" class="delete" title="Ban" data-toggle="tooltip"><i
+                                                    <a href="admin-deleteaccount?user=${o.getUserName()}" class="delete" title="Ban" data-toggle="tooltip"><i
                                                             class="material-icons">&#xE5C9;</i></a>
                                                 </td>
                                             </c:if>
@@ -437,13 +437,13 @@
 <!--                                <div class="hint-text">Showing <b>${ListAccount.size()}</b> out of <b>${size}</b> entries</div>-->
                                 <ul class="pagination" id="pag">
                                     <c:if test="${pageIndex!=1}">
-                                        <li class="page-item disabled"><a href="Admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                        <li class="page-item disabled"><a href="admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
                                         </c:if>
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
-                                        <li class="page-item ${i==pageIndex?"active":""}"><a href="Admin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
+                                        <li class="page-item ${i==pageIndex?"active":""}"><a href="admin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
                                         <c:if test="${pageIndex!=totalPage}">
-                                        <li class="page-item"><a href="Admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                        <li class="page-item"><a href="admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
                                         </c:if>
                                 </ul>
                             </div>

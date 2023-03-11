@@ -17,14 +17,14 @@ import service.impl.AccountService;
  *
  * @author asus
  */
-@WebServlet(name = "AddNewAccount", urlPatterns = {"/AddNewAccount"})
+@WebServlet(name = "AddNewAccount", urlPatterns = {"/admin-addaccount"})
 public class AddNewAccount extends HttpServlet {
 
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("views/AddNewAccount.jsp").forward(request, response);
+        request.getRequestDispatcher("views/admin/AddNewAccount.jsp").forward(request, response);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class AddNewAccount extends HttpServlet {
         } else {
             request.setAttribute("wrongText", mess);
         }
-        request.getRequestDispatcher("views/AddNewAccount.jsp").forward(request, response);
+        request.getRequestDispatcher("views/admin/AddNewAccount.jsp").forward(request, response);
     }
 
     

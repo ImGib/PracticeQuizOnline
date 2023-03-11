@@ -18,7 +18,7 @@ import service.impl.AccountService;
  *
  * @author asus
  */
-@WebServlet(name="ChangeRole", urlPatterns={"/ChangeRole"})
+@WebServlet(name="ChangeRole", urlPatterns={"/admin-changerole"})
 public class ChangeRole extends HttpServlet {
    
     @Override
@@ -28,7 +28,7 @@ public class ChangeRole extends HttpServlet {
         int role=AccountService.getInstance().findAccountByUserName(user).get(0).getRole();
         request.setAttribute("role", role);
         request.setAttribute("user", user);
-        request.getRequestDispatcher("views/ChangeRole.jsp").forward(request, response);
+        request.getRequestDispatcher("views/admin/ChangeRole.jsp").forward(request, response);
     } 
 
     @Override
@@ -40,7 +40,7 @@ public class ChangeRole extends HttpServlet {
         
         request.setAttribute("role", role);
         request.setAttribute("successText", "Edit Successfull");
-        request.getRequestDispatcher("views/ChangeRole.jsp").forward(request, response);
+        request.getRequestDispatcher("views/admin/ChangeRole.jsp").forward(request, response);
     }
     
 
