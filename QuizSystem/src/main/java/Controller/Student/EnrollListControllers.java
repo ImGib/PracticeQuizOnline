@@ -30,12 +30,12 @@ public class EnrollListControllers extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         SessionUtil.getInstance().putValue(req, "crPage", "Enroll List");
-        paginationPost(req);
+        paginationPage(req);
         req.setAttribute("accService", AccountService.getInstance());
         req.getRequestDispatcher("views/student/enroll-list.jsp").forward(req, resp);
     }
 
-    void paginationPost(HttpServletRequest req) {
+    void paginationPage(HttpServletRequest req) {
         Account acc = (Account) SessionUtil.getInstance().getValue(req, "account");
         size = SubjectService.getInstance().countEnrollByUsername(acc.getUserName());
         PagginationUtil.getInstance().setNrpp(9);
@@ -45,12 +45,10 @@ public class EnrollListControllers extends HttpServlet {
         }
 
         pageIndex = PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        System.out.println( PagginationUtil.getInstance().getTotalPage());
         subList = SubjectService.getInstance().getEnrollByUsername(acc.getUserName(), pageIndex, PagginationUtil.getInstance().getNrpp());
 
         req.setAttribute("pageIndex", pageIndex);
         req.setAttribute("subList", subList);
         req.setAttribute("totalPagination", PagginationUtil.getInstance().getTotalPage());
-
     }
 }

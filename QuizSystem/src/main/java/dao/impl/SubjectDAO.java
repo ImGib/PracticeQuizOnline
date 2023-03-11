@@ -215,17 +215,7 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
                 + "    and Account.isActive = 1";
         return count(sql, txt);
     }
-
-//    @Override
-//    public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-
-//    @Override
-//    public int countAllFoundSubject(String txt) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-
+    
     @Override
     public List<Subject> getAllSubject() {
         String sql = "select * from Subject";
