@@ -18,6 +18,7 @@
     <body>
         <div id="logreg-forms">
 
+<<<<<<< Updated upstream:QuizSystem/src/main/webapp/views/admin/ChangeRole.jsp
             <form action="admin-changerole" method="post" class="">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Edit Role</h1>
                 <p class="text-danger">${wrongText}</p>
@@ -31,6 +32,24 @@
                 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Edit</button>
                 <a href="admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
+=======
+            <form action="ChangeRole" method="post" class="">
+                <h1 class="h3 mt-4 mb-5 font-weight-normal" style="text-align: center; font-size: 45px">Edit Role</h1>
+                <p class="text-danger">${wrongText}</p>
+                <p class="text-success">${successText}</p>
+                <input type="text" value="${user}" name="user" hidden="">
+                <div class="mb-3">
+                    <label class="ml-3">Student</label><input class="ml-2" name="role" type="radio" value="1" ${role==1?"checked":""}>
+                    <label class="ml-4">Expert</label><input class="ml-2" name="role" type="radio" value="2" ${role==2?"checked":""}>
+                    <label class="ml-4">Market</label><input class="ml-2" name="role" type="radio" value="3" ${role==3?"checked":""}>
+                    <label class="ml-4">Sale</label><input class="ml-2" name="role" type="radio" value="4" ${role==4?"checked":""}>
+                </div>
+
+
+
+                <button class="btn btn-primary btn-block mb-3" type="submit"><i class="fas fa-user-plus"></i> Edit</button>
+                <a href="Admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
+>>>>>>> Stashed changes:QuizSystem/src/main/webapp/views/ChangeRole.jsp
             </form>
             <br>
 
