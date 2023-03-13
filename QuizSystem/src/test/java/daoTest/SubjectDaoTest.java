@@ -177,4 +177,11 @@
 //        boolean actual = s.getNumberSubjectBySearchAndUserName(p) > 0;
 //        assertEquals(expected, actual);
 //    }
+//    
+//    @Test
+//    public void testGetTopThreeWithEixtingValue(){
+//        boolean expected = false;
+//        boolean actual = s.getTopThree().isEmpty();
+//        assertEquals(expected, actual);
+//    }
 //}

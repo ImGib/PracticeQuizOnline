@@ -140,14 +140,4 @@ public class QuestionDao extends AbstractDao<Question> implements IQuestionDao {
                 + "where t1.id = Question.id";
         return query(sql, new QuestionMapper(), idSub);
     }
-
-    @Override
-    public List<Question> getRandomQuestion(int n, int idSub) {
-        String sql = "select TOP ? * from Question\n"
-                + "where\n"
-                + "    question.idSub = ?\n"
-                + "	and question.isPublic = 1\n";
-        return query(sql, new QuestionMapper(), n, idSub);
-    }
-
 }

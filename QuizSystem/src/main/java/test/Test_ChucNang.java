@@ -41,8 +41,6 @@ import utils.UpFileToDriveUtil;
 public class Test_ChucNang {
 
     public static void main(String[] args) throws IOException {
-        String url="‪C:\\Users\\asus\\Downloads\\FlyGbzdaEAINp2L.jpg";
-        String idParent="1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ";
-        String str= UpFileToDriveUtil.MakeLink(, null, null);
+        
     }
 }

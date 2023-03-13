@@ -29,8 +29,8 @@ public class SubjectDetailsController extends HttpServlet{
         List<Category> cateList= CategoryService.getInstance().getCateBySubId(id);
         
         List<Question> queslist = QuestionService.getInstance().getAllQuestionBySubId(id);
+        
         req.setAttribute("questions", queslist);
-//        req.setAttribute("maximum", Gson.parse());
         req.setAttribute("sub", sub);
         req.setAttribute("cateList", cateList);
         req.getRequestDispatcher("views/student/subject-details.jsp").forward(req, resp);

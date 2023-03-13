@@ -26,4 +26,17 @@
 //        assertEquals(expected, actual);
 //    }
 //    
+//    @Test
+//    public void testGetCateBySubIDReturnExistValue(){
+//        boolean expected = false;
+//        boolean actual = c.getCateBySubID(1).isEmpty();
+//        assertEquals(expected, actual);
+//    }
+//    
+//    @Test
+//    public void testGetCateBySubIDReturnNonExistValue(){
+//        boolean expected = true;
+//        boolean actual = c.getCateBySubID(5).isEmpty();
+//        assertEquals(expected, actual);
+//    }
 //}

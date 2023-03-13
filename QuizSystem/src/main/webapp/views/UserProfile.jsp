@@ -372,7 +372,7 @@
                             <div class="card-body text-center">
 
                                 <img class="img-account-profile rounded-circle mb-2"
-                                     src="asset/images/avatar/${sessionScope.account.img}" alt="">
+                                     src="${sessionScope.account.img}" alt="">
 
                                 <!--<div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>-->
                                 <form action="profile" method="post" enctype="multipart/form-data">

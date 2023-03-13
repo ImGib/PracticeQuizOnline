@@ -350,6 +350,9 @@
             <div class="content-body">
                 <div class="container mt-5 mb-3">
                     <div class="row">
+                        <c:if test="${requestScope.subList.size() == 0}">
+                            <<h2>Bạn không đăng ký khóa học nào</h2>
+                        </c:if>
                         <c:forEach var="sub" items="${requestScope.subList}">
                             <c:set var="author" value="${requestScope.accService.getAccountByID(sub.idAuthor)}"/>
                             <div class="col-md-4">
