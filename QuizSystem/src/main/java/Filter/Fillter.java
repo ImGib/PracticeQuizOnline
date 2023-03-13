@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.annotation.WebFilter;
 import model.Account;
+import utils.SessionUtil;
 
 /**
  *
@@ -147,7 +148,17 @@ public class Fillter implements Filter {
                     }
                 }
             }
-        }
+        } 
+        else 
+//            if (SessionUtil.getInstance().getValue(req, "isLogin") == null) {
+            if (account == null) {
+                if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
+                    res.sendRedirect("login");
+                } else {
+                    chain.doFilter(request, response);
+                }
+            }
+//        }
 
         doBeforeProcessing(request, response);
 

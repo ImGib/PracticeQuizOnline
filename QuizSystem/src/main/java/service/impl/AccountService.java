@@ -103,7 +103,7 @@ public class AccountService implements IAccountService {
         Account a;   
         List<Account> ls = accountDao.findAccountByEmail(user.getEmail());
         if (ls.isEmpty()) {
-            a = new Account(u[0], CheckUtil.MD5Encryption("123"), user.getEmail(), 0, true);
+            a = new Account(u[0], CheckUtil.MD5Encryption("123"), user.getEmail(), 1, true);
             accountDao.addAccount(a);
         } else {
             a = ls.get(0);
@@ -250,7 +250,7 @@ public class AccountService implements IAccountService {
 
     @Override
     public void deleteAccountForever(String userName) {
-        accountDao.deleteAccount(userName);
+        accountDao.deleteAccountForever(userName);
     }
 
 }

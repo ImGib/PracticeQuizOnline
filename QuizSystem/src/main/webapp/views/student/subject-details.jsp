@@ -673,7 +673,7 @@
                                                             <h2 class="mt-4 mb-4">Enter number of question (${requestScope.questions.size()}):</h2>
                                                             <form name="popupForm" method="get" action="do-quiz" onsubmit="return validateForm()">
                                                                 <div>
-                                                                    <input type="text" class="form-control" name="number" >                                                                    
+                                                                    <input type="text" class="form-control" name="number" pattern="[0-9]">                                                                    
                                                                     <input type="text" class="form-control" name="idSub" value="${requestScope.sub.id}" hidden="" >
                                                                 </div>
                                                                 <div>
@@ -687,10 +687,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!--                                                    <div style="margin-top: 50px; text-align: center;">
-                                                                                                            <button class="btn submit" href="do-quiz?idSub=${requestScope.sub.id}" style="background-color: #05988a; text-align: center;width: 170px; font-weight: 700; color: white;border-radius: 20px;">
-                                                                                                                Do Quiz</button>
-                                                                                                        </div>-->
+                                                    
                                                     <div class="form-group">
                                                         <div class="col-md-4 pt-1 mt-4" style="font-size: 20px;padding-left: 0px">
                                                             <span>The List Questions: </span>

@@ -32,7 +32,6 @@ public interface IAccountService {
 
     void addAccount(Account a);
 
-    //Vinh-----------------------------------------------------------------------
     List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
 
     void deleteAccount(String user);

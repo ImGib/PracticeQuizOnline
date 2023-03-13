@@ -26,9 +26,8 @@ public class EnrollDao extends AbstractDao<Enroll> implements IEnrollDao {
     }
 
     @Override
-    public void insertEnroll(String string, int i) {
+    public void insertEnroll(String userName, int i) {
         String sql = "insert into Enroll (userName, idSub) values (?, ?)";
-        insert(sql, string, i);
+        insert(sql, userName, i);
     }
-
 }
