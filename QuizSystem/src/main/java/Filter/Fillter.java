@@ -122,49 +122,36 @@ public class Fillter implements Filter {
             if (account == null) {
                 if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
                     res.sendRedirect("login");
-                } else {
-                    chain.doFilter(req, res);
                 }
             } else if (account != null) {
                 if (url.contains("login")) {
                     res.sendRedirect("logout");
                 } else if (role == 0) {
-                    if (url.contains("admin")) {
-                        chain.doFilter(req, res);
-                    } else {
+                    if (!url.contains("admin")) {
                         res.sendRedirect("admin");
-                    }
+                    } 
                 } else if (role == 2) {
-                    if (url.contains("expert")) {
-                        chain.doFilter(req, res);
-                    } else {
+                    if (!url.contains("expert")) {
                         res.sendRedirect("expert-home");
                     }
                 } else if (role == 3) {
-                    if (url.contains("marketing")) {
-                        chain.doFilter(req, res);
-                    } else {
+                    if (!url.contains("marketing")) {
                         res.sendRedirect("marketing-post");
                     }
+                } else if (role == 1) {
+                    if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
+                        res.sendRedirect("home");
+                    } 
                 }
+                //chain.doFilter(req, res);
             }
-        } 
-        else 
-//            if (SessionUtil.getInstance().getValue(req, "isLogin") == null) {
-            if (account == null) {
-                if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
-                    res.sendRedirect("login");
-                } else {
-                    chain.doFilter(request, response);
-                }
-            }
-//        }
+        }
 
         doBeforeProcessing(request, response);
 
         Throwable problem = null;
         try {
-            chain.doFilter((ServletRequest)request, (ServletResponse)response);
+            chain.doFilter((ServletRequest) request, (ServletResponse) response);
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then
