@@ -16,6 +16,10 @@ public class RandomAccountUtil {
     private static Account account= new Account();
     static RandomUtil RandomUtil=new RandomUtil();
     static int NumberOfCharactor=8;
+    private static RandomAccountUtil intance;
+    
+    
+            
     public RandomAccountUtil() {
         
     }

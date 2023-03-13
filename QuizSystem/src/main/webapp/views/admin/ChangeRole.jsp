@@ -18,7 +18,7 @@
     <body>
         <div id="logreg-forms">
 
-            <form action="ChangeRole" method="post" class="">
+            <form action="admin-changerole" method="post" class="">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Edit Role</h1>
                 <p class="text-danger">${wrongText}</p>
                 <p class="text-success">${successText}</p>
@@ -30,7 +30,7 @@
                 
                 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Edit</button>
-                <a href="Admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
+                <a href="admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
             </form>
             <br>
 

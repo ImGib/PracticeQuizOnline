@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Account;
 import service.impl.AccountService;
+import utils.PagginationUtil;
 
 /**
  *
@@ -26,8 +27,9 @@ public class Ajax_Search extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String txt = request.getParameter("txt");
-        List<Account> list = AccountService.getInstance().loadAccount_Pagination(txt, 1, 2);
+        String txt=request.getParameter("txt");
+//        int nrpp=10;
+        List<Account> list= AccountService.getInstance().loadAccount_Pagination(txt, 1, 5);
         for (Account o : list) {
 
             out.print(" <tr>\n"

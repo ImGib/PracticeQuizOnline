@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Blog_Detail_App
-    Created on : Feb 20, 2023, 1:02:04 PM
+    Document   : Marketing-Post-View
+    Created on : Feb 23, 2023, 8:48:43 PM
     Author     : asus
 --%>
 
@@ -18,7 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
     <!-- Pignose Calender -->
     <link href="asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -531,7 +531,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="Home_App.html">
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
@@ -594,12 +594,12 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Blog Detail</li>
                     <li>
-                        <a href="index.html" aria-expanded="false">
+                        <a href="Admin_Dashboard.html" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">User
+                        <a href="Admin_User_Management.html"><i class="icon-user"></i> <span class="nav-text">User
                                 Management</span></a>
                     </li>
 
@@ -613,73 +613,69 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div id="main-content" class="blog-page">
-            <div class="container">
-                <div class="row clearfix">
-                    <div class="col-lg-8 col-md-12 left-box">
-                        <div class="card single_post">
-                            <div class="body">
-                                <div class="img-post">
-                                    <img class="d-block img-fluid"
-                                        src="https://www.bootdey.com/image/800x280/87CEFA/000000" alt="First slide">
-                                </div>
-                                <h3><a href="blog-details.html">All photographs are accurate</a></h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                    with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                    Ipsum.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 right-box">
-                        <div class="card">
-                            <div class="body search">
-                                <div class="input-group m-b-0">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+        <div class="content-body">
+            <div id="main-content" class="blog-page">
+                <div class="container">
+                    <div class="row clearfix">
+                        <div class="col-lg-8 col-md-12 left-box">
+                            <div class="card single_post">
+                                <div class="body">
+                                    <div class="img-post">
+                                        <img class="d-block img-fluid"
+                                            src="${p.getImg()}" alt="Image">
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <h3>${p.getTittle()}</h3>
+                                    <p>${p.getDetails()}</p>
                                 </div>
                             </div>
                         </div>
-                       
-                        <div class="card">
-                            <div class="blog-detail-header">
-                                <h2>Popular Posts</h2>
-                            </div>
-                            <div class="body widget popular-post">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="single_post">
-                                            <p class="m-b-0">Apple Introduces Search Ads Basic</p>
-                                            <span>jun 22, 2018</span>
-                                            <div class="img-post">
-                                                <img src="https://www.bootdey.com/image/280x280/87CEFA/000000"
-                                                    alt="Awesome Image">
-                                            </div>
+                        <div class="col-lg-4 col-md-12 right-box">
+                            <div class="card">
+                                <div class="body search">
+                                    <div class="input-group m-b-0">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-search"></i></span>
                                         </div>
-                                        <div class="single_post">
-                                            <p class="m-b-0">new rules, more cars, more races</p>
-                                            <span>jun 8, 2018</span>
-                                            <div class="img-post">
-                                                <img src="https://www.bootdey.com/image/280x280/87CEFA/000000"
-                                                    alt="Awesome Image">
+                                        <input type="text" class="form-control" placeholder="Search...">
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="card">
+                                <div class="blog-detail-header">
+                                    <h2>Popular Posts</h2>
+                                </div>
+                                <div class="body widget popular-post">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="single_post">
+                                                <p class="m-b-0">${p2.getTittle()}</p>
+                                                <span>${p2.getPublicDate()}</span>
+                                                <div class="img-post">
+                                                    <a href="marketing-viewpost?id=${p2.getId()}"><img src="${p2.getImg()}"
+                                                                    alt="Awesome Image"></a>
+                                                </div>
+                                            </div>
+                                            <div class="single_post">
+                                                <p class="m-b-0">${p3.getTittle()}</p>
+                                                <span>${p3.getPublicDate()}</span>
+                                                <div class="img-post">
+                                                   <a href="marketing-viewpost?id=${p3.getId()}"><img src="${p3.getImg()}"
+                                                                    alt="Awesome Image"></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+    
+    
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
+        
         <!--**********************************
             Content body end
         ***********************************-->
@@ -722,6 +718,9 @@
     <!-- ChartistJS -->
     <script src="asset/plugins/chartist/js/chartist.min.js"></script>
     <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+
+
     <script src="asset/js/dashboard/dashboard-1.js"></script>
 
 </body>

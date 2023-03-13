@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Controller.Admin_User_Manegement;
 
-import dao.impl.AccountDao;
+package Controller.Marketing;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,50 +13,58 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.Account;
+import model.Post;
 import service.impl.AccountService;
+import service.impl.PostService;
 import utils.PagginationUtil;
 
 /**
  *
  * @author asus
  */
-@WebServlet(name = "Admin", urlPatterns = {"/admin"})
-public class Admin extends HttpServlet {
-
+@WebServlet(name="Maketing", urlPatterns={"/marketing-post"})
+public class Post_Manage extends HttpServlet {
    
-    
+   
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
+    } 
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-            
+    throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String txt = "";
         txt=request.getParameter("txt");
         if(txt==null)txt="";
-        List<Account> ListAccount = AccountService.getInstance().searchAccountByUserName_Name_Gmail_Phone(txt);
- //------------------------Phan Trang----------------------------------------------
-        int size = ListAccount.size(); 
+        List<Post> listP= PostService.getInstance().findPostByTitleAndAuthor(txt);
+        
+        //------------------------Phan Trang----------------------------------------------
+        int size = listP.size(); 
         int pageIndex=1;
         try {
             pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
         } catch (NumberFormatException e) {
         }
         pageIndex= PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        ListAccount=AccountService.getInstance().loadAccount_Pagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp());
+        listP=PostService.getInstance().findPostByTextAndPagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp());
+        int totalPage = PagginationUtil.getInstance().getTotalPage();
  //-----------------------------------------------------------------------------------       
-        request.setAttribute("totalPage", PagginationUtil.getInstance().getTotalPage());
+        request.setAttribute("totalPage",totalPage );
         request.setAttribute("size", size);
         request.setAttribute("txt",txt );
         request.setAttribute("pageIndex",pageIndex);
-        request.setAttribute("ListAccount", ListAccount);
-        request.getRequestDispatcher("views/admin/admin_user_management.jsp").forward(request, response);
-    }
+        request.setAttribute("listP", listP);
+        request.getRequestDispatcher("views/marketing/Marketing-Post-Management.jsp").forward(request, response);
+    } 
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    throws ServletException, IOException {
     }
 
-   
+    
 }

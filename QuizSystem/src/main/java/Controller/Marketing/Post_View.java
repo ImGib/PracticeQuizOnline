@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package Controller.Admin_User_Manegement;
+package Controller.Marketing;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,49 +13,44 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.Account;
-import service.impl.AccountService;
-import utils.PagginationUtil;
+import model.Post;
+import service.impl.PostService;
 
 /**
  *
  * @author asus
  */
-@WebServlet(name="Ajax_Paggination_Role", urlPatterns={"/Ajax_Paggination_Role"})
-public class Ajax_Paggination_Role extends HttpServlet {
-   
+@WebServlet(name="ViewPost", urlPatterns={"/marketing-viewpost"})
+public class Post_View extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String txt=request.getParameter("txt");
-        int role=Integer.parseInt(txt);
-        List<Account> list= AccountService.getInstance().findAccountByRole(role);
-//        int nrpp=PagginationUtil.getInstance().getNrpp();
-        int totalPage=(list.size()+5-1)/5;
-        
-        out.print("<li class=\"page-item disabled\"><a href=\"Admin?txt=Search_Role_"+txt+"&pageIndex=0\">Previous</a></li>");
-        for(int i=0;i<totalPage;i++){
-            out.print("<li class=\"page-item");
-            if(i==0)out.print("active");
-            out.print("\"><a href=\"Admin?txt=Search_Role_"+txt+"&pageIndex="+(i+1)+"\" class=\"page-link\">"+(i+1)+"</a></li>");
-        }
-        out.print("<li class=\"page-item\"><a href=\"Admin?txt=Search_Role_"+txt+"&pageIndex=2\" class=\"page-link\">Next</a></li>");
     } 
 
-   
+   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        int id=Integer.parseInt(request.getParameter("id"));
+        PostService.getInstance().upNumberAccess(id);
+        Post p=PostService.getInstance().findPostById(id).get(0);
+        List<Post> list=PostService.getInstance().getTopTwo();
+        
+        request.setAttribute("p", p);
+        request.setAttribute("p2", list.get(0));
+        request.setAttribute("p3", list.get(1));
+        request.getRequestDispatcher("views/marketing/Marketing-Post-View.jsp").forward(request, response);
     } 
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    
     @Override
     public String getServletInfo() {
         return "Short description";

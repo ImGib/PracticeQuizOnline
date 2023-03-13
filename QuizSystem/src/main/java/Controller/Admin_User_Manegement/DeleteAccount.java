@@ -18,7 +18,7 @@ import service.impl.AccountService;
  *
  * @author asus
  */
-@WebServlet(name="Delete_Account", urlPatterns={"/DeleteAccount"})
+@WebServlet(name="Delete_Account", urlPatterns={"/admin-deleteaccount"})
 public class DeleteAccount extends HttpServlet {
    
     @Override
@@ -36,7 +36,8 @@ public class DeleteAccount extends HttpServlet {
         String user="";
         user=request.getParameter("user");
         AccountService.getInstance().deleteAccount(user);
-        response.sendRedirect("/QuizSystem/Admin?txt=");
+        response.sendRedirect("/QuizSystem/admin");
+        
     }
 
     @Override

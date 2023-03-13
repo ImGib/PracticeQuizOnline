@@ -62,4 +62,6 @@ public interface IAccountService {
     String userChangePassword(Account acc, String currentPassword, String newPassword, String confirmPassword);
     
     String removeAccount(Account acc, String gmail, String password); 
+    
+    void deleteAccountForever(String userName);
 }
