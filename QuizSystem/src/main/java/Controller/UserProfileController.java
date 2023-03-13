@@ -11,14 +11,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import model.Account;
 import service.impl.AccountService;
+import sun.awt.KeyboardFocusManagerPeerImpl;
 import utils.SessionUtil;
 import utils.UploadPathUtitl;
 
-@MultipartConfig
+@MultipartConfig()
 @WebServlet(urlPatterns = {"/profile"})
 public class UserProfileController extends HttpServlet {
 
@@ -50,10 +51,12 @@ public class UserProfileController extends HttpServlet {
 
         if (req.getPart("inputImg") != null) {
             Part file = req.getPart("inputImg");
+            String filename = file.getSubmittedFileName();
             String uploadPath = getServletContext().getRealPath("/asset/images/avatar/") + file.getSubmittedFileName();
             UploadPathUtitl.getInstance().uploadPath(file, uploadPath);
             System.out.println(uploadPath);
-            acc.setImg(file.getSubmittedFileName());
+            file.write(getServletContext().getRealPath("/asset/images/avatar") + "/" + filename);
+            acc.setImg(filename);
         }
 
         AccountService.getInstance().updateProfile(acc);

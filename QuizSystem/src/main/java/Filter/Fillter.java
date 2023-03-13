@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.annotation.WebFilter;
 import model.Account;
+import utils.SessionUtil;
 
 /**
  *
@@ -116,36 +117,44 @@ public class Fillter implements Filter {
         if (url.contains(".jsp")) {
             res.sendRedirect("home");
         }
-        if (account == null) {
-            if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
-                res.sendRedirect("login");
-            } else {
-                chain.doFilter(req, res);
-            }
+        if (url.contains("login-google?code=")) {
+            chain.doFilter(request, response);
         } else if (account != null) {
             if (url.contains("login")) {
-                res.sendRedirect("logout");
-            } else if (role == 0) {
+                res.sendRedirect("home");
+            }
+            if (role == 0) {
                 if (url.contains("admin")) {
-                    chain.doFilter(req, res);
+                    chain.doFilter(request, response);
                 } else {
                     res.sendRedirect("admin");
                 }
             } else if (role == 2) {
                 if (url.contains("expert")) {
-                    chain.doFilter(req, res);
+                    chain.doFilter(request, response);
+
                 } else {
                     res.sendRedirect("expert-home");
                 }
             } else if (role == 3) {
                 if (url.contains("marketing")) {
-                    chain.doFilter(req, res);
-                }
-                else {
+                    chain.doFilter(request, response);
+
+                } else {
                     res.sendRedirect("marketing-post");
                 }
             }
-        }
+        } 
+        else 
+//            if (SessionUtil.getInstance().getValue(req, "isLogin") == null) {
+            if (account == null) {
+                if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
+                    res.sendRedirect("login");
+                } else {
+                    chain.doFilter(request, response);
+                }
+            }
+//        }
 
         doBeforeProcessing(request, response);
 

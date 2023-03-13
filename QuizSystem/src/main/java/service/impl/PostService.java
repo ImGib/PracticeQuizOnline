@@ -30,12 +30,7 @@ public class PostService implements IPostService {
 
     @Override
     public List<Post> getTopTwo() {
-        List<Post> list = postDao.getTopTwo();
-        if (list == null || list.isEmpty()) {
-            return null;
-        } else {
-            return list;
-        }
+        return postDao.getTopTwo();
     }
 
     @Override
