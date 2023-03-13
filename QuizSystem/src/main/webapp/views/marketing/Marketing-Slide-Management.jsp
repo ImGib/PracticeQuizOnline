@@ -268,6 +268,17 @@
         <!--**********************************
             Nav header start
         ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="marketing-post">
+                    <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
+                    <span class="brand-title">
+                        <img src="asset/images/logo-text.png" alt="">
+                    </span>
+                </a>
+            </div>
+        </div>
         <%@include file="MarketingSideBar.jsp" %>
         <!--**********************************
             Nav header end
@@ -303,7 +314,7 @@
 
                                         <hr class="my-2">
 
-                                        <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                        <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
                                         </li>
                                     </ul>
                                 </div>

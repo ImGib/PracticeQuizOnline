@@ -572,7 +572,7 @@
 
                                         <hr class="my-2">
 
-                                        <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                        <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
                                         </li>
                                     </ul>
                                 </div>
