@@ -138,11 +138,7 @@ public class Fillter implements Filter {
                     if (!url.contains("marketing")) {
                         res.sendRedirect("marketing-post");
                     }
-                } else if (role == 1) {
-                    if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
-                        res.sendRedirect("home");
-                    } 
-                }
+                } 
                 //chain.doFilter(req, res);
             }
         }
@@ -151,7 +147,7 @@ public class Fillter implements Filter {
 
         Throwable problem = null;
         try {
-            chain.doFilter((ServletRequest) request, (ServletResponse) response);
+            chain.doFilter(request, response);
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then
