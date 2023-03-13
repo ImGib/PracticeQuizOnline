@@ -61,4 +61,9 @@ public class CategoryService implements ICategoryService{
     public void updateCate(String id, String name){
         categoryDao.updateCate(id, name);
     }
+    
+    @Override
+    public List<Category> getCateByCateName(String name){
+        return categoryDao.getCateByCateName(name);
+    }
 }

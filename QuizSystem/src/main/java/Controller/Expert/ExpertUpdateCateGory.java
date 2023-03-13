@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+import model.Category;
 import service.impl.CategoryService;
 
 /**
@@ -23,8 +25,14 @@ public class ExpertUpdateCateGory extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String id = req.getParameter("id");
-        CategoryService.getInstance().updateCate(id, name);
-        resp.sendRedirect("expert-category-management?index=1&&search=");
+        List<Category> list = CategoryService.getInstance().getCateByCateName(name);
+        if (list.isEmpty()) {
+            CategoryService.getInstance().updateCate(id, name);
+            resp.sendRedirect("expert-category-management?index=1&&search=");
+        }
+        else{
+            resp.sendRedirect("expert-category-management?index=1&&search=&&nameClass=alert alert-warning&&mess=Category is already exist!!!");
+        }
     }
     
 }

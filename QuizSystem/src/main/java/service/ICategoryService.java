@@ -16,4 +16,5 @@ public interface ICategoryService {
     public void addNewCate(String name);
     public void delete(String id);
     public void updateCate(String id, String name);
+    public List<Category> getCateByCateName(String name);
 }

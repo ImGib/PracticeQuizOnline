@@ -17,4 +17,6 @@ public interface ICategoryDao extends GenericDao<Category>{
     void delete(String id);
     
     void updateCate(String id, String name);
+    
+    List<Category> getCateByCateName(String name);
 }

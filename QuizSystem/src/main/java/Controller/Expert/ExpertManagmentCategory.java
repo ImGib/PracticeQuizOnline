@@ -29,6 +29,8 @@ public class ExpertManagmentCategory extends HttpServlet{
         req.setCharacterEncoding("UTF-8");
         String search = req.getParameter("search");
         String indexS = req.getParameter("index");
+        String nameClass = req.getParameter("nameClass");
+        String mess = req.getParameter("mess");
         int index;
         try {
             index = Integer.parseInt(indexS);
@@ -46,6 +48,8 @@ public class ExpertManagmentCategory extends HttpServlet{
         req.setAttribute("searchName", search);
         req.setAttribute("listC", listC);
         req.setAttribute("isManageCategory", true);
+        req.setAttribute("nameClass", nameClass);
+        req.setAttribute("mess", mess);
         req.getRequestDispatcher("views/expert/Expert-Category-Management.jsp").forward(req, resp);
     }
     

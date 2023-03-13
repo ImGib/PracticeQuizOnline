@@ -292,32 +292,35 @@
                     Content body start
                 ***********************************-->
                 <div class="content-body">
+                    <div class="${requestScope.nameClass}" role="alert">
+                    ${requestScope.mess}
+                </div>
+                <div class="container-xl">
+                    <div class="table-responsive">
 
-                    <div class="container-xl">
-                        <div class="table-responsive">
-                            <div class="table-wrapper">
-                                <div class="table-title">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <h2>Categories <b>Management</b></h2>
-                                        </div>
-                                        <div class="col-sm-7">
+                        <div class="table-wrapper">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h2>Categories <b>Management</b></h2>
+                                    </div>
+                                    <div class="col-sm-7">
 
-                                            <div class="btn btn-secondary" onclick="addCate()"><i class="material-icons">&#xE147;</i>
-                                                <span>Add New Category</span></div>
-                                        </div>
+                                        <div class="btn btn-secondary" onclick="addCate()"><i class="material-icons">&#xE147;</i>
+                                            <span>Add New Category</span></div>
                                     </div>
                                 </div>
                             </div>
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Category's name</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        </div>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Category's name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <c:set var="stt" value="0"></c:set>
                                 <c:forEach items="${requestScope.listC}" var="c">
                                     <tr>
@@ -402,23 +405,23 @@
     <script src="asset/js/dashboard/dashboard-1.js"></script>
 
     <script>
-                                            function searchBySub() {
-                                                document.getElementById("subForm").submit();
-                                            }
-                                            
-                                            function addCate(){
-                                                let cate = prompt("Please enter new Category's name");
-                                                if(cate != "" && cate != null){
-                                                    window.location="expert-add-category?name=" + cate;
+                                                function searchBySub() {
+                                                    document.getElementById("subForm").submit();
                                                 }
-                                            }
-                                            
-                                            function updateCate(id){
-                                                let cate = prompt("Please enter new Category's name you want to update");
-                                                if(cate != "" && cate != null){
-                                                    window.location="expert-update-cate?id=" + id+"&&name=" + cate;
+
+                                                function addCate() {
+                                                    let cate = prompt("Please enter new Category's name");
+                                                    if (cate != "" && cate != null) {
+                                                        window.location = "expert-add-category?name=" + cate;
+                                                    }
                                                 }
-                                            }
+
+                                                function updateCate(id) {
+                                                    let cate = prompt("Please enter new Category's name you want to update");
+                                                    if (cate != "" && cate != null) {
+                                                        window.location = "expert-update-cate?id=" + id + "&&name=" + cate;
+                                                    }
+                                                }
     </script>
 
 </body>

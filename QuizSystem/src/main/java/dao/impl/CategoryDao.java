@@ -72,4 +72,10 @@ public class CategoryDao extends AbstractDao<Category> implements ICategoryDao {
         String sql = "update Category set name = ? where id = ?";
         update(sql, name, id);
     }
+    
+    @Override
+    public List<Category> getCateByCateName(String name){
+        String sql = "Select * from Category where name = ?";
+        return query(sql, new CategoryMapper(), name);
+    }
 }
