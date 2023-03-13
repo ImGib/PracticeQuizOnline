@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+        <title>DashBoard</title>
         <!-- Favicon icon -->
         <link rel="icon" type="admin/image/png" sizes="16x16" href="asset/images/favicon.png">
         <!-- Pignose Calender -->
@@ -54,11 +54,11 @@
             ***********************************-->
             <div class="nav-header">
                 <div class="brand-logo">
-                    <a href="index.html">
-                        <b class="logo-abbr"><img src="../asset/images/logo.png" alt=""> </b>
-                        <span class="logo-compact"><img src="../asset/images/logo-compact.png" alt=""></span>
+                    <a href="home">
+                        <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
+                        <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                         <span class="brand-title">
-                            <img src="images/logo-text.png" alt="">
+                            <img src="asset/images/logo-text.png" alt="">
                         </span>
                     </a>
                 </div>
@@ -70,56 +70,59 @@
             <!--**********************************
                 Header start
             ***********************************-->
-            <div class="header">    
-                <div class="header-content clearfix">
+            <div class="header mb-3">
+            <div class="header-content clearfix">
 
-                    <div class="nav-control">
-                        <div class="hamburger">
-                            <span class="toggle-icon"><i class="icon-menu"></i></span>
-                        </div>
-                    </div>
-                    <div class="header-left">
-                        <div class="input-group icons">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                            </div>
-                            <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                            <div class="drop-down animated flipInX d-md-none">
-                                <form action="#">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header-right">
-                        <ul class="clearfix">
-                            <li class="icons dropdown"><a href="https://www.facebook.com/">
-                                    <i class="mdi mdi-email-outline"></i>
-                                    <span class="badge badge-pill gradient-1">3</span>
-                                </a>
-                            </li>
-                            <li class="icons dropdown">
-                                <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
-                                    <span class="activity active"></span>
-                                    <img src="images/user/1.png" height="40" width="40" alt="">
-                                </div>
-                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                    <div class="dropdown-content-body">
-                                        <ul>
-                                            <li>
-                                                <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                            </li>
-
-
-                                            <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
                     </div>
                 </div>
+                <div class="header-left">
+                    <div class="input-group icons">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
+                                    class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <form action="subject-list" method="get">
+                            <input type="text" name="search" class="form-control" placeholder="Search Subject"
+                                   aria-label="Search Dashboard">
+                        </form>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="asset/images/avatar/${sessionScope.account.img == null ? "default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <c:if test="${sessionScope.account != null}">
+                                            <li>
+                                                <a href="profile"><i class="icon-user"></i>
+                                                    <span>Profile</span></a>
+                                            </li>
+
+                                            <hr class="my-2">
+
+                                            <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${sessionScope.account == null}">
+                                            <li><a href="login"><i class="icon-key"></i> <span>Login</span></a>
+                                            </li>
+                                        </c:if>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </div>
             <!--**********************************
                 Header end ti-comment-alt
             ***********************************-->
@@ -137,7 +140,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="admin_user_management.html">
+                            <a href="admin">
                                 <i class="icon-user"></i> <span class="nav-text">User Management</span>
                             </a>
                         </li>

@@ -250,7 +250,7 @@ public class AccountService implements IAccountService {
 
     @Override
     public void deleteAccountForever(String userName) {
-        accountDao.deleteAccount(userName);
+        accountDao.deleteAccountForever(userName);
     }
 
 }
