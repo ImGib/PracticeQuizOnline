@@ -7,6 +7,7 @@ package test;
 import dao.impl.AbstractDao;
 import dao.impl.AccountDao;
 import dao.impl.SliderDao;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -31,6 +32,7 @@ import utils.PagginationUtil;
 import utils.RandomAccountUtil;
 import utils.RandomUtil;
 import utils.SessionUtil;
+import utils.UpFileToDriveUtil;
 
 /**
  *
@@ -38,8 +40,9 @@ import utils.SessionUtil;
  */
 public class Test_ChucNang {
 
-    public static void main(String[] args) {
-        
-        System.out.println(SubjectService.getInstance().countEnrollByUsername("trangiabao5102@gmail.com"));
+    public static void main(String[] args) throws IOException {
+        String url="‪C:\\Users\\asus\\Downloads\\FlyGbzdaEAINp2L.jpg";
+        String idParent="1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ";
+        String str= UpFileToDriveUtil.MakeLink(, null, null);
     }
 }
