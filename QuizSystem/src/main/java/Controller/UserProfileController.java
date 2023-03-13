@@ -22,7 +22,7 @@ import utils.UpFileToDriveUtil;
 import utils.UploadPathUtitl;
 
 @MultipartConfig()
-@WebServlet(urlPatterns = {"/profile"})
+@WebServlet(urlPatterns = {"/profile", "/admin-profile", "/expert-profile", "/marketing-profile"})
 public class UserProfileController extends HttpServlet {
 
     @Override
@@ -41,20 +41,14 @@ public class UserProfileController extends HttpServlet {
         System.out.println(req.getParameter("inputPhone"));
         if (req.getParameter("inputFirstName") != null) {
             acc.setFirstName(req.getParameter("inputFirstName"));
-            System.out.println(req.getParameter("inputFirstName"));
-
         }
 
         if (req.getParameter("inputLastName") != null) {
             acc.setLastName(req.getParameter("inputLastName"));
-            System.out.println(req.getParameter("inputLastName"));
-
         }
 
         if (req.getParameter("inputLocation") != null) {
             acc.setAddress(req.getParameter("inputLocation"));
-            System.out.println(req.getParameter("inputLocation"));
-
         }
 
         if (req.getParameter("inputEmailAddress") != null) {
@@ -62,7 +56,7 @@ public class UserProfileController extends HttpServlet {
         }
 
         if (req.getPart("inputImg") != null) {
-//            FileItem 
+
             Part file = req.getPart("inputImg");
 
             String filename = file.getSubmittedFileName();
@@ -70,7 +64,7 @@ public class UserProfileController extends HttpServlet {
             String uploadPath = req.getServletContext().getRealPath("/asset/images/avatar");
             System.out.println("file part: " + uploadPath);
             file.write(uploadPath + "/" + filename);
-            acc.setImg(UpFileToDriveUtil.MakeLink(uploadPath + "/" + filename, "1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ", null));
+            acc.setImg("http://drive.google.com/uc?export=view&id=" + UpFileToDriveUtil.MakeLink(uploadPath + "/" + filename, "1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ", null));
         }
         System.out.println(acc.getUserName());
         AccountService.getInstance().updateProfile(acc);

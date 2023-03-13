@@ -20,10 +20,10 @@ public class UpFileToDriveUtil {
         CreateGoogleFile gg=new CreateGoogleFile();
         java.io.File uploadFile = new java.io.File(url);
         File googleFile = gg.createGoogleFile(idParentFile, null, name, uploadFile);
-        return googleFile.getWebViewLink();
+        return googleFile.getId();
     }
     public static void main(String[] args) throws IOException {
-        String url="C:\\Users\\asus\\Downloads\\63811085430514.png";
+        String url="C:\\Users\\Gib\\OneDrive\\Pictures\\313198147_1519400735188075_8799590576274760576_n.jpg";
         String idParent="1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ";
         String str= UpFileToDriveUtil.MakeLink(url,idParent,"test");
         System.out.println(str);
