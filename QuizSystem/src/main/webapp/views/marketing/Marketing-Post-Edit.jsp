@@ -1,10 +1,9 @@
 <%-- 
-    Document   : do-quiz
-    Created on : Mar 7, 2023, 8:27:57 PM
-    Author     : Gib
+    Document   : Marketing-Post-AddNew
+    Created on : Feb 22, 2023, 11:37:59 PM
+    Author     : asus
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +11,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Do Quiz</title>
+        <title>Blog Detail App - Bootdey.com</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -531,11 +530,11 @@
             ***********************************-->
             <div class="nav-header">
                 <div class="brand-logo">
-                    <a href="home">
-                        <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
+                    <a href="/QuizSystem">
+                        <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
                         <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                         <span class="brand-title">
-                            <img src="asset/images/logo-text.png" alt="">
+                            <img src="images/logo-text.png" alt="">
                         </span>
                     </a>
                 </div>
@@ -547,7 +546,41 @@
             <!--**********************************
                 Header start
             ***********************************-->
-            <%@include file="header-user.jsp" %>
+            <div class="header" style="margin-bottom: 10px;">
+                <div class="header-content clearfix">
+
+                    <div class="nav-control">
+                        <div class="hamburger">
+                            <span class="toggle-icon"><i class="icon-menu"></i></span>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <ul class="clearfix">
+                            <li class="icons dropdown">
+                                <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                    <span class="activity active"></span>
+                                    <img src="images/user/1.png" height="40" width="40" alt="">
+                                </div>
+                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                                    <span>Profile</span></a>
+                                            </li>
+
+                                            <hr class="my-2">
+
+                                            <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <!--**********************************
                 Header end ti-comment-alt
             ***********************************-->
@@ -555,7 +588,7 @@
             <!--**********************************
                 Sidebar start
             ***********************************-->
-            <%@include file="user-sidebar.jsp" %>
+            <%@include file="MarketingSideBar.jsp" %>
             <!--**********************************
                 Sidebar end
             ***********************************-->
@@ -571,43 +604,64 @@
                                 <div class="form-input-content">
                                     <div class="card login-form mb-0">
                                         <div class="card-body pt-5">
-                                            <span class="text-center" href="">
-                                                <h1>Test</h1>
-                                            </span>
-
-                                            <!-- form -->
-
-                                            <form class="mt-5 mb-5"  action="do-quiz" method="post">
-                                                <div class=" row form-group " style="display: flex;">
-                                                    <c:forEach var="ques" items="${requestScope.list}">
-                                                        <div class="form-group">
-                                                            <div class="row gx-2 mb-3" style="justify-content: center;">
-                                                                <!-- Form Group (first name)-->
-                                                                <div class="col-md-9 test" 
-                                                                     style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
-                                                                    <div class="mx-3 my-3">
-                                                                        ${ques.question}
-                                                                    </div>
-                                                                    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-                                                                        <c:forEach var="ans" items="${ques.allAnswer()}">
-                                                                            
-                                                                            <div class="col-md-5 mx-2 my-1" id="a${ques.id}b${ans.idAns}" onclick="chose(${idAns})"
-                                                                                 style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
-                                                                                <div class="mx-3 my-3">
-                                                                                    ${ans.answer}
-                                                                                    <input type="radio" name="answ${ques.id}" value="${ans.idAns}" id="${idAns}">
-                                                                                </div>
-                                                                            </div>
-                                                                        </c:forEach>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Form Group (last name)-->
-                                                            </div>
+                                            <h2 class="text-danger">${wrongText}</h2>
+                                                <h2 class="text-success">${successText}</h2>
+                                            <a class="text-center" >
+                                                <h1>Edit Post</h1>
+                                            </a>
+                                            
+                                            <form class="mt-5 mb-5 login-input" action="marketing-editpost" method="post">
+                                               <input type="text" value="${id}" name="id" hidden="">
+                                                <div class="form-group">
+                                                    <div class="row gx-3 mb-3">
+                                                        <!-- Form Group (first name)-->
+                                                        <div class="col-md-3 pt-1"
+                                                             style="text-align: center;font-size: 20px;">
+                                                            <span>Image : </span>
                                                         </div>
-                                                    </c:forEach>
-                                                    
-                                                    <input class="btn" type="submit"style="border: #242424 solid 1px; background-color: #ffc107; width: 300px;" value="Finish HIM">
+                                                        <div class="col-md-6">
+                                                            <input name="img" class="form-control" id="inputImageURL" 
+                                                                   type="text" placeholder="Image URL" value="${img}">
+                                                        </div>
+                                                        <!-- Form Group (last name)-->
+                                                    </div>
                                                 </div>
+
+
+                                                <div class="form-group">
+                                                    <div class="row gx-3 mb-3">
+                                                        <!-- Form Group (first name)-->
+                                                        <div class="col-md-3 pt-1"
+                                                             style="text-align: center;font-size: 20px;">
+                                                            <span>Title: </span>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <input name="title" class="form-control" id="inputExpertName" required="" 
+                                                                   type="text" placeholder="Expert Title" value="${title}">
+                                                        </div>
+                                                        <!-- Form Group (last name)-->
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <div class="row gx-3 mb-3">
+                                                        <!-- Form Group (first name)-->
+                                                        <div class="col-md-3 pt-1"
+                                                             style="text-align: center;font-size: 20px;">
+                                                            <span>Detail: </span>
+                                                        </div>
+                                                        <div class="col-md-8" style="border: #999898 solid 1px; padding: 0 0;">
+                                                            <textarea name="detail" class="form-control" style="height: 350px;" value="">${detail}</textarea>
+<!--                                                           
+                                                            
+                                                        </div>
+                                                        <!-- Form Group (last name)-->
+                                                    </div>
+                                                
+                                                </div>
+
+                                                <button class="btn submit w-100 "
+                                                        style="border: #242424 solid 1px; background-color: #3a7893; width: 00px;">Edit Post</button>
                                             </form>
                                         </div>
                                     </div>
@@ -618,9 +672,25 @@
                 </div>
             </div>
 
-         
+            <!--**********************************
+                Content body end
+            ***********************************-->
+
+
+            <!--**********************************
+                Footer start
+            ***********************************-->
+            <!--**********************************
+                Footer end
+            ***********************************-->
         </div>
-     
+        <!--**********************************
+            Main wrapper end
+        ***********************************-->
+
+        <!--**********************************
+            Scripts
+        ***********************************-->
         <script src="asset/plugins/common/common.min.js"></script>
         <script src="asset/js/custom.min.js"></script>
         <script src="asset/js/settings.js"></script>
@@ -648,11 +718,7 @@
 
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
-        <script>
-            function chose(var input){
-                
-            }
-        </script>
+
     </body>
 
 </html>

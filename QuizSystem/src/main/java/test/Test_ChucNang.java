@@ -4,6 +4,7 @@
  */
 package test;
 
+import dao.impl.AbstractDao;
 import dao.impl.AccountDao;
 import dao.impl.SliderDao;
 import java.util.Arrays;
@@ -29,6 +30,7 @@ import sun.security.provider.CtrDrbg;
 import utils.PagginationUtil;
 import utils.RandomAccountUtil;
 import utils.RandomUtil;
+import utils.SessionUtil;
 
 /**
  *
@@ -37,9 +39,7 @@ import utils.RandomUtil;
 public class Test_ChucNang {
 
     public static void main(String[] args) {
-        for (Question q : QuestionService.getInstance().getAllQuestionBySubId(1)){
-            System.out.println(q.getQuestion());
-            System.out.println(q.allAnswer());  
-        }
+        
+        System.out.println(SubjectService.getInstance().countEnrollByUsername("trangiabao5102@gmail.com"));
     }
 }

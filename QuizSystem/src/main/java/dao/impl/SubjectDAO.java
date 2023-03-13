@@ -175,6 +175,7 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
                 + "	where Enroll.userName = ? ) as t1\n"
                 + "on Subject.id = t1.idSub\n"
                 + "	and Subject.isPublic = 1";
+//        username = "%" + username + "%";
         return count(sql, username);
     }
 

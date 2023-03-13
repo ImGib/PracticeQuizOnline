@@ -142,8 +142,10 @@ public class AccountService implements IAccountService {
 
     @Override
     public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp) {
+        if(txt.isEmpty()) return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
         if (txt.contains("Search_Role_")) {
             txt = txt.replace("Search_Role_", "");
+            
             return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp);
         }
         return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
@@ -244,6 +246,11 @@ public class AccountService implements IAccountService {
             return null;
         }
         return "wrong";
+    }
+
+    @Override
+    public void deleteAccountForever(String userName) {
+        accountDao.deleteAccount(userName);
     }
 
 }

@@ -1,10 +1,9 @@
 <%-- 
-    Document   : Marketing-Post-Management
-    Created on : Feb 20, 2023, 12:46:30 PM
-    Author     : Gib
+    Document   : Admin_DeleteAccount_App
+    Created on : Feb 20, 2023, 12:58:56 PM
+    Author     : asus
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Manage Post</title>
+    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
     <!-- Pignose Calender -->
@@ -22,7 +21,7 @@
     <link rel="stylesheet" href="asset/plugins/chartist/css/chartist.min.css">
     <link rel="stylesheet" href="asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
-    <link href="asset/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -228,6 +227,75 @@
             margin-top: 10px;
             font-size: 13px;
         }
+        .img-account-profile {
+            height: 10rem;
+        }
+
+        .rounded-circle {
+            border-radius: 50% !important;
+        }
+
+        .card {
+            box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+        }
+
+        .card .card-header {
+            font-weight: 500;
+        }
+
+        .card-header:first-child {
+            border-radius: 0.35rem 0.35rem 0 0;
+        }
+
+        .card-header {
+            padding: 1rem 1.35rem;
+            margin-bottom: 0;
+            background-color: rgba(33, 40, 50, 0.03);
+            border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+        }
+
+        .form-control,
+        .dataTable-input {
+            display: block;
+            width: 100%;
+            padding: 0.875rem 1.125rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1;
+            color: #69707a;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #c5ccd6;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0.35rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .nav-borders .nav-link.active {
+            color: #0061f2;
+            border-bottom-color: #0061f2;
+        }
+
+        .nav-borders .nav-link {
+            color: #69707a;
+            border-bottom-width: 0.125rem;
+            border-bottom-style: solid;
+            border-bottom-color: transparent;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .btn-danger-soft {
+            color: #000;
+            background-color: #f1e0e3;
+            border-color: #f1e0e3;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -257,22 +325,12 @@
     <!--**********************************
         Main wrapper start
     ***********************************-->
-    <div id="main-wrapper">
+    
 
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
-            <div class="brand-logo">
-                <a href="index.html">
-                    <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="asset/images/logo-text.png" alt="">
-                    </span>
-                </a>
-            </div>
-        </div>
+       
         <!--**********************************
             Nav header end
         ***********************************-->
@@ -280,59 +338,7 @@
         <!--**********************************
             Header start
         ***********************************-->
-        <div class="header">
-            <div class="header-content clearfix">
-
-                <div class="nav-control">
-                    <div class="hamburger">
-                        <span class="toggle-icon"><i class="icon-menu"></i></span>
-                    </div>
-                </div>
-                <div class="header-left">
-                    <div class="input-group icons">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
-                                    class="mdi mdi-magnify"></i></span>
-                        </div>
-                        <form action="marketing-post" method="get">
-                                <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt}">
-                                <!--                            <button>submit</button>-->
-                            </form>
-
-                            <div class="drop-down animated flipInX d-md-none">
-                                <form action="#">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </form>
-                            </div>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <ul class="clearfix">
-                        <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                <span class="activity active"></span>
-                                <img src="asset/images/user/1.png" height="40" width="40" alt="">
-                            </div>
-                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="Profile_Update_App.html"><i class="icon-user"></i>
-                                                <span>Profile</span></a>
-                                        </li>
-
-                                        <hr class="my-2">
-
-                                        <li><a href="login.jsp"><i class="icon-key"></i> <span>Logout</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -340,7 +346,6 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <%@include file="MarketingSideBar.jsp" %>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -348,68 +353,40 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
-
-            <div class="container-xl">
-                <div class="table-responsive">
-                    <div class="table-wrapper">
-                        <div class="table-title">
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <h2>Posts <b>Management</b></h2>
-                                </div>
-                                <div class="col-sm-7">
-                                    <a href="marketing-addpost" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
-                                        <span>Add New Post</span></a>
+        
+           
+                <div class="row justify-content-center h-100">
+                    <div class="col-xl-6">
+                        <div class="form-input-content">
+                            <div class="card login-form mb-0">
+                                <div class="card-body pt-5">
+                                    <div class="container-xl px-4 mt-4">
+                                        <hr class="mt-0 mb-4">
+                                        <div class="row">
+                                            
+                                            <div class="col-lg-12">
+                                                
+                                               
+                                                    <div class="card-header">Delete Slide ID: ${id}</div>
+                                                    <div class="card-body">
+                                                        <p style="color: rgb(204, 71, 71);">Deleting your slide is a permanent action and cannot be undone. If you are sure you want to
+                                                            delete your slide, select the button below.</p>
+                                                       
+                                                    </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                                    <form action="marketing-deleteslide" method="post">
+                                                        <div style=" text-align: center;"><button class="btn btn-danger-soft text-danger" type="submit" name="id" value="${id}">I understand, delete slide</button></div>
+                                                        </form>
+                                                        <a href="marketing-slide"><button class="btn btn-success-soft text-success">Back</button></a>
                                 </div>
                             </div>
                         </div>
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Title</th>
-                                    <th>Date Created</th>
-                                    <th>Author</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${listP}" var="o">
-                                    <tr onclick="document.location='marketing-viewpost?id=${o.getId()}'">
-                                    <td>${o.getId()}</td>
-                                    <td><a href="#">${o.getTittle()}</a></td>
-                                    <td>${o.getPublicDate()}</td>
-                                    <td>${o.getIdAuthor()}</td>
-                                    <td>
-                                        <a href="marketing-editpost?id=${o.getId()}" class="settings" title="Settings" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE8B8;</i></a>
-                                                <a href="marketing-deletepost?id=${o.getId()}" class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE5C9;</i></a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                        <div class="clearfix">
-                            <ul class="pagination" id="pag">
-                                <c:if test="${pageIndex!=1}">
-                                    <li class="page-item disabled"><a href="marketing-post?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
-                                </c:if>
-                                        <c:forEach  begin="1" end="${totalPage}" var="i" >
-                                        <li class="page-item ${i==pageIndex?"active":""}"><a href="marketing-post?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
-                                        </c:forEach>
-                                        <c:if test="${pageIndex!=totalPage}">
-                                        
-                                    <li class="page-item"><a href="marketing-post?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
-                                        </c:if>
-                                </ul>
                     </div>
                 </div>
-            </div>
-
-            <!-- #/ container -->
-        </div>
+         
+       
         <!--**********************************
             Content body end
         ***********************************-->

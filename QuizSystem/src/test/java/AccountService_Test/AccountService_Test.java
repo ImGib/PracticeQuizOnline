@@ -17,49 +17,53 @@
 // */
 //public class AccountService_Test {
 //
-//    Account account;
+//    Account account = new Account("Test123", "Test123", "Test123", "Test123", "Test123", "Test123", 1, "Test123", true, "Test123");
 //    AccountDao accountDao = new AccountDao();
-//    AccountService accountService;
+//    
 //
 //    @Test
 //    public void test_checkValidateAddAccount_UserExist() {
-//        account = RandomAccountUtil.getAccount();
-//        accountDao.addAccount(account);
+//        
+//        AccountService.getInstance().addAccountByAdmin(account);
 //        String expected = "This User already exist!!!";
-//        String actual = accountService.checkValidateAddAccount(account);
+//        String actual = AccountService.getInstance().checkValidateAddAccount(account);
+//        AccountService.getInstance().deleteAccountForever(account.getUserName());
 //        assertEquals(expected, actual);
 //    }
 //
-//    @Test
-//    public void test_checkValidateAddAccount_EmailExist() {
-//        account = RandomAccountUtil.getAccount();
-//        accountDao.addAccount(account);
-//        account.setUserName("test");
-//        String expected = "This Email already exist!!!";
-//        String actual = accountService.checkValidateAddAccount(account);
-//        assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void test_checkValidateAddAccount_PhoneExist() {
-//        account = RandomAccountUtil.getAccount();
-//        accountDao.addAccount(account);
-//        account.setUserName("test");
-//        account.setGmail("test");
-//        String expected = "This Phone already exist!!!";
-//        String actual = accountService.checkValidateAddAccount(account);
-//        assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void test_checkValidateAddAccount_TrueCase() {
-//        account = RandomAccountUtil.getAccount();
-//        accountDao.addAccount(account);
-//        account.setUserName("test");
-//        account.setGmail("test");
-//        account.setPhone("test");
-//        String actual = accountService.checkValidateAddAccount(account);
-//        assertTrue(actual == null);
-//    }
+////    @Test
+////    public void test_checkValidateAddAccount_EmailExist() {
+////        
+////        accountDao.addAccountByAdmin(account);
+////        account.setUserName("test");
+////        String expected = "This Email already exist!!!";
+////        String actual = accountService.checkValidateAddAccount(account);
+////        accountService.deleteAccountForever(account.getUserName());
+////        assertEquals(expected, actual);
+////    }
+////
+////    @Test
+////    public void test_checkValidateAddAccount_PhoneExist() {
+////        
+////        accountDao.addAccountByAdmin(account);
+////        account.setUserName("test");
+////        account.setGmail("test");
+////        String expected = "This Phone already exist!!!";
+////        String actual = accountService.checkValidateAddAccount(account);
+////        accountService.deleteAccountForever(account.getUserName());
+////        assertEquals(expected, actual);
+////    }
+////
+////    @Test
+////    public void test_checkValidateAddAccount_TrueCase() {
+////        
+////        accountDao.addAccountByAdmin(account);
+////        account.setUserName("test");
+////        account.setGmail("test");
+////        account.setPhone("test");
+////        String actual = accountService.checkValidateAddAccount(account);
+////        accountService.deleteAccountForever(account.getUserName());
+////        assertTrue(actual == null);
+////    }
 //
 //}

@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Account;
 import service.impl.AccountService;
+import utils.PagginationUtil;
 
 /**
  *
@@ -35,7 +36,8 @@ public class Ajax_FilterRole extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         int role=Integer.parseInt(request.getParameter("txt"));
-        List<Account> list= AccountService.getInstance().loadAccount_PaginationByRole(role, 1, 2);
+//        int nrpp=PagginationUtil.getInstance().getNrpp();
+        List<Account> list= AccountService.getInstance().loadAccount_PaginationByRole(role, 1, 5);
         
         for (Account o : list) {
             
