@@ -68,14 +68,14 @@ public class CreateGoogleFile {
     }
 
     public static void main(String[] args) throws IOException {
-        String url= "C:\\Users\\Gib\\OneDrive\\Pictures\\313408575_2300557800103164_1820415582710681641_n.jpg";
+        String url= "C:\\Users\\Gib\\OneDrive\\Pictures\\313198147_1519400735188075_8799590576274760576_n.jpg";
         java.io.File uploadFile = new java.io.File(url);
             
         String idParent="1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ";
         File googleFile = createGoogleFile(idParent, null, null, uploadFile);
 
         System.out.println("Created Google file!");
-        System.out.println("WebContentLink: " + googleFile.getWebContentLink() );
+        System.out.println("WebContentLink: " + googleFile.getId());
         System.out.println("WebViewLink: " + googleFile.getWebViewLink() );
 
         System.out.println("Done!");
