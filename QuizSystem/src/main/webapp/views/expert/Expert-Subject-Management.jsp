@@ -23,6 +23,11 @@
         <link rel="stylesheet" href="asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
         <!-- Custom Stylesheet -->
         <link href="asset/css/style.css" rel="stylesheet">
+        
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -326,58 +331,7 @@
                 <!--**********************************
                     Header start
                 ***********************************-->
-                <div class="header">
-                    <div class="header-content clearfix">
-
-                        <div class="nav-control">
-                            <div class="hamburger">
-                                <span class="toggle-icon"><i class="icon-menu"></i></span>
-                            </div>
-                        </div>
-                        <div class="header-left">
-                            <div class="input-group icons">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
-                                            class="mdi mdi-magnify"></i></span>
-                                </div>
-                                <form action="expert-subject-management" method="get">
-                                    <input type="txt" hidden value="1" name="index">
-                                    <input type="txt" class="form-control" placeholder="Search Dashboard"
-                                           aria-label="Search Dashboard" name="search" value="${requestScope.searchName}">
-                                    <button type="submit" hidden></button>
-                                </form>
-                                <div class="drop-down animated flipInX d-md-none">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="header-right">
-                            <ul class="clearfix">
-                                <li class="icons dropdown">
-                                    <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                        <span class="activity active"></span>
-                                        <img src="images/user/1.png" height="40" width="40" alt="">
-                                    </div>
-                                    <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                        <div class="dropdown-content-body">
-                                            <ul>
-                                                <li>
-                                                    <a href="Profile_Update_App.html"><i class="icon-user"></i>
-                                                        <span>Profile</span></a>
-                                                </li>
-
-                                                <hr class="my-2">
-
-                                                <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <jsp:include page="Expert_Header.jsp"></jsp:include>
                 <!--**********************************
                     Header end ti-comment-alt
                 ***********************************-->
@@ -468,33 +422,6 @@
         <!--**********************************
             Scripts
         ***********************************-->
-        <script src="plugins/common/common.min.js"></script>
-        <script src="js/custom.min.js"></script>
-        <script src="js/settings.js"></script>
-        <script src="js/gleek.js"></script>
-        <script src="js/styleSwitcher.js"></script>
-
-        <!-- Chartjs -->
-        <script src="./plugins/chart.js/Chart.bundle.min.js"></script>
-        <!-- Circle progress -->
-        <script src="./plugins/circle-progress/circle-progress.min.js"></script>
-        <!-- Datamap -->
-        <script src="./plugins/d3v3/index.js"></script>
-        <script src="./plugins/topojson/topojson.min.js"></script>
-        <script src="./plugins/datamaps/datamaps.world.min.js"></script>
-        <!-- Morrisjs -->
-        <script src="./plugins/raphael/raphael.min.js"></script>
-        <script src="./plugins/morris/morris.min.js"></script>
-        <!-- Pignose Calender -->
-        <script src="./plugins/moment/moment.min.js"></script>
-        <script src="./plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-        <!-- ChartistJS -->
-        <script src="./plugins/chartist/js/chartist.min.js"></script>
-        <script src="./plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-
-
-
-        <script src="asset/js/dashboard/dashboard-1.js"></script>
         <script src="asset/plugins/common/common.min.js"></script>
         <script src="asset/js/custom.min.js"></script>
         <script src="asset/js/settings.js"></script>
