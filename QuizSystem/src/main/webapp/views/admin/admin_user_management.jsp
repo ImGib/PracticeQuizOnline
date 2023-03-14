@@ -15,12 +15,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>User Manage</title>
-        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+        <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
         <!-- Favicon icon -->
-        <link rel="icon" type="asset/image/png" sizes="16x16" href="asset/images/favicon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
         <!-- Pignose Calender -->
         <link href="asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
         <!-- Chartist -->
@@ -269,11 +266,11 @@
             ***********************************-->
             <div class="nav-header">
                 <div class="brand-logo">
-                    <a href="home">
-                        <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
-                        <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
+                    <a href="index.html">
+                        <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                        <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
                         <span class="brand-title">
-                            <img src="asset/images/logo-text.png" alt="">
+                            <img src="images/logo-text.png" alt="">
                         </span>
                     </a>
                 </div>
@@ -285,59 +282,64 @@
             <!--**********************************
                 Header start
             ***********************************-->
-            <div class="header mb-3">
-            <div class="header-content clearfix">
+            <div class="header">
+                <div class="header-content clearfix">
 
-                <div class="nav-control">
-                    <div class="hamburger">
-                        <span class="toggle-icon"><i class="icon-menu"></i></span>
-                    </div>
-                </div>
-                <div class="header-left">
-                    <div class="input-group icons">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
-                                    class="mdi mdi-magnify"></i></span>
+                    <div class="nav-control">
+                        <div class="hamburger">
+                            <span class="toggle-icon"><i class="icon-menu"></i></span>
                         </div>
-                        <form action="subject-list" method="get">
-                            <input type="text" name="search" class="form-control" placeholder="Search Subject"
-                                   aria-label="Search Dashboard">
-                        </form>
                     </div>
-                </div>
-                <div class="header-right">
-                    <ul class="clearfix">
-                        <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                <span class="activity active"></span>
-                                <img src="asset/images/avatar/${sessionScope.account.img == null ? "default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
+                    <div class="header-left">
+                        <div class="input-group icons">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
+                                        class="mdi mdi-magnify"></i></span>
                             </div>
-                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <c:if test="${sessionScope.account != null}">
+                            <form action="admin" method="get">
+                                <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt.contains("Search_Role_")?"":txt}">
+                                <!--                            <button>submit</button>-->
+                            </form>
+
+                            <div class="drop-down animated flipInX d-md-none">
+                                <form action="#">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <ul class="clearfix">
+                            <li class="icons dropdown"><a href="https://www.facebook.com/">
+                                    <i class="mdi mdi-email-outline"></i>
+                                    <span class="badge badge-pill gradient-1">3</span>
+                                </a>
+                            </li>
+                            <li class="icons dropdown">
+                                <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                    <span class="activity active"></span>
+                                    <img src="images/user/1.png" height="40" width="40" alt="">
+                                </div>
+                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                    <div class="dropdown-content-body">
+                                        <ul>
                                             <li>
-                                                <a href="profile"><i class="icon-user"></i>
+                                                <a href="app-profile.html"><i class="icon-user"></i>
                                                     <span>Profile</span></a>
                                             </li>
 
                                             <hr class="my-2">
 
-                                            <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
+                                            <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
                                             </li>
-                                        </c:if>
-                                        <c:if test="${sessionScope.account == null}">
-                                            <li><a href="login"><i class="icon-key"></i> <span>Login</span></a>
-                                            </li>
-                                        </c:if>
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
             <!--**********************************
                 Header end ti-comment-alt
             ***********************************-->
@@ -350,12 +352,12 @@
                     <ul class="metismenu" id="menu">
                         <li class="nav-label">Dashboard</li>
                         <li>
-                            <a href="admin-home" aria-expanded="false">
+                            <a href="index.html" aria-expanded="false">
                                 <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/QuizSystem/admin"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
+                            <a href="/QuizSystem/Admin"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
                         </li>
 
                     </ul>
@@ -398,7 +400,7 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-
+                                       
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
@@ -407,7 +409,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="content">
-
+                               
                                     <c:forEach items="${ListAccount}" var="o">
                                         <tr>
                                             <td>${o.getUserName()}</td>
@@ -435,13 +437,13 @@
 <!--                                <div class="hint-text">Showing <b>${ListAccount.size()}</b> out of <b>${size}</b> entries</div>-->
                                 <ul class="pagination" id="pag">
                                     <c:if test="${pageIndex!=1}">
-                                        <li class="page-item disabled"><a href="admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
-                                        </c:if>
+                                    <li class="page-item disabled"><a href="admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                    </c:if>
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
                                         <li class="page-item ${i==pageIndex?"active":""}"><a href="admin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
                                         <c:if test="${pageIndex!=totalPage}">
-                                        <li class="page-item"><a href="admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                    <li class="page-item"><a href="admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
                                         </c:if>
                                 </ul>
                             </div>
@@ -477,33 +479,31 @@
             Scripts
         ***********************************-->
         <script src="asset/plugins/common/common.min.js"></script>
-            <script src="asset/js/custom.min.js"></script>
-            <script src="asset/js/settings.js"></script>
-            <script src="asset/js/gleek.js"></script>
-            <script src="asset/js/styleSwitcher.js"></script>
+        <script src="asset/js/custom.min.js"></script>
+        <script src="asset/js/settings.js"></script>
+        <script src="asset/js/gleek.js"></script>
+        <script src="asset/js/styleSwitcher.js"></script>
 
-            <!-- Chartjs -->
-            <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
-            <!-- Circle progress -->
-            <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
-            <!-- Datamap -->
-            <script src="asset/plugins/d3v3/index.js"></script>
-            <script src="asset/plugins/topojson/topojson.min.js"></script>
-            <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
-            <!-- Morrisjs -->
-            <script src="asset/plugins/raphael/raphael.min.js"></script>
-            <script src="asset/plugins/morris/morris.min.js"></script>
-            <!-- Pignose Calender -->
-            <script src="asset/plugins/moment/moment.min.js"></script>
-            <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-            <!-- ChartistJS -->
-            <script src="asset/plugins/chartist/js/chartist.min.js"></script>
-            <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+        <!-- Chartjs -->
+        <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
+        <!-- Circle progress -->
+        <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
+        <!-- Datamap -->
+        <script src="asset/plugins/d3v3/index.js"></script>
+        <script src="asset/plugins/topojson/topojson.min.js"></script>
+        <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
+        <!-- Morrisjs -->
+        <script src="asset/plugins/raphael/raphael.min.js"></script>
+        <script src="asset/plugins/morris/morris.min.js"></script>
+        <!-- Pignose Calender -->
+        <script src="asset/plugins/moment/moment.min.js"></script>
+        <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+        <!-- ChartistJS -->
+        <script src="asset/plugins/chartist/js/chartist.min.js"></script>
+        <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
-
-
-            <script src="asset/js/dashboard/dashboard-1.js"></script>
-
+        <script src="asset/js/dashboard/dashboard-1.js"></script>
+        <script>
 //            function SearchAccount(input) {
 //                var txt = input.value;
 //                Paggination_Search(input);
@@ -543,8 +543,8 @@
 //                        });
 //                    }
 //            ;
-
-
+            
+            
 //                    function Paggination_Search(input) {
 //                        var txt = input.value;
 //                        $.ajax({
@@ -581,12 +581,12 @@
 //                        });
 //                    }
 //            ;
-                                                        function nextWeb(input) {
-
-                                                            document.getElementById("form").submit();
-
-                                                        }
-
+            function nextWeb(input){
+                
+            document.getElementById("form").submit();
+                
+            }
+         
         </script>
     </body>
 
