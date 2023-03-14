@@ -32,7 +32,6 @@ public interface IAccountService {
 
     void addAccount(Account a);
 
-    //Vinh-----------------------------------------------------------------------
     List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
 
     void deleteAccount(String user);
@@ -62,4 +61,6 @@ public interface IAccountService {
     String userChangePassword(Account acc, String currentPassword, String newPassword, String confirmPassword);
     
     String removeAccount(Account acc, String gmail, String password); 
+    
+    void deleteAccountForever(String userName);
 }

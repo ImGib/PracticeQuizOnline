@@ -7,14 +7,41 @@ package service;
 
 import java.util.List;
 import model.Post;
+import model.Slide;
 
 public interface IPostService {
 
     List<Post> getTopTwo();
 
+    
+    public int getNumberPost();
+    
+    List<Post> findPostByTitleAndAuthor(String txt);
+    
+    void addNewPost(Post p);
+    
+    
+    
+    String checkValidPost(String title);
+    
+   List<Post> findPostById(int id);
+   
+   List<Post> findPostByTextAndPagination(String txt, int pageIndex, int nrpp);
+   
+   void editPost(int id,String img, String title,String detail);
+    
+    void deletePost(int id);
+    
+    String checkValidPostForEdit(int id,String title);
+    
+    void upNumberAccess(int id);
+    
+    
+
+
     List<Post> getTopPopular();
 
-    public int getNumberPost();
+    
 
     List<Post> getPostPagination(String txt, int pageIndex, int nrpp);
 
@@ -24,5 +51,8 @@ public interface IPostService {
 
     Post getPostDetails(String id);
     
-    public void upNumberAccess(int id);
+    int getLastIdPost();
+    
+    
+
 }

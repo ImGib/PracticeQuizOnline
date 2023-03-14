@@ -28,7 +28,7 @@ public class ExpertManagementQuestionController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        
         String search = req.getParameter("search");
         int index;
         try {
@@ -58,6 +58,7 @@ public class ExpertManagementQuestionController extends HttpServlet {
         req.setAttribute("index", p.getIndex());
         req.setAttribute("searchName", search);
         req.setAttribute("idSub", idSub);
+        req.setAttribute("isManageQuestion", true);
         req.getRequestDispatcher("views/expert/Expert_Question_Management.jsp").forward(req, resp);
 
     }

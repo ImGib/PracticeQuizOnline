@@ -5,13 +5,13 @@
 package service.impl;
 
 import dao.impl.PostDao;
+import dao.impl.SlideDao;
 import java.util.List;
 import model.Post;
+import model.Slide;
 import service.IPostService;
 
-
-public class PostService implements IPostService{
-
+public class PostService implements IPostService {
 
     private PostDao postDao;
 
@@ -28,18 +28,10 @@ public class PostService implements IPostService{
         return instance;
     }
 
-            
-    
     @Override
     public List<Post> getTopTwo() {
-        List<Post> list = postDao.getTopTwo();
-        if (list == null || list.isEmpty()) {
-            return null;
-        } else {
-            return list;
-        }
+        return postDao.getTopTwo();
     }
-    
 
     @Override
     public int getNumberPost() {
@@ -47,13 +39,71 @@ public class PostService implements IPostService{
     }
 
     @Override
+    public List<Post> findPostByTitleAndAuthor(String txt) {
+        return postDao.findPostByTitleAndAuthor(txt);
+    }
+
+    @Override
+    public void addNewPost(Post p) {
+        postDao.addNewPost(p);
+    }
+
+    @Override
+    public String checkValidPost(String title) {
+        if (postDao.findPostByTitle(title).size() != 0) {
+            return "This Title already exist!!!";
+        }
+        return null;
+    }
+
+    @Override
+    public List<Post> findPostById(int id) {
+        return postDao.findPostById(id);
+    }
+
+    @Override
+    public List<Post> findPostByTextAndPagination(String txt, int pageIndex, int nrpp) {
+        return postDao.findPostByTextAndPagination(txt, pageIndex, nrpp);
+    }
+
+    @Override
+    public void editPost(int id, String img, String title, String detail) {
+        postDao.editPost(id, img, title, detail);
+    }
+
+    @Override
+    public void deletePost(int id) {
+        postDao.deletePost(id);
+    }
+
+    @Override
+    public String checkValidPostForEdit(int id, String title) {
+        Post p = postDao.findPostById(id).get(0);
+        if (p.getTittle().equals(title)) {
+            return null;
+        } else {
+            if (postDao.findPostByTitle(title).size() != 0) {
+                return "This Title already exist!!!";
+            }
+            else{
+                return null;
+            }
+
+        }
+    }
+
+    @Override
+    public void upNumberAccess(int i) {
+        postDao.upNumberAccess(i);
+    }
+
     public List<Post> getTopPopular() {
         return postDao.getTopPopular();
     }
 
     @Override
     public List<Post> getPostPagination(String txt, int pageIndex, int nrpp) {
-        return postDao.getPostPagination(txt, pageIndex, nrpp);
+        return postDao.findPostByTextAndPagination(txt, pageIndex, nrpp);
     }
 
     @Override
@@ -65,14 +115,15 @@ public class PostService implements IPostService{
     public int countSearchPost(String txt) {
         return postDao.countPaginationPost(txt);
     }
-    
+
     @Override
     public Post getPostDetails(String i) {
         return postDao.getPostDetails(i);
     }
 
     @Override
-    public void upNumberAccess(int id) {
-        postDao.upNumberAccess(id);
+    public int getLastIdPost() {
+        return postDao.getLastIdPost();
     }
+
 }

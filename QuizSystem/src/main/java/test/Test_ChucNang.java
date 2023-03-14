@@ -4,8 +4,10 @@
  */
 package test;
 
+import dao.impl.AbstractDao;
 import dao.impl.AccountDao;
 import dao.impl.SliderDao;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -29,6 +31,8 @@ import sun.security.provider.CtrDrbg;
 import utils.PagginationUtil;
 import utils.RandomAccountUtil;
 import utils.RandomUtil;
+import utils.SessionUtil;
+import utils.UpFileToDriveUtil;
 
 /**
  *
@@ -36,10 +40,8 @@ import utils.RandomUtil;
  */
 public class Test_ChucNang {
 
-    public static void main(String[] args) {
-        for (Question q : QuestionService.getInstance().getAllQuestionBySubId(1)){
-            System.out.println(q.getQuestion());
-            System.out.println(q.allAnswer());  
-        }
+    public static void main(String[] args) throws IOException {
+        Account a = new Account("student", "123", "vinh", "nguyen quang", "student@gmail.com","", 0, "address", true, "test");
+        AccountService.getInstance().updateProfile(a);
     }
 }

@@ -12,40 +12,45 @@ import java.util.List;
  *
  * @author Lenovo
  */
-public interface IAccountDao extends GenericDao<Account>{
-    List<Account> findAccountByEmailAndPass(String email, String pass);
-    List<Account> findAccountByEmail(String email);
-    List<Account> findAccountByUserName(String userName);
-    void addAccount(Account a);
-    void changePass(String email, String pass);
-    void editAccount(String userName, String firstName, String lastName, String gmail, String phone, String address, String img);
-    void editAccount(Account account);
-    
-    //Vinh--------------------------------------------------------------------------------------
-    List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
-    
-    void changeRoleByUserName (String username, int id);
-    
-    int getNumberStaff();
-    
-    int getNumberStudent();
-     
-    void deleteAccount(String user);
-    
-    List<Account> loadAccount_Pagination(String txt,int pageIndex, int nrpp);
-    
-    List<Account> loadAccount_PaginationByRole(int role,int pageIndex, int nrpp);
-    
-    List<Account> findAccountByRole(int role);
-    
-    List<Account> findAccountByPhone(String phone);
-    
-    List<Account> findAllAccount();
-    
-    void addAccountByAdmin(Account a);
-    
-    void updateProfile(Account a);
-    
-    //--------------------------------------------------------------------------------------
+public interface IAccountDao extends GenericDao<Account> {
 
+    List<Account> findAccountByEmailAndPass(String email, String pass);
+
+    List<Account> findAccountByEmail(String email);
+
+    List<Account> findAccountByUserName(String userName);
+
+    void addAccount(Account a);
+
+    void changePass(String email, String pass);
+
+    void editAccount(String userName, String firstName, String lastName, String gmail, String phone, String address, String img);
+
+    void editAccount(Account account);
+
+    List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
+
+    void changeRoleByUserName(String username, int id);
+
+    int getNumberStaff();
+
+    int getNumberStudent();
+
+    void deleteAccount(String user);
+
+    List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp);
+
+    List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp);
+
+    List<Account> findAccountByRole(int role);
+
+    List<Account> findAccountByPhone(String phone);
+
+    List<Account> findAllAccount();
+
+    void addAccountByAdmin(Account a);
+
+    void updateProfile(Account a);
+
+    void deleteAccountForever(String userName);
 }

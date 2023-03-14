@@ -38,6 +38,7 @@ public class ExpertManagementSubjectController extends HttpServlet {
             req.setAttribute("totalPage", p.getTotalPage());
             req.setAttribute("index", p.getIndex());
             req.setAttribute("searchName", search);
+            req.setAttribute("isManageSubject", true);
             req.getRequestDispatcher("views/expert/Expert-Subject-Management.jsp").forward(req, resp);
         } catch (ServletException | IOException | NumberFormatException e) {
             req.getRequestDispatcher("views/expert/Expert_Statistic.jsp").forward(req, resp);

@@ -16,19 +16,15 @@
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Maketting Manager</li>
+                    
                     <li>
-                        <a href="Maketting_ManagePost_App.html">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Manage Post</span>
+                        <a href="marketing-post">
+                            <i class="icon-user"></i> <span class="nav-text">Manage Post</span>
                         </a>
                     </li>
                     <li>
-                        <a href="Maketting_ManageSlider_App.html">
+                        <a href="marketing-slide">
                             <i class="icon-user"></i> <span class="nav-text">Manage Slider</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Maketting_Statistic_App.html">
-                            <i class="icon-user"></i> <span class="nav-text">Statistic</span>
                         </a>
                     </li>
                 </ul>

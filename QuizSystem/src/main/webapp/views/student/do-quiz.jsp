@@ -493,13 +493,28 @@
                 .blog-page .single_post .footer {
                     padding: 30px
                 }
-
+            }
+            .change-color{
+                background-color: #5485b6;
+            }
+            .odd-color{
+                background-color: #f4f4f4;
             }
         </style>
         <script>
             $(document).ready(function () {
                 $('[data-toggle="tooltip"]').tooltip();
             });
+        </script>
+        <script>
+            function myFunction(idA, id) {
+                document.getElementById(idA).checked = true;
+//                let c = document.getElementById(id);
+//                c.classList.remove("odd-color");
+//                c.classList.add("change-color");
+            }
+
+            
         </script>
 
     </head>
@@ -581,21 +596,20 @@
                                                 <div class=" row form-group " style="display: flex;">
                                                     <c:forEach var="ques" items="${requestScope.list}">
                                                         <div class="form-group">
-                                                            <div class="row gx-2 mb-3" style="justify-content: center;">
+                                                            <div class="row mb-3" style="justify-content: center;">
                                                                 <!-- Form Group (first name)-->
-                                                                <div class="col-md-9 test" 
-                                                                     style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
+                                                                <div class="col-md-9 test pb-2" 
+                                                                     style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;width: 800px">
                                                                     <div class="mx-3 my-3">
                                                                         ${ques.question}
                                                                     </div>
-                                                                    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                                                                    <div class="ml-5" style="display: flex; flex-wrap: wrap;">
                                                                         <c:forEach var="ans" items="${ques.allAnswer()}">
-                                                                            
-                                                                            <div class="col-md-5 mx-2 my-1" id="a${ques.id}b${ans.idAns}"
-                                                                                 style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
+                                                                            <div class="col-md-5 mx-2 my-1 odd-color " id="a${ques.id}b${ans.idAns}" onclick="myFunction(${ans.idAns}, 'a${ques.id}b${ans.idAns}')"
+                                                                                 style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px;width: 50%; ">
                                                                                 <div class="mx-3 my-3">
                                                                                     ${ans.answer}
-                                                                                    <input type="radio" name="answ${ques.id}" value="${ans.idAns}">
+                                                                                    <input id="${ans.idAns}" type="radio" name="answ${ques.id}" value="${ans.idAns}">
                                                                                 </div>
                                                                             </div>
                                                                         </c:forEach>
@@ -605,7 +619,7 @@
                                                             </div>
                                                         </div>
                                                     </c:forEach>
-                                                    
+
                                                     <input class="btn" type="submit"style="border: #242424 solid 1px; background-color: #ffc107; width: 300px;" value="Finish HIM">
                                                 </div>
                                             </form>
@@ -618,25 +632,9 @@
                 </div>
             </div>
 
-            <!--**********************************
-                Content body end
-            ***********************************-->
 
-
-            <!--**********************************
-                Footer start
-            ***********************************-->
-            <!--**********************************
-                Footer end
-            ***********************************-->
         </div>
-        <!--**********************************
-            Main wrapper end
-        ***********************************-->
 
-        <!--**********************************
-            Scripts
-        ***********************************-->
         <script src="asset/plugins/common/common.min.js"></script>
         <script src="asset/js/custom.min.js"></script>
         <script src="asset/js/settings.js"></script>
@@ -664,7 +662,11 @@
 
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
+        <script>
+                                                                                function chose(var input) {
 
+                                                                                }
+        </script>
     </body>
 
 </html>

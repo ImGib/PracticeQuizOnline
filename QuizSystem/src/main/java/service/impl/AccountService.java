@@ -100,10 +100,10 @@ public class AccountService implements IAccountService {
     @Override
     public Account loginWithEmail(UserGoogleDto user) {
         String[] u = user.getEmail().split("@");
-        Account a;   
+        Account a;
         List<Account> ls = accountDao.findAccountByEmail(user.getEmail());
         if (ls.isEmpty()) {
-            a = new Account(u[0], CheckUtil.MD5Encryption("123"), user.getEmail(), 0, true);
+            a = new Account(u[0], CheckUtil.MD5Encryption("123"), user.getEmail(), 1, true);
             accountDao.addAccount(a);
         } else {
             a = ls.get(0);
@@ -142,8 +142,12 @@ public class AccountService implements IAccountService {
 
     @Override
     public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp) {
+        if (txt.isEmpty()) {
+            return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
+        }
         if (txt.contains("Search_Role_")) {
             txt = txt.replace("Search_Role_", "");
+
             return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp);
         }
         return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
@@ -159,8 +163,10 @@ public class AccountService implements IAccountService {
             return "This Email already exist!!!";
 
         }
-        if (!accountDao.findAccountByPhone(a.getPhone()).isEmpty()) {
-            return "This Phone already exist!!!";
+        if (!a.getPhone().isEmpty()) {
+            if (!accountDao.findAccountByPhone(a.getPhone()).isEmpty()) {
+                return "This Phone already exist!!!";
+            }
         }
 
         return null;
@@ -194,7 +200,7 @@ public class AccountService implements IAccountService {
     public void addAccountByAdmin(Account a) {
         accountDao.addAccountByAdmin(a);
     }
-    
+
     @Override
 
     public Account getAccountByID(String username) {
@@ -205,7 +211,7 @@ public class AccountService implements IAccountService {
             return list.get(0);
         }
     }
-    
+
     @Override
 
     public int getNumberStaff() {
@@ -224,8 +230,8 @@ public class AccountService implements IAccountService {
 
     @Override
     public String userChangePassword(Account acc, String currentPassword, String newPassword, String confirmPassword) {
-        if(acc.getPassword().compareTo(currentPassword) == 0){
-            if(newPassword.compareTo(confirmPassword) == 0){
+        if (acc.getPassword().compareTo(currentPassword) == 0) {
+            if (newPassword.compareTo(confirmPassword) == 0) {
                 accountDao.changePass(acc.getGmail(), newPassword);
                 return null;
             } else {
@@ -238,12 +244,16 @@ public class AccountService implements IAccountService {
 
     @Override
     public String removeAccount(Account acc, String gmail, String password) {
-        if(acc.getGmail().compareTo(gmail) == 0 && acc.getPassword().compareTo(password) == 0)
-        {
+        if (acc.getGmail().compareTo(gmail) == 0 && acc.getPassword().compareTo(password) == 0) {
             accountDao.deleteAccount(acc.getUserName());
             return null;
         }
         return "wrong";
+    }
+
+    @Override
+    public void deleteAccountForever(String userName) {
+        accountDao.deleteAccountForever(userName);
     }
 
 }

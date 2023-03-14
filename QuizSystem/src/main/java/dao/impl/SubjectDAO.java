@@ -172,10 +172,10 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
         String sql = "select COUNT(*) from \n"
                 + "	Subject right join\n"
                 + "    (Select idSub from Enroll\n"
-                + "	where Enroll.userName = 'dinson' ) as t1\n"
+                + "	where Enroll.userName = ? ) as t1\n"
                 + "on Subject.id = t1.idSub\n"
                 + "	and Subject.isPublic = 1";
-        username = "%" + username + "%";
+//        username = "%" + username + "%";
         return count(sql, username);
     }
 
@@ -216,17 +216,7 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
                 + "    and Account.isActive = 1";
         return count(sql, txt);
     }
-
-//    @Override
-//    public List<Subject> subjectPagintion(String txt, int pageIndex, int nrpp) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-
-//    @Override
-//    public int countAllFoundSubject(String txt) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-
+    
     @Override
     public List<Subject> getAllSubject() {
         String sql = "select * from Subject";

@@ -266,11 +266,11 @@
             ***********************************-->
             <div class="nav-header">
                 <div class="brand-logo">
-                    <a href="index.html">
-                        <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                        <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                    <a href="home">
+                        <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
+                        <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                         <span class="brand-title">
-                            <img src="images/logo-text.png" alt="">
+                            <img src="asset/images/logo-text.png" alt="">
                         </span>
                     </a>
                 </div>
@@ -282,21 +282,21 @@
             <!--**********************************
                 Header start
             ***********************************-->
-            <div class="header">
-                <div class="header-content clearfix">
+            <div class="header mb-3">
+            <div class="header-content clearfix">
 
-                    <div class="nav-control">
-                        <div class="hamburger">
-                            <span class="toggle-icon"><i class="icon-menu"></i></span>
-                        </div>
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
                     </div>
-                    <div class="header-left">
+                </div>
+                <div class="header-left">
                         <div class="input-group icons">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                         class="mdi mdi-magnify"></i></span>
                             </div>
-                            <form action="Admin" method="get">
+                            <form action="admin" method="get">
                                 <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt.contains("Search_Role_")?"":txt}">
                                 <!--                            <button>submit</button>-->
                             </form>
@@ -308,38 +308,39 @@
                             </div>
                         </div>
                     </div>
-                    <div class="header-right">
-                        <ul class="clearfix">
-                            <li class="icons dropdown"><a href="https://www.facebook.com/">
-                                    <i class="mdi mdi-email-outline"></i>
-                                    <span class="badge badge-pill gradient-1">3</span>
-                                </a>
-                            </li>
-                            <li class="icons dropdown">
-                                <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                    <span class="activity active"></span>
-                                    <img src="images/user/1.png" height="40" width="40" alt="">
-                                </div>
-                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                    <div class="dropdown-content-body">
-                                        <ul>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <c:if test="${sessionScope.account != null}">
                                             <li>
-                                                <a href="app-profile.html"><i class="icon-user"></i>
+                                                <a href="admin-profile"><i class="icon-user"></i>
                                                     <span>Profile</span></a>
                                             </li>
 
                                             <hr class="my-2">
 
-                                            <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                            <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
                                             </li>
-                                        </ul>
-                                    </div>
+                                        </c:if>
+                                        <c:if test="${sessionScope.account == null}">
+                                            <li><a href="login"><i class="icon-key"></i> <span>Login</span></a>
+                                            </li>
+                                        </c:if>
+                                    </ul>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
             <!--**********************************
                 Header end ti-comment-alt
             ***********************************-->
@@ -357,7 +358,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
+                            <a href="/QuizSystem/Admin"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
                         </li>
 
                     </ul>
@@ -381,18 +382,18 @@
                                         <h2>User <b>Management</b></h2>
                                     </div>
                                     <div class="col-sm-7">
-                                        <a href="AddNewAccount" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
+                                        <a href="admin-addaccount" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
                                             <span>Add New User</span></a>
                                         <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
-                                            <span>
-                                                    <select id="choseRole">
-                                                            <option value="5">All Role</option>
-                                                            <option value="0">Admin</option>
-                                                            <option value="1">Student</option>
-                                                            <option value="2">Expert</option>
-                                                            <option value="3">Market</option>
-                                                            <option value="4">Sale</option>
-                                                    </select>
+                                            <span>  <form action="admin" method="get" id="form">
+                                                    <select id="" name="txt" onchange="nextWeb(this)">
+                                                        <option value="" >All Role</option>
+                                                        <option value="Search_Role_0" ${txt.equals("Search_Role_0")?"selected":""}>Admin</option>
+                                                        <option value="Search_Role_1" ${txt.equals("Search_Role_1")?"selected":""}>Student</option>
+                                                        <option value="Search_Role_2" ${txt.equals("Search_Role_2")?"selected":""}>Expert</option>
+                                                        <option value="Search_Role_3" ${txt.equals("Search_Role_3")?"selected":""}>Market</option>
+                                                        <option value="Search_Role_4" ${txt.equals("Search_Role_4")?"selected":""}>Sale</option>
+                                                    </select></form>
                                             </span></a>
                                     </div>
                                 </div>
@@ -423,9 +424,9 @@
                                                 <td><span class="status text-success">&bull;</span> Active</td>
                                             <c:if test="${!(o.getRole() == 0)}">
                                                 <td>
-                                                    <a href="ChangeRole?user=${o.getUserName()}" class="settings" title="Edit" data-toggle="tooltip"><i
+                                                    <a href="admin-changerole?user=${o.getUserName()}" class="settings" title="Edit" data-toggle="tooltip"><i
                                                             class="material-icons">&#xE8B8;</i></a>
-                                                    <a href="DeleteAccount?user=${o.getUserName()}" class="delete" title="Ban" data-toggle="tooltip"><i
+                                                    <a href="admin-deleteaccount?user=${o.getUserName()}" class="delete" title="Ban" data-toggle="tooltip"><i
                                                             class="material-icons">&#xE5C9;</i></a>
                                                 </td>
                                             </c:if>
@@ -436,12 +437,15 @@
                             <div class="clearfix">
 <!--                                <div class="hint-text">Showing <b>${ListAccount.size()}</b> out of <b>${size}</b> entries</div>-->
                                 <ul class="pagination" id="pag">
-
-                                    <li class="page-item disabled"><a href="Admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                    <c:if test="${pageIndex!=1}">
+                                    <li class="page-item disabled"><a href="admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                    </c:if>
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
-                                        <li class="page-item ${i==pageIndex?"active":""}"><a href="Admin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
+                                        <li class="page-item ${i==pageIndex?"active":""}"><a href="admin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
-                                    <li class="page-item"><a href="Admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                        <c:if test="${pageIndex!=totalPage}">
+                                    <li class="page-item"><a href="admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                        </c:if>
                                 </ul>
                             </div>
                         </div>
@@ -460,8 +464,6 @@
             ***********************************-->
             <div class="footer">
                 <div class="copyright">
-                    <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
-                        2018</p>
                 </div>
             </div>
             <!--**********************************
@@ -501,83 +503,89 @@
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
         <script>
-            function SearchAccount(input) {
-                var txt = input.value;
-                Paggination_Search(input);
-                $.ajax({
-                    url: "/QuizSystem/Ajax_Search",
-
-                    data: {
-                        txt: txt
-                    },
-                    success: function (response) {
-                        var content = document.getElementById("content");
-                        content.innerHTML = response;
-                    },
-                    error: function (xhr) {
-                        //Do Something to handle error
-                    }
-                });
+//            function SearchAccount(input) {
+//                var txt = input.value;
+//                Paggination_Search(input);
+//                $.ajax({
+//                    url: "/QuizSystem/Ajax_Search",
+//
+//                    data: {
+//                        txt: txt
+//                    },
+//                    success: function (response) {
+//                        var content = document.getElementById("content");
+//                        content.innerHTML = response;
+//                    },
+//                    error: function (xhr) {
+//                        //Do Something to handle error
+//                    }
+//                });
+//            }
+//            var inputElement = document.getElementById("choseRole");
+//            inputElement.onchange =
+//                    function ChoseRole(input) {
+//                        var txt = input.target.value;
+//                        Paggination_Role(input);
+//                        $.ajax({
+//                            url: "/QuizSystem/Ajax_FilterRole",
+//
+//                            data: {
+//                                txt: txt
+//                            },
+//                            success: function (response) {
+//                                var content = document.getElementById("content");
+//                                content.innerHTML =response;
+//                            },
+//                            error: function (xhr) {
+//                                //Do Something to handle error
+//                            }
+//                        });
+//                    }
+//            ;
+            
+            
+//                    function Paggination_Search(input) {
+//                        var txt = input.value;
+//                        $.ajax({
+//                            url: "/QuizSystem/Ajax_Paggination_Search",
+//
+//                            data: {
+//                                txt: txt
+//                            },
+//                            success: function (response) {
+//                                var content = document.getElementById("pag");
+//                                content.innerHTML = response;
+//                            },
+//                            error: function (xhr) {
+//                                //Do Something to handle error
+//                            }
+//                        });
+//                    }
+//            ;
+//            function Paggination_Role(input) {
+//                        var txt = input.target.value;
+//                        $.ajax({
+//                            url: "/QuizSystem/Ajax_Paggination_Role",
+//
+//                            data: {
+//                                txt: txt
+//                            },
+//                            success: function (response) {
+//                                var content = document.getElementById("pag");
+//                                content.innerHTML = response;
+//                            },
+//                            error: function (xhr) {
+//                                //Do Something to handle error
+//                            }
+//                        });
+//                    }
+//            ;
+            function nextWeb(input){
+                
+            document.getElementById("form").submit();
+                
             }
-            var inputElement = document.getElementById("choseRole");
-            inputElement.onchange =
-                    function ChoseRole(input) {
-                        var txt = input.target.value;
-                        Paggination_Role(input);
-                        $.ajax({
-                            url: "/QuizSystem/Ajax_FilterRole",
-
-                            data: {
-                                txt: txt
-                            },
-                            success: function (response) {
-                                var content = document.getElementById("content");
-                                content.innerHTML =response;
-                            },
-                            error: function (xhr) {
-                                //Do Something to handle error
-                            }
-                        });
-                    }
-            ;
-            
-            
-                    function Paggination_Search(input) {
-                        var txt = input.value;
-                        $.ajax({
-                            url: "/QuizSystem/Ajax_Paggination_Search",
-
-                            data: {
-                                txt: txt
-                            },
-                            success: function (response) {
-                                var content = document.getElementById("pag");
-                                content.innerHTML = response;
-                            },
-                            error: function (xhr) {
-                                //Do Something to handle error
-                            }
-                        });
-                    }
-            ;
-            function Paggination_Role(input) {
-                        var txt = input.target.value;
-                        $.ajax({
-                            url: "/QuizSystem/Ajax_Paggination_Role",
-
-                            data: {
-                                txt: txt
-                            },
-                            success: function (response) {
-                                var content = document.getElementById("pag");
-                                content.innerHTML = response;
-                            },
-                            error: function (xhr) {
-                                //Do Something to handle error
-                            }
-                        });
-                    }
-            ;
+         
         </script>
     </body>
 

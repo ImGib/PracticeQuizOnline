@@ -21,7 +21,7 @@ import utils.PagginationUtil;
  *
  * @author asus
  */
-@WebServlet(name = "Admin", urlPatterns = {"/Admin"})
+@WebServlet(name = "Admin", urlPatterns = {"/admin"})
 public class Admin extends HttpServlet {
 
    
@@ -49,8 +49,7 @@ public class Admin extends HttpServlet {
         request.setAttribute("txt",txt );
         request.setAttribute("pageIndex",pageIndex);
         request.setAttribute("ListAccount", ListAccount);
-        request.getRequestDispatcher("views/admin_user_management.jsp").forward(request, response);
-        
+        request.getRequestDispatcher("views/admin/admin_user_management.jsp").forward(request, response);
     }
 
     @Override

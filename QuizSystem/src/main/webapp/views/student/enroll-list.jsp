@@ -315,7 +315,7 @@
             ***********************************-->
             <div class="nav-header">
                 <div class="brand-logo">
-                    <a href="index.html">
+                    <a href="home">
                         <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
                         <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                         <span class="brand-title">
@@ -350,6 +350,9 @@
             <div class="content-body">
                 <div class="container mt-5 mb-3">
                     <div class="row">
+                        <c:if test="${requestScope.subList.size() == 0}">
+                            <<h2>Bạn không đăng ký khóa học nào</h2>
+                        </c:if>
                         <c:forEach var="sub" items="${requestScope.subList}">
                             <c:set var="author" value="${requestScope.accService.getAccountByID(sub.idAuthor)}"/>
                             <div class="col-md-4">

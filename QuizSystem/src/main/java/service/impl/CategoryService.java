@@ -8,6 +8,7 @@ import dao.impl.CategoryDao;
 import java.util.List;
 import model.Category;
 import service.ICategoryService;
+import utils.PageUtil;
 
 
 public class CategoryService implements ICategoryService{
@@ -34,5 +35,35 @@ public class CategoryService implements ICategoryService{
     @Override
     public List<Category> getCateBySubId(int id) {
         return categoryDao.getCateBySubID(id);
+    }
+    
+    @Override
+    public List<Category> getCateByPaging(PageUtil p){
+        return categoryDao.getCategoryByPaging(p);
+    }
+    
+    @Override
+    public int getNumberCateByPaging(PageUtil p) {
+        return categoryDao.getNumberCateByPaging(p);
+    }
+    
+    @Override
+    public void addNewCate(String name){
+        categoryDao.addNewCate(name);
+    }
+    
+    @Override
+    public void delete(String id){
+        categoryDao.delete(id);
+    }
+    
+    @Override
+    public void updateCate(String id, String name){
+        categoryDao.updateCate(id, name);
+    }
+    
+    @Override
+    public List<Category> getCateByCateName(String name){
+        return categoryDao.getCateByCateName(name);
     }
 }

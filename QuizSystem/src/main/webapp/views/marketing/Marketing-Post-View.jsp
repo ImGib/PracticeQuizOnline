@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Blog_List_App
-    Created on : Feb 20, 2023, 1:03:46 PM
+    Document   : Marketing-Post-View
+    Created on : Feb 23, 2023, 8:48:43 PM
     Author     : asus
 --%>
 
@@ -12,18 +12,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Blog List App - Bootdey.com</title>
+    <title>Blog Detail App - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
     <!-- Pignose Calender -->
-    <link href=asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <link href="asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
-    <link rel="stylesheet" href=asset/plugins/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href=asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="asset/plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="asset/css/style.css" rel="stylesheet">
 
@@ -208,7 +208,31 @@
             color: #666;
         }
 
-        .pagination li.active a, .card {
+        .pagination li.active a,
+        .pagination li.active a.page-link {
+            background: #03A9F4;
+        }
+
+        .pagination li.active a:hover {
+            background: #0397d6;
+        }
+
+        .pagination li.disabled i {
+            color: #ccc;
+        }
+
+        .pagination li i {
+            font-size: 16px;
+            padding-top: 6px
+        }
+
+        .hint-text {
+            float: left;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .card {
             background: #fff;
             transition: .5s;
             border: 0;
@@ -225,7 +249,7 @@
             font-weight: 400;
         }
 
-        .card .blog-header {
+        .card .blog-detail-header {
             color: #444;
             padding: 20px;
             position: relative;
@@ -469,30 +493,8 @@
             .blog-page .single_post .footer {
                 padding: 30px
             }
-        }
-        .pagination li.active a.page-link {
-            background: #03A9F4;
-        }
 
-        .pagination li.active a:hover {
-            background: #0397d6;
         }
-
-        .pagination li.disabled i {
-            color: #ccc;
-        }
-
-        .pagination li i {
-            font-size: 16px;
-            padding-top: 6px
-        }
-
-        .hint-text {
-            float: left;
-            margin-top: 10px;
-            font-size: 13px;
-        }
-        
     </style>
     <script>
         $(document).ready(function () {
@@ -529,9 +531,9 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="Home_App.html">
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src=asset/images/logo-compact.png" alt=""></span>
+                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
                         <img src="images/logo-text.png" alt="">
                     </span>
@@ -543,7 +545,7 @@
         ***********************************-->
 
         <!--**********************************
-            header start
+            Header start
         ***********************************-->
         <div class="header" style="margin-bottom: 10px;">
             <div class="header-content clearfix">
@@ -558,19 +560,19 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="images/user/1.png" height="40" width="40" alt="">
+                                <img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                            <a href="marketing-profile"><i class="icon-user"></i>
                                                 <span>Profile</span></a>
                                         </li>
 
                                         <hr class="my-2">
 
-                                        <li><a href="Login_App.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                        <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -581,7 +583,7 @@
             </div>
         </div>
         <!--**********************************
-            header end ti-comment-alt
+            Header end ti-comment-alt
         ***********************************-->
 
         <!--**********************************
@@ -590,14 +592,15 @@
         <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">Blog List</li>
+                    <li class="nav-label">Blog Detail</li>
                     <li>
-                        <a href="index.html" aria-expanded="false">
+                        <a href="Admin_Dashboard.html" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="admin_user_management.html"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
+                        <a href="Admin_User_Management.html"><i class="icon-user"></i> <span class="nav-text">User
+                                Management</span></a>
                     </li>
 
                 </ul>
@@ -610,148 +613,69 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-        <div id="main-content" class="blog-page">
-            <div class="container">
-                <div class="row clearfix">
-                    <div class="col-lg-8 col-md-12 left-box">
-                        <div class="card single_post">
-                            <div class="body">
-                                <div class="img-post">
-                                    <img class="d-block img-fluid" src="https://www.bootdey.com/image/800x280/FFB6C1/000000"
-                                        alt="First slide">
-                                </div>
-                                <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of
-                                    a page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                    more-or-less normal</p>
-                            </div>
-                            <div class="footer">
-                                <div class="actions">
-                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card single_post">
-                            <div class="body">
-                                <div class="img-post">
-                                    <img class="d-block img-fluid" src="https://www.bootdey.com/image/800x280/FFB6C1/000000"
-                                        alt="">
-                                </div>
-                                <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of
-                                    a page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                    more-or-less normal</p>
-                            </div>
-                            <div class="footer">
-                                <div class="actions">
-                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card single_post">
-                            <div class="body">
-                                <div class="img-post">
-                                    <img class="d-block img-fluid" src="https://www.bootdey.com/image/800x280/FFB6C1/000000"
-                                        alt="">
-                                </div>
-                                <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of
-                                    a page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                    more-or-less normal</p>
-                            </div>
-                            <div class="footer">
-                                <div class="actions">
-                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card single_post">
-                            <div class="body">
-                                <div class="img-post">
-                                    <img class="d-block img-fluid" src="https://www.bootdey.com/image/800x280/FFB6C1/000000"
-                                        alt="">
-                                </div>
-                                <h3><a href="Blog_Detail_App.html">All photographs are accurate</a></h3>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of
-                                    a page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                    more-or-less normal</p>
-                            </div>
-                            <div class="footer">
-                                <div class="actions">
-                                    <a href="Blog_Detail_App.html" class="btn btn-outline-secondary">Continue Reading</a>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="pagination pagination-primary">
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
-                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 col-md-12 right-box">
-                        <div class="card">
-                            <div class="body search">
-                                <div class="input-group m-b-0">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+        <div class="content-body">
+            <div id="main-content" class="blog-page">
+                <div class="container">
+                    <div class="row clearfix">
+                        <div class="col-lg-8 col-md-12 left-box">
+                            <div class="card single_post">
+                                <div class="body">
+                                    <div class="img-post">
+                                        <img class="d-block img-fluid"
+                                            src="${p.getImg()}" alt="Image">
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <h3>${p.getTittle()}</h3>
+                                    <p>${p.getDetails()}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="blog-header">
-                                <h2>List Categories</h2>
-                            </div>
-                            <div class="body widget">
-                                <ul class="list-unstyled categories-clouds m-b-0">
-                                    <li><a href="javascript:void(0);">eCommerce</a></li>
-                                    <li><a href="javascript:void(0);">Microsoft Technologies</a></li>
-                                    <li><a href="javascript:void(0);">Creative UX</a></li>
-                                    <li><a href="javascript:void(0);">Wordpress</a></li>
-                                    <li><a href="javascript:void(0);">Angular JS</a></li>
-                                    <li><a href="javascript:void(0);">Enterprise Mobility</a></li>
-                                    <li><a href="javascript:void(0);">Website Design</a></li>
-                                    <li><a href="javascript:void(0);">HTML5</a></li>
-                                    <li><a href="javascript:void(0);">Infographics</a></li>
-                                    <li><a href="javascript:void(0);">Wordpress Development</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="blog-header">
-                                <h2>Popular Posts</h2>
-                            </div>
-                            <div class="body widget popular-post">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="single_post">
-                                            <p class="m-b-0">Apple Introduces Search Ads Basic</p>
-                                            <span>jun 22, 2018</span>
-                                            <div class="img-post">
-                                                <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
-                                                    alt="Awesome Image">
-                                            </div>
+                        <div class="col-lg-4 col-md-12 right-box">
+                            <div class="card">
+                                <div class="body search">
+                                    <div class="input-group m-b-0">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-search"></i></span>
                                         </div>
-                                        <div class="single_post">
-                                            <p class="m-b-0">new rules, more cars, more races</p>
-                                            <span>jun 8, 2018</span>
-                                            <div class="img-post">
-                                                <img src="https://www.bootdey.com/image/280x280/FFB6C1/000000"
-                                                    alt="Awesome Image">
+                                        <input type="text" class="form-control" placeholder="Search...">
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="card">
+                                <div class="blog-detail-header">
+                                    <h2>Popular Posts</h2>
+                                </div>
+                                <div class="body widget popular-post">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="single_post">
+                                                <p class="m-b-0">${p2.getTittle()}</p>
+                                                <span>${p2.getPublicDate()}</span>
+                                                <div class="img-post">
+                                                    <a href="marketing-viewpost?id=${p2.getId()}"><img src="${p2.getImg()}"
+                                                                    alt="Awesome Image"></a>
+                                                </div>
+                                            </div>
+                                            <div class="single_post">
+                                                <p class="m-b-0">${p3.getTittle()}</p>
+                                                <span>${p3.getPublicDate()}</span>
+                                                <div class="img-post">
+                                                   <a href="marketing-viewpost?id=${p3.getId()}"><img src="${p3.getImg()}"
+                                                                    alt="Awesome Image"></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+    
+    
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <!--**********************************
             Content body end
         ***********************************-->
@@ -760,12 +684,6 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
-                    2018</p>
-            </div>
-        </div>
         <!--**********************************
             Footer end
         ***********************************-->
@@ -784,26 +702,26 @@
     <script src="asset/js/styleSwitcher.js"></script>
 
     <!-- Chartjs -->
-    <script src=asset/plugins/chart.js/Chart.bundle.min.js"></script>
+    <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
     <!-- Circle progress -->
-    <script src=asset/plugins/circle-progress/circle-progress.min.js"></script>
+    <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
     <!-- Datamap -->
-    <script src=asset/plugins/d3v3/index.js"></script>
-    <script src=asset/plugins/topojson/topojson.min.js"></script>
-    <script src=asset/plugins/datamaps/datamaps.world.min.js"></script>
+    <script src="asset/plugins/d3v3/index.js"></script>
+    <script src="asset/plugins/topojson/topojson.min.js"></script>
+    <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
     <!-- Morrisjs -->
-    <script src=asset/plugins/raphael/raphael.min.js"></script>
-    <script src=asset/plugins/morris/morris.min.js"></script>
+    <script src="asset/plugins/raphael/raphael.min.js"></script>
+    <script src="asset/plugins/morris/morris.min.js"></script>
     <!-- Pignose Calender -->
-    <script src=asset/plugins/moment/moment.min.js"></script>
-    <script src=asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <script src="asset/plugins/moment/moment.min.js"></script>
+    <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
     <!-- ChartistJS -->
-    <script src=asset/plugins/chartist/js/chartist.min.js"></script>
-    <script src=asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-    
+    <script src="asset/plugins/chartist/js/chartist.min.js"></script>
+    <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
 
-    <script src=asset/js/dashboard/dashboard-1.js"></script>
+
+    <script src="asset/js/dashboard/dashboard-1.js"></script>
 
 </body>
 

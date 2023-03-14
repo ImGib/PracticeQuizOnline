@@ -612,6 +612,7 @@
                                                 <!--                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>-->
                                                 <div class="ms-2 c-details">
                                                     <h6 class="mb-0">${author.firstName} ${author.lastName}</h6> 
+                                                    <!--<h6 class="mb-0">${sub.idAuthor}</h6>--> 
                                                     <span>${sub.diffirentDate()}</span>
                                                 </div>
                                             </div>

@@ -4,6 +4,7 @@
     Author     : Gib
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -263,7 +264,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="index.html">
+                <a href="marketing-post">
                     <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
@@ -293,13 +294,16 @@
                             <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                     class="mdi mdi-magnify"></i></span>
                         </div>
-                        <input type="search" class="form-control" placeholder="Search..."
-                            aria-label="Search Dashboard">
-                        <div class="drop-down animated flipInX d-md-none">
-                            <form action="#">
-                                <input type="text" class="form-control" placeholder="Search">
+                        <form action="marketing-post" method="get">
+                                <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt}">
+                                <!--                            <button>submit</button>-->
                             </form>
-                        </div>
+
+                            <div class="drop-down animated flipInX d-md-none">
+                                <form action="#">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </form>
+                            </div>
                     </div>
                 </div>
                 <div class="header-right">
@@ -307,19 +311,18 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <img src="asset/images/user/1.png" height="40" width="40" alt="">
-                            </div>
+                                <img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">                            </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="Profile_Update_App.html"><i class="icon-user"></i>
+                                            <a href="marketing-profile"><i class="icon-user"></i>
                                                 <span>Profile</span></a>
                                         </li>
 
                                         <hr class="my-2">
 
-                                        <li><a href="login.jsp"><i class="icon-key"></i> <span>Logout</span></a>
+                                        <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -355,7 +358,7 @@
                                     <h2>Posts <b>Management</b></h2>
                                 </div>
                                 <div class="col-sm-7">
-                                    <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
+                                    <a href="marketing-addpost" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
                                         <span>Add New Post</span></a>
                                 </div>
                             </div>
@@ -363,7 +366,7 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>Id</th>
                                     <th>Title</th>
                                     <th>Date Created</th>
                                     <th>Author</th>
@@ -371,80 +374,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="#"> Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz Michael Holz</a></td>
-                                    <td>04/10/2013</td>
-                                    <td>Admin</td>
+                                <c:forEach items="${listP}" var="o">
+                                    <tr onclick="document.location='marketing-viewpost?id=${o.getId()}'">
+                                    <td>${o.getId()}</td>
+                                    <td><a href="#">${o.getTittle()}</a></td>
+                                    <td>${o.getPublicDate()}</td>
+                                    <td>${o.getIdAuthor()}</td>
                                     <td>
-                                        <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
+                                        <a href="marketing-editpost?id=${o.getId()}" class="settings" title="Settings" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE8B8;</i></a>
-                                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
+                                                <a href="marketing-deletepost?id=${o.getId()}" class="delete" title="Delete" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE5C9;</i></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href="#"> Paula Wilson</a></td>
-                                    <td>05/08/2014</td>
-                                    <td>Publisher</td>
-                                    <td>
-                                        <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE8B8;</i></a>
-                                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE5C9;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href="#"> Antonio Moreno</a></td>
-                                    <td>11/05/2015</td>
-                                    <td>Publisher</td>
-                                    <td>
-                                        <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE8B8;</i></a>
-                                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE5C9;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><a href="#"> Mary Saveley</a></td>
-                                    <td>06/09/2016</td>
-                                    <td>Reviewer</td>
-                                    <td>
-                                        <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE8B8;</i></a>
-                                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE5C9;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td><a href="#"> Martin Sommer</a></td>
-                                    <td>12/08/2017</td>
-                                    <td>Moderator</td>
-                                    <td>
-                                        <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE8B8;</i></a>
-                                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE5C9;</i></a>
-                                    </td>
-                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                         <div class="clearfix">
-                            <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                            <ul class="pagination">
-                                <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                            </ul>
-                        </div>
+                            <ul class="pagination" id="pag">
+                                <c:if test="${pageIndex!=1}">
+                                    <li class="page-item disabled"><a href="marketing-post?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                </c:if>
+                                        <c:forEach  begin="1" end="${totalPage}" var="i" >
+                                        <li class="page-item ${i==pageIndex?"active":""}"><a href="marketing-post?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
+                                        </c:forEach>
+                                        <c:if test="${pageIndex!=totalPage}">
+                                        
+                                    <li class="page-item"><a href="marketing-post?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                        </c:if>
+                                </ul>
                     </div>
                 </div>
             </div>
@@ -459,12 +417,7 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
-                    2018</p>
-            </div>
-        </div>
+        
         <!--**********************************
             Footer end
         ***********************************-->

@@ -72,9 +72,7 @@ public class Question {
                 return true;
             }
         }
-
         return false;
-
     }
     
     

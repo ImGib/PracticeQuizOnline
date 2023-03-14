@@ -33,4 +33,10 @@ public class SubjectTypeDao extends AbstractDao<SubType> implements ISubjectType
         update(sql, subId);
     }
     
+    @Override
+    public void deleteByCateId(String id){
+        String sql = "delete from SubType where idCate = ?";
+        update(sql, id);
+    }
+    
 }

@@ -125,9 +125,6 @@ public class Subject {
         this.numberEnroll = numberEnroll;
     }
 
-    
-    
-    
     public String diffirentDate() throws ParseException{
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
         Date secondDate = sf.parse(CheckUtil.getDateNow());

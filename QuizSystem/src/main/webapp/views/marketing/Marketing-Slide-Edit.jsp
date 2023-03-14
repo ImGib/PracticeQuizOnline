@@ -18,19 +18,16 @@
     <body>
         <div id="logreg-forms">
 
-            <form action="ChangeRole" method="post" class="">
-                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Edit Role</h1>
+            <form action="marketing-editslide" method="post" class="">
+                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Edit Slide ID: ${id}</h1>
                 <p class="text-danger">${wrongText}</p>
                 <p class="text-success">${successText}</p>
-                <input type="text" value="${user}" name="user" hidden="">
-                <label >Student</label><input name="role" type="radio" value="1" ${role==1?"checked":""}>
-                <label >Expert</label><input name="role" type="radio" value="2" ${role==2?"checked":""}>
-                <label >Market</label><input name="role" type="radio" value="3" ${role==3?"checked":""}>
-                <label >Sale</label><input name="role" type="radio" value="4" ${role==4?"checked":""}>
-                
+                <input type="text" value="${id}" name="id" hidden="">
+                <input type="text" value="${img}" name="img">
+                <input type="text" value="${hlink}" name="hlink">
                 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Edit</button>
-                <a href="Admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
+                <a href="marketing-slide" ><i class="fas fa-angle-left"></i> Back</a>
             </form>
             <br>
 
