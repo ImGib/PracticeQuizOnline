@@ -17,17 +17,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author admin
- */
 public class AbstractDao<T> implements GenericDao<T> {
 
     private final String serverName = "localhost";
     private final String dbName = "Quiz System";
-    private final String portNumber = "1111";
+    private final String portNumber = "5102";
     private final String userID = "sa";
-    private final String password = "12345";
+    private final String password = "giabao5102";
 
     public Connection getConnection() throws Exception {
         String url = "jdbc:sqlserver://" + serverName + ":" + portNumber

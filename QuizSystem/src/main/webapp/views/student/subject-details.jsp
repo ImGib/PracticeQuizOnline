@@ -607,9 +607,7 @@
                                 <div class="form-input-content">
                                     <div class="card login-form mb-0">
                                         <div class="card-body pt-5 mb-5">
-                                            <a class="text-center" href="home">
-                                                <h1>${requestScope.sub.name}</h1>
-                                            </a>         
+                                            <h1 class="text-center">${requestScope.sub.name}</h1>
 
                                             <div class="mt-5 mb-5 login-input">
                                                 <div class="form-group">
@@ -687,7 +685,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="form-group">
                                                         <div class="col-md-4 pt-1 mt-4" style="font-size: 20px;padding-left: 0px">
                                                             <span>The List Questions: </span>
@@ -748,11 +746,11 @@
         function closePopup() {
             popup.classList.remove("open-popup");
         }
-        
-        function validateForm(){
+
+        function validateForm() {
             let x = document.forms["popupForm"]["number"].value;
             let max = JSON.parse(${requestScope.questions.size()});
-            if (x < 1 || x > max || x === ""){
+            if (x < 1 || x > max || x === "") {
                 alert("Number of question error");
                 return false;
             }

@@ -31,9 +31,7 @@
                     <div><label class="mr-2" >Student</label><input name="role" type="radio" value="1" checked="" ${role==1?"checked":""}></div>
                     <div><label class="mr-2">Expert</label><input name="role" type="radio" value="2" ${role==2?"checked":""}></div>
                     <div><label class="mr-2">Market</label><input name="role" type="radio" value="3" ${role==3?"checked":""}></div>
-                    <div><label class="mr-2">Sale</label><input name="role" type="radio" value="4" ${role==4?"checked":""}></div>
                 </div>
-
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Add</button>
                 <a href="admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
             </form>
