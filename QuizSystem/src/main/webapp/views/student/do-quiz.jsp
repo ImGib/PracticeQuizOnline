@@ -495,11 +495,11 @@
                 }
             }
             .change-color{
-                    background-color: #5485b6;
-                }
-             .odd-color{
-                    background-color: #f4f4f4;
-                }
+                background-color: #5485b6;
+            }
+            .odd-color{
+                background-color: #f4f4f4;
+            }
         </style>
         <script>
             $(document).ready(function () {
@@ -509,10 +509,12 @@
         <script>
             function myFunction(idA, id) {
                 document.getElementById(idA).checked = true;
-                let c = document.getElementById(id);
-                c.classList.remove("odd-color");
-                c.classList.add("change-color");
+//                let c = document.getElementById(id);
+//                c.classList.remove("odd-color");
+//                c.classList.add("change-color");
             }
+
+            
         </script>
 
     </head>
@@ -630,9 +632,9 @@
                 </div>
             </div>
 
-         
+
         </div>
-     
+
         <script src="asset/plugins/common/common.min.js"></script>
         <script src="asset/js/custom.min.js"></script>
         <script src="asset/js/settings.js"></script>
@@ -661,9 +663,9 @@
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
         <script>
-            function chose(var input){
-                
-            }
+                                                                                function chose(var input) {
+
+                                                                                }
         </script>
     </body>
 

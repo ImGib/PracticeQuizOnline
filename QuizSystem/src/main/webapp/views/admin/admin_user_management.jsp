@@ -266,11 +266,11 @@
             ***********************************-->
             <div class="nav-header">
                 <div class="brand-logo">
-                    <a href="index.html">
-                        <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                        <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                    <a href="home">
+                        <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
+                        <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
                         <span class="brand-title">
-                            <img src="images/logo-text.png" alt="">
+                            <img src="asset/images/logo-text.png" alt="">
                         </span>
                     </a>
                 </div>
@@ -282,15 +282,15 @@
             <!--**********************************
                 Header start
             ***********************************-->
-            <div class="header">
-                <div class="header-content clearfix">
+            <div class="header mb-3">
+            <div class="header-content clearfix">
 
-                    <div class="nav-control">
-                        <div class="hamburger">
-                            <span class="toggle-icon"><i class="icon-menu"></i></span>
-                        </div>
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
                     </div>
-                    <div class="header-left">
+                </div>
+                <div class="header-left">
                         <div class="input-group icons">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
@@ -308,21 +308,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="header-right">
-                        <ul class="clearfix">
-                            <li class="icons dropdown"><a href="https://www.facebook.com/">
-                                    <i class="mdi mdi-email-outline"></i>
-                                    <span class="badge badge-pill gradient-1">3</span>
-                                </a>
-                            </li>
-                            <li class="icons dropdown">
-                                <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                    <span class="activity active"></span>
-                                    <img src="images/user/1.png" height="40" width="40" alt="">
-                                </div>
-                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                    <div class="dropdown-content-body">
-                                        <ul>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <c:if test="${sessionScope.account != null}">
                                             <li>
                                                 <a href="admin-profile"><i class="icon-user"></i>
                                                     <span>Profile</span></a>
@@ -330,16 +326,21 @@
 
                                             <hr class="my-2">
 
-                                            <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                            <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
                                             </li>
-                                        </ul>
-                                    </div>
+                                        </c:if>
+                                        <c:if test="${sessionScope.account == null}">
+                                            <li><a href="login"><i class="icon-key"></i> <span>Login</span></a>
+                                            </li>
+                                        </c:if>
+                                    </ul>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
             <!--**********************************
                 Header end ti-comment-alt
             ***********************************-->

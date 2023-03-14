@@ -79,17 +79,8 @@
                     </div>
                 </div>
                 <div class="header-left">
-                    <div class="input-group icons">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
-                                    class="mdi mdi-magnify"></i></span>
-                        </div>
-                        <form action="subject-list" method="get">
-                            <input type="text" name="search" class="form-control" placeholder="Search Subject"
-                                   aria-label="Search Dashboard">
-                        </form>
+                        
                     </div>
-                </div>
                 <div class="header-right">
                     <ul class="clearfix">
                         <li class="icons dropdown">
