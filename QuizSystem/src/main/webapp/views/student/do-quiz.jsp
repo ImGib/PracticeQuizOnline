@@ -495,11 +495,11 @@
                 }
             }
             .change-color{
-                    background-color: #5485b6;
-                }
-             .odd-color{
-                    background-color: #f4f4f4;
-                }
+                background-color: #5485b6;
+            }
+            .odd-color{
+                background-color: #f4f4f4;
+            }
         </style>
         <script>
             $(document).ready(function () {
@@ -509,10 +509,12 @@
         <script>
             function myFunction(idA, id) {
                 document.getElementById(idA).checked = true;
-                let c = document.getElementById(id);
-                c.classList.remove("odd-color");
-                c.classList.add("change-color");
+//                let c = document.getElementById(id);
+//                c.classList.remove("odd-color");
+//                c.classList.add("change-color");
             }
+
+            
         </script>
 
     </head>
@@ -603,20 +605,11 @@
                                                                     </div>
                                                                     <div class="ml-5" style="display: flex; flex-wrap: wrap;">
                                                                         <c:forEach var="ans" items="${ques.allAnswer()}">
-<<<<<<< Updated upstream
-                                                                            
-                                                                            <div class="col-md-5 mx-2 my-1" id="a${ques.id}b${ans.idAns}" onclick="chose(${idAns})"
-                                                                                 style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
-                                                                                <div class="mx-3 my-3">
-                                                                                    ${ans.answer}
-                                                                                    <input type="radio" name="answ${ques.id}" value="${ans.idAns}" id="${idAns}">
-=======
                                                                             <div class="col-md-5 mx-2 my-1 odd-color " id="a${ques.id}b${ans.idAns}" onclick="myFunction(${ans.idAns}, 'a${ques.id}b${ans.idAns}')"
                                                                                  style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px;width: 50%; ">
                                                                                 <div class="mx-3 my-3">
                                                                                     ${ans.answer}
                                                                                     <input id="${ans.idAns}" type="radio" name="answ${ques.id}" value="${ans.idAns}">
->>>>>>> Stashed changes
                                                                                 </div>
                                                                             </div>
                                                                         </c:forEach>
@@ -639,9 +632,9 @@
                 </div>
             </div>
 
-         
+
         </div>
-     
+
         <script src="asset/plugins/common/common.min.js"></script>
         <script src="asset/js/custom.min.js"></script>
         <script src="asset/js/settings.js"></script>
@@ -670,9 +663,9 @@
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
         <script>
-            function chose(var input){
-                
-            }
+                                                                                function chose(var input) {
+
+                                                                                }
         </script>
     </body>
 
