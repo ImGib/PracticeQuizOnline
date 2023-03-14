@@ -29,9 +29,6 @@
                     <label class="ml-4">Market</label><input class="ml-2" name="role" type="radio" value="3" ${role==3?"checked":""}>
                     <label class="ml-4">Sale</label><input class="ml-2" name="role" type="radio" value="4" ${role==4?"checked":""}>
                 </div>
-
-
-
                 <button class="btn btn-primary btn-block mb-3" type="submit"><i class="fas fa-user-plus"></i> Edit</button>
                 <a href="admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
 
