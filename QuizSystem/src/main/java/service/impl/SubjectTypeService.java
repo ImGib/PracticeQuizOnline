@@ -54,4 +54,9 @@ public class SubjectTypeService implements ISubjectTypeService{
         createNewSubType(cateIds, idS);
     }
     
+    @Override
+    public void deleteByIdCate(String id){
+        typeDao.deleteByCateId(id);
+    }
+    
 }

@@ -17,4 +17,6 @@ public interface ISubjectTypeDao extends GenericDao<SubType>{
     public List<SubType> getListCategoryIdBySubId(String subId);
     
     public void deleteSubTypeBySubId(int idSub);
+    
+    public void deleteByCateId(String id);
 }

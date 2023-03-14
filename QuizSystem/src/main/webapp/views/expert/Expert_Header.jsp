@@ -24,9 +24,9 @@
                     <div class="input-group icons">
                         <c:if test="${requestScope.isManageSubject}">
                             <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
-                                    class="mdi mdi-magnify"></i></span>
-                        </div>
+                                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
+                                        class="mdi mdi-magnify"></i></span>
+                            </div>
                             <form action="expert-subject-management" method="get">
                                 <input type="txt" hidden value="1" name="index">
                                 <input type="txt" class="form-control" placeholder="Search Dashboard"
@@ -37,10 +37,23 @@
 
                         <c:if test="${requestScope.isManageQuestion}">
                             <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
-                                    class="mdi mdi-magnify"></i></span>
-                        </div>
+                                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
+                                        class="mdi mdi-magnify"></i></span>
+                            </div>
                             <form action="expert-question-management" method="get">
+                                <input type="txt" hidden value="1" name="index">
+                                <input type="txt" class="form-control" placeholder="Search Dashboard"
+                                       aria-label="Search Dashboard" name="search" value="${requestScope.searchName}">
+                                <button type="submit" hidden></button>
+                            </form>
+                        </c:if>
+
+                        <c:if test="${requestScope.isManageCategory}">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
+                                        class="mdi mdi-magnify"></i></span>
+                            </div>
+                            <form action="expert-category-management" method="get">
                                 <input type="txt" hidden value="1" name="index">
                                 <input type="txt" class="form-control" placeholder="Search Dashboard"
                                        aria-label="Search Dashboard" name="search" value="${requestScope.searchName}">
