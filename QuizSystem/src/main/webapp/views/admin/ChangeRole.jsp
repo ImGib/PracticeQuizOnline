@@ -18,7 +18,7 @@
     <body>
         <div id="logreg-forms">
 
-            <form action="ChangeRole" method="post" class="">
+            <form action="admin-changerole" method="post" class="">
                 <h1 class="h3 mt-4 mb-5 font-weight-normal" style="text-align: center; font-size: 45px">Edit Role</h1>
                 <p class="text-danger">${wrongText}</p>
                 <p class="text-success">${successText}</p>
