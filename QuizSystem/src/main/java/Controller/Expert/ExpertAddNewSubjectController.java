@@ -30,7 +30,6 @@ public class ExpertAddNewSubjectController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Category> listC = CategoryService.getInstance().getAllCate();
-
         req.setAttribute("listC", listC);
         req.getRequestDispatcher("views/expert/Expert_AddNewSubject.jsp").forward(req, resp);
     }

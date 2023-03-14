@@ -1,9 +1,10 @@
 <%-- 
-    Document   : Expert_Statistic
-    Created on : Feb 23, 2023, 8:15:17 AM
+    Document   : Expert_Question_Management
+    Created on : Feb 23, 2023, 8:15:03 AM
     Author     : Lenovo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@
         <link rel="stylesheet" href="asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
         <!-- Custom Stylesheet -->
         <link href="asset/css/style.css" rel="stylesheet">
-        
+
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -35,7 +36,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <style>
             body {
                 color: #566787;
@@ -268,161 +268,162 @@
                 Nav header start
             ***********************************-->
             <jsp:include page="Expert_Nav.jsp"></jsp:include>
-            <!--**********************************
-                Nav header end
-            ***********************************-->
+                <!--**********************************
+                    Nav header end
+                ***********************************-->
 
-            <!--**********************************
-                Header start
-            ***********************************-->
+                <!--**********************************
+                    header start
+                ***********************************-->
             <jsp:include page="Expert_Header.jsp"></jsp:include>
-            <!--**********************************
-                Header end ti-comment-alt
-            ***********************************-->
+                <!--**********************************
+                    header end ti-comment-alt
+                ***********************************-->
 
-            <!--**********************************
-                Sidebar start
-            ***********************************-->
+                <!--**********************************
+                    Sidebar start
+                ***********************************-->
             <jsp:include page="Expert_Menu.jsp"></jsp:include>
-            <!--**********************************
-                Sidebar end
-            ***********************************-->
+                <!--**********************************
+                    Sidebar end
+                ***********************************-->
 
-            <!--**********************************
-                Content body start
-            ***********************************-->
-            <div class="content-body">
+                <!--**********************************
+                    Content body start
+                ***********************************-->
+                <div class="content-body">
+                    <div class="${requestScope.nameClass}" role="alert">
+                    ${requestScope.mess}
+                </div>
+                <div class="container-xl">
+                    <div class="table-responsive">
 
-                <div class="container-fluid mt-3">
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card gradient-1">
-                                <div class="card-body">
-                                    <h3 class="card-title text-white">Number Subject</h3>
-                                    <div class="d-inline-block">
-                                        <h2 class="text-white">${requestScope.numberSubject}</h2>
-                                        <p class="text-white mb-0"></p>
+                        <div class="table-wrapper">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h2>Categories <b>Management</b></h2>
                                     </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                                    <div class="col-sm-7">
+
+                                        <div class="btn btn-secondary" onclick="addCate()"><i class="material-icons">&#xE147;</i>
+                                            <span>Add New Category</span></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card gradient-2">
-                                <div class="card-body">
-                                    <h3 class="card-title text-white">Number Question</h3>
-                                    <div class="d-inline-block">
-                                        <h2 class="text-white">${requestScope.numberQuestion}</h2>
-                                        <p class="text-white mb-0"></p>
-                                    </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card gradient-3">
-                                <div class="card-body">
-                                    <h3 class="card-title text-white">Number Customers</h3>
-                                    <div class="d-inline-block">
-                                        <h2 class="text-white">${requestScope.numberStudent}</h2>
-                                        <p class="text-white mb-0"></p>
-                                    </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
-                                </div>
-                            </div>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Category's name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:set var="stt" value="0"></c:set>
+                                <c:forEach items="${requestScope.listC}" var="c">
+                                    <tr>
+                                        <c:set var="stt" value="${stt + 1}"></c:set>
+                                        <td>${stt}</td>
+                                        <td style="max-width:250px"><span style="max-width:250px; line-height: 1.8">${c.name}</span></td>
+
+                                        <td style="display: flex">
+                                            <a onclick="updateCate(${c.id})" class="settings btn" title="Update" data-toggle="tooltip"><i
+                                                    class="material-icons">&#xE8B8;</i></a>
+                                            <a href="expert-delete-category?id=${c.id}" class="delete btn" title="Delete" data-toggle="tooltip"><i
+                                                    class="material-icons">&#xE5C9;</i></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                        <div class="clearfix">
+                            <ul class="pagination">
+                                <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-category-management?index=${index-1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}">Previous</a></li>
+                                    <c:forEach begin="1" end="${totalPage}" var="i">
+                                    <li class="page-item ${index == i ? "active":""}"><a href="expert-category-management?index=${i}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">${i}</a></li>
+                                    </c:forEach>
+                                <li class="page-item" ${index == totalPage ? "hidden":""}><a href="expert-category-management?index=${index+1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">Next</a></li>
+                            </ul>
                         </div>
                     </div>
-
-                    <div class="container-fluid mt-3">
-                        <canvas id="myChart" style="width:100%;max-width:1000px; align-items: center" ></canvas>
-                    </div>
-                    <script>
-                        var yValues = ${requestScope.yValue};
-                        var barColors = ["red", "green", "blue", "orange", "brown", "black", "pink" , "grey"];
-
-                        function passValue() {
-                            return ${requestScope.xValue};
-                        }
-                        new Chart("myChart", {
-                            type: "bar",
-                            data: {
-                                labels: passValue(),
-                                datasets: [{
-                                        backgroundColor: barColors,
-                                        data: yValues
-                                    }]
-                            },
-                            options: {
-                                legend: {display: false},
-                                title: {
-                                    display: true,
-                                    text: "The number student who erolled to practice"
-                                }
-                            }
-                        });
-
-                    </script>
-
-                </div>
-                <!-- #/ container -->
-            </div>
-            <!--**********************************
-                Content body end
-            ***********************************-->
-
-
-            <!--**********************************
-                Footer start
-            ***********************************-->
-            <div class="footer">
-                <div class="copyright">
-                    <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
-                        2018</p>
                 </div>
             </div>
-            <!--**********************************
-                Footer end
-            ***********************************-->
+
+            <!-- #/ container -->
         </div>
         <!--**********************************
-            Main wrapper end
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
         ***********************************-->
 
         <!--**********************************
-            Scripts
+            Footer end
         ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+
+    <script src="asset/plugins/common/common.min.js"></script>
+    <script src="asset/js/custom.min.js"></script>
+    <script src="asset/js/settings.js"></script>
+    <script src="asset/js/gleek.js"></script>
+    <script src="asset/js/styleSwitcher.js"></script>
+
+    <!-- Chartjs -->
+    <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="asset/plugins/d3v3/index.js"></script>
+    <script src="asset/plugins/topojson/topojson.min.js"></script>
+    <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="asset/plugins/raphael/raphael.min.js"></script>
+    <script src="asset/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="asset/plugins/moment/moment.min.js"></script>
+    <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="asset/plugins/chartist/js/chartist.min.js"></script>
+    <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
 
 
-        <script src="asset/js/dashboard/dashboard-1.js"></script>
-        <script src="asset/plugins/common/common.min.js"></script>
-        <script src="asset/js/custom.min.js"></script>
-        <script src="asset/js/settings.js"></script>
-        <script src="asset/js/gleek.js"></script>
-        <script src="js/styleSwitcher.js"></script>
+    <script src="asset/js/dashboard/dashboard-1.js"></script>
 
-        <!-- Chartjs -->
-        <script src="asset//plugins/chart.js/Chart.bundle.min.js"></script>
-        <!-- Circle progress -->
-        <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
-        <!-- Datamap -->
-        <script src="asset/plugins/d3v3/index.js"></script>
-        <script src="asset/plugins/topojson/topojson.min.js"></script>
-        <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
-        <!-- Morrisjs -->
-        <script src="asset/plugins/raphael/raphael.min.js"></script>
-        <script src="asset/plugins/morris/morris.min.js"></script>
-        <!-- Pignose Calender -->
-        <script src="asset/plugins/moment/moment.min.js"></script>
-        <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-        <!-- ChartistJS -->
-        <script src="asset/plugins/chartist/js/chartist.min.js"></script>
-        <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+    <script src="asset/js/dashboard/dashboard-1.js"></script>
 
+    <script>
+                                                function searchBySub() {
+                                                    document.getElementById("subForm").submit();
+                                                }
 
+                                                function addCate() {
+                                                    let cate = prompt("Please enter new Category's name");
+                                                    if (cate != "" && cate != null) {
+                                                        window.location = "expert-add-category?name=" + cate;
+                                                    }
+                                                }
 
-        <script src="asset/js/dashboard/dashboard-1.js"></script>
+                                                function updateCate(id) {
+                                                    let cate = prompt("Please enter new Category's name you want to update");
+                                                    if (cate != "" && cate != null) {
+                                                        window.location = "expert-update-cate?id=" + id + "&&name=" + cate;
+                                                    }
+                                                }
+    </script>
 
-    </body>
+</body>
 
 </html>

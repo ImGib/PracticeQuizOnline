@@ -28,7 +28,11 @@
                                 <i class="icon-speedometer menu-icon"></i><span class="nav-text">Manage Questions</span>
                             </a>
                         </li>
-                        
+                        <li>
+                            <a href="expert-category-management?index=1&&search=" aria-expanded="false">
+                                <i class="icon-speedometer menu-icon"></i><span class="nav-text">Manage Categories</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>

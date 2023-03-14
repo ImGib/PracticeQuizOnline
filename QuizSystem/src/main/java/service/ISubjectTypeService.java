@@ -18,4 +18,6 @@ public interface ISubjectTypeService {
     public List<SubType> getListCategoryIdBtSubId(String idSub);
     
     public void editSubType(int idSub, String[] cateIds);
+    
+    public void deleteByIdCate(String id);
 }
