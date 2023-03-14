@@ -16,11 +16,7 @@
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Maketting Manager</li>
-                    <li>
-                        <a href="Maketting_ManagePost_App.html">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dash Board</span>
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="marketing-post">
                             <i class="icon-user"></i> <span class="nav-text">Manage Post</span>

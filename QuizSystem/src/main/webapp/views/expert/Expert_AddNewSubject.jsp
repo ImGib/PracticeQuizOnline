@@ -579,7 +579,7 @@
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <input class="form-control" id="inputSubjectName" type="text"
-                                                                       placeholder="Subject name" name="subName" required pattern="[0-9a-zA-Z]+">
+                                                                       placeholder="Subject name" name="subName" required>
                                                             </div>
                                                             <!-- Form Group (last name)-->
                                                         </div>

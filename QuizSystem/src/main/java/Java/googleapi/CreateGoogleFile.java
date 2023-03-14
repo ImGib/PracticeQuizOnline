@@ -68,7 +68,7 @@ public class CreateGoogleFile {
     }
 
     public static void main(String[] args) throws IOException {
-        String url= "C:\\Users\\Gib\\OneDrive\\Pictures\\313198147_1519400735188075_8799590576274760576_n.jpg";
+        String url="C:\\Users\\asus\\Pictures\\th.jpg";
         java.io.File uploadFile = new java.io.File(url);
             
         String idParent="1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ";

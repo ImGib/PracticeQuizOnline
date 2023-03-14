@@ -6,8 +6,17 @@ package dao;
 
 import java.util.List;
 import model.Category;
+import utils.PageUtil;
 
 public interface ICategoryDao extends GenericDao<Category>{
     List<Category> getAllCate();
     List<Category> getCateBySubID(int id);
+    List<Category> getCategoryByPaging(PageUtil p);
+    int getNumberCateByPaging(PageUtil p) ;
+    void addNewCate(String name);
+    void delete(String id);
+    
+    void updateCate(String id, String name);
+    
+    List<Category> getCateByCateName(String name);
 }
