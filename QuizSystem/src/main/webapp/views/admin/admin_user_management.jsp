@@ -324,7 +324,7 @@
                                     <div class="dropdown-content-body">
                                         <ul>
                                             <li>
-                                                <a href="app-profile.html"><i class="icon-user"></i>
+                                                <a href="admin-profile"><i class="icon-user"></i>
                                                     <span>Profile</span></a>
                                             </li>
 
@@ -463,8 +463,6 @@
             ***********************************-->
             <div class="footer">
                 <div class="copyright">
-                    <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
-                        2018</p>
                 </div>
             </div>
             <!--**********************************

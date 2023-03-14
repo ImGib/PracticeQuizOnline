@@ -104,44 +104,48 @@ public class Fillter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
 
-//        HttpServletRequest req = (HttpServletRequest) request;
-//        String url = req.getRequestURI();
-//        if (!url.contains("login-google")) {
-//            HttpServletResponse res = (HttpServletResponse) response;
-//            HttpSession ses = req.getSession();
-//            Account account = (Account) ses.getAttribute("account");
-//            int role = -1;
-//            try {
-//                role = account.getRole();
-//            } catch (Exception e) {
-//            }
-//
-//            if (url.contains(".jsp")) {
-//                res.sendRedirect("home");
-//            }
-//            if (account == null) {
-//                if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
-//                    res.sendRedirect("login");
-//                }
-//            } else if (account != null) {
-//                if (url.contains("login")) {
-//                    res.sendRedirect("logout");
-//                } else if (role == 0) {
-//                    if (!url.contains("admin")) {
-//                        res.sendRedirect("admin");
-//                    } 
-//                } else if (role == 2) {
-//                    if (!url.contains("expert")) {
-//                        res.sendRedirect("expert-home");
-//                    }
-//                } else if (role == 3) {
-//                    if (!url.contains("marketing")) {
-//                        res.sendRedirect("marketing-post");
-//                    }
-//                } 
-//                //chain.doFilter(req, res);
-//            }
-//        }
+        HttpServletRequest req = (HttpServletRequest) request;
+        String url = req.getRequestURI();
+        if (!url.contains("login-google")) {
+            HttpServletResponse res = (HttpServletResponse) response;
+            HttpSession ses = req.getSession();
+            Account account = (Account) ses.getAttribute("account");
+            int role = -1;
+            try {
+                role = account.getRole();
+            } catch (Exception e) {
+            }
+
+            if (url.contains(".jsp")) {
+                res.sendRedirect("home");
+            }
+            if (account == null) {
+                if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
+                    res.sendRedirect("login");
+                }
+            } else if (account != null) {
+                if (url.contains("login")) {
+                    res.sendRedirect("logout");
+                } else if (role == 0) {
+                    if (!url.contains("admin")) {
+                        res.sendRedirect("admin-home");
+                    } 
+                } else if (role == 2) {
+                    if (!url.contains("expert")) {
+                        res.sendRedirect("expert-home");
+                    }
+                } else if (role == 3) {
+                    if (!url.contains("marketing")) {
+                        res.sendRedirect("marketing-post");
+                    }
+                } else if(role ==1){
+                    if (url.contains("admin") || url.contains("marketing") || url.contains("expert")) {
+                        res.sendRedirect("home");
+                    }
+                }
+                //chain.doFilter(req, res);
+            }
+        }
 
         doBeforeProcessing(request, response);
 
