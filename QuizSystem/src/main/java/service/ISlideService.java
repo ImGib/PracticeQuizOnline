@@ -25,4 +25,5 @@ public interface ISlideService {
     List<Slide> findAllSlide();
     
     int lastIndex();
+    List<Slide> getAll();
 }

@@ -7,6 +7,7 @@ package service.impl;
 import dao.impl.SlideDao;
 import java.util.List;
 import model.Slide;
+import model.Slider;
 import service.ISlideService;
 
 /**
@@ -40,7 +41,7 @@ public class SlideService implements ISlideService {
     }
 
     @Override
-    public void editSlide(int id,String img, String hlink){
+    public void editSlide(int id, String img, String hlink) {
         slideDao.editSlide(id, img, hlink);
     }
 
@@ -64,6 +65,8 @@ public class SlideService implements ISlideService {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-   
-
+    @Override
+    public List<Slide> getAll() {
+        return slideDao.getAll();
+    }
 }

@@ -6,6 +6,7 @@ package dao;
 
 import java.util.List;
 import model.Slide;
+import model.Slider;
 
 /**
  *
@@ -23,4 +24,5 @@ public interface ISlideDao extends GenericDao<Slide>{
     List<Slide> findSlideById(int id);
     
     List<Slide> findAllSlide();
+    List<Slide> getAll();
 }
