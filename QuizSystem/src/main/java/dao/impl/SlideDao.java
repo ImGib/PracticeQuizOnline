@@ -31,8 +31,6 @@ public class SlideDao extends AbstractDao<Slide> implements ISlideDao {
         update(sql, s.getImg(), s.getHyperlink(), s.getIdAuthor());
     }
 
-   
-
     @Override
     public void deleteSlide(int id) {
         String sql = "delete Slider\n"
@@ -44,12 +42,12 @@ public class SlideDao extends AbstractDao<Slide> implements ISlideDao {
     public List<Slide> findSlideById(int i) {
         String sql = "select * from Slider\n"
                 + "where id=?";
-        return query(sql, SlideMapper.getInstance(),i);
+        return query(sql, SlideMapper.getInstance(), i);
     }
 
     @Override
     public List<Slide> findAllSlide() {
-        String sql="select * from Slider";
+        String sql = "select * from Slider";
         return query(sql, SlideMapper.getInstance());
     }
 
@@ -59,7 +57,12 @@ public class SlideDao extends AbstractDao<Slide> implements ISlideDao {
                 + "set img = ?,\n"
                 + "hyperlink = ?\n"
                 + "where id=?";
-        update(sql, img,hlink,id);
+        update(sql, img, hlink, id);
     }
-   
+
+    @Override
+    public List<Slide> getAll() {
+        String sql = "select * from Slider";
+        return query(sql, new SlideMapper());
+    }
 }

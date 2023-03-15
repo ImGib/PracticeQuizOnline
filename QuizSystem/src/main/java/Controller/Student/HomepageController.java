@@ -20,7 +20,7 @@ import model.Subject;
 import service.impl.AccountService;
 import service.impl.CategoryService;
 import service.impl.PostService;
-import service.impl.SliderService;
+import service.impl.SlideService;
 import service.impl.SubjectService;
 import utils.SessionUtil;
 
@@ -34,7 +34,7 @@ public class HomepageController extends HttpServlet {
         SessionUtil.getInstance().putValue(request, "pplPost", PostService.getInstance().getTopPopular());
 
         request.setAttribute("accService", AccountService.getInstance());
-        request.setAttribute("sliders", SliderService.getIntance().getAll());
+        request.setAttribute("sliders", SlideService.getInstance().getAll());
         request.setAttribute("sbjList", SubjectService.getInstance().getTopThree());
         request.setAttribute("pstList", PostService.getInstance().getTopTwo());
         request.setAttribute("cateList", CategoryService.getInstance().getAllCate());

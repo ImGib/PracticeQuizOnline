@@ -449,11 +449,11 @@
                         <!-- Form Group (first name)-->
                         <div class="col-md-3 pt-1"
                              style="text-align: center;font-size: 20px;">
-                            <span>Derect Hiperlink: </span>
+                            <span>Direct Hyperlink: </span>
                         </div>    
                         <div class="col-md-6">
                             <input class="form-control" id="inputExpertName" type="text"
-                                   placeholder="Hiperlink" name="hlink" value="${hlink}">
+                                   placeholder="Hyperlink" name="hlink" value="${hlink}">
                         </div>
                         <!-- Form Group (last name)-->
                     </div>
@@ -504,11 +504,11 @@
                         <!-- Form Group (first name)-->
                         <div class="col-md-3 pt-1"
                              style="text-align: center;font-size: 20px;">
-                            <span>Derect Hiperlink: </span>
+                            <span>Direct Hyperlink: </span>
                         </div>    
                         <div class="col-md-6">
                             <input class="form-control" id="inputExpertName" type="text"
-                                   placeholder="Hiperlink" name="hlink" value="${hlink}">
+                                   placeholder="Hyperlink" name="hlink" value="${hlink}">
                         </div>
                         <!-- Form Group (last name)-->
                     </div>
