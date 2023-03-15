@@ -572,7 +572,7 @@
                                     <div class="card login-form mb-0">
                                         <div class="card-body pt-5">
                                             <span class="text-center" href="">
-                                                <h1>Test</h1>
+                                                <h1>Quiz Practice</h1>
                                             </span>
 
                                             <!-- form -->
@@ -593,15 +593,15 @@
                                                                             <c:set value="" var="checked"></c:set>
 
                                                                             <c:if test="${ans.getIdAns() == ques.rightAnswer().getIdAns()}">
-                                                                                <c:set value="bg-success" var="checked"></c:set>
+                                                                                <c:set value="bg-success text-white" var="checked"></c:set>
                                                                             </c:if>
 
                                                                             <c:if test="${!ques.checkAnswer(checkList)}">
                                                                                 <c:if test="${ans.isChecked(checkList)}">
-                                                                                    <c:set value="bg-danger" var="checked"></c:set>
+                                                                                    <c:set value="bg-danger text-white" var="checked"></c:set>
                                                                                 </c:if>
                                                                             </c:if>
-                                                                            <div class="col-md-5 mx-2 my-1 ${checked}"
+                                                                            <div class="col-md-5 mx-2 my-1 ${checked} "
                                                                                  style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
                                                                                 <div class="mx-3 my-3">
                                                                                     ${ans.answer}

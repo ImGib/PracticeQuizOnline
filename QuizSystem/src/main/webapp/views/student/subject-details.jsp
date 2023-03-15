@@ -668,7 +668,7 @@
                                                             Do Quiz</button>
 
                                                         <div class="popup" id="popup">
-                                                            <h2 class="mt-4 mb-4">Enter number of question (${requestScope.questions.size()}):</h2>
+                                                            <h2 class="mt-4 mb-4 text-white">Enter number of question (${requestScope.questions.size()}):</h2>
                                                             <form name="popupForm" method="get" action="do-quiz" onsubmit="return validateForm()">
                                                                 <div>
                                                                     <input type="text" class="form-control" name="number" pattern="[0-9]">                                                                    
@@ -742,6 +742,7 @@
         let popup = document.getElementById("popup");
         function openPopup() {
             popup.classList.add("open-popup");
+            $("html, body").animate({ scrollTop: 0 }, "slow");
         }
         function closePopup() {
             popup.classList.remove("open-popup");
