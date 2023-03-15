@@ -39,11 +39,9 @@ public class LoginController extends HttpServlet{
         if (a != null) {
             SessionUtil.getInstance().putValue(req, "account", a);
             resp.sendRedirect("home");
-//            req.getRequestDispatcher("views/student/home.jsp").forward(req, resp);
         } else {
             req.setAttribute("mess", "Wrong email or password!");
             doGet(req, resp);
         }
     }
-    
 }

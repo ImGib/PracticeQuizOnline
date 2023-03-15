@@ -43,7 +43,6 @@ public class DoQuizController extends HttpServlet {
         List<String> radio = new ArrayList<>();
         for(Question q : list){
             radio.add(req.getParameter("answ" + q.getId()));
-            System.out.println(req.getParameter("answ" + q.getId()));
         }
         req.setAttribute("checkList", radio);
         req.setAttribute("list", list);

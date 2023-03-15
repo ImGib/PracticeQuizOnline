@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,7 +39,6 @@ public class UserProfileController extends HttpServlet {
         if (req.getParameter("inputPhone") != null) {
             acc.setPhone(req.getParameter("inputPhone"));
         }
-        System.out.println(req.getParameter("inputPhone"));
         if (req.getParameter("inputFirstName") != null) {
             acc.setFirstName(req.getParameter("inputFirstName"));
         }
@@ -61,12 +61,28 @@ public class UserProfileController extends HttpServlet {
 
             String filename = file.getSubmittedFileName();
 
+//            System.out.println(filename);
+//            
+//            String realpath = req.getServletContext().getRealPath("");
+//            realpath = realpath.replace("target\\QuizSystem-1.0\\", "src\\main\\webapp\\images\\avt\\");
+//            
+//            File theDir = new File(realpath);
+//            if (!theDir.exists()) {
+//                theDir.mkdirs();
+//            }
+//            
+//            UploadPathUtitl.getInstance().uploadPath(file, realpath + "/" + filename);
+//            
+////            System.out.println(realpath);
+//            acc.setImg(filename);
+//            src\main\webapp\asset\images\avatar
+
             String uploadPath = req.getServletContext().getRealPath("/asset/images/avatar");
             System.out.println("file part: " + uploadPath);
             file.write(uploadPath + "/" + filename);
             acc.setImg("http://drive.google.com/uc?export=view&id=" + UpFileToDriveUtil.MakeLink(uploadPath + "/" + filename, "1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ", null));
         }
-        System.out.println(acc.getUserName());
+        System.out.println(acc.getImg());
         AccountService.getInstance().updateProfile(acc);
         SessionUtil.getInstance().putValue(req, "account", acc);
         doGet(req, resp);
