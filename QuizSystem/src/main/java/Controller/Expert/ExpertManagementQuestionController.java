@@ -43,7 +43,7 @@ public class ExpertManagementQuestionController extends HttpServlet {
             idSub = -1;
         }
         PageUtil p = new PageUtil();
-        p.setNrpp(3);
+        p.setNrpp(10);
         p.setIndex(index);
         p.setSearch(search);
         p.setIdSub(idSub);
