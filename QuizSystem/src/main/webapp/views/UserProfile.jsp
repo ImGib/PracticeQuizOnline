@@ -461,7 +461,7 @@
                                         <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="inputUsername">Username </label>
-                                                <p class="form-control">${sessionScope.account.userName}</p>
+                                                <p class="form-control">${sessionScope.account.gmail}</p>
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="small mb-1" for="inputPhone">Phone number</label>

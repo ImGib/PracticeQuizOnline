@@ -26,6 +26,11 @@
         <!-- Custom Stylesheet -->
         <link href="asset/css/style.css" rel="stylesheet">
 
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -500,6 +505,8 @@
         <!-- ChartistJS -->
         <script src="asset/plugins/chartist/js/chartist.min.js"></script>
         <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
         <script>

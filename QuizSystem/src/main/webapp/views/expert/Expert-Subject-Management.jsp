@@ -389,7 +389,7 @@
                     <div class="clearfix">
                         <ul class="pagination">
                             <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-subject-management?index=${index-1}&&search=${search}">Previous</a></li>
-                                <c:forEach begin="1" end="${totalPage}" var="i">
+                                <c:forEach begin="${(index-2)<0?1:(index-2)}" end="${(index+2)<totalPage?(index+2):totalPage}" var="i">
                                 <li class="page-item ${index == i ? "active":""}"><a href="expert-subject-management?index=${i}&&search=${search}" class="page-link">${i}</a></li>
                                 
                                 </c:forEach>

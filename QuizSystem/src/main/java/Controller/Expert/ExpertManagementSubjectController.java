@@ -27,7 +27,7 @@ public class ExpertManagementSubjectController extends HttpServlet {
             String search = req.getParameter("search");
             int index = Integer.parseInt(req.getParameter("index"));
             PageUtil p = new PageUtil();
-            p.setNrpp(3);
+            p.setNrpp(9);
             p.setIndex(index);
             p.setSearch(search);
             Account a = (Account) SessionUtil.getInstance().getValue(req, "account");

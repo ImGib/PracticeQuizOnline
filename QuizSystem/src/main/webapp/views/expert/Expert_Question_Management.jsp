@@ -355,7 +355,7 @@
                             <div class="clearfix">
                                 <ul class="pagination">
                                     <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-question-management?index=${index-1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}">Previous</a></li>
-                                        <c:forEach begin="1" end="${totalPage}" var="i">
+                                        <c:forEach begin="${(index-2)<0?1:(index-2)}" end="${(index+2)<totalPage?(index+2):totalPage}" var="i">
                                         <li class="page-item ${index == i ? "active":""}"><a href="expert-question-management?index=${i}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">${i}</a></li>
                                         </c:forEach>
                                     <li class="page-item" ${index == totalPage ? "hidden":""}><a href="expert-question-management?index=${index+1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">Next</a></li>
