@@ -509,7 +509,6 @@
         <script>
             function myFunction(idA, id) {
                 document.getElementById(idA).checked = true;
-                
 //                let c = document.getElementById(id);
 //                c.classList.remove("odd-color");
 //                c.classList.add("change-color");
@@ -588,7 +587,7 @@
                                     <div class="card login-form mb-0">
                                         <div class="card-body pt-5">
                                             <span class="text-center" href="">
-                                                <h1>Quiz Practice</h1>
+                                                <h1>Test</h1>
                                             </span>
 
                                             <!-- form -->
@@ -609,8 +608,8 @@
                                                                             <div class="col-md-5 mx-2 my-1 odd-color " id="a${ques.id}b${ans.idAns}" onclick="myFunction(${ans.idAns}, 'a${ques.id}b${ans.idAns}')"
                                                                                  style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px;width: 50%; ">
                                                                                 <div class="mx-3 my-3">
-                                                                                    <input id="${ans.idAns}" type="radio" name="answ${ques.id}" value="${ans.idAns}">
                                                                                     ${ans.answer}
+                                                                                    <input id="${ans.idAns}" type="radio" name="answ${ques.id}" value="${ans.idAns}" required="">
                                                                                 </div>
                                                                             </div>
                                                                         </c:forEach>
@@ -620,7 +619,8 @@
                                                             </div>
                                                         </div>
                                                     </c:forEach>
-                                                    <input class="btn" type="submit"style="border: #242424 solid 1px; background-color: #ffc107; width: 300px;" value="Finish Quiz">
+
+                                                    <input class="btn" type="submit"style="border: #242424 solid 1px; background-color: #ffc107; width: 300px;" value="Finish HIM">
                                                 </div>
                                             </form>
                                         </div>
@@ -662,6 +662,11 @@
 
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
+        <script>
+                                                                                function chose(var input) {
+
+                                                                                }
+        </script>
     </body>
 
 </html>

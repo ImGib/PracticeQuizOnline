@@ -32,6 +32,7 @@ public class EnrollListControllers extends HttpServlet {
         SessionUtil.getInstance().putValue(req, "crPage", "Enroll List");
         paginationPage(req);
         req.setAttribute("accService", AccountService.getInstance());
+        req.setAttribute("isMyEnrollPage", true);
         req.getRequestDispatcher("views/student/enroll-list.jsp").forward(req, resp);
     }
 

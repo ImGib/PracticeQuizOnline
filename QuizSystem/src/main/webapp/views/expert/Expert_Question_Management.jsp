@@ -296,6 +296,9 @@
                     <div class="container-xl">
                         <div class="table-responsive">
                             <div class="table-wrapper">
+                                <div class="alert alert-warning" role="alert" ${requestScope.totalP == 0? "":"hidden"}>
+                                    Not found any question!!
+                                </div>
                                 <div class="table-title">
                                     <div class="row">
                                         <div class="col-sm-5">
@@ -342,10 +345,10 @@
                                             <td style="max-width:250px"><span style="max-width:250px; line-height: 1.8">${q.question}</span></td>
                                             <td>${q.subject}</td>
                                             <td><span class="status text-success">&bull;</span> Public</td>
-                                            <td>
-                                                <a href="expert-edit-question?id=${q.id}" class="settings" title="Update" data-toggle="tooltip"><i
+                                            <td style="display: flex">
+                                                <a href="expert-edit-question?id=${q.id}" class="settings btn" title="Update" data-toggle="tooltip"><i
                                                         class="material-icons">&#xE8B8;</i></a>
-                                                <a href="expert-delete-question?id=${q.id}" class="delete" title="Delete" data-toggle="tooltip"><i
+                                                <a onclick="deleteQ(${q.id})" class="delete btn" title="Delete" data-toggle="tooltip"><i
                                                         class="material-icons">&#xE5C9;</i></a>
                                             </td>
                                         </tr>
@@ -355,10 +358,10 @@
                             <div class="clearfix">
                                 <ul class="pagination">
                                     <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-question-management?index=${index-1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}">Previous</a></li>
-                                        <c:forEach begin="${(index-2)<0?1:(index-2)}" end="${(index+2)<totalPage?(index+2):totalPage}" var="i">
+                                        <c:forEach begin="${(index-2)<=0?1:(index-2)}" end="${(index+2)<totalPage?(index+2):totalPage}" var="i">
                                         <li class="page-item ${index == i ? "active":""}"><a href="expert-question-management?index=${i}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">${i}</a></li>
                                         </c:forEach>
-                                    <li class="page-item" ${index == totalPage ? "hidden":""}><a href="expert-question-management?index=${index+1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">Next</a></li>
+                                    <li class="page-item" ${index == totalPage ? "hidden":""} ${requestScope.totalP == 0? "hidden":""}><a href="expert-question-management?index=${index+1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">Next</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -421,6 +424,13 @@
         <script>
                                                         function searchBySub() {
                                                             document.getElementById("subForm").submit();
+                                                        }
+                                                        
+                                                        function deleteQ(id){
+                                                            let text = "Do you want to delete this question?";
+                                                            if(confirm(text)){
+                                                                window.location = "expert-delete-question?id=" + id;
+                                                            }
                                                         }
         </script>
 

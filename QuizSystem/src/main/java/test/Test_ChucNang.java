@@ -6,6 +6,7 @@ package test;
 
 import dao.impl.AbstractDao;
 import dao.impl.AccountDao;
+import dao.impl.SliderDao;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +25,7 @@ import service.impl.CategoryService;
 import service.impl.EnrollService;
 import service.impl.PostService;
 import service.impl.QuestionService;
+import service.impl.SliderService;
 import service.impl.SubjectService;
 import sun.security.provider.CtrDrbg;
 import utils.PagginationUtil;

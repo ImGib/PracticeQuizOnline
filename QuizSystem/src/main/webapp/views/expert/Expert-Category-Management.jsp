@@ -295,6 +295,9 @@
                     <div class="${requestScope.nameClass}" role="alert">
                     ${requestScope.mess}
                 </div>
+                <div class="alert alert-warning" role="alert" ${requestScope.totalP == 0? "":"hidden"}>
+                    Not found any category!!
+                </div>
                 <div class="container-xl">
                     <div class="table-responsive">
 
@@ -331,7 +334,7 @@
                                         <td style="display: flex">
                                             <a onclick="updateCate(${c.id})" class="settings btn" title="Update" data-toggle="tooltip"><i
                                                     class="material-icons">&#xE8B8;</i></a>
-                                            <a href="expert-delete-category?id=${c.id}" class="delete btn" title="Delete" data-toggle="tooltip"><i
+                                            <a onclick="deleteC(${c.id})" class="delete btn" title="Delete" data-toggle="tooltip"><i
                                                     class="material-icons">&#xE5C9;</i></a>
                                         </td>
                                     </tr>
@@ -341,10 +344,10 @@
                         <div class="clearfix">
                             <ul class="pagination">
                                 <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-category-management?index=${index-1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}">Previous</a></li>
-                                    <c:forEach begin="1" end="${totalPage}" var="i">
+                                    <c:forEach begin="${(index-2)<=0?1:(index-2)}" end="${(index+2)<totalPage?(index+2):totalPage}" var="i">
                                     <li class="page-item ${index == i ? "active":""}"><a href="expert-category-management?index=${i}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">${i}</a></li>
                                     </c:forEach>
-                                <li class="page-item" ${index == totalPage ? "hidden":""}><a href="expert-category-management?index=${index+1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">Next</a></li>
+                                <li class="page-item" ${index == totalPage ? "hidden":""} ${requestScope.totalP == 0? "hidden":""}><a href="expert-category-management?index=${index+1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">Next</a></li>
                             </ul>
                         </div>
                     </div>
@@ -420,6 +423,13 @@
                                                     let cate = prompt("Please enter new Category's name you want to update");
                                                     if (cate != "" && cate != null) {
                                                         window.location = "expert-update-cate?id=" + id + "&&name=" + cate;
+                                                    }
+                                                }
+                                                
+                                                function deleteC(id){
+                                                    let text = "Do you want delete this category?";
+                                                    if(confirm(text)){
+                                                        window.location = "expert-delete-category?id=" + id;
                                                     }
                                                 }
     </script>

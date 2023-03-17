@@ -41,7 +41,8 @@ public class ExpertManagmentCategory extends HttpServlet{
         p.setNrpp(3);
         p.setIndex(index);
         p.setSearch(search);
-        p.setTotalPage(CategoryService.getInstance().getNumberCateByPaging(p));
+        int numberProduct = CategoryService.getInstance().getNumberCateByPaging(p);
+        p.setTotalPage(numberProduct);
         List<Category> listC = CategoryService.getInstance().getCateByPaging(p);
         req.setAttribute("totalPage", p.getTotalPage());
         req.setAttribute("index", p.getIndex());
@@ -50,6 +51,7 @@ public class ExpertManagmentCategory extends HttpServlet{
         req.setAttribute("isManageCategory", true);
         req.setAttribute("nameClass", nameClass);
         req.setAttribute("mess", mess);
+        req.setAttribute("totalP", numberProduct);
         req.getRequestDispatcher("views/expert/Expert-Category-Management.jsp").forward(req, resp);
     }
     

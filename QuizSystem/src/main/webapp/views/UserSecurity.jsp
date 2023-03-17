@@ -403,7 +403,7 @@
                         
                             <div class="card-header">Delete Account</div>
                             <div class="card-body">
-                               <a href="user-delete-account"><button class="btn btn-danger-soft text-danger" type="button">I want delete my
+                               <a href="user-delete-account"><button class="btn btn-danger-soft text-danger" type="button">I want, delete my
                                 account</button></a> 
                             </div>
                     </div>

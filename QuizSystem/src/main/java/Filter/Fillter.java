@@ -127,15 +127,32 @@ public class Fillter implements Filter {
                 if (url.contains("login")) {
                     res.sendRedirect("logout");
                 } else if (role == 0) {
-                    if (!url.contains("admin")) {
+                    if(url.contains("security")){
+                        res.sendRedirect("admin-baomat");
+                    }else if(url.contains("profile")){
+                        res.sendRedirect("admin-infor");
+                    }
+                    else if (!url.contains("admin")) {
                         res.sendRedirect("admin-home");
                     } 
                 } else if (role == 2) {
-                    if (!url.contains("expert")) {
+                    if(url.contains("security")){
+                        res.sendRedirect("expert-baomat");
+                    }
+                    else if(url.contains("profile")){
+                        res.sendRedirect("expert-infor");
+                    }
+                    else if (!url.contains("expert")) {
                         res.sendRedirect("expert-home");
                     }
                 } else if (role == 3) {
-                    if (!url.contains("marketing")) {
+                    if(url.contains("security")){
+                        res.sendRedirect("marketing-baomat");
+                    }
+                    else if(url.contains("profile")){
+                        res.sendRedirect("marketing-infor");
+                    }
+                    else if (!url.contains("marketing")) {
                         res.sendRedirect("marketing-post");
                     }
                 } else if(role ==1){
