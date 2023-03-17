@@ -32,6 +32,7 @@ public class DoQuizController extends HttpServlet {
         
         
         String jsonList = new Gson().toJson(list);
+        req.setAttribute("isMyEnrollPage", true);
         req.setAttribute("values", jsonList);
         req.setAttribute("done", "None");
         req.setAttribute("list", list);
@@ -48,6 +49,7 @@ public class DoQuizController extends HttpServlet {
         req.setAttribute("checkList", radio);
         req.setAttribute("list", list);
         req.setAttribute("idSub", id);
+        req.setAttribute("isMyEnrollPage", true);
         req.getRequestDispatcher("views/student/review-quiz.jsp").forward(req, resp);
     }
 
