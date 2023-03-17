@@ -11,7 +11,7 @@ package utils;
 public class PagginationUtil {
 
     private int nrpp = 5;
-    private int totalPage = 2;
+    private int totalPage=0;
     private int size;
     public static PagginationUtil instance = null;
 

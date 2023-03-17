@@ -9,7 +9,7 @@ public interface IPostDao extends GenericDao<Post>{
     List<Post> getTopPopular();
     public int getNumberPost();
     
-    List<Post> findPostByTitleAndAuthor(String txt);
+    List<Post> findPostByTitleAndAuthor(String txt,String username);
     
     void addNewPost(Post p);
     
@@ -19,7 +19,7 @@ public interface IPostDao extends GenericDao<Post>{
     
     List<Post> findPostById(int id);
     
-    List<Post> findPostByTextAndPagination(String txt,int pageIndex,int nrpp);
+    List<Post> findPostByTextAndPagination(String txt,int pageIndex,int nrpp,String username);
     
     void editPost(int id,String img, String title,String detail);
     
@@ -32,4 +32,5 @@ public interface IPostDao extends GenericDao<Post>{
     Post getPostDetails(String id);
     int getLastIdPost();
     List<Post> getPostPagination(String txt, int pageIndex, int nrpp);
+    List<Post> findPostByText(String txt,int pageIndex,int nrpp);
 }
