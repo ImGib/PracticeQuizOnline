@@ -27,13 +27,15 @@ import java.util.List;
 /* class to demonstarte use of Drive files list API */
 public class DriveQuickstart {
 //
+    
+    
     private static final String APPLICATION_NAME = "Google Drive API Java Quickstart";
 
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
     // Directory to store user credentials for this application.
     private static final java.io.File CREDENTIALS_FOLDER //
-            = new java.io.File(System.getProperty("user.home"), "credentials");
+            = new java.io.File(System.getProperty("user.dir"), "credentials");
 
     private static final String CLIENT_SECRET_FILE_NAME = "client_secret.json";
 
