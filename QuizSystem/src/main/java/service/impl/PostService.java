@@ -126,4 +126,9 @@ public class PostService implements IPostService {
         return postDao.getLastIdPost();
     }
 
+    @Override
+    public List<Post> findPostByTitleAndAuthor(String txt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
