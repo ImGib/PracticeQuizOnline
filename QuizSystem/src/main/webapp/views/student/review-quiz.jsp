@@ -614,7 +614,7 @@
                                                             </div>
                                                         </div>
                                                     </c:forEach>
-                                                    <a class="btn" href="subject-details?id=${idSub}" style="border: #242424 solid 1px; background-color: #ffc107; width: 300px;" >Go Back</a>
+                                                    <a class="btn m-auto" href="subject-details?id=${idSub}" style="border: #242424 solid 1px; background-color: #c8e3f7; width: 300px;" >Go Back</a>
                                                 </div>
                                             </form>
                                         </div>

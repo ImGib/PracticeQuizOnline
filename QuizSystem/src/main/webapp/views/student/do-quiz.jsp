@@ -620,7 +620,7 @@
                                                         </div>
                                                     </c:forEach>
 
-                                                    <input class="btn" type="submit"style="border: #242424 solid 1px; background-color: #ffc107; width: 300px;" value="Finish HIM">
+                                                    <input class="btn m-auto" type="submit"style="border: #242424 solid 1px; background-color: #c8e3f7; width: 300px; " value="Finish HIM">
                                                 </div>
                                             </form>
                                         </div>

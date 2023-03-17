@@ -23,51 +23,16 @@
         </style>
     </head>
     <body>
-        <input type="button" id="btnOpenDialog"  value="Open Confirm Dialog" />
-        <div id="dialog-confirm">Are you sure you want to do whatever?</div>
+        <form action="test" method="post">
+            <div>hello</div>
+            <input type="file" id="btnOpenDialog"  />
+        </form>
         
-         <script>
-        function fnOpenNormalDialog() {
-            // Define the Dialog and its properties.
-            $("#dialog-confirm").dialog({
-                display: block,
-                resizable: false,
-                modal: true,
-                title: "Modal",
-                height: 250,
-                width: 400,
-                create: function (e, ui) {
-                    var pane = $(this).dialog("widget").find(".ui-dialog-buttonpane")
-                    $("<label class='shut-up' ><input  type='checkbox'/> Stop asking!</label>").prependTo(pane)
-                },
-                buttons: {
-                    "Yes": function () {
-                        $(this).dialog('close');
-                        callback(true);
-                    },
-                    "No": function () {
-                        $(this).dialog('close');
-                        callback(false);
-                    }
-                }
-            });
-        }
+        <img src="${requestScope.link}" alt="alt"/>
+        <div>${requestScope.link}</div>
 
-        $('#btnOpenDialog').click(fnOpenNormalDialog);
-        $(document).on("change", ".shut-up input", function () {
-            alert("shut up! " + this.checked)
-        })
 
-        function callback(value) {
-            if (value) {
-                alert("Confirmed");
-            } else {
-                alert("Rejected");
-            }
-        }
-
-    </script>
     </body>
 
-   
+
 </html>

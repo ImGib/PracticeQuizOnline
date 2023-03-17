@@ -23,4 +23,6 @@ public interface ISlideDao extends GenericDao<Slide>{
     List<Slide> findSlideById(int id);
     
     List<Slide> findAllSlide();
+    
+    
 }
