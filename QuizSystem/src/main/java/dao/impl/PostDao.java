@@ -7,6 +7,7 @@ package dao.impl;
 import dao.IPostDao;
 import java.util.List;
 import mapper.PostMapper;
+import model.Account;
 import model.Post;
 import service.impl.PostService;
 
@@ -30,12 +31,12 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
     }
 
     @Override
-    public List<Post> findPostByTitleAndAuthor(String txt) {
+    public List<Post> findPostByTitleAndAuthor(String txt,String username) {
         String sql = "select * from Post\n"
-                + "where title LIKE ? or\n"
-                + "	  idAuthor LIKE ?";
+                + "where title LIKE ? and\n"
+                + "	  idAuthor = ?";
         txt = "%" + txt + "%";
-        return query(sql, new PostMapper(), txt, txt);
+        return query(sql, new PostMapper(), txt, username);
     }
 
     @Override
@@ -79,14 +80,15 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
     }
 
     @Override
-    public List<Post> findPostByTextAndPagination(String txt, int pageIndex, int nrpp) {
-        String sql = "select * from Post\n"
-                + "                where title LIKE ? or\n"
-                + "                	  idAuthor LIKE ?\n"
-                + "order by id\n"
-                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+    public List<Post> findPostByTextAndPagination(String txt, int pageIndex, int nrpp,String username) {
+      
+        String sql = "select * from Post\n" +
+"                where idAuthor= ? and \n" +
+"				title LIKE ? \n" +
+"                order by id\n" +
+"                OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         txt = "%" + txt + "%";
-        return query(sql, PostMapper.getInstance(), txt, txt, (pageIndex - 1) * nrpp, nrpp);
+        return query(sql, PostMapper.getInstance(), username, txt, (pageIndex - 1) * nrpp, nrpp);
     }
     @Override
     public List<Post> getPostPagination(String txt, int pageIndex, int nrpp) {
@@ -148,6 +150,17 @@ public class PostDao extends AbstractDao<Post> implements IPostDao {
     public int getLastIdPost() {
         String sql="select MAX(id) from Post";
         return count(sql);
+    }
+
+    @Override
+    public List<Post> findPostByText(String txt, int pageIndex, int nrpp) {
+        String sql = "select * from Post\n"
+                + "                where title LIKE ? or\n"
+                + "                	  idAuthor LIKE ?\n"
+                + "order by id\n"
+                + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        txt = "%" + txt + "%";
+        return query(sql, PostMapper.getInstance(), txt, txt, (pageIndex - 1) * nrpp, nrpp);
     }
 
 }

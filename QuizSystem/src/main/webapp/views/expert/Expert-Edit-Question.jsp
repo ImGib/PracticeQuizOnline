@@ -563,7 +563,7 @@
                                         <div class="card login-form mb-0">
                                             <div class="card-body pt-5">
                                                 <a class="text-center" href="index.html">
-                                                    <h2>New Question</h2>
+                                                    <h2>Edit Question</h2>
                                                 </a>
                                                 <div class="${requestScope.nameClass}" role="alert">
                                                 ${requestScope.mess}
