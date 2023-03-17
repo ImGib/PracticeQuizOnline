@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Account;
 import service.impl.AccountService;
+import utils.CheckUtil;
 
 /**
  *
@@ -45,7 +46,7 @@ public class AddNewAccount extends HttpServlet {
         request.setAttribute("phone", phone);
         request.setAttribute("role", role);
 
-        Account a = new Account(user, pass, "", "", email, phone, Integer.parseInt(role), add, true, "");
+        Account a = new Account(user, CheckUtil.MD5Encryption(pass), "", "", email, phone, Integer.parseInt(role), add, true, "");
         String mess = AccountService.getInstance().checkValidateAddAccount(a);
         if (mess == null) {
             AccountService.getInstance().addAccountByAdmin(a);

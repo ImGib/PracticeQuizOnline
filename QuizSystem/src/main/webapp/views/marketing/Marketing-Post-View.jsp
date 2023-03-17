@@ -531,14 +531,14 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="Home_App.html">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
-                    </span>
-                </a>
-            </div>
+                    <a href="home">
+                        <b class="logo-abbr"><img src="asset/images/logo.png" alt=""> </b>
+                        <span class="logo-compact"><img src="asset/images/logo-compact.png" alt=""></span>
+                        <span class="brand-title">
+                            <img src="asset/images/logo-text.png" alt="">
+                        </span>
+                    </a>
+                </div>
         </div>
         <!--**********************************
             Nav header end
@@ -593,14 +593,14 @@
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Blog Detail</li>
+                   
                     <li>
-                        <a href="Admin_Dashboard.html" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
-                        </a>
+                        <a href="markeing-post"><i class="icon-user"></i> <span class="nav-text">User
+                                Manage Post</span></a>
                     </li>
                     <li>
-                        <a href="Admin_User_Management.html"><i class="icon-user"></i> <span class="nav-text">User
-                                Management</span></a>
+                        <a href="marketing-slide"><i class="icon-user"></i> <span class="nav-text">User
+                                Manage Slide</span></a>
                     </li>
 
                 </ul>
@@ -629,48 +629,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12 right-box">
-                            <div class="card">
-                                <div class="body search">
-                                    <div class="input-group m-b-0">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fa fa-search"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            <div class="card">
-                                <div class="blog-detail-header">
-                                    <h2>Popular Posts</h2>
-                                </div>
-                                <div class="body widget popular-post">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="single_post">
-                                                <p class="m-b-0">${p2.getTittle()}</p>
-                                                <span>${p2.getPublicDate()}</span>
-                                                <div class="img-post">
-                                                    <a href="marketing-viewpost?id=${p2.getId()}"><img src="${p2.getImg()}"
-                                                                    alt="Awesome Image"></a>
-                                                </div>
-                                            </div>
-                                            <div class="single_post">
-                                                <p class="m-b-0">${p3.getTittle()}</p>
-                                                <span>${p3.getPublicDate()}</span>
-                                                <div class="img-post">
-                                                   <a href="marketing-viewpost?id=${p3.getId()}"><img src="${p3.getImg()}"
-                                                                    alt="Awesome Image"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-    
-                        </div>
+                        
                     </div>
                 </div>
             </div>

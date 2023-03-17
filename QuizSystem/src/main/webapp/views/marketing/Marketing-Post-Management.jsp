@@ -31,6 +31,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <style>
         body {
             color: #566787;
@@ -284,7 +286,7 @@
             <div class="header-content clearfix">
 
                 <div class="nav-control">
-                    <div class="hamburger">
+                    <div class="hamburger ">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
                     </div>
                 </div>
@@ -339,7 +341,23 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <%@include file="MarketingSideBar.jsp" %>
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label">Blog Detail</li>
+                   
+                    <li>
+                        <a href="marketing-post"><i class="icon-user"></i> <span class="nav-text">User
+                                Manage Post</span></a>
+                    </li>
+                    <li>
+                        <a href="marketing-slide"><i class="icon-user"></i> <span class="nav-text">User
+                                Manage Slide</span></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -398,8 +416,8 @@
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
                                         <li class="page-item ${i==pageIndex?"active":""}"><a href="marketing-post?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
-                                        <c:if test="${pageIndex!=totalPage}">
                                         
+                                        <c:if test="${pageIndex!=totalPage && size!=0}">
                                     <li class="page-item"><a href="marketing-post?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
                                         </c:if>
                                 </ul>
@@ -457,32 +475,12 @@
 
     <script src="asset/js/dashboard/dashboard-1.js"></script>
     <script src="asset/plugins/common/common.min.js"></script>
-    <script src="asset/js/custom.min.js"></script>
+    
     <script src="asset/js/settings.js"></script>
     <script src="asset/js/gleek.js"></script>
     <script src="asset/js/styleSwitcher.js"></script>
 
-    <!-- Chartjs -->
-    <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
-    <!-- Circle progress -->
-    <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
-    <!-- Datamap -->
-    <script src="asset/plugins/d3v3/index.js"></script>
-    <script src="asset/plugins/topojson/topojson.min.js"></script>
-    <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
-    <!-- Morrisjs -->
-    <script src="asset/plugins/raphael/raphael.min.js"></script>
-    <script src="asset/plugins/morris/morris.min.js"></script>
-    <!-- Pignose Calender -->
-    <script src="asset/plugins/moment/moment.min.js"></script>
-    <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-    <!-- ChartistJS -->
-    <script src="asset/plugins/chartist/js/chartist.min.js"></script>
-    <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-
-
-
-    <script src="asset/js/dashboard/dashboard-1.js"></script>
+    
 
 </body>
 

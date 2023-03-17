@@ -6,6 +6,7 @@ package test;
 
 import dao.impl.AbstractDao;
 import dao.impl.AccountDao;
+import dao.impl.PostDao;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +40,6 @@ import utils.UpFileToDriveUtil;
 public class Test_ChucNang {
 
     public static void main(String[] args) throws IOException {
-        Account a = new Account("student", "123", "vinh", "nguyen quang", "student@gmail.com","", 0, "address", true, "test");
-        AccountService.getInstance().updateProfile(a);
+        System.out.println(PostService.getInstance().findPostByTextAndPagination("", 1, 2, "truongson").size());
     }
 }
