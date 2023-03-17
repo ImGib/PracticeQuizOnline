@@ -39,8 +39,8 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public List<Post> findPostByTitleAndAuthor(String txt) {
-        return postDao.findPostByTitleAndAuthor(txt);
+    public List<Post> findPostByTitleAndAuthor(String txt,String username) {
+        return postDao.findPostByTitleAndAuthor(txt, username);
     }
 
     @Override
@@ -62,8 +62,8 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public List<Post> findPostByTextAndPagination(String txt, int pageIndex, int nrpp) {
-        return postDao.findPostByTextAndPagination(txt, pageIndex, nrpp);
+    public List<Post> findPostByTextAndPagination(String txt, int pageIndex, int nrpp,String username) {
+        return postDao.findPostByTextAndPagination(txt, pageIndex, nrpp, username);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class PostService implements IPostService {
 
     @Override
     public List<Post> getPostPagination(String txt, int pageIndex, int nrpp) {
-        return postDao.findPostByTextAndPagination(txt, pageIndex, nrpp);
+        return postDao.findPostByText(txt, pageIndex, nrpp);
     }
 
     @Override

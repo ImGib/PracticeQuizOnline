@@ -12,11 +12,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Account;
 import model.Post;
 import service.impl.AccountService;
 import service.impl.PostService;
 import utils.PagginationUtil;
+import utils.SessionUtil;
 
 /**
  *
@@ -36,10 +39,12 @@ public class Post_Manage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        HttpSession ses= request.getSession();
+        Account a =(Account)SessionUtil.getInstance().getValue(request, "account");
         String txt = "";
         txt=request.getParameter("txt");
         if(txt==null)txt="";
-        List<Post> listP= PostService.getInstance().findPostByTitleAndAuthor(txt);
+        List<Post> listP= PostService.getInstance().findPostByTitleAndAuthor(txt,a.getUserName());
         
         //------------------------Phan Trang----------------------------------------------
         int size = listP.size(); 
@@ -49,9 +54,9 @@ public class Post_Manage extends HttpServlet {
         } catch (NumberFormatException e) {
         }
         pageIndex= PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        listP=PostService.getInstance().findPostByTextAndPagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp());
+        listP=PostService.getInstance().findPostByTextAndPagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp(),a.getUserName());
         int totalPage = PagginationUtil.getInstance().getTotalPage();
- //-----------------------------------------------------------------------------------       
+ //-----------------------------------------------------------------------------------  
         request.setAttribute("totalPage",totalPage );
         request.setAttribute("size", size);
         request.setAttribute("txt",txt );
