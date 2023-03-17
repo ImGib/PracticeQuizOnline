@@ -13,12 +13,18 @@ public interface IPostService {
 
     List<Post> getTopTwo();
 
+    
     public int getNumberPost();
+    
+    List<Post> findPostByTitleAndAuthor(String txt);
+
 
     List<Post> findPostByTitleAndAuthor(String txt,String username);
 
     void addNewPost(Post p);
-
+    
+    
+    
     String checkValidPost(String title);
 
     List<Post> findPostById(int id);
@@ -28,21 +34,28 @@ public interface IPostService {
     void editPost(int id, String img, String title, String detail);
 
     void deletePost(int id);
-
-    String checkValidPostForEdit(int id, String title);
-
+    
+    String checkValidPostForEdit(int id,String title);
+    
     void upNumberAccess(int id);
+    
+    
+
 
     List<Post> getTopPopular();
+
+    
 
     List<Post> getPostPagination(String txt, int pageIndex, int nrpp);
 
     int countPost();
-
+    
     int countSearchPost(String txt);
 
     Post getPostDetails(String id);
-
+    
     int getLastIdPost();
+    
+    
 
 }

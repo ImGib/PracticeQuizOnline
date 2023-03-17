@@ -33,6 +33,9 @@ public class SubjectTypeService implements ISubjectTypeService{
 
     @Override
     public void createNewSubType(String[] idCates, int idSub) {
+        if(idCates == null){
+            return;
+        }
         for (String idCate : idCates) {
             int id;
             try {

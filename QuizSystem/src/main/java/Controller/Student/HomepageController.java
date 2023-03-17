@@ -11,12 +11,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import model.Category;
-import model.Post;
-import model.Subject;
 import service.impl.AccountService;
 import service.impl.CategoryService;
 import service.impl.PostService;
@@ -34,7 +28,7 @@ public class HomepageController extends HttpServlet {
         SessionUtil.getInstance().putValue(request, "pplPost", PostService.getInstance().getTopPopular());
 
         request.setAttribute("accService", AccountService.getInstance());
-        request.setAttribute("sliders", SlideService.getInstance().getAll());
+        request.setAttribute("sliders", SlideService.getInstance().findAllSlide());
         request.setAttribute("sbjList", SubjectService.getInstance().getTopThree());
         request.setAttribute("pstList", PostService.getInstance().getTopTwo());
         request.setAttribute("cateList", CategoryService.getInstance().getAllCate());

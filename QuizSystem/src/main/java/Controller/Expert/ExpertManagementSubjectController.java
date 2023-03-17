@@ -32,13 +32,15 @@ public class ExpertManagementSubjectController extends HttpServlet {
             p.setSearch(search);
             Account a = (Account) SessionUtil.getInstance().getValue(req, "account");
             p.setUserName(a.getUserName());
-            p.setTotalPage(SubjectService.getInstance().getNumberSubjectBySearchAndUserName(p));
+            int numberProduct = SubjectService.getInstance().getNumberSubjectBySearchAndUserName(p);
+            p.setTotalPage(numberProduct);
             List<Subject> list = SubjectService.getInstance().getAllSubjectAndNumberEnrollBySearchAndUserName(p);
             req.setAttribute("list", list);
             req.setAttribute("totalPage", p.getTotalPage());
             req.setAttribute("index", p.getIndex());
             req.setAttribute("searchName", search);
             req.setAttribute("isManageSubject", true);
+            req.setAttribute("totalP", numberProduct);
             req.getRequestDispatcher("views/expert/Expert-Subject-Management.jsp").forward(req, resp);
         } catch (ServletException | IOException | NumberFormatException e) {
             req.getRequestDispatcher("views/expert/Expert_Statistic.jsp").forward(req, resp);

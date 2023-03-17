@@ -49,7 +49,8 @@ public class ExpertManagementQuestionController extends HttpServlet {
         p.setIdSub(idSub);
         Account a = (Account) SessionUtil.getInstance().getValue(req, "account");
         p.setUserName(a.getUserName());
-        p.setTotalPage(QuestionService.getInstance().getNumberQuestionByAll(p));
+        int numberProduct = QuestionService.getInstance().getNumberQuestionByAll(p);
+        p.setTotalPage(numberProduct);
         List<Question> list = QuestionService.getInstance().findAll(p);
         List<Subject> listS = SubjectService.getInstance().getAllSubjectByAccount(a);
         req.setAttribute("listS", listS);
@@ -59,6 +60,7 @@ public class ExpertManagementQuestionController extends HttpServlet {
         req.setAttribute("searchName", search);
         req.setAttribute("idSub", idSub);
         req.setAttribute("isManageQuestion", true);
+        req.setAttribute("totalP", numberProduct);
         req.getRequestDispatcher("views/expert/Expert_Question_Management.jsp").forward(req, resp);
 
     }

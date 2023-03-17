@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="header-left">
-                    <div class="input-group icons">
+                    <div class="input-group icons" ${requestScope.isMyEnrollPage ? "hidden":""}>
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                     class="mdi mdi-magnify"></i></span>
@@ -39,10 +39,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
-                                <%--<c:set value="images/avt/${sessionScope.account.img}" var="user-avt"></c:set>--%>
-                                <!--<img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" : user-avt}" height="40" width="40" alt="">-->
-                                <img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" : sessionScope.account.img}" height="40" width="40" alt="">
-
+                                <img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
                             </div>
                             <div id="showwn" class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
