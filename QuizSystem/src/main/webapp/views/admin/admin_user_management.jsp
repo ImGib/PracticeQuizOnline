@@ -436,9 +436,11 @@
                                                 <td><span class="status text-${o.isIsActive()?"success":"danger"}">&bull;</span> ${o.isIsActive()?"Active":"Ban"}</td>
                                             <c:if test="${!(o.getRole() == 0)}">
                                                 <td>
-                                                    <a href="admin-changerole?user=${o.getUserName()}" class="settings" title="Edit" data-toggle="tooltip"><i
-                                                            class="material-icons">&#xE8B8;</i></a>
-                                                    <a href="admin-deleteaccount?user=${o.getUserName()}&&isActive=${o.isIsActive()}" class="delete" title="Ban" data-toggle="tooltip"><i
+                                                           <a href="admin-changerole?user=${o.getUserName()}" class="settings" title="Edit" data-toggle="tooltip">
+                                                    
+                                                               <i class="material-icons" style="${!o.isIsActive()?"margin-left: 26px":""}"><c:if test="${o.isIsActive()}">&#xE8B8;</c:if></i></a>
+                                                    
+                                                    <a href="admin-deleteaccount?user=${o.getUserName()}&&isActive=${o.isIsActive()}" class="delete" title="${o.isIsActive()?"Ban":"UnBan"}" data-toggle="tooltip"><i
                                                             class="material-icons">&#xE5C9;</i></a>
                                                 </td>
                                             </c:if>
