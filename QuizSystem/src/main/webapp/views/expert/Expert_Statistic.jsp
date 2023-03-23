@@ -303,7 +303,9 @@
                                         <h2 class="text-white">${requestScope.numberSubject}</h2>
                                         <p class="text-white mb-0"></p>
                                     </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                                    <span class="float-right display-5 opacity-5">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
