@@ -355,16 +355,16 @@
                             <ul class="metismenu" id="menu">
                                 <li class="nav-label">Expert Manager</li>
                                 <li>
-                                    <a href="expert-home"><i class="icon-user"></i> <span class="nav-text">Statistic</span></a>
+                                    <a href="expert-home"><i class=""></i> <span class="nav-text">Statistic</span></a>
                                 </li>
                                 <li>
                                     <a href="expert-subject-management?index=1&&search=" aria-expanded="false">
-                                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Manage Subjects</span>
+                                        <i class=""></i><span class="nav-text">Manage Subjects</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="expert-question-management?index=1&&search=&&idSub=-1" aria-expanded="false">
-                                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Manage Questions</span>
+                                        <i class=""></i><span class="nav-text">Manage Questions</span>
                                     </a>
                                 </li>
                                 <li>
@@ -385,11 +385,11 @@
                                 <li class="nav-label">Dashboard</li>
                                 <li>
                                     <a href="admin-home" aria-expanded="false">
-                                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                                        <i class=""></i><span class="nav-text">Dashboard</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/QuizSystem/admin"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
+                                    <a href="/QuizSystem/admin"><i class=""></i> <span class="nav-text">User Management</span></a>
                                 </li>
 
                             </ul>
@@ -400,20 +400,15 @@
                     <div class="nk-sidebar">           
                         <div class="nk-nav-scroll">
                             <ul class="metismenu" id="menu">
-                                <li class="nav-label">Maketting Manager</li>
-                                <li>
-                                    <a href="Maketting_ManagePost_App.html">
-                                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dash Board</span>
-                                    </a>
-                                </li>
+                                <li class="nav-label">Marketting Manager</li>
                                 <li>
                                     <a href="marketing-post">
-                                        <i class="icon-user"></i> <span class="nav-text">Manage Post</span>
+                                        <i class=""></i> <span class="nav-text">Manage Post</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="marketing-slide">
-                                        <i class="icon-user"></i> <span class="nav-text">Manage Slider</span>
+                                        <i class=""></i> <span class="nav-text">Manage Slider</span>
                                     </a>
                                 </li>
                             </ul>

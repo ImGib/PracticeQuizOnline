@@ -101,6 +101,9 @@ public class AccountService implements IAccountService {
     public Account loginWithEmail(UserGoogleDto user) {
         String[] u = user.getEmail().split("@");
         Account a;
+        if(accountDao.isAccountWasBan(user.getEmail())){
+            return null;
+        }
         List<Account> ls = accountDao.findAccountByEmail(user.getEmail());
         if (ls.isEmpty()) {
             a = new Account(u[0], CheckUtil.MD5Encryption("123"), user.getEmail(), 1, true);

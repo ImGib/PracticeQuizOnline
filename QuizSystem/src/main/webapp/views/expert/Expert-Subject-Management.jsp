@@ -351,8 +351,9 @@
                 <div class="content-body">
                     <div class="alert alert-warning" role="alert" ${requestScope.totalP == 0? "":"hidden"}>
                     Not found any subject!!
-                </div>
-                <div class="container mt-5 mb-3">
+                    </div>
+                    
+                <div class="container mt-5 mb-3" style="">
                     <div style="text-align: end; margin-bottom: 15px;">
                         <div>
                             <a href="expert-add-new-subject" class="btn btn-secondary"><i class="material-icons"
@@ -394,11 +395,11 @@
                                 <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-subject-management?index=${index-1}&&search=${search}">Previous</a></li>
                                 <c:forEach begin="${(index-2)<=0?1:(index-2)}" end="${(index+2)<totalPage?(index+2):totalPage}" var="i">
                                 <li class="page-item ${index == i ? "active":""}"><a href="expert-subject-management?index=${i}&&search=${search}" class="page-link">${i}</a></li>
-
-                            </c:forEach>
+                                </c:forEach>
                             <li class="page-item" ${index == totalPage ? "hidden":""} ${requestScope.totalP == 0? "hidden":""}><a href="expert-subject-management?index=${index+1}&&search=${search}" class="page-link">Next</a></li>
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
+                    
                 </div>
             </div>
 

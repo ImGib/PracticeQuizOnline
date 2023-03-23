@@ -588,7 +588,7 @@
                                                                     <div class="mx-3 my-3">
                                                                         ${ques.question}
                                                                     </div>
-                                                                    <div style="display: flex; flex-wrap: wrap;">
+                                                                    <div class="ml-5" style="display: flex; flex-wrap: wrap; margin-bottom: 12px">
                                                                         <c:forEach var="ans" items="${ques.allAnswer()}">
                                                                             <c:set value="" var="checked"></c:set>
 

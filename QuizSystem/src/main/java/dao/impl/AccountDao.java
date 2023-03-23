@@ -18,8 +18,8 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     @Override
     public List<Account> findAccountByEmailAndPass(String email, String pass) {
         String sql = "select * from Account \n"
-                + "where gmail = ? and [password] = ? and isActive = 1";
-        return query(sql, AccountMapper.getInstance(), email, pass);
+                + "where ( gmail = ? or userName = ? ) and [password] = ? and isActive = 1";
+        return query(sql, AccountMapper.getInstance(), email, email, pass);
     }
 
     @Override
@@ -179,6 +179,12 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         String sql = "delete from Account\n"
                 + "where userName=?";
         update(sql, userName);
+    }
+    
+    @Override
+    public boolean isAccountWasBan (String email){
+        String sql = "Select * from Account where email = ? where isActive = 0";
+        return query(sql, AccountMapper.getInstance(), email) == null;
     }
 
 }

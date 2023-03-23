@@ -231,10 +231,10 @@
                 if ($('#option').val() == 1) {
                     $('#addSlideModal').modal('show');
                 }
-                if ($('#option').val() == 2){
+                if ($('#option').val() == 2) {
                     $('#editSlideModal').modal('show');
                 }
-                if ($('#option').val() == 3){
+                if ($('#option').val() == 3) {
                     $('#deleteSlideModal').modal('show');
                 }
             });
@@ -367,7 +367,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <img src="${o.getImg()}" class="avatar width-xl-75"
+                                    <img src="${o.getImg()}" class="avatar" style="width: 100%"
                                          alt="Avatar">
                                 </div>
                             </div>
@@ -376,18 +376,18 @@
                 </div>
             </c:forEach>
             <div class="clearfix">
-                            <ul class="pagination" id="pag">
-                                <c:if test="${pageIndex!=1}">
-                                    <li class="page-item disabled"><a href="marketing-slide?pageIndex=${pageIndex-1}">Previous</a></li>
-                                </c:if>
-                                        <c:forEach  begin="1" end="${totalPage}" var="i" >
-                                        <li class="page-item ${i==pageIndex?"active":""}"><a href="marketing-slide?pageIndex=${i}" class="page-link">${i}</a></li>
-                                        </c:forEach>
-                                        <c:if test="${pageIndex!=totalPage}">
-                                    <li class="page-item"><a href="marketing-slide?pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
-                                        </c:if>
-                                </ul>
-                        </div>
+                <ul class="pagination" id="pag">
+                    <c:if test="${pageIndex!=1}">
+                        <li class="page-item disabled"><a href="marketing-slide?pageIndex=${pageIndex-1}">Previous</a></li>
+                        </c:if>
+                        <c:forEach  begin="1" end="${totalPage}" var="i" >
+                        <li class="page-item ${i==pageIndex?"active":""}"><a href="marketing-slide?pageIndex=${i}" class="page-link">${i}</a></li>
+                        </c:forEach>
+                        <c:if test="${pageIndex!=totalPage}">
+                        <li class="page-item"><a href="marketing-slide?pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                        </c:if>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -419,7 +419,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="marketing-editslide" method="post">
-                
+
                 <input name="id" type="txt" value="${id}" hidden="">
                 <input name="txt" type="txt" value="edit" hidden="">
                 <div class="modal-header">	
@@ -477,7 +477,7 @@
             <form action="marketing-slide" method="post" enctype="multipart/form-data">
                 <input name="txt" type="txt" value="add" hidden="">
                 <div class="modal-header">
-                    
+
                     <h5 class="text-success">${successText}</h5>
                     <h4 class="modal-title">Add New Slider</h4>
                 </div>
@@ -547,37 +547,37 @@
     Scripts
 ***********************************-->
 <script src="asset/plugins/common/common.min.js"></script>
-    <script src="asset/js/custom.min.js"></script>
-    <script src="asset/js/settings.js"></script>
-    <script src="asset/js/gleek.js"></script>
-    <script src="asset/js/styleSwitcher.js"></script>
+<script src="asset/js/custom.min.js"></script>
+<script src="asset/js/settings.js"></script>
+<script src="asset/js/gleek.js"></script>
+<script src="asset/js/styleSwitcher.js"></script>
 
-    <!-- Chartjs -->
-    <script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
-    <!-- Circle progress -->
-    <script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
-    <!-- Datamap -->
-    <script src="asset/plugins/d3v3/index.js"></script>
-    <script src="asset/plugins/topojson/topojson.min.js"></script>
-    <script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
-    <!-- Morrisjs -->
-    <script src="asset/plugins/raphael/raphael.min.js"></script>
-    <script src="asset/plugins/morris/morris.min.js"></script>
-    <!-- Pignose Calender -->
-    <script src="asset/plugins/moment/moment.min.js"></script>
-    <script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-    <!-- ChartistJS -->
-    <script src="asset/plugins/chartist/js/chartist.min.js"></script>
-    <script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+<!-- Chartjs -->
+<script src="asset/plugins/chart.js/Chart.bundle.min.js"></script>
+<!-- Circle progress -->
+<script src="asset/plugins/circle-progress/circle-progress.min.js"></script>
+<!-- Datamap -->
+<script src="asset/plugins/d3v3/index.js"></script>
+<script src="asset/plugins/topojson/topojson.min.js"></script>
+<script src="asset/plugins/datamaps/datamaps.world.min.js"></script>
+<!-- Morrisjs -->
+<script src="asset/plugins/raphael/raphael.min.js"></script>
+<script src="asset/plugins/morris/morris.min.js"></script>
+<!-- Pignose Calender -->
+<script src="asset/plugins/moment/moment.min.js"></script>
+<script src="asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+<!-- ChartistJS -->
+<script src="asset/plugins/chartist/js/chartist.min.js"></script>
+<script src="asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
 
 
-    <script src="asset/js/dashboard/dashboard-1.js"></script>
-    <script src="asset/plugins/common/common.min.js"></script>
-    
-    <script src="asset/js/settings.js"></script>
-    <script src="asset/js/gleek.js"></script>
-    <script src="asset/js/styleSwitcher.js"></script>
+<script src="asset/js/dashboard/dashboard-1.js"></script>
+<script src="asset/plugins/common/common.min.js"></script>
+
+<script src="asset/js/settings.js"></script>
+<script src="asset/js/gleek.js"></script>
+<script src="asset/js/styleSwitcher.js"></script>
 <script>
 
 </script>

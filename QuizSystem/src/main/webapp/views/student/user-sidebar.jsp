@@ -20,18 +20,18 @@
                     <li class="nav-label">${sessionScope.crPage}</li>
                     <li>
                         <a href="home" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Home</span>
+                            <i class=""></i><span class="nav-text">Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="subject-list"><i class="icon-user"></i> <span class="nav-text">Subject List</span></a>
+                        <a href="subject-list"><i class=""></i> <span class="nav-text">Subject List</span></a>
                     </li>
                     <li>
-                        <a href="blog"><i class="icon-user"></i> <span class="nav-text">Blog</span></a>
+                        <a href="blog"><i class=""></i> <span class="nav-text">Blog</span></a>
                     </li><!-- comment -->
                     <c:if test="${sessionScope.account != null}">
                         <li>
-                            <a href="enroll-list"><i class="icon-user"></i> <span class="nav-text">My Enroll</span></a>
+                            <a href="enroll-list"><i class=""></i> <span class="nav-text">My Enroll</span></a>
                         </li>
                     </c:if>
                 </ul>

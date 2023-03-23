@@ -6,7 +6,6 @@ package Controller.Marketing;
 
 import static Controller.Marketing.Post_Edit.img;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,10 +13,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import java.nio.file.Path;
 import model.Account;
 import model.Post;
-import service.impl.AccountService;
 import service.impl.PostService;
 import utils.SessionUtil;
 import utils.UpImgToGGUntil;
@@ -52,14 +49,16 @@ public class Post_Add extends HttpServlet {
         String title = request.getParameter("title");
         String detail = request.getParameter("detail");
         
+        String newDetail = detail.replace("\n", "</br>");
+        
         request.setAttribute("img", img);
         request.setAttribute("title", title);
-        request.setAttribute("detail", detail);
+        request.setAttribute("detail", newDetail);
         
         String idAuthor = a.getUserName();
         String txt = PostService.getInstance().checkValidPost(title);
         if (txt == null) {
-            PostService.getInstance().addNewPost(new Post(title, img, detail, idAuthor));
+            PostService.getInstance().addNewPost(new Post(title, img, newDetail, idAuthor));
             request.setAttribute("successText", "Add Successfully!!!");
         } else {
             request.setAttribute("wrongText",txt);

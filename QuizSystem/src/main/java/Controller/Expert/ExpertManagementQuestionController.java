@@ -52,6 +52,7 @@ public class ExpertManagementQuestionController extends HttpServlet {
         int numberProduct = QuestionService.getInstance().getNumberQuestionByAll(p);
         p.setTotalPage(numberProduct);
         List<Question> list = QuestionService.getInstance().findAll(p);
+        
         List<Subject> listS = SubjectService.getInstance().getAllSubjectByAccount(a);
         req.setAttribute("listS", listS);
         req.setAttribute("listQ", list);

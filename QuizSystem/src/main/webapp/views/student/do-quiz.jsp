@@ -603,7 +603,7 @@
                                                                     <div class="mx-3 my-3">
                                                                         ${ques.question}
                                                                     </div>
-                                                                    <div class="ml-5" style="display: flex; flex-wrap: wrap;">
+                                                                    <div class="ml-5" style="display: flex; flex-wrap: wrap;" >
                                                                         <c:forEach var="ans" items="${ques.allAnswer()}">
                                                                             <div class="col-md-5 mx-2 my-1 odd-color " id="a${ques.id}b${ans.idAns}" onclick="myFunction(${ans.idAns}, 'a${ques.id}b${ans.idAns}')"
                                                                                  style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px;width: 50%; ">

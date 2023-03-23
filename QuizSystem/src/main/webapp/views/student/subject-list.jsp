@@ -349,6 +349,11 @@
             ***********************************-->
             <div class="content-body">
                 <div class="container mt-5 mb-3">
+                    <div class="alert alert-warning" role="alert" ${requestScope.subList.isEmpty()? "":"hidden"}>
+                    Not found any subject!!
+                </div>
+                    <div class="content-body">
+                    
                     <div class="row">
                         <c:forEach var="sub" items="${requestScope.subList}">
                             <c:set var="author" value="${requestScope.accService.getAccountByID(sub.idAuthor)}"/>
