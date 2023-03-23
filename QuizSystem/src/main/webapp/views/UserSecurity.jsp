@@ -398,7 +398,7 @@
                         
         
                     </div>
-                    <div class="col-lg-4">
+                            <div class="col-lg-4" hidden="">
         
                         
                             <div class="card-header">Delete Account</div>

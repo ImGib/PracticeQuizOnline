@@ -53,4 +53,6 @@ public interface IAccountDao extends GenericDao<Account> {
     void updateProfile(Account a);
 
     void deleteAccountForever(String userName);
+    
+    boolean isAccountWasBan (String email);
 }
