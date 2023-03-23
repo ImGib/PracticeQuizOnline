@@ -8,31 +8,36 @@ package Controller.Marketing;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import model.Post;
 import service.impl.PostService;
+import utils.UpImgToGGUntil;
 
 /**
  *
  * @author asus
  */
+@MultipartConfig()
 @WebServlet(name="EditPost", urlPatterns={"/marketing-editpost"})
 public class Post_Edit extends HttpServlet {
    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+    
     }
+   public static String img;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
 //        req.setCharacterEncoding("UTF-8");
         int id=Integer.parseInt(req.getParameter("id"));
         Post p= PostService.getInstance().findPostById(id).get(0);
-        String img=p.getImg();
+        img=p.getImg();
         String title=p.getTittle();
         String detail=p.getDetails();
         
@@ -48,7 +53,11 @@ public class Post_Edit extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
         int id=Integer.parseInt(req.getParameter("id"));
-        String img=req.getParameter("img");
+        Part file = req.getPart("img");
+        String filename = file.getSubmittedFileName();
+        if(!filename.isEmpty()){
+            img=UpImgToGGUntil.makeLink(file, req);
+        }
         String title=req.getParameter("title");
         String detail=req.getParameter("detail");
         

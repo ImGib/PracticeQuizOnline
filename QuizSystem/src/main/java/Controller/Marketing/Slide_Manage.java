@@ -5,13 +5,16 @@
 
 package Controller.Marketing;
 
+import static Controller.Marketing.Post_Edit.img;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import java.util.List;
 import model.Account;
 import model.Slide;
@@ -20,11 +23,13 @@ import service.impl.PostService;
 import service.impl.SlideService;
 import utils.PagginationUtil;
 import utils.SessionUtil;
+import utils.UpImgToGGUntil;
 
 /**
  *
  * @author asus
  */
+@MultipartConfig()
 @WebServlet(name="SlideManage", urlPatterns={"/marketing-slide"})
 public class Slide_Manage extends HttpServlet {
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
@@ -75,7 +80,12 @@ public class Slide_Manage extends HttpServlet {
 //        SessionUtil.getInstance().putValue(req, "account", AccountService.getInstance()
 //                .findAccountByRole(1).get(0));
         Account a = (Account) SessionUtil.getInstance().getValue(req, "account");
-        String img=req.getParameter("img");
+        Part file = req.getPart("img");
+        String filename = file.getSubmittedFileName();
+        String img="";
+        if(!filename.isEmpty()){
+           img=UpImgToGGUntil.makeLink(file, req);
+        }
         String hlink=req.getParameter("hlink");
         SlideService.getInstance().addSlide(new Slide(img, hlink, a.getUserName()));
         

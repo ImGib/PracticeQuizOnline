@@ -20,11 +20,13 @@ import service.impl.AccountService;
  */
 @WebServlet(name="Delete_Account", urlPatterns={"/admin-deleteaccount"})
 public class DeleteAccount extends HttpServlet {
-   
+    static String user;
+    static boolean isActive;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String user=request.getParameter("user");
+         user=request.getParameter("user");
+         isActive=Boolean.parseBoolean(request.getParameter("isActive"));
         request.setAttribute("user", user);
         request.getRequestDispatcher("/views/admin/Admin_DeleteAccount_App.jsp").forward(request, response);
     } 
@@ -33,9 +35,7 @@ public class DeleteAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String user="";
-        user=request.getParameter("user");
-        AccountService.getInstance().deleteAccount(user);
+        AccountService.getInstance().deleteAccount(user,isActive);
         response.sendRedirect("/QuizSystem/admin");
         
     }

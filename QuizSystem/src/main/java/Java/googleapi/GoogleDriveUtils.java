@@ -24,9 +24,17 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
+import jakarta.servlet.ServletContext;
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 public class GoogleDriveUtils {
 
+    File file = new File("resources/abc.txt");
+    String absolutePath = file.getAbsolutePath();
+    String linkP = getUrl() + "\\src\\main\\webapp\\asset";
     private static final String APPLICATION_NAME = "Google Drive API Java Quickstart";
 
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
@@ -87,6 +95,26 @@ public class GoogleDriveUtils {
         _driveService = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential) //
                 .setApplicationName(APPLICATION_NAME).build();
         return _driveService;
+    }
+
+    static String getUrl() {
+        String projectDir = null;
+        File currentDir = new File(System.getProperty("user.dir"));
+        while (currentDir != null) {
+            File[] files = currentDir.listFiles();
+            for (File file : files) {
+                if ("pom.xml".equals(file.getName()) || "build.gradle".equals(file.getName())) {
+                    projectDir = currentDir.getAbsolutePath();
+                    break;
+                }
+            }
+            currentDir = currentDir.getParentFile();
+        }
+        return projectDir;
+    }
+
+    public static void main(String[] args) throws URISyntaxException, IOException {
+        System.out.println("s: " + GoogleDriveUtils.class.getClassLoader().getResource("abc.txt").getFile());
     }
 
 }

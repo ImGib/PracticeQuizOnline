@@ -54,13 +54,14 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
+    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt,int check) {
         String sql = "select * from Account\n"
                 + "where (userName LIKE ? or \n"
                 + "	firstName LIKE ? or\n"
                 + "	lastName LIKE ? or\n"
                 + "	gmail LIKE ? or\n"
-                + "	phone LIKE ?) and isActive=1  ";
+                + "	phone LIKE ?)  ";
+        if(check==1)sql+="and isActive=1 ";
         txt = "%" + txt + "%";
         return query(sql, AccountMapper.getInstance(), txt, txt, txt, txt, txt);
     }
@@ -109,20 +110,20 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public void deleteAccount(String user) {
-        String sql = "Update Account set isActive=0\n"
+    public void deleteAccount(String user,boolean isActive) {
+        String sql = "Update Account set isActive="+(isActive?"0":"1")
                 + "where userName=?";
         update(sql, user);
     }
 
     @Override
-    public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp) {
+    public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp,int check) {
         String sql = "select * from Account\n"
                 + "                where (userName LIKE ? or \n"
                 + "                firstName LIKE ? or\n"
                 + "                + lastName LIKE ? or\n"
                 + "                +	gmail LIKE ? or\n"
-                + "                + 	phone LIKE ? )and isActive=1 \n"
+                + "                + 	phone LIKE ? )"+(check==1?"and isActive=1":"")
                 + "order by userName\n"
                 + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         txt = "%" + txt + "%";
@@ -130,18 +131,18 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp) {
+    public List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp,int check) {
         String sql = "select * from Account\n"
-                + "where role=? and isActive=1\n"
+                + "where role=? "+(check==1?"and isActive=1":"")
                 + "order by userName\n"
                 + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return query(sql, AccountMapper.getInstance(), role, (pageIndex - 1) * nrpp, nrpp);
     }
 
     @Override
-    public List<Account> findAccountByRole(int role) {
+    public List<Account> findAccountByRole(int role,int check) {
         String sql = "select * from Account\n"
-                + "where role=? and isActive=1";
+                + "where role=? "+(check==1?"and isActive=1":"");
         return query(sql, AccountMapper.getInstance(), role);
     }
 

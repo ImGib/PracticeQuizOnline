@@ -480,7 +480,7 @@
 <div id="addSlideModal" class="modal fade"->
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="marketing-slide" method="post">
+            <form action="marketing-slide" method="post" enctype="multipart/form-data">
                 <input name="txt" type="txt" value="add" hidden="">
                 <div class="modal-header">
                     
@@ -497,7 +497,7 @@
                             <span>Image : </span>
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control" id="inputImageURL" type="text"
+                            <input class="form-control" id="inputImageURL" type="file"
                                    placeholder="Image URL" name="img" value="${img}">
                         </div>
                         <!-- Form Group (last name)-->

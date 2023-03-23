@@ -367,10 +367,9 @@
                                     <div class="col-lg-12">
 
 
-                                        <div class="card-header">Delete Account: ${user}</div>
+                                        <div class="card-header">Change Status: ${user}</div>
                                         <div class="card-body">
-                                            <p style="color: rgb(204, 71, 71);">Deleting your account is a permanent action and cannot be undone. If you are sure you want to
-                                                delete your account, select the button below.</p>
+                                            <p style="color: rgb(204, 71, 71);">Are you sure you want to change status this account</p>
 
                                         </div>                                                
                                     </div>
@@ -379,8 +378,7 @@
                             <form action="admin-deleteaccount" method="post">
                                 <div class="row" style="justify-content: center">
                                     <div class="col-md-1" style=" text-align: center;margin-right: 10px"><button class="btn btn-danger-soft text-danger" type="submit" name="user" value="${user}">Cancel</button></div>
-                                    <div class="col-md-5" style=" text-align: center;"><button class="btn btn-danger-soft text-danger" type="submit" name="user" value="${user}">I understand, delete User
-                                            account</button></div>
+                                    <div class="col-md-5" style=" text-align: center;"><button class="btn btn-danger-soft text-danger" type="submit" name="user" value="${user}">Change status</button></div>
                                 </div>
   
                             </form>

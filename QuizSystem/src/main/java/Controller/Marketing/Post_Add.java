@@ -4,19 +4,24 @@
  */
 package Controller.Marketing;
 
+import static Controller.Marketing.Post_Edit.img;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.nio.file.Path;
 import model.Account;
 import model.Post;
 import service.impl.AccountService;
 import service.impl.PostService;
 import utils.SessionUtil;
-
+import utils.UpImgToGGUntil;
+@MultipartConfig()
 @WebServlet(name = "AddNewPost", urlPatterns = {"/marketing-addpost"})
 public class Post_Add extends HttpServlet {
 
@@ -38,7 +43,12 @@ public class Post_Add extends HttpServlet {
 //        SessionUtil.getInstance().putValue(request, "account", AccountService.getInstance()
 //                .findAccountByRole(1).get(0));
         Account a = (Account) SessionUtil.getInstance().getValue(request, "account");
-        String img = request.getParameter("img");
+        Part file = request.getPart("img");
+        String filename = file.getSubmittedFileName();
+        String img="";
+        if(!filename.isEmpty()){
+           img= UpImgToGGUntil.makeLink(file, request);
+        }
         String title = request.getParameter("title");
         String detail = request.getParameter("detail");
         

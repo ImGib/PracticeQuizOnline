@@ -19,6 +19,7 @@ import service.impl.AccountService;
 import sun.awt.KeyboardFocusManagerPeerImpl;
 import utils.SessionUtil;
 import utils.UpFileToDriveUtil;
+import utils.UpImgToGGUntil;
 import utils.UploadPathUtitl;
 
 @MultipartConfig()
@@ -57,14 +58,23 @@ public class UserProfileController extends HttpServlet {
 
         if (req.getPart("inputImg") != null) {
 
+//            System.out.println(filename);
+//            
+//            String realpath = req.getServletContext().getRealPath("");
+//            realpath = realpath.replace("target\\QuizSystem-1.0\\", "src\\main\\webapp\\images\\avt\\");
+//            
+//            File theDir = new File(realpath);
+//            if (!theDir.exists()) {
+//                theDir.mkdirs();
+//            }
+//            
+//            UploadPathUtitl.getInstance().uploadPath(file, realpath + "/" + filename);
+//            
+////            System.out.println(realpath);
+//            acc.setImg(filename);
+//            src\main\webapp\asset\images\avatar
             Part file = req.getPart("inputImg");
-
-            String filename = file.getSubmittedFileName();
-
-            String uploadPath = req.getServletContext().getRealPath("/asset/images/avatar");
-            System.out.println("file part: " + uploadPath);
-            file.write(uploadPath + "/" + filename);
-            acc.setImg("http://drive.google.com/uc?export=view&id=" + UpFileToDriveUtil.MakeLink(uploadPath + "/" + filename, "1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ", null));
+            acc.setImg(UpImgToGGUntil.makeLink(file, req));
         }
         System.out.println(acc.getUserName());
         AccountService.getInstance().updateProfile(acc);
