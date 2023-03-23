@@ -13,6 +13,6 @@ import dao.impl.AccountDao;
 public class TestChucNang {
     public static void main(String[] args) {
         AccountDao dao=new AccountDao();
-        System.out.println(dao.Search("dinson", 0, 1).size());
+        
     }
 }

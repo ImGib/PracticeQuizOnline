@@ -54,8 +54,8 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public List<Account> Search(String txt,int check,int role) {
-        String sql = "select * from Account\n"
+    public int Total_Search(String txt,int check,int role) {
+        String sql = "select COUNT(*) from Account\n"
                 + "where (userName LIKE ? or \n"
                 + "	firstName LIKE ? or\n"
                 + "	lastName LIKE ? or\n"
@@ -64,7 +64,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
         if(check==1)sql+="and isActive=1 ";
         if(role!=-1)sql+="and role="+role;
         txt = "%" + txt + "%";
-        return query(sql, AccountMapper.getInstance(), txt, txt, txt, txt, txt);
+        return count(sql, txt, txt, txt, txt, txt);
     }
 
     @Override

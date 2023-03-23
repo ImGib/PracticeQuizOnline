@@ -127,8 +127,8 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public List<Account> Search(String txt,int check,int role) {
-        return accountDao.Search(txt,check,role);
+    public int Total_Search(String txt,int check,int role) {
+        return accountDao.Total_Search(txt,check,role);
     }
 
     @Override

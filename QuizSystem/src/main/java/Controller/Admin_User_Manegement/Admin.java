@@ -40,16 +40,15 @@ public class Admin extends HttpServlet {
         
         int role=request.getParameter("role")==null?-1:Integer.parseInt(request.getParameter("role"));
         request.setAttribute("role", role);
-        List<Account> ListAccount = AccountService.getInstance().Search(txt,checkK,role);
  //------------------------Phan Trang----------------------------------------------
-        int size = ListAccount.size(); 
+        int size = AccountService.getInstance().Total_Search(txt,checkK,role);
         int pageIndex=1;
         try {
             pageIndex = Integer.parseInt(request.getParameter("pageIndex"));
         } catch (NumberFormatException e) {
         }
         pageIndex= PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        ListAccount=AccountService.getInstance().Search_Pagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp(),checkK,role);
+        List<Account> ListAccount=AccountService.getInstance().Search_Pagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp(),checkK,role);
  //----------------------------------------------------------------------------------- 
         
         request.setAttribute("totalPage", PagginationUtil.getInstance().getTotalPage());
