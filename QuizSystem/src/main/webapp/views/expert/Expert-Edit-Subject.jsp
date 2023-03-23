@@ -564,7 +564,7 @@
                                             <div class="card-body pt-5">
                                                 <h1 style="text-align: center">Edit Subject</h1>
 
-                                                <form class="mt-5 mb-5 login-input" action="expert-edit-subject" method="post">
+                                                <form enctype="multipart/form-data" class="mt-5 mb-5 login-input" action="expert-edit-subject" method="post">
                                                     <input value="${requestScope.subject.id}" name="id" hidden>
                                                     <div class="form-group">
                                                         <div class="row gx-3 mb-3">
@@ -589,9 +589,10 @@
                                                             <span>Subject Image: </span>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" id="inputSubjectName" type="text"
+                                                            <input class="form-control" id="inputSubjectName" type="file"
                                                                    value="${requestScope.subject.img}" name="img">
                                                         </div>
+                                                        <img src="${img}" alt="" class="img-thumbnail">
                                                         <!-- Form Group (last name)-->
                                                     </div>
                                                 </div>
