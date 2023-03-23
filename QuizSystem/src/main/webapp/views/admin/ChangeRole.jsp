@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link href="asset/css/login.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="asset/css/bootstrap.min.css"/>
-        <title>Edit Role</title>
+        <title>Change Role</title>
     </head>
     <body>
         <div id="logreg-forms" class="mt-5" style="margin-left: 35%">
