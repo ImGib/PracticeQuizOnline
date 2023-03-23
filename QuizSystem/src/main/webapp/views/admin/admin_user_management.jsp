@@ -289,14 +289,14 @@
                 Header start
             ***********************************-->
             <div class="header mb-3">
-            <div class="header-content clearfix">
+                <div class="header-content clearfix">
 
-                <div class="nav-control">
-                    <div class="hamburger">
-                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    <div class="nav-control">
+                        <div class="hamburger">
+                            <span class="toggle-icon"><i class="icon-menu"></i></span>
+                        </div>
                     </div>
-                </div>
-                <div class="header-left">
+                    <div class="header-left">
                         <div class="input-group icons">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
@@ -316,39 +316,39 @@
                             </div>
                         </div>
                     </div>
-                <div class="header-right">
-                    <ul class="clearfix">
-                        <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                <span class="activity active"></span>
-                                <img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
-                            </div>
-                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <c:if test="${sessionScope.account != null}">
-                                            <li>
-                                                <a href="admin-profile"><i class="icon-user"></i>
-                                                    <span>Profile</span></a>
-                                            </li>
-
-                                            <hr class="my-2">
-
-                                            <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
-                                            </li>
-                                        </c:if>
-                                        <c:if test="${sessionScope.account == null}">
-                                            <li><a href="login"><i class="icon-key"></i> <span>Login</span></a>
-                                            </li>
-                                        </c:if>
-                                    </ul>
+                    <div class="header-right">
+                        <ul class="clearfix">
+                            <li class="icons dropdown">
+                                <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                    <span class="activity active"></span>
+                                    <img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
+                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <c:if test="${sessionScope.account != null}">
+                                                <li>
+                                                    <a href="admin-profile"><i class="icon-user"></i>
+                                                        <span>Profile</span></a>
+                                                </li>
+
+                                                <hr class="my-2">
+
+                                                <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
+                                                </li>
+                                            </c:if>
+                                            <c:if test="${sessionScope.account == null}">
+                                                <li><a href="login"><i class="icon-key"></i> <span>Login</span></a>
+                                                </li>
+                                            </c:if>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
             <!--**********************************
                 Header end ti-comment-alt
             ***********************************-->
@@ -403,8 +403,8 @@
                                                         <option value="0" ${role==0?"selected":""}>Admin</option>
                                                         <option value="1" ${role==1?"selected":""}>Student</option>
                                                         <option value="2" ${role==2?"selected":""}>Expert</option>
-                                                        <option value="3" ${role==3?"selected":""}>Market</option>
-                                                        
+                                                        <option value="3" ${role==3?"selected":""}>Marketing</option>
+
                                                     </select></form>
                                             </span></a>
                                     </div>
@@ -413,7 +413,7 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                       
+
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
@@ -422,15 +422,15 @@
                                     </tr>
                                 </thead>
                                 <tbody id="content">
-                               
+                                    <c:set value="0" var="index"></c:set>
                                     <c:forEach items="${ListAccount}" var="o">
-                                        <tr>
-                                            <td>${o.getUserName()}</td>
+                                        <tr onclick="openPopup(${index})">
+                                            <td>${o.getUserName()}</td> 
                                             <td>${o.getGmail()}</td>
                                             <c:if test="${o.getRole() == 0}"><td>Admin</td></c:if>
                                             <c:if test="${o.getRole() == 1}"><td>Student</td></c:if>
                                             <c:if test="${o.getRole() == 2}"><td>Expert</td></c:if>
-                                            <c:if test="${o.getRole() == 3}"><td>Market</td></c:if>
+                                            <c:if test="${o.getRole() == 3}"><td>Marketing</td></c:if>
                                             <c:if test="${o.getRole() == 4}"><td>Sale</td></c:if>
 
                                                 <td><span class="status text-${o.isIsActive()?"success":"danger"}">&bull;</span> ${o.isIsActive()?"Active":"Ban"}</td>
@@ -444,21 +444,29 @@
                                                             class="material-icons">&#xE5C9;</i></a>
                                                 </td>
                                             </c:if>
-                                        </tr>
-                                    </c:forEach>
+
+
+                                        <input type="text" id="firstname${index}" hidden="" value="${o.getFirstName()}">
+                                        <input type="text" id="lastname${index}" hidden="" value="${o.getLastName()}">
+                                        <input type="text" id="phone${index}" hidden="" value="${o.getPhone()}">
+                                        <input type="text" id="email${index}" hidden="" value="${o.getGmail()}">
+                                        <input type="text" id="location${index}" hidden="" value="${o.getAddress()}">
+
+                                        <c:set value="${index + 1}" var="index"></c:set>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                             <div class="clearfix">
-<!--                                <div class="hint-text">Showing <b>${ListAccount.size()}</b> out of <b>${size}</b> entries</div>-->
                                 <ul class="pagination" id="pag">
                                     <c:if test="${pageIndex!=1}">
-                                    <li class="page-item disabled"><a href="admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
-                                    </c:if>
+                                        <li class="page-item disabled"><a href="admin?txt=${txt}&pageIndex=${pageIndex-1}">Previous</a></li>
+                                        </c:if>
                                         <c:forEach  begin="1" end="${totalPage}" var="i" >
                                         <li class="page-item ${i==pageIndex?"active":""}"><a href="admin?txt=${txt}&pageIndex=${i}" class="page-link">${i}</a></li>
                                         </c:forEach>
                                         <c:if test="${pageIndex!=totalPage}">
-                                    <li class="page-item"><a href="admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
+                                        <li class="page-item"><a href="admin?txt=${txt}&pageIndex=${pageIndex+1}" class="page-link">Next</a></li>
                                         </c:if>
                                 </ul>
                             </div>
@@ -487,7 +495,94 @@
         <!--**********************************
             Main wrapper end
         ***********************************-->
+        <div class="card-body popup" id="popup">
+            <div>
 
+                <div class="row gx-3 mb-3">
+                    <!-- Form Group (first name)-->
+                    <div class="col-md-6">
+                        <label class="small mb-1">First name</label>
+                        <input class="form-control" id="FirstName" type="text"
+                               placeholder="First name" value="" disabled="">
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="col-md-6">
+                        <label class="small mb-1" >Last name</label>
+                        <input class="form-control" id="LastName" type="text"
+                               placeholder="Last name" value="" disabled="">
+                    </div>
+                </div>
+
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1">Phone number</label>
+                        <input class="form-control" id="Phone" type="tel"
+                               placeholder="Phone number" value="" disabled="">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" >Email address</label>
+                        <input class="form-control" id="EmailAddress" type="email"
+                               placeholder="Email address" value="" disabled="">
+                    </div>
+                </div>
+
+                <div class="md-3">
+                    <label class="small mb-1">Location</label>
+                    <input class="form-control" id="Location" type="text"
+                           placeholder="Location" value="${sessionScope.account.address}" disabled="">
+                </div>
+                <button class="btn btn-primary" onclick="closePopup()" type="submit" style="margin-top: 15px">Back</button>
+            </div>
+        </div>
+
+        <style>
+            .popup {
+                top:0;
+                width: 500px;
+                background: #2dcbb5f2;
+                border-radius: 6px;
+                position: absolute;
+                left: 40% ;
+                text-align: center;
+                padding: 20px 30px 30px;
+                color: #333;
+                visibility: hidden;
+                transform: translate( - 50% , - 50% ) scale(0.1);
+                transition: transform 0.4s, top 0.4s;
+            }
+            .open-popup{
+                visibility: visible;
+                top: 270px;
+                transform: translate( - 50% , - 50% ) scale(1);
+            }
+            .popup label{
+                color: white;
+                font-size: 12px;
+            }
+        </style>
+
+        <script>
+            let popup = document.getElementById("popup");
+            function openPopup(index) {
+                popup.classList.add("open-popup");
+                $("html, body").animate({scrollTop: 0}, "slow");
+
+                document.getElementById("FirstName").value = document.getElementById("firstname" + index).value;
+                document.getElementById("LastName").value = document.getElementById("lastname" + index).value;
+                document.getElementById("Phone").value = document.getElementById("phone" + index).value;
+                document.getElementById("EmailAddress").value = document.getElementById("email" + index).value;
+                document.getElementById("Location").value = document.getElementById("location" + index).value;
+            }
+            function closePopup() {
+                popup.classList.remove("open-popup");
+            }
+
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+
+
+        </script>
         <!--**********************************
             Scripts
         ***********************************-->
@@ -519,98 +614,20 @@
 
         <script src="asset/js/dashboard/dashboard-1.js"></script>
         <script>
-//            function SearchAccount(input) {
-//                var txt = input.value;
-//                Paggination_Search(input);
-//                $.ajax({
-//                    url: "/QuizSystem/Ajax_Search",
-//
-//                    data: {
-//                        txt: txt
-//                    },
-//                    success: function (response) {
-//                        var content = document.getElementById("content");
-//                        content.innerHTML = response;
-//                    },
-//                    error: function (xhr) {
-//                        //Do Something to handle error
-//                    }
-//                });
-//            }
-//            var inputElement = document.getElementById("choseRole");
-//            inputElement.onchange =
-//                    function ChoseRole(input) {
-//                        var txt = input.target.value;
-//                        Paggination_Role(input);
-//                        $.ajax({
-//                            url: "/QuizSystem/Ajax_FilterRole",
-//
-//                            data: {
-//                                txt: txt
-//                            },
-//                            success: function (response) {
-//                                var content = document.getElementById("content");
-//                                content.innerHTML =response;
-//                            },
-//                            error: function (xhr) {
-//                                //Do Something to handle error
-//                            }
-//                        });
-//                    }
-//            ;
-            
-            
-//                    function Paggination_Search(input) {
-//                        var txt = input.value;
-//                        $.ajax({
-//                            url: "/QuizSystem/Ajax_Paggination_Search",
-//
-//                            data: {
-//                                txt: txt
-//                            },
-//                            success: function (response) {
-//                                var content = document.getElementById("pag");
-//                                content.innerHTML = response;
-//                            },
-//                            error: function (xhr) {
-//                                //Do Something to handle error
-//                            }
-//                        });
-//                    }
-//            ;
-//            function Paggination_Role(input) {
-//                        var txt = input.target.value;
-//                        $.ajax({
-//                            url: "/QuizSystem/Ajax_Paggination_Role",
-//
-//                            data: {
-//                                txt: txt
-//                            },
-//                            success: function (response) {
-//                                var content = document.getElementById("pag");
-//                                content.innerHTML = response;
-//                            },
-//                            error: function (xhr) {
-//                                //Do Something to handle error
-//                            }
-//                        });
-//                    }
-//            ;
-            function nextWeb(input){
-                
-            document.getElementById("searchRole").value=document.getElementById("choseRole").value;
-            document.getElementById("formSearch").submit();    
-            }
-            function changeCheck(){
-                var search=document.getElementById("formSearch").value;
-                var cbox=document.getElementById("form").value;
-                document.getElementById("searchCheck").value=3;
+
+            function nextWeb(input) {
+
+                document.getElementById("searchRole").value = document.getElementById("choseRole").value;
                 document.getElementById("formSearch").submit();
-//                if(search!=null)
-//                if(cbox.value=="")document.getElementById("form").submit();
             }
-            
-         
+            function changeCheck() {
+                var search = document.getElementById("formSearch").value;
+                var cbox = document.getElementById("form").value;
+                document.getElementById("searchCheck").value = 3;
+                document.getElementById("formSearch").submit();
+            }
+
+
         </script>
     </body>
 
