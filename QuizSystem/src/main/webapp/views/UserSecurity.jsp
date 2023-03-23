@@ -366,10 +366,9 @@
                        >Security</a>
                 </nav>
                 <hr class="mt-0 mb-4">
-                <div class="row">
-                    <div class="col-lg-8">
+                <div class="row" >
+                    <div class="" style="width:700px; margin: auto">
         
-                        
                             <div class="card-header">Change Password</div>
                             <div class="card-body">
                                 <form action="security" method="post">
@@ -395,18 +394,8 @@
                                 </form>
                                 <p>${requestScope.changePassMess}</p>
                             </div>
-                        
-        
                     </div>
-                            <div class="col-lg-4" hidden="">
-        
-                        
-                            <div class="card-header">Delete Account</div>
-                            <div class="card-body">
-                               <a href="user-delete-account"><button class="btn btn-danger-soft text-danger" type="button">I want, delete my
-                                account</button></a> 
-                            </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

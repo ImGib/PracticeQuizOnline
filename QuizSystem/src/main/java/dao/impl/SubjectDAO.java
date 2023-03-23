@@ -161,7 +161,7 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
                 + "	(Select idSub from Enroll\n"
                 + "	where Enroll.userName = ?) as t1\n"
                 + "on Subject.id = t1.idSub\n"
-                + "and Subject.isPublic = 1\n"
+                + "where Subject.isPublic = 1\n"
                 + "order by Subject.publicDate desc\n"
                 + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         return query(sql, SubjectMapper.getInstance(), string, (pageIndex - 1) * nrpp, nrpp);
@@ -174,7 +174,7 @@ public class SubjectDAO extends AbstractDao<Subject> implements ISubjectDAO {
                 + "    (Select idSub from Enroll\n"
                 + "	where Enroll.userName = ? ) as t1\n"
                 + "on Subject.id = t1.idSub\n"
-                + "	and Subject.isPublic = 1";
+                + "	where Subject.isPublic = 1";
 //        username = "%" + username + "%";
         return count(sql, username);
     }

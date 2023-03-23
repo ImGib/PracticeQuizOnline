@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Dashboard</title>
+        <title>Statistic</title>
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
         <!-- Pignose Calender -->
@@ -303,7 +303,9 @@
                                         <h2 class="text-white">${requestScope.numberSubject}</h2>
                                         <p class="text-white mb-0"></p>
                                     </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                                    <span class="float-right display-5 opacity-5">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>

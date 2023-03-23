@@ -539,7 +539,7 @@
         <!--**********************************
             Main wrapper start
         ***********************************-->
-        <div id="main-wrapper">
+        <div id="main-wrapper" style="background-color: beige">
 
             <!--**********************************
                 Nav header start

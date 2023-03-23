@@ -367,16 +367,16 @@
                                 <div class="card p-3 mb-2">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex flex-row align-items-center">
-                                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
+                                            
                                             <div class="ms-2 c-details">
                                                 <h6 class="mb-0" style="margin-left: 10px">${l.idAuthor}</h6> <span style="margin-left: 10px">${l.diffirentDate()}</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <a href="expert-public-subject?id=${l.id}&&isPublic=${l.isPublic}"><span>${l.isPublic ? "UnPublic":"Public"}</span></a> </div>
+                                                <div class="badge"> <a href="exper-public-subject?id=${l.id}&&isPublic=${l.isPublic}"><span class=" ${l.isPublic?"bg-success text-white":"bg-warning text-white"}">${l.isPublic ? "Public":"UnPublic"}</span></a> </div>
                                     </div>
                                     <div class="mt-5">
                                         <a class="course" href="expert-edit-subject?id=${l.id}">
-                                            <div class="heading">${l.name}</div>
+                                            <div class="heading" style="font-size: 25px">${l.name}</div>
                                         </a>
                                         <div class="mt-5">
                                             <div class="mt-3">

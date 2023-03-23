@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Subject List</title>
+        <title>Enroll List</title>
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="asset/images/favicon.png">
         <!-- Pignose Calender -->
@@ -351,7 +351,7 @@
                 <div class="container mt-5 mb-3">
                     <div class="row">
                         <c:if test="${requestScope.subList.size() == 0}">
-                            <<h2>Bạn không đăng ký khóa học nào</h2>
+                            <h2>Bạn không đăng ký khóa học nào</h2>
                         </c:if>
                         <c:forEach var="sub" items="${requestScope.subList}">
                             <c:set var="author" value="${requestScope.accService.getAccountByID(sub.idAuthor)}"/>
@@ -385,13 +385,13 @@
                         <ul class="pagination">
                             <c:if test="${requestScope.totalPagination > 1}">
                                 <li class="page-item"><a href="subject-list?search=${requestScope.search}&pageIndex=1" class="page-link">First</a></li>
-                                <c:forEach var="i" begin="1" end="${requestScope.totalPagination}">
+                                    <c:forEach var="i" begin="1" end="${requestScope.totalPagination}">
                                         <c:if test="${i >= requestScope.pageIndex-2 && i <= equestScope.pageIndex+2}">
                                         <li class="page-item ${i==requestScope.pageIndex?"active":""}"><a class="page-link" href="subject-list?search=${requestScope.search}&pageIndex=${i}">${i}</a></li>
                                         </c:if>
                                     </c:forEach>
                                 <li class="page-item"><a href="subject-list?search=${requestScope.search}&pageIndex=${requestScope.totalPagination}" class="page-link">Last</a></li>
-                            </c:if>
+                                </c:if>
                         </ul>
                     </div>
                     <!--**********************************

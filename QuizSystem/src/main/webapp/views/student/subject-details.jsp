@@ -558,7 +558,7 @@
         <!--**********************************
             Main wrapper start
         ***********************************-->
-        <div id="main-wrapper">
+        <div id="main-wrapper" style="background-color: beige">
 
             <!--**********************************
                 Nav header start
@@ -643,8 +643,8 @@
                                                             <span>Description: </span>
                                                         </div>
                                                         <div class="col-md-8"
-                                                             style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
-                                                            <div class="mx-3 my-3">
+                                                             style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #7fffd92e;">
+                                                            <div class="mx-3 my-3" style="color: black">
                                                                 ${requestScope.sub.description}
                                                             </div>
                                                         </div>
