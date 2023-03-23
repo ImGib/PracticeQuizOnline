@@ -509,15 +509,16 @@
                 <div class="form-input-content">
                     <div class="card login-form mb-0">
                         <div class="card-body pt-5">
-                            <form action="marketing-editslide" method="post" class="">
+                            <form action="marketing-editslide" method="post" class="" enctype="multipart/form-data">
                                 <h1 class="h3 mb-5 " style="text-align: center; font-weight: 800px; font-size: 40">Edit Slide ID: ${id}</h1>
                                 <p class="text-danger">${wrongText}</p>
                                 <p class="text-success">${successText}</p>
                                 <input type="text" value="${id}" name="id" hidden="">
 
                                 <div class="mb-4"style="display: flex">
-                                    <h3 class="mr-4">Link Img: </h3 ><input type="text" value="${img}" name="img" style="width: 60%">
+                                    <h3 class="mr-4">Link Img: </h3 ><input type="file" value="${img}" name="img" style="width: 60%">
                                 </div>
+                                <img src="${img}" alt="" class="img-thumbnail">
                                 <div class="mb-4" style="display: flex">
                                     <h3 class="mr-4">Link Hiperlink: </h3>
                                     <input type="text" value="${hlink}" name="hlink" style="width: 46%">
@@ -566,125 +567,8 @@
                 </a>
             </div>
         </div>
-            <!--**********************************
-                Nav header end
-            ***********************************-->
-
-            <!--**********************************
-                Header start
-            ***********************************-->
-            <div class="header" style="margin-bottom: 10px;">
-                <div class="header-content clearfix">
-
-                    <div class="nav-control">
-                        <div class="hamburger">
-                            <span class="toggle-icon"><i class="icon-menu"></i></span>
-                        </div>
-                    </div>
-                    <div class="header-right">
-                        <ul class="clearfix">
-                            <li class="icons dropdown">
-                                <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                    <span class="activity active"></span>
-                                    <img src="${sessionScope.account.img == null ? "asset/images/avatar/default-avt.png" :  sessionScope.account.img}" height="40" width="40" alt="">
-                                </div>
-                                <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                    <div class="dropdown-content-body">
-                                        <ul>
-                                            <li>
-                                                <a href="marketing-profile"><i class="icon-user"></i>
-                                                    <span>Profile</span></a>
-                                            </li>
-
-                                            <hr class="my-2">
-
-                                            <li><a href="logout"><i class="icon-key"></i> <span>Logout</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!--**********************************
-                Header end ti-comment-alt
-            ***********************************-->
-
-            <!--**********************************
-                Sidebar start
-            ***********************************-->
-            <%@include file="MarketingSideBar.jsp" %>
-            <!--**********************************
-                Sidebar end
-            ***********************************-->
-
-            <!--**********************************
-                Content body start
-            ***********************************-->
-            <div class="content-body mt-4">
-                <div class="login-form-bg h-100">
-                    <div class="container h-100">
-                        <div class="row justify-content-center h-100">
-                            <div class="col-xl-9">
-                                <div class="form-input-content">
-                                    <div class="card login-form mb-0">
-                                        <div class="card-body pt-5">
-                                            <h2 class="text-danger">${wrongText}</h2>
-                                                <h2 class="text-success">${successText}</h2>
-                                            <a class="text-center" >
-                                                <h1>Edit Slide</h1>
-                                            </a>
-                                            
-                                            <form enctype="multipart/form-data" class="mt-5 mb-5 login-input" action="marketing-editpost" method="post">
-                                               <input type="text" value="${id}" name="id" hidden="">
-                                                <div class="form-group">
-                                                    <div class="row gx-3 mb-3">
-                                                        <!-- Form Group (first name)-->
-                                                        <div class="col-md-3 pt-1"
-                                                             style="text-align: center;font-size: 20px;">
-                                                            <span>Image : </span>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <input name="img" class="form-control" id="inputImageURL" 
-                                                                   type="file" placeholder="Image URL" value="${img}">
-                                                        </div>
-                                                        <img src="${img}" alt="" class="img-thumbnail">
-                                                        <!-- Form Group (last name)-->
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <div class="row gx-3 mb-3">
-                                                        <!-- Form Group (first name)-->
-                                                        <div class="col-md-3 pt-1"
-                                                             style="text-align: center;font-size: 20px;">
-                                                            <span>Hyper link: </span>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <input name="title" class="form-control" id="inputExpertName" required="" 
-                                                                   type="text" placeholder="Expert Title" value="${hlink}">
-                                                        </div>
-                                                        <!-- Form Group (last name)-->
-                                                    </div>
-                                                </div>
-                                                
-                                               
-
-                                                <button class="btn submit w-100 "
-                                                        style="border: #242424 solid 1px; background-color: #3a7893; width: 00px;">Edit Post</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+         
+           
             <!--**********************************
                 Content body end
             ***********************************-->
