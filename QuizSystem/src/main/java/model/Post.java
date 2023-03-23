@@ -40,9 +40,6 @@ public class Post {
         this.numberAccess = numberAccess;
     }
     
-
-    
-
     public Post() {
     }
 
