@@ -40,6 +40,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <style>
             body {
+                overflow:hidden;
                 color: #566787;
                 background: #f5f5f5;
                 font-family: 'Varela Round', sans-serif;

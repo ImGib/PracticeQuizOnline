@@ -35,6 +35,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <style>
         body {
+            overflow: hidden;
             color: #566787;
             background: #f5f5f5;
             font-family: 'Varela Round', sans-serif;
