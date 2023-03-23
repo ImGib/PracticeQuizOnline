@@ -41,6 +41,7 @@
                                         class="mdi mdi-magnify"></i></span>
                             </div>
                             <form action="expert-question-management" method="get">
+                                <input type="txt" hidden value="${requestScope.idSub}" name="idSub">
                                 <input type="txt" hidden value="1" name="index">
                                 <input type="txt" class="form-control" placeholder="Search Dashboard"
                                        aria-label="Search Dashboard" name="search" value="${requestScope.searchName}">

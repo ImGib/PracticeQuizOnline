@@ -348,11 +348,11 @@
                     <li class="nav-label">Blog Detail</li>
                    
                     <li>
-                        <a href="marketing-post"><i class="icon-user"></i> <span class="nav-text">User
+                        <a href="marketing-post"><i class=""></i> <span class="nav-text">User
                                 Manage Post</span></a>
                     </li>
                     <li>
-                        <a href="marketing-slide"><i class="icon-user"></i> <span class="nav-text">User
+                        <a href="marketing-slide"><i class=""></i> <span class="nav-text">User
                                 Manage Slide</span></a>
                     </li>
 

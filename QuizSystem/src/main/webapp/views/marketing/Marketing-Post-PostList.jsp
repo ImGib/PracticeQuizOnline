@@ -594,11 +594,11 @@
                     <li class="nav-label">Blog List</li>
                     <li>
                         <a href="Admin_Dashboard.html" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                            <i class=""></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="Admin_User_Management.html"><i class="icon-user"></i> <span class="nav-text">User Management</span></a>
+                        <a href="Admin_User_Management.html"><i class=""></i> <span class="nav-text">User Management</span></a>
                     </li>
 
                 </ul>

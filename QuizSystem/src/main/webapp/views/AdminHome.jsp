@@ -131,12 +131,12 @@
                         <li class="nav-label">Dashboard</li>
                         <li>
                             <a href="index.html">
-                                <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                                <i class=""></i><span class="nav-text">Dashboard</span>
                             </a>
                         </li>
                         <li>
                             <a href="admin">
-                                <i class="icon-user"></i> <span class="nav-text">User Management</span>
+                                <i class=""></i> <span class="nav-text">User Management</span>
                             </a>
                         </li>
 

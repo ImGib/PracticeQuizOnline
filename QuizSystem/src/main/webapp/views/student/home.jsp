@@ -590,8 +590,9 @@
                                 <div class="body" >
                                     <div >
                                         <c:forEach var="sl" items="${requestScope.sliders}">
-                                            <img class="mySlides2 animate-fading" style="height: 650px; width: 100%"
-                                                 src="${sl.img}">
+                                            
+                                            <a href="${sl.hyperlink}"><img class="mySlides2 animate-fading" style="height: 650px; width: 100%"
+                                                            src="${sl.img}"></a>
                                         </c:forEach>
                                     </div>
                                 </div>

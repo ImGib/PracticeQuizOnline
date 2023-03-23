@@ -292,18 +292,16 @@
                     Content body start
                 ***********************************-->
                 <div class="content-body">
-                    <div class="${requestScope.nameClass}" role="alert">
-                    ${requestScope.mess}
-                </div>
-                <div class="alert alert-warning" role="alert" ${requestScope.totalP == 0? "":"hidden"}>
-                    Not found any category!!
-                </div>
-                <div class="container-xl">
-                    <div class="table-responsive">
 
-                        <div class="table-wrapper">
-                            <div class="table-title">
-                                <div class="row">
+                    <div class="container-xl">
+                        <div class="table-responsive">
+                            <div class="alert alert-warning" role="alert" ${requestScope.totalP == 0? "":"hidden"}>
+                                    Not found any question!!
+                                </div>
+                            <div class="table-wrapper">
+                                
+                                <div class="table-title">
+                                    <div class="row">
                                     <div class="col-sm-5">
                                         <h2>Categories <b>Management</b></h2>
                                     </div>
@@ -314,19 +312,18 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
                                     <th>#</th>
                                     <th>Category's name</th>
                                     <th>Action</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <c:set var="stt" value="0"></c:set>
-                                <c:forEach items="${requestScope.listC}" var="c">
-                                    <tr>
+                                </thead>
+                                <tbody>
+                                    <c:set var="stt" value="0"></c:set>
+                                    <c:forEach items="${requestScope.listC}" var="c">
+                                        <tr>
                                         <c:set var="stt" value="${stt + 1}"></c:set>
                                         <td>${stt}</td>
                                         <td style="max-width:250px"><span style="max-width:250px; line-height: 1.8">${c.name}</span></td>
@@ -338,21 +335,21 @@
                                                     class="material-icons">&#xE5C9;</i></a>
                                         </td>
                                     </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                        <div class="clearfix">
-                            <ul class="pagination">
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                            <div class="clearfix">
+                                <ul class="pagination">
                                 <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-category-management?index=${index-1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}">Previous</a></li>
                                     <c:forEach begin="${(index-2)<=0?1:(index-2)}" end="${(index+2)<totalPage?(index+2):totalPage}" var="i">
                                     <li class="page-item ${index == i ? "active":""}"><a href="expert-category-management?index=${i}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">${i}</a></li>
                                     </c:forEach>
                                 <li class="page-item" ${index == totalPage ? "hidden":""} ${requestScope.totalP == 0? "hidden":""}><a href="expert-category-management?index=${index+1}&&search=${requestScope.searchName}&&idSub=${requestScope.idSub}" class="page-link">Next</a></li>
                             </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- #/ container -->
         </div>

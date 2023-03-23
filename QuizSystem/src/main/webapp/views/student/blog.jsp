@@ -493,6 +493,21 @@
                 margin-top: 10px;
                 font-size: 13px;
             }
+            #postDetail{
+
+                overflow: hidden;
+
+                text-overflow: ellipsis;
+
+                max-width: 600px;
+
+                -webkit-line-clamp: 1;
+
+                -webkit-box-orient: vertical;
+
+                display: -webkit-box;
+
+            }
 
         </style>
         <script>
@@ -616,7 +631,7 @@
                                                      alt="First slide">
                                             </div>
                                             <h3><a href="blog-details?postId=${post.id}">${post.tittle}</a></h3>
-                                            <p style="width: 670px; height: 78">${post.details}</p>
+                                            <p style="width: 670px; height: 78" id="postDetail">${post.details}</p>
                                         </div>
                                         <div class="footer">
                                             <div class="actions">
@@ -630,12 +645,12 @@
                                     <c:if test="${requestScope.totalPagination > 1}">
                                         <li class="page-item"><a href="blog?search=${requestScope.search}&pageIndex=1" class="page-link">First</a></li>
                                             <c:forEach var="i" begin="1" end="${requestScope.totalPagination}">
-                                                <c:if test="${i >= requestScope.pageIndex-2 && i <= equestScope.pageIndex+2}">
+                                                <c:if test="${i >= requestScope.pageIndex-2 && i <= requestScope.pageIndex+2}">
                                                 <li class="page-item ${i==requestScope.pageIndex?"active":""}"><a class="page-link" href="blog?search=${requestScope.search}&pageIndex=${i}">${i}</a></li>
                                                 </c:if>
                                             </c:forEach>
                                         <li class="page-item"><a href="blog?search=${requestScope.search}&pageIndex=${requestScope.totalPagination}" class="page-link">Last</a></li>
-                                    </c:if>
+                                        </c:if>
                                 </ul>
                             </div>
                             <div class="col-lg-4 col-md-12 right-box">
