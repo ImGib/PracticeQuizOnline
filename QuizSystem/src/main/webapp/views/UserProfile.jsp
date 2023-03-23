@@ -441,13 +441,16 @@
                             <div class="card mb-4 mb-xl-0">
                                 <div class="card-header">Profile Picture</div>
                                 <div class="card-body text-center">
-                                    <img class="img-account-profile rounded-circle mb-2"
-                                                                             src="${sessionScope.account.img}" alt="">
 
+                                    <img class="img-account-profile rounded-circle mb-3"
+                                         src="${sessionScope.account.img}" alt="">
+
+                                    <!--<div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>-->
                                     <form action="profile" method="post" enctype="multipart/form-data">
-                                        <input name="inputImg" type="file" style="width: 250" placeholder="Select Image">
-                                        <input class="btn btn-primary" type="submit" value="Upload Image">
+                                        <input name="inputImg" type="file" style="width: 250; margin-top: 15px" placeholder="Select Image">
+                                        <input class="btn btn-primary" style="margin-top: 16px" type="submit" value="Upload Image">
                                     </form>
+                                    <!--<button class="btn btn-primary" type="button">Upload new image</button>-->
                                 </div>
                             </div>
                         </div>
@@ -457,18 +460,8 @@
                                 <div class="card-header">Account Details</div>
                                 <div class="card-body">
                                     <form action="profile" method="post" enctype="multipart/form-data">
-                                        <!-- Form Group (username)-->
-                                        <div class="row gx-3 mb-3">
-                                            <div class="col-md-6">
-                                                <label class="small mb-1" for="inputUsername">Username </label>
-                                                <p class="form-control">${sessionScope.account.gmail}</p>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label class="small mb-1" for="inputPhone">Phone number</label>
-                                                <input class="form-control" name="inputPhone" type="tel"
-                                                       placeholder="Enter your phone number" value="${sessionScope.account.phone}" pattern="[0-9]{10,11}">
-                                            </div>
-                                        </div>
+                                        
+                                            
                                         <!-- Form Row-->
                                         <div class="row gx-3 mb-3">
                                             <!-- Form Group (first name)-->
@@ -485,7 +478,20 @@
                                             </div>
                                         </div>
                                         <!-- Form Row        -->
-
+                                        
+                                        <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                                <input class="form-control" name="inputPhone" type="tel"
+                                                       placeholder="Enter your phone number" value="${sessionScope.account.phone}" pattern="[0-9]{10,11}">
+                                            </div>
+                                            <div class="col-md-6">
+                                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                            <input class="form-control" name="inputEmailAddress" type="email"
+                                                   placeholder="Enter your email address" value="${sessionScope.account.gmail}">
+                                        </div>
+                                        </div>
+                                        
                                         <!-- Form Group (location)-->
                                         <div class="md-3">
                                             <label class="small mb-1" for="inputLocation">Location</label>
@@ -493,15 +499,11 @@
                                                    placeholder="Enter your location" value="${sessionScope.account.address}">
                                         </div>
                                         <!-- Form Group (email address)-->
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                            <input class="form-control" name="inputEmailAddress" type="email"
-                                                   placeholder="Enter your email address" value="${sessionScope.account.gmail}">
-                                        </div>
+                                        
                                         <!-- Form Row-->
 
                                         <!-- Save changes button-->
-                                        <button class="btn btn-primary" type="submit">Save changes</button>
+                                        <button class="btn btn-primary" type="submit" style="margin-top: 15px">Save changes</button>
                                     </form>
                                 </div>
                             </div>

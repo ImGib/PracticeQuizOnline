@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -24,7 +23,7 @@ import utils.UpImgToGGUntil;
 import utils.UploadPathUtitl;
 
 @MultipartConfig()
-@WebServlet(urlPatterns = {"/profile", "/admin-profile", "/expert-profile", "/marketing-profile"})
+@WebServlet(urlPatterns = {"/profile", "/admin-infor", "/expert-infor", "/marketing-infor"})
 public class UserProfileController extends HttpServlet {
 
     @Override
@@ -40,6 +39,7 @@ public class UserProfileController extends HttpServlet {
         if (req.getParameter("inputPhone") != null) {
             acc.setPhone(req.getParameter("inputPhone"));
         }
+        System.out.println(req.getParameter("inputPhone"));
         if (req.getParameter("inputFirstName") != null) {
             acc.setFirstName(req.getParameter("inputFirstName"));
         }
@@ -76,7 +76,7 @@ public class UserProfileController extends HttpServlet {
             Part file = req.getPart("inputImg");
             acc.setImg(UpImgToGGUntil.makeLink(file, req));
         }
-        System.out.println(acc.getImg());
+        System.out.println(acc.getUserName());
         AccountService.getInstance().updateProfile(acc);
         SessionUtil.getInstance().putValue(req, "account", acc);
         doGet(req, resp);

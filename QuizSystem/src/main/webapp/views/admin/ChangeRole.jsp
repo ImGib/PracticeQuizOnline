@@ -16,23 +16,29 @@
         <title>Edit Role</title>
     </head>
     <body>
-        <div id="logreg-forms">
+        <div id="logreg-forms" class="mt-5" style="margin-left: 35%">
+            <div class="col-xl-6">
+                <div class="form-input-content">
+                    <div class="card login-form mb-0">
+                        <div class="card-body pt-5">
+                            <form action="admin-changerole" method="post" class="">
+                                <h1 class="h3 mt-4 mb-5 font-weight-normal" style="text-align: center; font-size: 45px">Edit Role</h1>
+                                <p class="text-danger">${wrongText}</p>
+                                <p class="text-success">${successText}</p>
+                                <input type="text" value="${user}" name="user" hidden="">
+                                <div class="mb-3" style="justify-content: space-between">
+                                    <label class="ml-5">Student</label><input class="ml-3" name="role" type="radio" value="1" ${role==1?"checked":""}>
+                                    <label class="ml-5">Expert</label><input class="ml-3" name="role" type="radio" value="2" ${role==2?"checked":""}>
+                                    <label class="ml-5">Market</label><input class="ml-3" name="role" type="radio" value="3" ${role==3?"checked":""}>          
+                                </div>
+                                <button class="btn btn-primary btn-block mb-3" type="submit"><i class="fas fa-user-plus"></i> Edit</button>
+                                <a href="admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
 
-            <form action="admin-changerole" method="post" class="">
-                <h1 class="h3 mt-4 mb-5 font-weight-normal" style="text-align: center; font-size: 45px">Edit Role</h1>
-                <p class="text-danger">${wrongText}</p>
-                <p class="text-success">${successText}</p>
-                <input type="text" value="${user}" name="user" hidden="">
-                <div class="mb-3">
-                    <label class="ml-3">Student</label><input class="ml-2" name="role" type="radio" value="1" ${role==1?"checked":""}>
-                    <label class="ml-4">Expert</label><input class="ml-2" name="role" type="radio" value="2" ${role==2?"checked":""}>
-                    <label class="ml-4">Market</label><input class="ml-2" name="role" type="radio" value="3" ${role==3?"checked":""}>
-                    <label class="ml-4">Sale</label><input class="ml-2" name="role" type="radio" value="4" ${role==4?"checked":""}>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <button class="btn btn-primary btn-block mb-3" type="submit"><i class="fas fa-user-plus"></i> Edit</button>
-                <a href="admin?txt=" ><i class="fas fa-angle-left"></i> Back</a>
-
-            </form>
+            </div>
             <br>
 
         </div>

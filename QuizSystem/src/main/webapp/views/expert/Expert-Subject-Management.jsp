@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
         <!-- Custom Stylesheet -->
         <link href="asset/css/style.css" rel="stylesheet">
-        
+
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -331,7 +331,7 @@
                 <!--**********************************
                     Header start
                 ***********************************-->
-                <jsp:include page="Expert_Header.jsp"></jsp:include>
+            <jsp:include page="Expert_Header.jsp"></jsp:include>
                 <!--**********************************
                     Header end ti-comment-alt
                 ***********************************-->
@@ -349,15 +349,18 @@
                         Content body start
                     ***********************************-->
                 <div class="content-body">
-                    <div class="container mt-5 mb-3">
-                        <div style="text-align: end; margin-bottom: 15px;">
-                            <div>
-                                <a href="expert-add-new-subject" class="btn btn-secondary"><i class="material-icons"
-                                                                                              style="margin-bottom: -20px;">&#xE147;</i>
-                                    Add new Subject</a>
-                            </div>
+                    <div class="alert alert-warning" role="alert" ${requestScope.totalP == 0? "":"hidden"}>
+                    Not found any subject!!
+                </div>
+                <div class="container mt-5 mb-3">
+                    <div style="text-align: end; margin-bottom: 15px;">
+                        <div>
+                            <a href="expert-add-new-subject" class="btn btn-secondary"><i class="material-icons"
+                                                                                          style="margin-bottom: -20px;">&#xE147;</i>
+                                Add new Subject</a>
                         </div>
-                        <div class="row">
+                    </div>
+                    <div class="row">
                         <c:forEach items="${requestScope.list}" var="l">
                             <div class="col-md-4">
                                 <div class="card p-3 mb-2">
@@ -386,14 +389,14 @@
                         </c:forEach>
                     </div>
                     <c:set var="search" value="${requestScope.searchName}"></c:set>
-                    <div class="clearfix">
-                        <ul class="pagination">
-                            <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-subject-management?index=${index-1}&&search=${search}">Previous</a></li>
-                                <c:forEach begin="${(index-2)<0?1:(index-2)}" end="${(index+2)<totalPage?(index+2):totalPage}" var="i">
+                        <div class="clearfix">
+                            <ul class="pagination">
+                                <li class="page-item disabled" ${index == 1 ? "hidden":""}><a href="expert-subject-management?index=${index-1}&&search=${search}">Previous</a></li>
+                                <c:forEach begin="${(index-2)<=0?1:(index-2)}" end="${(index+2)<totalPage?(index+2):totalPage}" var="i">
                                 <li class="page-item ${index == i ? "active":""}"><a href="expert-subject-management?index=${i}&&search=${search}" class="page-link">${i}</a></li>
-                                
-                                </c:forEach>
-                                <li class="page-item" ${index == totalPage ? "hidden":""}><a href="expert-subject-management?index=${index+1}&&search=${search}" class="page-link">Next</a></li>
+
+                            </c:forEach>
+                            <li class="page-item" ${index == totalPage ? "hidden":""} ${requestScope.totalP == 0? "hidden":""}><a href="expert-subject-management?index=${index+1}&&search=${search}" class="page-link">Next</a></li>
                         </ul>
                     </div>
                 </div>

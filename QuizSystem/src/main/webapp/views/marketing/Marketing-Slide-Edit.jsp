@@ -504,6 +504,33 @@
     </head>
 
     <body>
+        <div id="logreg-forms" class="mt-5" style="margin-left: 35%">
+            <div class="col-xl-6">
+                <div class="form-input-content">
+                    <div class="card login-form mb-0">
+                        <div class="card-body pt-5">
+                            <form action="marketing-editslide" method="post" class="">
+                                <h1 class="h3 mb-5 " style="text-align: center; font-weight: 800px; font-size: 40">Edit Slide ID: ${id}</h1>
+                                <p class="text-danger">${wrongText}</p>
+                                <p class="text-success">${successText}</p>
+                                <input type="text" value="${id}" name="id" hidden="">
+
+                                <div class="mb-4"style="display: flex">
+                                    <h3 class="mr-4">Link Img: </h3 ><input type="text" value="${img}" name="img" style="width: 60%">
+                                </div>
+                                <div class="mb-4" style="display: flex">
+                                    <h3 class="mr-4">Link Hiperlink: </h3>
+                                    <input type="text" value="${hlink}" name="hlink" style="width: 46%">
+                                </div> 
+
+                                <button class="btn btn-primary btn-block mt-3 mb-3" type="submit" ><i class="fas fa-user-plus"></i> Edit</button>
+                                <a href="marketing-slide" ><i class="fas fa-angle-left"></i> Back</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
 
         <!--*******************
             Preloader start

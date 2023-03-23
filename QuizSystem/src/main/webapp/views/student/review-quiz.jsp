@@ -584,11 +584,11 @@
                                                             <div class="row gx-2 mb-3" style="justify-content: center;">
                                                                 <!-- Form Group (first name)-->
                                                                 <div class="col-md-9 test" 
-                                                                     style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
+                                                                     style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;width:800px;">
                                                                     <div class="mx-3 my-3">
                                                                         ${ques.question}
                                                                     </div>
-                                                                    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                                                                    <div style="display: flex; flex-wrap: wrap;">
                                                                         <c:forEach var="ans" items="${ques.allAnswer()}">
                                                                             <c:set value="" var="checked"></c:set>
 
@@ -601,7 +601,7 @@
                                                                                     <c:set value="bg-danger text-white" var="checked"></c:set>
                                                                                 </c:if>
                                                                             </c:if>
-                                                                            <div class="col-md-5 mx-2 my-1 ${checked} "
+                                                                            <div class="col-md-5 mx-2 my-1 ${checked}"
                                                                                  style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px; background-color: #f4f4f4;">
                                                                                 <div class="mx-3 my-3">
                                                                                     ${ans.answer}
@@ -614,7 +614,7 @@
                                                             </div>
                                                         </div>
                                                     </c:forEach>
-                                                    <a class="btn" href="subject-details?id=${idSub}" style="border: #242424 solid 1px; background-color: #ffc107; width: 300px;" >Go Back</a>
+                                                    <a class="btn m-auto" href="subject-details?id=${idSub}" style="border: #242424 solid 1px; background-color: #c8e3f7; width: 300px;" >Go Back</a>
                                                 </div>
                                             </form>
                                         </div>

@@ -509,7 +509,6 @@
         <script>
             function myFunction(idA, id) {
                 document.getElementById(idA).checked = true;
-                
 //                let c = document.getElementById(id);
 //                c.classList.remove("odd-color");
 //                c.classList.add("change-color");
@@ -609,8 +608,9 @@
                                                                             <div class="col-md-5 mx-2 my-1 odd-color " id="a${ques.id}b${ans.idAns}" onclick="myFunction(${ans.idAns}, 'a${ques.id}b${ans.idAns}')"
                                                                                  style="border: #c1bfbf solid 1px; padding: 0 0; border-radius: 5px;width: 50%; ">
                                                                                 <div class="mx-3 my-3">
-                                                                                    <input id="${ans.idAns}" type="radio" name="answ${ques.id}" value="${ans.idAns}">
+                                                                                    <input id="${ans.idAns}" type="radio" name="answ${ques.id}" value="${ans.idAns}" required="">
                                                                                     ${ans.answer}
+                                                                                    
                                                                                 </div>
                                                                             </div>
                                                                         </c:forEach>
@@ -620,7 +620,8 @@
                                                             </div>
                                                         </div>
                                                     </c:forEach>
-                                                    <input class="btn" type="submit"style="border: #242424 solid 1px; background-color: #ffc107; width: 300px;" value="Finish Quiz">
+
+                                                    <input class="btn m-auto" type="submit"style="border: #242424 solid 1px; background-color: #c8e3f7; width: 300px; " value="Finish Quiz">
                                                 </div>
                                             </form>
                                         </div>

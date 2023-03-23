@@ -213,6 +213,7 @@ public class AccountService implements IAccountService {
     }
 
     @Override
+
     public int getNumberStaff() {
         return accountDao.getNumberStaff();
     }

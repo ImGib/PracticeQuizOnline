@@ -607,7 +607,9 @@
                                 <div class="form-input-content">
                                     <div class="card login-form mb-0">
                                         <div class="card-body pt-5 mb-5">
-                                            <h1 class="text-center">${requestScope.sub.name}</h1>
+                                            <a class="text-center" href="home">
+                                                <h1>${requestScope.sub.name}</h1>
+                                            </a>         
 
                                             <div class="mt-5 mb-5 login-input">
                                                 <div class="form-group">
@@ -668,10 +670,10 @@
                                                             Do Quiz</button>
 
                                                         <div class="popup" id="popup">
-                                                            <h2 class="mt-4 mb-4 text-white">Enter number of question (${requestScope.questions.size()}):</h2>
+                                                            <h2 class="mt-4 mb-4 text-white" >Enter number of question (${requestScope.questions.size()}):</h2>
                                                             <form name="popupForm" method="get" action="do-quiz" onsubmit="return validateForm()">
                                                                 <div>
-                                                                    <input type="text" class="form-control" name="number" pattern="[0-9]">                                                                    
+                                                                    <input type="text" class="form-control" name="number" pattern="[0-9]+">                                                                    
                                                                     <input type="text" class="form-control" name="idSub" value="${requestScope.sub.id}" hidden="" >
                                                                 </div>
                                                                 <div>
@@ -685,7 +687,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    
                                                     <div class="form-group">
                                                         <div class="col-md-4 pt-1 mt-4" style="font-size: 20px;padding-left: 0px">
                                                             <span>The List Questions: </span>
@@ -747,11 +749,11 @@
         function closePopup() {
             popup.classList.remove("open-popup");
         }
-
-        function validateForm() {
+        
+        function validateForm(){
             let x = document.forms["popupForm"]["number"].value;
             let max = JSON.parse(${requestScope.questions.size()});
-            if (x < 1 || x > max || x === "") {
+            if (x < 1 || x > max || x === ""){
                 alert("Number of question error");
                 return false;
             }

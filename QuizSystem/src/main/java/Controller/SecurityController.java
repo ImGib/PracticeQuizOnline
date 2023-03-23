@@ -15,7 +15,7 @@ import service.impl.AccountService;
 import utils.CheckUtil;
 import utils.SessionUtil;
 
-@WebServlet(urlPatterns = {"/security"})
+@WebServlet(urlPatterns = {"/security", "/admin-baomat", "/expert-baomat", "/marketing-baomat"})
 public class SecurityController extends HttpServlet {
 
     @Override
