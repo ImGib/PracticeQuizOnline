@@ -371,7 +371,7 @@
                                                 <h6 class="mb-0" style="margin-left: 10px">${l.idAuthor}</h6> <span style="margin-left: 10px">${l.diffirentDate()}</span>
                                             </div>
                                         </div>
-                                        <div class="badge"> <a href="exper-public-subject?id=${l.id}&&isPublic=${l.isPublic}"><span>${l.isPublic ? "UnPublic":"Public"}</span></a> </div>
+                                        <div class="badge"> <a href="expert-public-subject?id=${l.id}&&isPublic=${l.isPublic}"><span>${l.isPublic ? "UnPublic":"Public"}</span></a> </div>
                                     </div>
                                     <div class="mt-5">
                                         <a class="course" href="expert-edit-subject?id=${l.id}">
@@ -380,7 +380,7 @@
                                         <div class="mt-5">
                                             <div class="mt-3">
                                                 <span class="text1">${l.numberEnroll} Person <span class="text2">Erroll this
-                                                        Cousrse</span>\</span>
+                                                        Course</span>\</span>
                                             </div>
                                         </div>
                                     </div>

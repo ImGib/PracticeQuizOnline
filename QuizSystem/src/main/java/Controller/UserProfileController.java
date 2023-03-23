@@ -56,12 +56,14 @@ public class UserProfileController extends HttpServlet {
             acc.setGmail(req.getParameter("inputEmailAddress"));
         }
 
-        if (req.getPart("inputImg") != null) {
-            Part file = req.getPart("inputImg");
-            String filename = file.getSubmittedFileName();
-            if(!filename.isEmpty()){
+        Part file = req.getPart("inputImg");
+        String filename = file.getSubmittedFileName();
+        if (!filename.isEmpty()) {
             acc.setImg(UpImgToGGUntil.makeLink(file, req));
             }
+        
+        if (acc.getImg() == null) {
+            acc.setImg("");
         }
         System.out.println(acc.getUserName());
         AccountService.getInstance().updateProfile(acc);

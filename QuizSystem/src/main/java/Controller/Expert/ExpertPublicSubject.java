@@ -16,7 +16,7 @@ import service.impl.SubjectService;
  *
  * @author Lenovo
  */
-@WebServlet(urlPatterns = {"/exper-public-subject"})
+@WebServlet(urlPatterns = {"/expert-public-subject"})
 public class ExpertPublicSubject extends HttpServlet{
 
     @Override
@@ -24,7 +24,7 @@ public class ExpertPublicSubject extends HttpServlet{
         String id = req.getParameter("id");
         boolean isPublic = Boolean.parseBoolean(req.getParameter("isPublic"));
         SubjectService.getInstance().changePublic(isPublic, id);
-        resp.sendRedirect("expert-subject-management");
+        resp.sendRedirect("expert-subject-management?index=1&&search=");
     }
     
     
