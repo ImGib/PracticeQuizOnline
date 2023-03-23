@@ -57,24 +57,11 @@ public class UserProfileController extends HttpServlet {
         }
 
         if (req.getPart("inputImg") != null) {
-
-//            System.out.println(filename);
-//            
-//            String realpath = req.getServletContext().getRealPath("");
-//            realpath = realpath.replace("target\\QuizSystem-1.0\\", "src\\main\\webapp\\images\\avt\\");
-//            
-//            File theDir = new File(realpath);
-//            if (!theDir.exists()) {
-//                theDir.mkdirs();
-//            }
-//            
-//            UploadPathUtitl.getInstance().uploadPath(file, realpath + "/" + filename);
-//            
-////            System.out.println(realpath);
-//            acc.setImg(filename);
-//            src\main\webapp\asset\images\avatar
             Part file = req.getPart("inputImg");
+            String filename = file.getSubmittedFileName();
+            if(!filename.isEmpty()){
             acc.setImg(UpImgToGGUntil.makeLink(file, req));
+            }
         }
         System.out.println(acc.getUserName());
         AccountService.getInstance().updateProfile(acc);

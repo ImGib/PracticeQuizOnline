@@ -34,9 +34,13 @@ public class Admin extends HttpServlet {
         txt=request.getParameter("txt");
         if(txt==null)txt="";
         
-        checkK=request.getParameter("check")==null?checkK:-Integer.parseInt(request.getParameter("check"));
+        int k=request.getParameter("check")==null?checkK:Integer.parseInt(request.getParameter("check"));
+        if(k==3)checkK=-checkK;
         request.setAttribute("check", checkK);
-        List<Account> ListAccount = AccountService.getInstance().searchAccountByUserName_Name_Gmail_Phone(txt,checkK);
+        
+        int role=request.getParameter("role")==null?-1:Integer.parseInt(request.getParameter("role"));
+        request.setAttribute("role", role);
+        List<Account> ListAccount = AccountService.getInstance().Search(txt,checkK,role);
  //------------------------Phan Trang----------------------------------------------
         int size = ListAccount.size(); 
         int pageIndex=1;
@@ -45,7 +49,7 @@ public class Admin extends HttpServlet {
         } catch (NumberFormatException e) {
         }
         pageIndex= PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        ListAccount=AccountService.getInstance().loadAccount_Pagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp(),checkK);
+        ListAccount=AccountService.getInstance().Search_Pagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp(),checkK,role);
  //----------------------------------------------------------------------------------- 
         
         request.setAttribute("totalPage", PagginationUtil.getInstance().getTotalPage());

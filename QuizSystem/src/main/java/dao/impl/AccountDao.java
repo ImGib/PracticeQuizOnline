@@ -54,7 +54,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt,int check) {
+    public List<Account> Search(String txt,int check,int role) {
         String sql = "select * from Account\n"
                 + "where (userName LIKE ? or \n"
                 + "	firstName LIKE ? or\n"
@@ -62,6 +62,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
                 + "	gmail LIKE ? or\n"
                 + "	phone LIKE ?)  ";
         if(check==1)sql+="and isActive=1 ";
+        if(role!=-1)sql+="and role="+role;
         txt = "%" + txt + "%";
         return query(sql, AccountMapper.getInstance(), txt, txt, txt, txt, txt);
     }
@@ -117,13 +118,14 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     }
 
     @Override
-    public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp,int check) {
+    public List<Account> Search_Pagination(String txt, int pageIndex, int nrpp,int check,int role) {
         String sql = "select * from Account\n"
                 + "                where (userName LIKE ? or \n"
                 + "                firstName LIKE ? or\n"
                 + "                + lastName LIKE ? or\n"
                 + "                +	gmail LIKE ? or\n"
                 + "                + 	phone LIKE ? )"+(check==1?"and isActive=1":"")
+                +(role==-1?"":"and role = "+role)
                 + "order by userName\n"
                 + "OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
         txt = "%" + txt + "%";

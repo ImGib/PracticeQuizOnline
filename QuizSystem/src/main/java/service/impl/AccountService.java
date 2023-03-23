@@ -127,12 +127,8 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt,int check) {
-        if (txt.contains("Search_Role_")) {
-            txt = txt.replace("Search_Role_", "");
-            return accountDao.findAccountByRole(Integer.parseInt(txt),check);
-        }
-        return accountDao.searchAccountByUserName_Name_Gmail_Phone(txt,check);
+    public List<Account> Search(String txt,int check,int role) {
+        return accountDao.Search(txt,check,role);
     }
 
     @Override
@@ -141,16 +137,8 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp,int check) {
-        if (txt.isEmpty()) {
-            return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp,check);
-        }
-        if (txt.contains("Search_Role_")) {
-            txt = txt.replace("Search_Role_", "");
-
-            return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp,check);
-        }
-        return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp,check);
+    public List<Account> Search_Pagination(String txt, int pageIndex, int nrpp,int check,int role) {
+        return accountDao.Search_Pagination(txt, pageIndex, nrpp,check,role);
     }
 
     @Override
@@ -177,7 +165,7 @@ public class AccountService implements IAccountService {
         if (role != 5) {
             return accountDao.loadAccount_PaginationByRole(role, pageIndex, nrpp,check);
         } else {
-            return accountDao.loadAccount_Pagination("", pageIndex, nrpp,check);
+            return accountDao.Search_Pagination("", pageIndex, nrpp,check,-1);
         }
     }
 
