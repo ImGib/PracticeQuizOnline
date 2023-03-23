@@ -22,8 +22,10 @@
         <link rel="stylesheet" href="asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
         <!-- Custom Stylesheet -->
         <link href="asset/css/style.css" rel="stylesheet">
-
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="https://kit.fontawesome.com/14dbbe1643.js" crossorigin="anonymous"></script>
         <style>
             body{
                overflow: hidden; 
@@ -160,9 +162,9 @@
                                     <h3 class="card-title text-white">Number Subjects</h3>
                                     <div class="d-inline-block">
                                         <h2 class="text-white">${requestScope.numberSubject}</h2>
-                                        <p class="text-white mb-0">Jan - March 2019</p>
+                                        
                                     </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                                    <span class="float-right display-5 opacity-5"><i class="fas fa-book-open"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -172,9 +174,9 @@
                                     <h3 class="card-title text-white">Number Staff</h3>
                                     <div class="d-inline-block">
                                         <h2 class="text-white">${requestScope.numberStaff}</h2>
-                                        <p class="text-white mb-0">Jan - March 2019</p>
+                                        
                                     </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+                                    <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -184,9 +186,10 @@
                                     <h3 class="card-title text-white">Number Student</h3>
                                     <div class="d-inline-block">
                                         <h2 class="text-white">${requestScope.numberStudent}</h2>
-                                        <p class="text-white mb-0">Jan - March 2019</p>
+                                        
                                     </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                                    <span class="float-right display-5 opacity-5"><i class="fas fa-user-graduate
+"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -196,9 +199,9 @@
                                     <h3 class="card-title text-white">Number Post</h3>
                                     <div class="d-inline-block">
                                         <h2 class="text-white">${requestScope.numberPost}</h2>
-                                        <p class="text-white mb-0">Jan - March 2019</p>
+                                        
                                     </div>
-                                    <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                                    <span class="float-right display-5 opacity-5"><i class="far fa-edit"></i></span>
                                 </div>
                             </div>
                         </div>
