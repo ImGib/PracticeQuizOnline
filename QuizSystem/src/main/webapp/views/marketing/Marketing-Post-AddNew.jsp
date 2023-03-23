@@ -610,7 +610,7 @@
                                                 <h1>New Post</h1>
                                             </a>
 
-                                            <form class="mt-5 mb-5 login-input" action="marketing-addpost" method="post">
+                                            <form enctype="multipart/form-data" class="mt-5 mb-5 login-input" action="marketing-addpost" method="post">
                                                 <input type="text" value="${id}" name="id" hidden="">
                                                 <div class="form-group">
                                                     <div class="row gx-3 mb-3">
@@ -621,7 +621,7 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <input name="img" class="form-control" id="inputImageURL" 
-                                                                   type="text" placeholder="Image URL" value="${img}">
+                                                                   type="file" placeholder="Image URL" value="${img}">
                                                         </div>
                                                         <!-- Form Group (last name)-->
                                                     </div>

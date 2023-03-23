@@ -474,7 +474,7 @@
 <div id="addSlideModal" class="modal fade"->
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="marketing-slide" method="post">
+            <form action="marketing-slide" method="post" enctype="multipart/form-data">
                 <input name="txt" type="txt" value="add" hidden="">
                 <div class="modal-header">
                     

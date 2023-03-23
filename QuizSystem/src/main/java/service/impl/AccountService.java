@@ -127,30 +127,30 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt) {
+    public List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt,int check) {
         if (txt.contains("Search_Role_")) {
             txt = txt.replace("Search_Role_", "");
-            return accountDao.findAccountByRole(Integer.parseInt(txt));
+            return accountDao.findAccountByRole(Integer.parseInt(txt),check);
         }
-        return accountDao.searchAccountByUserName_Name_Gmail_Phone(txt);
+        return accountDao.searchAccountByUserName_Name_Gmail_Phone(txt,check);
     }
 
     @Override
-    public void deleteAccount(String user) {
-        accountDao.deleteAccount(user);
+    public void deleteAccount(String user,boolean isActive) {
+        accountDao.deleteAccount(user, isActive);
     }
 
     @Override
-    public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp) {
+    public List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp,int check) {
         if (txt.isEmpty()) {
-            return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
+            return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp,check);
         }
         if (txt.contains("Search_Role_")) {
             txt = txt.replace("Search_Role_", "");
 
-            return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp);
+            return loadAccount_PaginationByRole(Integer.parseInt(txt), pageIndex, nrpp,check);
         }
-        return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp);
+        return accountDao.loadAccount_Pagination(txt, pageIndex, nrpp,check);
     }
 
     @Override
@@ -173,11 +173,11 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp) {
+    public List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp,int check) {
         if (role != 5) {
-            return accountDao.loadAccount_PaginationByRole(role, pageIndex, nrpp);
+            return accountDao.loadAccount_PaginationByRole(role, pageIndex, nrpp,check);
         } else {
-            return accountDao.loadAccount_Pagination("", pageIndex, nrpp);
+            return accountDao.loadAccount_Pagination("", pageIndex, nrpp,check);
         }
     }
 
@@ -187,8 +187,8 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public List<Account> findAccountByRole(int i) {
-        return accountDao.findAccountByRole(i);
+    public List<Account> findAccountByRole(int i,int check) {
+        return accountDao.findAccountByRole(i,check);
     }
 
     @Override
@@ -244,7 +244,7 @@ public class AccountService implements IAccountService {
     @Override
     public String removeAccount(Account acc, String gmail, String password) {
         if (acc.getGmail().compareTo(gmail) == 0 && acc.getPassword().compareTo(password) == 0) {
-            accountDao.deleteAccount(acc.getUserName());
+            accountDao.deleteAccount(acc.getUserName(),true);
             return null;
         }
         return "wrong";

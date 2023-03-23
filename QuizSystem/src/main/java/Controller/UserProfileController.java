@@ -20,6 +20,7 @@ import service.impl.AccountService;
 import sun.awt.KeyboardFocusManagerPeerImpl;
 import utils.SessionUtil;
 import utils.UpFileToDriveUtil;
+import utils.UpImgToGGUntil;
 import utils.UploadPathUtitl;
 
 @MultipartConfig()
@@ -57,10 +58,6 @@ public class UserProfileController extends HttpServlet {
 
         if (req.getPart("inputImg") != null) {
 
-            Part file = req.getPart("inputImg");
-
-            String filename = file.getSubmittedFileName();
-
 //            System.out.println(filename);
 //            
 //            String realpath = req.getServletContext().getRealPath("");
@@ -76,11 +73,8 @@ public class UserProfileController extends HttpServlet {
 ////            System.out.println(realpath);
 //            acc.setImg(filename);
 //            src\main\webapp\asset\images\avatar
-
-            String uploadPath = req.getServletContext().getRealPath("/asset/images/avatar");
-            System.out.println("file part: " + uploadPath);
-            file.write(uploadPath + "/" + filename);
-            acc.setImg("http://drive.google.com/uc?export=view&id=" + UpFileToDriveUtil.MakeLink(uploadPath + "/" + filename, "1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ", null));
+            Part file = req.getPart("inputImg");
+            acc.setImg(UpImgToGGUntil.makeLink(file, req));
         }
         System.out.println(acc.getImg());
         AccountService.getInstance().updateProfile(acc);

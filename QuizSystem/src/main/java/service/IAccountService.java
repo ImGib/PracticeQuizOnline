@@ -32,19 +32,19 @@ public interface IAccountService {
 
     void addAccount(Account a);
 
-    List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt);
+    List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt,int check);
 
-    void deleteAccount(String user);
+    void deleteAccount(String user,boolean isActive);
 
-    List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp);
+    List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp,int check);
 
     String checkValidateAddAccount(Account a);
 
-    List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp);
+    List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp,int check);
 
     void changeRoleByUserName(String username, int id);
 
-    List<Account> findAccountByRole(int role);
+    List<Account> findAccountByRole(int role,int check);
 
     List<Account> findAllAccount();
 

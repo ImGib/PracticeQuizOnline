@@ -8,6 +8,7 @@ package Controller.Marketing;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,6 +26,7 @@ import utils.SessionUtil;
  *
  * @author asus
  */
+@MultipartConfig()
 @WebServlet(name="SlideManage", urlPatterns={"/marketing-slide"})
 public class Slide_Manage extends HttpServlet {
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)

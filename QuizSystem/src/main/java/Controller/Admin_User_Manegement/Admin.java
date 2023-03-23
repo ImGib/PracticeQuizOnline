@@ -24,7 +24,7 @@ import utils.PagginationUtil;
 @WebServlet(name = "Admin", urlPatterns = {"/admin"})
 public class Admin extends HttpServlet {
 
-   
+    public static int checkK=1;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +33,10 @@ public class Admin extends HttpServlet {
         String txt = "";
         txt=request.getParameter("txt");
         if(txt==null)txt="";
-        List<Account> ListAccount = AccountService.getInstance().searchAccountByUserName_Name_Gmail_Phone(txt);
+        
+        checkK=request.getParameter("check")==null?checkK:-Integer.parseInt(request.getParameter("check"));
+        request.setAttribute("check", checkK);
+        List<Account> ListAccount = AccountService.getInstance().searchAccountByUserName_Name_Gmail_Phone(txt,checkK);
  //------------------------Phan Trang----------------------------------------------
         int size = ListAccount.size(); 
         int pageIndex=1;
@@ -42,8 +45,9 @@ public class Admin extends HttpServlet {
         } catch (NumberFormatException e) {
         }
         pageIndex= PagginationUtil.getInstance().pageIndex(pageIndex, size);
-        ListAccount=AccountService.getInstance().loadAccount_Pagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp());
- //-----------------------------------------------------------------------------------       
+        ListAccount=AccountService.getInstance().loadAccount_Pagination(txt, pageIndex, PagginationUtil.getInstance().getNrpp(),checkK);
+ //----------------------------------------------------------------------------------- 
+        
         request.setAttribute("totalPage", PagginationUtil.getInstance().getTotalPage());
         request.setAttribute("size", size);
         request.setAttribute("txt",txt );

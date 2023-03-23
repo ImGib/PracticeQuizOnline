@@ -303,6 +303,7 @@
                             </div>
                             <form action="admin" method="get">
                                 <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt.contains("Search_Role_")?"":txt}">
+                                <!--<input type="text" hidden="" name="check" value="${check}">-->
                                 <!--                            <button>submit</button>-->
                             </form>
 
@@ -387,6 +388,10 @@
                                         <h2>User <b>Management</b></h2>
                                     </div>
                                     <div class="col-sm-7">
+                                        <form action="admin" id="formCheck" method="get">
+                                            Hide Banned Account:  <input type="checkbox"  id="check" onclick="changeCheck()" ${check==1?"checked":""} >
+                                            <input type="text" value="${check}" name="check" hidden="">
+                                        </form>
                                         <a href="admin-addaccount" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
                                             <span>Add New User</span></a>
                                         <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
@@ -426,12 +431,12 @@
                                             <c:if test="${o.getRole() == 3}"><td>Market</td></c:if>
                                             <c:if test="${o.getRole() == 4}"><td>Sale</td></c:if>
 
-                                                <td><span class="status text-success">&bull;</span> Active</td>
+                                                <td><span class="status text-${o.isIsActive()?"success":"danger"}">&bull;</span> ${o.isIsActive()?"Active":"Ban"}</td>
                                             <c:if test="${!(o.getRole() == 0)}">
                                                 <td>
                                                     <a href="admin-changerole?user=${o.getUserName()}" class="settings" title="Edit" data-toggle="tooltip"><i
                                                             class="material-icons">&#xE8B8;</i></a>
-                                                    <a href="admin-deleteaccount?user=${o.getUserName()}" class="delete" title="Ban" data-toggle="tooltip"><i
+                                                    <a href="admin-deleteaccount?user=${o.getUserName()}&&isActive=${o.isIsActive()}" class="delete" title="Ban" data-toggle="tooltip"><i
                                                             class="material-icons">&#xE5C9;</i></a>
                                                 </td>
                                             </c:if>
@@ -592,6 +597,10 @@
             document.getElementById("form").submit();
                 
             }
+            function changeCheck(){
+            document.getElementById("formCheck").submit();
+            }
+            
          
         </script>
     </body>
