@@ -28,7 +28,7 @@ public interface IAccountDao extends GenericDao<Account> {
 
     void editAccount(Account account);
 
-    List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt,int check);
+    List<Account> Search(String txt,int check,int role);
 
     void changeRoleByUserName(String username, int id);
 
@@ -38,7 +38,7 @@ public interface IAccountDao extends GenericDao<Account> {
 
     void deleteAccount(String user,boolean isActive);
 
-    List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp,int check);
+    List<Account> Search_Pagination(String txt, int pageIndex, int nrpp,int check,int role);
 
     List<Account> loadAccount_PaginationByRole(int role, int pageIndex, int nrpp, int check);
 

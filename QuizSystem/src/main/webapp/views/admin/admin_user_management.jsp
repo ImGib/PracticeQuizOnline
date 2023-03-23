@@ -302,10 +302,11 @@
                                 <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
                                         class="mdi mdi-magnify"></i></span>
                             </div>
-                            <form action="admin" method="get">
+                            <form action="admin" method="get" id="formSearch">
                                 <input name="txt" oninput="SearchAccount(this)" type="search" id="searchAccount" class="form-control" placeholder="Search Dashboard" value="${txt.contains("Search_Role_")?"":txt}">
-                                <!--<input type="text" hidden="" name="check" value="${check}">-->
-                                <!--                            <button>submit</button>-->
+                                <input type="text" hidden="" name="check" value="${check}" id="searchCheck">
+                                <input type="text" hidden="" name="role" value="${role}" id="searchRole">
+                                <button hidden="">submit</button>
                             </form>
 
                             <div class="drop-down animated flipInX d-md-none">
@@ -391,19 +392,19 @@
                                     <div class="col-sm-7">
                                         <form action="admin" id="formCheck" method="get">
                                             Hide Banned Account:  <input type="checkbox"  id="check" onclick="changeCheck()" ${check==1?"checked":""} >
-                                            <input type="text" value="${check}" name="check" hidden="">
+                                            <input type="text" value="3" name="check" hidden="">
                                         </form>
                                         <a href="admin-addaccount" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
                                             <span>Add New User</span></a>
                                         <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
                                             <span>  <form action="admin" method="get" id="form">
-                                                    <select id="" name="txt" onchange="nextWeb(this)">
-                                                        <option value="" >All Role</option>
-                                                        <option value="Search_Role_0" ${txt.equals("Search_Role_0")?"selected":""}>Admin</option>
-                                                        <option value="Search_Role_1" ${txt.equals("Search_Role_1")?"selected":""}>Student</option>
-                                                        <option value="Search_Role_2" ${txt.equals("Search_Role_2")?"selected":""}>Expert</option>
-                                                        <option value="Search_Role_3" ${txt.equals("Search_Role_3")?"selected":""}>Market</option>
-                                                        <option value="Search_Role_4" ${txt.equals("Search_Role_4")?"selected":""}>Sale</option>
+                                                    <select id="choseRole" name="txt" onchange="nextWeb(this)">
+                                                        <option value="-1" >All Role</option>
+                                                        <option value="0" ${role==0?"selected":""}>Admin</option>
+                                                        <option value="1" ${role==1?"selected":""}>Student</option>
+                                                        <option value="2" ${role==2?"selected":""}>Expert</option>
+                                                        <option value="3" ${role==3?"selected":""}>Market</option>
+                                                        
                                                     </select></form>
                                             </span></a>
                                     </div>
@@ -595,11 +596,16 @@
 //            ;
             function nextWeb(input){
                 
-            document.getElementById("form").submit();
-                
+            document.getElementById("searchRole").value=document.getElementById("choseRole").value;
+            document.getElementById("formSearch").submit();    
             }
             function changeCheck(){
-            document.getElementById("formCheck").submit();
+                var search=document.getElementById("formSearch").value;
+                var cbox=document.getElementById("form").value;
+                document.getElementById("searchCheck").value=3;
+                document.getElementById("formSearch").submit();
+//                if(search!=null)
+//                if(cbox.value=="")document.getElementById("form").submit();
             }
             
          

@@ -32,11 +32,11 @@ public interface IAccountService {
 
     void addAccount(Account a);
 
-    List<Account> searchAccountByUserName_Name_Gmail_Phone(String txt,int check);
+    List<Account> Search(String txt,int check,int role);
 
     void deleteAccount(String user,boolean isActive);
 
-    List<Account> loadAccount_Pagination(String txt, int pageIndex, int nrpp,int check);
+    List<Account> Search_Pagination(String txt, int pageIndex, int nrpp,int check,int role);
 
     String checkValidateAddAccount(Account a);
 
