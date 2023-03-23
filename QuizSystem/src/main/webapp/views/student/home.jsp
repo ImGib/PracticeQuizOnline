@@ -587,10 +587,10 @@
                     <div class="row clearfix">
                         <div class="col-lg-12 col-md-12 left-box">
                             <div class="card single_post mx-5" style="width: 95%;">
-                                <div class="body">
-                                    <div>
+                                <div class="body" >
+                                    <div >
                                         <c:forEach var="sl" items="${requestScope.sliders}">
-                                            <img class="mySlides2 animate-fading"
+                                            <img class="mySlides2 animate-fading" style="height: 650px; width: 100%"
                                                  src="${sl.img}">
                                         </c:forEach>
                                     </div>

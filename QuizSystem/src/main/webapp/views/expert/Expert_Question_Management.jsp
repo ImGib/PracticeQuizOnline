@@ -295,10 +295,11 @@
 
                     <div class="container-xl">
                         <div class="table-responsive">
-                            <div class="table-wrapper">
-                                <div class="alert alert-warning" role="alert" ${requestScope.totalP == 0? "":"hidden"}>
+                            <div class="alert alert-warning" role="alert" ${requestScope.totalP == 0? "":"hidden"}>
                                     Not found any question!!
                                 </div>
+                            <div class="table-wrapper">
+                                
                                 <div class="table-title">
                                     <div class="row">
                                         <div class="col-sm-5">

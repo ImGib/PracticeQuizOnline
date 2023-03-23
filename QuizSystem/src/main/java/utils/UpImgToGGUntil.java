@@ -13,13 +13,13 @@ import java.io.IOException;
  * @author asus
  */
 public class UpImgToGGUntil {
-    
-    public static String makeLink(Part file,HttpServletRequest req) throws IOException{
+
+    public static String makeLink(Part file, HttpServletRequest req) throws IOException {
         String filename = file.getSubmittedFileName();
         String uploadPath = req.getServletContext().getRealPath("/asset/images/avatar");
-            System.out.println("file part: " + uploadPath);
-            file.write(uploadPath + "/" + filename);
-            String img="http://drive.google.com/uc?export=view&id=" + UpFileToDriveUtil.MakeLink(uploadPath + "/" + filename, "1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ", null);
-            return img;
+        System.out.println("file part: " + uploadPath);
+        file.write(uploadPath + "/" + filename);
+        String img = "http://drive.google.com/uc?export=view&id=" + UpFileToDriveUtil.MakeLink(uploadPath + "/" + filename, "1gL05UORsV0WbxBknDlBi-L15QvSfdYYJ", null);
+        return img;
     }
 }

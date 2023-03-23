@@ -16,9 +16,9 @@
         <title>Admin Create Account</title>
     </head>
     <body>
-        <div id="logreg-forms">
+        <div id="logreg-forms "  >
 
-            <form action="admin-addaccount" method="post" style="margin: 30 auto">
+            <form action="admin-addaccount" method="post" style="margin: 30 auto; width: 390px;" class="content">
                 <h1 class="h3 mb-5 mt-3 font-weight-normal" style="text-align: center">Add New Account</h1>
                 <p class="text-danger">${wrongText}</p>
                 <p class="text-success">${successText}</p>
@@ -31,7 +31,6 @@
                     <div><label class="mr-2" >Student</label><input name="role" type="radio" value="1" checked="" ${role==1?"checked":""}></div>
                     <div><label class="mr-2">Expert</label><input name="role" type="radio" value="2" ${role==2?"checked":""}></div>
                     <div><label class="mr-2">Market</label><input name="role" type="radio" value="3" ${role==3?"checked":""}></div>
-                    <div><label class="mr-2">Sale</label><input name="role" type="radio" value="4" ${role==4?"checked":""}></div>
                 </div>
 
                 <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Add</button>
