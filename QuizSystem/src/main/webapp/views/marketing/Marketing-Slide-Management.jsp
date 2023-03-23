@@ -497,7 +497,7 @@
                             <span>Image : </span>
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control" id="inputImageURL" type="text"
+                            <input class="form-control" id="inputImageURL" type="file"
                                    placeholder="Image URL" name="img" value="${img}">
                         </div>
                         <!-- Form Group (last name)-->

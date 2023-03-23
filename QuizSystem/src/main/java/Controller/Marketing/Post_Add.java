@@ -4,6 +4,7 @@
  */
 package Controller.Marketing;
 
+import static Controller.Marketing.Post_Edit.img;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -43,7 +44,11 @@ public class Post_Add extends HttpServlet {
 //                .findAccountByRole(1).get(0));
         Account a = (Account) SessionUtil.getInstance().getValue(request, "account");
         Part file = request.getPart("img");
-        String img=UpImgToGGUntil.makeLink(file, request);
+        String filename = file.getSubmittedFileName();
+        String img="";
+        if(!filename.isEmpty()){
+           img= UpImgToGGUntil.makeLink(file, request);
+        }
         String title = request.getParameter("title");
         String detail = request.getParameter("detail");
         

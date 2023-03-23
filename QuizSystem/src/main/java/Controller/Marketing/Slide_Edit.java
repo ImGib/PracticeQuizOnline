@@ -4,26 +4,31 @@
  */
 package Controller.Marketing;
 
+import static Controller.Marketing.Post_Edit.img;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import model.Account;
 import model.Slide;
 import service.impl.AccountService;
 import service.impl.SlideService;
 import utils.SessionUtil;
+import utils.UpImgToGGUntil;
 
 /**
  *
  * @author asus
  */
+@MultipartConfig()
 @WebServlet(name = "Slide_Add", urlPatterns = {"/marketing-editslide"})
 public class Slide_Edit extends HttpServlet {
-
+    public static String img;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -31,7 +36,7 @@ public class Slide_Edit extends HttpServlet {
 //        int flag = 2;
         int id = Integer.parseInt(req.getParameter("id"));
         Slide s = SlideService.getInstance().findSlideById(id).get(0);
-        String img = s.getImg();
+         img = s.getImg();
         String hlink = s.getHyperlink();
 
         req.setAttribute("id", id);
@@ -47,7 +52,11 @@ public class Slide_Edit extends HttpServlet {
             throws ServletException, IOException {
 
 
-        String img = req.getParameter("img");
+        Part file = req.getPart("img");
+        String filename = file.getSubmittedFileName();
+        if(!filename.isEmpty()){
+            img=UpImgToGGUntil.makeLink(file, req);
+        }
         String hlink = req.getParameter("hlink");
         int id = Integer.parseInt(req.getParameter("id"));
         req.setAttribute("img", img);
