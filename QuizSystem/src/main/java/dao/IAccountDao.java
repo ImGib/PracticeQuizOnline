@@ -28,7 +28,7 @@ public interface IAccountDao extends GenericDao<Account> {
 
     void editAccount(Account account);
 
-    List<Account> Search(String txt,int check,int role);
+    int Total_Search(String txt,int check,int role);
 
     void changeRoleByUserName(String username, int id);
 
