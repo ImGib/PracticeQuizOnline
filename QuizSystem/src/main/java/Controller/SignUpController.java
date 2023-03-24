@@ -39,7 +39,7 @@ public class SignUpController extends HttpServlet{
     
     private void signUpDiracter(String mess,HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(mess == null){
-            req.setAttribute("mess", "Create account seccess!");
+            req.setAttribute("mess", "Create account success!");
             req.getRequestDispatcher("views/Login.jsp").forward(req, resp);
         }else{
             req.setAttribute("mess", mess);

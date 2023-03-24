@@ -32,7 +32,7 @@
                             Member Login
                         </span>
                         
-                        <span class="login100-form-title" style="color: orangered">
+                        <span class="login100-form-title" style="color: ${requestScope.mess.equals("Create account success!") ? "green" : "orange"}" >
                             ${requestScope.mess}
                         </span>
                         
