@@ -70,9 +70,9 @@ public class UserProfileController extends HttpServlet {
 //            acc.setImg(UpImgToGGUntil.makeLink(file, req));
 //            }
 //        
-//        if (acc.getImg() == null || acc.getImg().isEmpty()) {
-//            acc.setImg("");
-//        }
+        if (acc.getImg() == null || acc.getImg().isEmpty()) {
+            acc.setImg("");
+        }
         System.out.println(acc.getUserName());
         AccountService.getInstance().updateProfile(acc);
         SessionUtil.getInstance().putValue(req, "account", acc);

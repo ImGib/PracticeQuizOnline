@@ -183,7 +183,7 @@ public class AccountDao extends AbstractDao<Account> implements IAccountDao {
     
     @Override
     public boolean isAccountWasBan (String email){
-        String sql = "Select * from Account where email = ? where isActive = 0";
+        String sql = "Select * from Account where gmail = ? and isActive = 0";
         return query(sql, AccountMapper.getInstance(), email) == null;
     }
 

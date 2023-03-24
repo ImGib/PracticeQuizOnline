@@ -372,7 +372,7 @@
                                                 <h6 class="mb-0" style="margin-left: 10px">${l.idAuthor}</h6> <span style="margin-left: 10px">${l.diffirentDate()}</span>
                                             </div>
                                         </div>
-                                                <div class="badge"> <a href="exper-public-subject?id=${l.id}&&isPublic=${l.isPublic}"><span class=" ${l.isPublic?"bg-success text-white":"bg-warning text-white"}">${l.isPublic ? "Public":"UnPublic"}</span></a> </div>
+                                                <div class="badge"> <a href="expert-public-subject?id=${l.id}&&isPublic=${l.isPublic}"><span class=" ${l.isPublic?"bg-success text-white":"bg-warning text-white"}">${l.isPublic ? "Public":"UnPublic"}</span></a> </div>
                                     </div>
                                     <div class="mt-5">
                                         <a class="course" href="expert-edit-subject?id=${l.id}">

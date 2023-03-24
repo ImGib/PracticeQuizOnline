@@ -400,7 +400,7 @@
                                     <td>${o.getPublicDate()}</td>
                                     <td>${o.getIdAuthor()}</td>
                                     <td>
-                                        <a href="marketing-editpost?id=${o.getId()}" class="settings" title="Settings" data-toggle="tooltip"><i
+                                        <a href="marketing-editpost?id=${o.getId()}" class="settings" title="Update" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE8B8;</i></a>
                                                 <a href="marketing-deletepost?id=${o.getId()}" class="delete" title="Delete" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE5C9;</i></a>
